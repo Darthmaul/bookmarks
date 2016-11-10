@@ -28045,21 +28045,13 @@
 				var bookmarks = this.state.bookmarks;
 	
 	
-				if (bookmarks.length) {
-					return _react2.default.createElement(
-						'ul',
-						{ className: 'bookmark-list' },
-						bookmarks.map(function (bookmark) {
-							return _react2.default.createElement(_item2.default, { key: bookmark.id, bookmark: bookmark });
-						})
-					);
-				} else {
-					return _react2.default.createElement(
-						'div',
-						{ className: 'not-found box' },
-						'No bookmarks found!'
-					);
-				}
+				return _react2.default.createElement(
+					'ul',
+					{ className: 'bookmark-list' },
+					bookmarks.map(function (bookmark) {
+						return _react2.default.createElement(_item2.default, { key: bookmark.id, bookmark: bookmark });
+					})
+				);
 			}
 		}]);
 	
@@ -28196,17 +28188,12 @@
 				var validated = true;
 				var errors = {};
 				for (var prop in obj) {
-					if (!obj[prop]) {
-						errors[prop] = 'Please enter a ' + prop;
-						validated = false;
-					} else {
-						var validator = this.validator[prop];
-						if (validator) {
-							var result = validator(obj[prop]);
-							if (result) {
-								errors[prop] = result;
-								validated = false;
-							}
+					var validator = this.validator[prop];
+					if (validator) {
+						var result = validator(obj[prop]);
+						if (result) {
+							errors[prop] = result;
+							validated = false;
 						}
 					}
 				}
@@ -28249,6 +28236,8 @@
 					this.renderError('title'),
 					_react2.default.createElement('input', { ref: 'url', placeholder: 'url', type: 'text', className: 'field' }),
 					this.renderError('url'),
+					_react2.default.createElement('input', { ref: 'tags', placeholder: 'tags', type: 'text', className: 'field' }),
+					this.renderError('tags'),
 					_react2.default.createElement(
 						'div',
 						{ className: 'controls' },
@@ -28495,13 +28484,13 @@
 	
 	var _jsSearch2 = _interopRequireDefault(_jsSearch);
 	
-	var _localstorage = __webpack_require__(/*! ./localstorage.js */ 249);
-	
-	var _localstorage2 = _interopRequireDefault(_localstorage);
-	
 	var _tools = __webpack_require__(/*! ../tools.js */ 250);
 	
 	var _ = _interopRequireWildcard(_tools);
+	
+	var _localstorage = __webpack_require__(/*! ./localstorage.js */ 249);
+	
+	var _localstorage2 = _interopRequireDefault(_localstorage);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -28545,7 +28534,7 @@
 			key: 'setUpPostCreateEvents',
 			value: function setUpPostCreateEvents() {
 				this.preSave(function (model) {
-					var details = _.getUrlDetails(model);
+					var details = _.getUrlDetails(model.url);
 					model.domain = details.hostname;
 					return model;
 				});
@@ -38771,19 +38760,51 @@
 	var BookmarkItemComponent = function (_React$Component) {
 		_inherits(BookmarkItemComponent, _React$Component);
 	
-		function BookmarkItemComponent() {
+		function BookmarkItemComponent(props, context) {
 			_classCallCheck(this, BookmarkItemComponent);
 	
-			return _possibleConstructorReturn(this, (BookmarkItemComponent.__proto__ || Object.getPrototypeOf(BookmarkItemComponent)).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, (BookmarkItemComponent.__proto__ || Object.getPrototypeOf(BookmarkItemComponent)).call(this, props, context));
+	
+			_this.state = {
+				shouldShowTags: false
+			};
+			return _this;
 		}
 	
 		_createClass(BookmarkItemComponent, [{
+			key: 'showTags',
+			value: function showTags() {
+				this.setState({
+					shouldShowTags: true
+				});
+			}
+		}, {
+			key: 'hideTags',
+			value: function hideTags() {
+				this.setState({
+					shouldShowTags: false
+				});
+			}
+		}, {
+			key: 'toggleTags',
+			value: function toggleTags() {
+				this.setState({
+					shouldShowTags: !this.state.shouldShowTags
+				});
+			}
+		}, {
+			key: 'renderTags',
+			value: function renderTags() {}
+		}, {
 			key: 'render',
 			value: function render() {
 				var bookmark = this.props.bookmark;
+				var shouldShowTags = this.state.shouldShowTags;
 	
 	
-				console.log(bookmark);
+				var tags = void 0;
+	
+				if (shouldShowTags) tags = this.renderTags();
 	
 				return _react2.default.createElement(
 					'li',
@@ -39067,7 +39088,11 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	var bookmarks = exports.bookmarks = {
+		title: function title(_title) {
+			if (!_title.trim()) return 'Please enter a title';
+		},
 		url: function url(_url) {
+			if (!_url.trim()) return 'Please enter a URL';
 			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
 		}
 	};

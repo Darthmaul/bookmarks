@@ -56,18 +56,14 @@ export default class ListComponent extends React.Component {
 
 	render() {
 		const { bookmarks } = this.state;
-
-		if (bookmarks.length) {
-			return (
-				<ul className="bookmark-list">
-					{bookmarks.map(bookmark => (
-						<BookmarkItemComponent key={bookmark.id} bookmark={bookmark} />
-					))}
-				</ul>
-			);
-		} else {
-			return <div className="not-found box">No bookmarks found!</div>
-		}
+		
+		return (
+			<ul className="bookmark-list">
+				{bookmarks.map(bookmark => (
+					<BookmarkItemComponent key={bookmark.id} bookmark={bookmark} />
+				))}
+			</ul>
+		);
 	}
 
 }

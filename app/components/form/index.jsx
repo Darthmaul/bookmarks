@@ -33,17 +33,12 @@ export default class BookmarkFormComponent extends React.Component {
 		let validated = true;
 		const errors = {};
 		for (var prop in obj) {
-			if (!obj[prop]) {
-				errors[prop] = 'Please enter a ' + prop;
-				validated = false;
-			} else {
-				const validator = this.validator[prop];
-				if (validator) {
-					const result = validator(obj[prop]);
-					if (result) {
-						errors[prop] = result;
-						validated = false;
-					}
+			const validator = this.validator[prop];
+			if (validator) {
+				const result = validator(obj[prop]);
+				if (result) {
+					errors[prop] = result;
+					validated = false;
 				}
 			}
 		}
@@ -78,6 +73,8 @@ export default class BookmarkFormComponent extends React.Component {
 				{this.renderError('title')}
 				<input ref="url" placeholder="url" type="text" className="field" />
 				{this.renderError('url')}
+				<input ref="tags" placeholder="tags" type="text" className="field" />
+				{this.renderError('tags')}
 				<div className="controls">
 					<button type="submit" className="btn">create</button>
 				</div>

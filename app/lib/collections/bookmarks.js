@@ -1,7 +1,7 @@
 import JsSearch from 'js-search';
+import * as _ from '../tools.js';
 
 import LocalStorageCollection from './localstorage.js';
-import * as _ from '../tools.js';
 
 export default class BookmarksCollection extends LocalStorageCollection {
 
@@ -26,7 +26,7 @@ export default class BookmarksCollection extends LocalStorageCollection {
 
 	setUpPostCreateEvents() {
 		this.preSave(model => {
-			const details = _.getUrlDetails(model);
+			const details = _.getUrlDetails(model.url);
 			model.domain = details.hostname;
 			return model;
 		});

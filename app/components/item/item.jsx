@@ -7,10 +7,43 @@ require('!style!css!sass!./css/item.scss');
 
 export default class BookmarkItemComponent extends React.Component {
 
+	constructor(props, context) {
+		super(props, context);
+
+		this.state = {
+			shouldShowTags: false
+		};
+	}
+
+	showTags() {
+		this.setState({
+			shouldShowTags: true
+		});
+	}
+
+	hideTags() {
+		this.setState({
+			shouldShowTags: false
+		});
+	}
+
+	toggleTags() {
+		this.setState({
+			shouldShowTags: !this.state.shouldShowTags
+		});
+	}
+
+	renderTags() {
+		
+	}
+
 	render() {
 		const { bookmark } = this.props;
+		const { shouldShowTags } = this.state;
 
-		console.log(bookmark)
+		let tags;
+
+		if (shouldShowTags) tags = this.renderTags();
 
 		return (
 			<li className="bookmark-item box">
