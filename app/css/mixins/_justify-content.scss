@@ -1,0 +1,6 @@
+@mixin justify-content() {
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}

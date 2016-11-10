@@ -1,0 +1,15 @@
+.bookmark-form {
+	padding: 20px;
+	max-width: 500px;
+	margin: 0 auto;
+
+	.field {
+		margin-bottom: 10px;
+	}
+
+	.field-error {
+		font-size: 80%;
+		display: block;
+		margin-bottom: 10px;
+	}
+}

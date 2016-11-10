@@ -1,0 +1,254 @@
+$margin: 20px;
+$margin-sm: 10px;
+
+.margin {
+	margin-top: $margin;
+	margin-right: $margin;
+	margin-bottom: $margin;
+	margin-left: $margin;
+}
+
+.margin-sm {
+	margin-top: $margin-sm;
+	margin-right: $margin-sm;
+	margin-bottom: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin.margin-left-sm {
+	margin-top: $margin;
+	margin-right: $margin;
+	margin-bottom: $margin;
+	margin-left: $margin-sm;
+}
+
+.margin.margin-bottom-sm {
+	margin-top: $margin;
+	margin-right: $margin;
+	margin-bottom: $margin-sm;
+	margin-left: $margin;
+}
+
+.margin.margin-right-sm {
+	margin-top: $margin;
+	margin-right: $margin-sm;
+	margin-bottom: $margin;
+	margin-left: $margin;
+}
+
+.margin.margin-top-sm {
+	margin-top: $margin-sm;
+	margin-right: $margin;
+	margin-bottom: $margin;
+	margin-left: $margin;
+}
+
+.margin-left {
+	margin-left: $margin;
+}
+
+.margin-bottom {
+	margin-bottom: $margin;
+}
+
+.margin-right {
+	margin-right: $margin;
+}
+
+.margin-top {
+	margin-top: $margin;
+}
+
+.margin-left-sm {
+	margin-left: $margin-sm;
+}
+
+.margin-bottom-sm {
+	margin-bottom: $margin-sm;
+}
+
+.margin-right-sm {
+	margin-right: $margin-sm;
+}
+
+.margin-top-sm {
+	margin-top: $margin-sm;
+}
+
+.margin-vertical {
+	margin-top: $margin;
+	margin-bottom: $margin;
+}
+
+.margin-vertical-sm {
+	margin-top: $margin-sm;
+	margin-bottom: $margin-sm;
+}
+
+.margin-vertical.margin-left {
+	margin-top: $margin;
+	margin-bottom: $margin;
+	margin-left: $margin;
+}
+
+.margin-vertical-sm.margin-left {
+	margin-top: $margin-sm;
+	margin-bottom: $margin-sm;
+	margin-left: $margin;
+}
+
+.margin-vertical.margin-left-sm {
+	margin-top: $margin;
+	margin-bottom: $margin;
+	margin-left: $margin-sm;
+}
+
+.margin-vertical-sm.margin-left-sm {
+	margin-top: $margin-sm;
+	margin-bottom: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-vertical.margin-right {
+	margin-top: $margin;
+	margin-right: $margin;
+	margin-bottom: $margin;
+}
+
+.margin-vertical-sm.margin-right {
+	margin-top: $margin-sm;
+	margin-right: $margin;
+	margin-bottom: $margin-sm;
+}
+
+.margin-vertical.margin-right-sm {
+	margin-top: $margin;
+	margin-right: $margin-sm;
+	margin-bottom: $margin;
+}
+
+.margin-vertical-sm.margin-right-sm {
+	margin-top: $margin-sm;
+	margin-bottom: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-horizontal {
+	margin-right: $margin;
+	margin-left: $margin;
+}
+
+.margin-horizontal-sm {
+	margin-right: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-horizontal.margin-top {
+	margin-top: $margin;
+	margin-right: $margin;
+	margin-left: $margin;
+}
+
+.margin-horizontal-sm.margin-top {
+	margin-top: $margin;
+	margin-right: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-horizontal.margin-top-sm {
+	margin-top: $margin-sm;
+	margin-right: $margin;
+	margin-left: $margin;
+}
+
+.margin-horizontal-sm.margin-top-sm {
+	margin-top: $margin-sm;
+	margin-right: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-horizontal.margin-bottom {
+	margin-right: $margin;
+	margin-bottom: $margin;
+	margin-left: $margin;
+}
+
+.margin-horizontal-sm.margin-bottom {
+	margin-right: $margin-sm;
+	margin-bottom: $margin;
+	margin-left: $margin-sm;
+}
+
+.margin-horizontal.margin-bottom-sm {
+	margin-right: $margin;
+	margin-bottom: $margin-sm;
+	margin-left: $margin;
+}
+
+.margin-horizontal-sm.margin-bottom-sm {
+	margin-right: $margin-sm;
+	margin-bottom: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-vertical.margin-horizontal-sm {
+	margin-top: $margin;
+	margin-right: $margin-sm;
+	margin-bottom: $margin;
+	margin-left: $margin-sm;
+}
+
+.margin-horizontal.margin-vertical-sm {
+	margin-top: $margin-sm;
+	margin-right: $margin;
+	margin-bottom: $margin-sm;
+	margin-left: $margin;
+}
+
+.margin-except-top {
+	margin-right: $margin;
+	margin-bottom: $margin;
+	margin-left: $margin;
+}
+
+.margin-except-right {
+	margin-top: $margin;
+	margin-bottom: $margin;
+	margin-left: $margin;
+}
+
+.margin-except-bottom {
+	margin-top: $margin;
+	margin-right: $margin;
+	margin-left: $margin;
+}
+
+.margin-except-left {
+	margin-top: $margin;
+	margin-right: $margin;
+	margin-bottom: $margin;
+}
+
+.margin-sm-except-top {
+	margin-right: $margin-sm;
+	margin-bottom: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-sm-except-right {
+	margin-top: $margin-sm;
+	margin-bottom: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-sm-except-bottom {
+	margin-top: $margin-sm;
+	margin-right: $margin-sm;
+	margin-left: $margin-sm;
+}
+
+.margin-sm-except-left {
+	margin-top: $margin-sm;
+	margin-right: $margin-sm;
+	margin-bottom: $margin-sm;
+}

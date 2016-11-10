@@ -1,0 +1,254 @@
+$padding: 20px;
+$padding-sm: 10px;
+
+.padding {
+	padding-top: $padding;
+	padding-right: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding;
+}
+
+.padding-sm {
+	padding-top: $padding-sm;
+	padding-right: $padding-sm;
+	padding-bottom: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding.padding-left-sm {
+	padding-top: $padding;
+	padding-right: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding-sm;
+}
+
+.padding.padding-bottom-sm {
+	padding-top: $padding;
+	padding-right: $padding;
+	padding-bottom: $padding-sm;
+	padding-left: $padding;
+}
+
+.padding.padding-right-sm {
+	padding-top: $padding;
+	padding-right: $padding-sm;
+	padding-bottom: $padding;
+	padding-left: $padding;
+}
+
+.padding.padding-top-sm {
+	padding-top: $padding-sm;
+	padding-right: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding;
+}
+
+.padding-left {
+	padding-left: $padding;
+}
+
+.padding-bottom {
+	padding-bottom: $padding;
+}
+
+.padding-right {
+	padding-right: $padding;
+}
+
+.padding-top {
+	padding-top: $padding;
+}
+
+.padding-left-sm {
+	padding-left: $padding-sm;
+}
+
+.padding-bottom-sm {
+	padding-bottom: $padding-sm;
+}
+
+.padding-right-sm {
+	padding-right: $padding-sm;
+}
+
+.padding-top-sm {
+	padding-top: $padding-sm;
+}
+
+.padding-vertical {
+	padding-top: $padding;
+	padding-bottom: $padding;
+}
+
+.padding-vertical-sm {
+	padding-top: $padding-sm;
+	padding-bottom: $padding-sm;
+}
+
+.padding-vertical.padding-left {
+	padding-top: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding;
+}
+
+.padding-vertical-sm.padding-left {
+	padding-top: $padding-sm;
+	padding-bottom: $padding-sm;
+	padding-left: $padding;
+}
+
+.padding-vertical.padding-left-sm {
+	padding-top: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding-sm;
+}
+
+.padding-vertical-sm.padding-left-sm {
+	padding-top: $padding-sm;
+	padding-bottom: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-vertical.padding-right {
+	padding-top: $padding;
+	padding-right: $padding;
+	padding-bottom: $padding;
+}
+
+.padding-vertical-sm.padding-right {
+	padding-top: $padding-sm;
+	padding-right: $padding;
+	padding-bottom: $padding-sm;
+}
+
+.padding-vertical.padding-right-sm {
+	padding-top: $padding;
+	padding-right: $padding-sm;
+	padding-bottom: $padding;
+}
+
+.padding-vertical-sm.padding-right-sm {
+	padding-top: $padding-sm;
+	padding-bottom: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-horizontal {
+	padding-right: $padding;
+	padding-left: $padding;
+}
+
+.padding-horizontal-sm {
+	padding-right: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-horizontal.padding-top {
+	padding-top: $padding;
+	padding-right: $padding;
+	padding-left: $padding;
+}
+
+.padding-horizontal-sm.padding-top {
+	padding-top: $padding;
+	padding-right: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-horizontal.padding-top-sm {
+	padding-top: $padding-sm;
+	padding-right: $padding;
+	padding-left: $padding;
+}
+
+.padding-horizontal-sm.padding-top-sm {
+	padding-top: $padding-sm;
+	padding-right: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-horizontal.padding-bottom {
+	padding-right: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding;
+}
+
+.padding-horizontal-sm.padding-bottom {
+	padding-right: $padding-sm;
+	padding-bottom: $padding;
+	padding-left: $padding-sm;
+}
+
+.padding-horizontal.padding-bottom-sm {
+	padding-right: $padding;
+	padding-bottom: $padding-sm;
+	padding-left: $padding;
+}
+
+.padding-horizontal-sm.padding-bottom-sm {
+	padding-right: $padding-sm;
+	padding-bottom: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-vertical.padding-horizontal-sm {
+	padding-top: $padding;
+	padding-right: $padding-sm;
+	padding-bottom: $padding;
+	padding-left: $padding-sm;
+}
+
+.padding-horizontal.padding-vertical-sm {
+	padding-top: $padding-sm;
+	padding-right: $padding;
+	padding-bottom: $padding-sm;
+	padding-left: $padding;
+}
+
+.padding-except-top {
+	padding-right: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding;
+}
+
+.padding-except-right {
+	padding-top: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding;
+}
+
+.padding-except-bottom {
+	padding-top: $padding;
+	padding-right: $padding;
+	padding-left: $padding;
+}
+
+.padding-except-left {
+	padding-top: $padding;
+	padding-right: $padding;
+	padding-bottom: $padding;
+}
+
+.padding-sm-except-top {
+	padding-right: $padding-sm;
+	padding-bottom: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-sm-except-right {
+	padding-top: $padding-sm;
+	padding-bottom: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-sm-except-bottom {
+	padding-top: $padding-sm;
+	padding-right: $padding-sm;
+	padding-left: $padding-sm;
+}
+
+.padding-sm-except-left {
+	padding-top: $padding-sm;
+	padding-right: $padding-sm;
+	padding-bottom: $padding-sm;
+}

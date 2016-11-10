@@ -1,0 +1,27 @@
+$border-color: #ccc;
+
+.border-top {
+	border-top: 1px solid $border-color;
+}
+
+.border-right {
+	border-right: 1px solid $border-color;
+}
+
+.border-bottom {
+	border-bottom: 1px solid $border-color;
+}
+
+.border-left {
+	border-left: 1px solid $border-color;
+}
+
+.border-vertical {
+	border-top: 1px solid $border-color;
+	border-bottom: 1px solid $border-color;
+}
+
+.border-horizontal {
+	border-left: 1px solid $border-color;
+	border-right: 1px solid $border-color;
+}

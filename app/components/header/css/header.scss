@@ -1,0 +1,48 @@
+@import '../../../css/imports';
+
+.site-header {
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
+	padding: 0 20px;
+	text-shadow: 1px 1px 0px #fefefe;
+	overflow: hidden;
+
+	.site-title {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: #777;
+
+		a { 
+			text-decoration: none;
+			line-height: 2.4rem;
+			display: inline-block;
+			font-size: 85%;
+		}
+	}
+}
+
+.site-header__nav {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+
+	li {
+		display: inline-block;
+
+		&:last-child {
+			a {
+				border-right: 1px solid #ccc;
+			}
+		}
+
+	}
+
+	a {
+		text-decoration: none;
+		font-size: 80%;
+		line-height: 2.4rem;
+		display: block;
+		border-left: 1px solid #ccc;
+		padding: 0px 10px;
+	}
+}
