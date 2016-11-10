@@ -1,14 +1,24 @@
+@import '../../../css/imports';
+
 .search-form {
 	margin: 0;
 	font-size: 80%;
 
 	.field {
 		height: 2.4rem;
-		border-top: 0px;
-		border-bottom: 0px;
-		border-right: 0px;
-		max-width: 160px;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
+		border: 0px;
+		border-left: 1px solid #ccc;
+		padding: 0 10px;
+		max-width: 130px;
+		border-radius: 0px;
+
+		&:focus {
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
+		}
+
+		@media screen and (min-width: $break-small)  {
+			max-width: 160px;
+		}
 	}
 
 }

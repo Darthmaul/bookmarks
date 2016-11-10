@@ -12,11 +12,9 @@ export default class HeaderComponent extends React.Component {
 		return (
 			<header className="site-header box">
 				<ul className="site-header__nav pull-right">
+					<li className="site-header__create-link"><Link to="/create">&#43;</Link></li>
 					<li><SearchComponent /></li>
-					<li><Link to="/">home</Link></li>
-					<li><Link to="/create">create</Link></li>
 				</ul>
-				
 				<h1 className="site-title pull-left">
 					<Link to="/">BOOKMARKS</Link>
 				</h1>

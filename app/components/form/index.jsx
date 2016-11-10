@@ -29,17 +29,24 @@ export default class BookmarkFormComponent extends React.Component {
 		}
 	}
 
+	validateField(field, value) {
+		const validator = this.validator[field];
+		if (validator) {
+			const result = validator(value);
+			if (result) {
+				return result;
+			}
+		}
+	}
+
 	validate(obj) {
 		let validated = true;
 		const errors = {};
-		for (var prop in obj) {
-			const validator = this.validator[prop];
-			if (validator) {
-				const result = validator(obj[prop]);
-				if (result) {
-					errors[prop] = result;
-					validated = false;
-				}
+		for (var field in obj) {
+			const result = this.validateField(field, obj[field]);
+			if (result) {
+				errors[field] = result;
+				validated = false;
 			}
 		}
 		this.setState({ errors });
@@ -51,13 +58,11 @@ export default class BookmarkFormComponent extends React.Component {
 		const { bookmarks, router } = this.context;
 		const { title, url } = this.refs;
 		const titleValue = title.value.trim();
-		let urlValue = url.value.trim();
-
-		urlValue = urlValue ? _.prependHttp(urlValue) : urlValue;
+		const urlValue = url.value.trim();
 
 		const validated = this.validate({
 			title: titleValue,
-			url: urlValue
+			url: urlValue,
 		});
 
 		if (validated) {

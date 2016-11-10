@@ -16,6 +16,36 @@ export default class Collection {
 		return new Object;
 	}
 
+	// hooks
+
+	preCreate(fn) {
+		this.hooks.pre.push(fn);
+	}
+
+	callHooks(hook, model) {
+		const hooks = this.hooks[hook];
+		if (hooks) {
+			for (var i = 0, l = hooks.length; i < l; i++) {
+				const hookFn = hooks[i];
+				model = hookFn(model);
+			}
+		}
+		return model;
+	}
+
+	// query models
+
+	all() {
+		return Object.keys(this.models).map(key => this.models[key]);
+	}
+
+	get(id) {
+		if (id) return this.models[id];
+		return false;
+	}
+
+	// events
+
 	// change fires for all events
 
 	onChange(callback) {
@@ -66,21 +96,6 @@ export default class Collection {
 		this.triggerChange();
 	}
 
-	preSave(fn) {
-		this.hooks.pre.push(fn);
-	}
-
-	callHooks(hook, model) {
-		const hooks = this.hooks[hook];
-		if (hooks) {
-			for (var i = 0, l = hooks.length; i < l; i++) {
-				const hookFn = hooks[i];
-				model = hookFn(model);
-			}
-		}
-		return model;
-	}
-
 	// change models
 
 	create(model) {
@@ -129,18 +144,12 @@ export default class Collection {
 		if (_.isObject(model)) {
 			id = model.id;
 		} else {
+			// model is a string id
 			model = this.get(model);
 			id = model.id;
 		}
 		delete this.models[id];
 		this.triggerRemove(model);
-	}
-
-	// query models
-
-	get(id) {
-		if (id) return this.models[id];
-		return Object.keys(this.models).map(key => this.models[key]);
 	}
 
 }

@@ -9,7 +9,15 @@ export default class BookmarksCollection extends LocalStorageCollection {
 		super();
 
 		this.setUpSearchDispatcherEvents();
-		this.setUpPostCreateEvents();
+		this.setUpPreCreateHooks();
+	}
+
+	shell() {
+		return {
+			title: '',
+			url: '',
+			tags: []
+		}
 	}
 
 	setUpSearchDispatcherEvents() {
@@ -24,8 +32,9 @@ export default class BookmarksCollection extends LocalStorageCollection {
 		};
 	}
 
-	setUpPostCreateEvents() {
-		this.preSave(model => {
+	setUpPreCreateHooks() {
+		this.preCreate(model => {
+			model.url = _.prependHttp(model.url);
 			const details = _.getUrlDetails(model.url);
 			model.domain = details.hostname;
 			return model;
@@ -37,7 +46,7 @@ export default class BookmarksCollection extends LocalStorageCollection {
 		search.addIndex('title');
 		search.addIndex('url');
 
-		search.addDocuments(this.get());
+		search.addDocuments(this.all());
 		const results = search.search(query);
 		this.triggerSearch(results);
 	}

@@ -61,16 +61,16 @@
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	__webpack_require__(/*! ./lib/polyfills.js */ 265);
+	__webpack_require__(/*! ./lib/polyfills.js */ 255);
 	
-	var _bookmarks = __webpack_require__(/*! ./lib/collections/bookmarks.js */ 248);
+	var _bookmarks = __webpack_require__(/*! ./lib/collections/bookmarks.js */ 256);
 	
 	var _bookmarks2 = _interopRequireDefault(_bookmarks);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// import generic/site wide styles
-	__webpack_require__(/*! style!css!sass!./css/site.scss */ 257);
+	__webpack_require__(/*! style!css!sass!./css/site.scss */ 265);
 	
 	function init() {
 		var bookmarks = new _bookmarks2.default();
@@ -27312,19 +27312,19 @@
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _index = __webpack_require__(/*! ./components/list/index.jsx */ 237);
+	var _index = __webpack_require__(/*! ./components/list/index.jsx */ 241);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _index3 = __webpack_require__(/*! ./components/form/index.jsx */ 243);
+	var _index3 = __webpack_require__(/*! ./components/form/index.jsx */ 247);
 	
 	var _index4 = _interopRequireDefault(_index3);
 	
-	var _context = __webpack_require__(/*! ./components/context.jsx */ 246);
+	var _context = __webpack_require__(/*! ./components/context.jsx */ 251);
 	
 	var _context2 = _interopRequireDefault(_context);
 	
-	var _index5 = __webpack_require__(/*! ./components/detail/index.jsx */ 247);
+	var _index5 = __webpack_require__(/*! ./components/detail/index.jsx */ 252);
 	
 	var _index6 = _interopRequireDefault(_index5);
 	
@@ -27374,7 +27374,7 @@
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _addEventListener = __webpack_require__(/*! ../lib/addEventListener.js */ 234);
+	var _addEventListener = __webpack_require__(/*! ../lib/addEventListener.js */ 238);
 	
 	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 	
@@ -27387,7 +27387,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./app.scss */ 235);
+	__webpack_require__(/*! style!css!sass!./app.scss */ 239);
 	
 	var AppComponent = function (_React$Component) {
 		_inherits(AppComponent, _React$Component);
@@ -27442,7 +27442,7 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 172);
 	
-	var _index = __webpack_require__(/*! ../search/index.jsx */ 264);
+	var _index = __webpack_require__(/*! ../search/index.jsx */ 230);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -27455,7 +27455,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/header.scss */ 230);
+	__webpack_require__(/*! style!css!sass!./css/header.scss */ 236);
 	
 	var HeaderComponent = function (_React$Component) {
 		_inherits(HeaderComponent, _React$Component);
@@ -27477,26 +27477,17 @@
 						{ className: 'site-header__nav pull-right' },
 						_react2.default.createElement(
 							'li',
-							null,
-							_react2.default.createElement(_index2.default, null)
-						),
-						_react2.default.createElement(
-							'li',
-							null,
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/' },
-								'home'
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							null,
+							{ className: 'site-header__create-link' },
 							_react2.default.createElement(
 								_reactRouter.Link,
 								{ to: '/create' },
-								'create'
+								'+'
 							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(_index2.default, null)
 						)
 					),
 					_react2.default.createElement(
@@ -27519,25 +27510,295 @@
 
 /***/ },
 /* 230 */
+/*!*****************************************!*\
+  !*** ./app/components/search/index.jsx ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 231);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/search.scss */ 232);
+	
+	var SearchComponent = function (_React$Component) {
+		_inherits(SearchComponent, _React$Component);
+	
+		function SearchComponent() {
+			_classCallCheck(this, SearchComponent);
+	
+			return _possibleConstructorReturn(this, (SearchComponent.__proto__ || Object.getPrototypeOf(SearchComponent)).apply(this, arguments));
+		}
+	
+		_createClass(SearchComponent, [{
+			key: 'onSubmit',
+			value: function onSubmit(event) {
+				event.preventDefault();
+				this.search();
+			}
+		}, {
+			key: 'onKeyUp',
+			value: function onKeyUp(event) {
+				this.search();
+			}
+		}, {
+			key: 'search',
+			value: function search() {
+				var _context = this.context,
+				    router = _context.router,
+				    bookmarks = _context.bookmarks;
+	
+				var term = this.refs.search.value;
+				var url = void 0;
+				if (term) {
+					url = _.setParams('/search', {
+						query: term
+					});
+				} else {
+					url = '/';
+				}
+				router.push(url);
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {
+				var _context2 = this.context,
+				    router = _context2.router,
+				    bookmarks = _context2.bookmarks;
+	
+	
+				var location = router.location.query;
+				var query = location.query;
+	
+				if (!query) {
+					this.refs.search.value = '';
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _context3 = this.context,
+				    bookmarks = _context3.bookmarks,
+				    router = _context3.router;
+	
+	
+				var location = router.location.query;
+				var query = location.query;
+	
+				return _react2.default.createElement(
+					'form',
+					{ onSubmit: this.onSubmit.bind(this), onKeyUp: this.onKeyUp.bind(this), className: 'search-form' },
+					_react2.default.createElement('input', { placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: query })
+				);
+			}
+		}]);
+	
+		return SearchComponent;
+	}(_react2.default.Component);
+	
+	SearchComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = SearchComponent;
+
+/***/ },
+/* 231 */
+/*!**************************!*\
+  !*** ./app/lib/tools.js ***!
+  \**************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.toString = toString;
+	exports.isObject = isObject;
+	exports.isString = isString;
+	exports.isArray = isArray;
+	exports.hasOwnProperty = hasOwnProperty;
+	exports.keys = keys;
+	exports.generateID = generateID;
+	exports.validateUrl = validateUrl;
+	exports.prependHttp = prependHttp;
+	exports.forIn = forIn;
+	exports.objectSize = objectSize;
+	exports.endsWith = endsWith;
+	exports.setParams = setParams;
+	exports.getUrlDetails = getUrlDetails;
+	function toString(obj) {
+		return Object.prototype.toString.call(obj);
+	}
+	
+	function isObject(obj) {
+		return toString(obj) == '[object Object]';
+	}
+	
+	function isString(obj) {
+		return toString(obj) == '[object String]';
+	}
+	
+	function isArray(obj) {
+		return toString(obj) == '[object Array]';
+	}
+	
+	function hasOwnProperty(obj, property) {
+		return Object.prototype.hasOwnProperty.call(obj, property);
+	}
+	
+	function keys(obj) {
+		var objKeys = [];
+		for (var property in obj) {
+			if (hasOwnProperty(obj, property)) {
+				objKeys.push(property);
+			}
+		}
+		return objKeys;
+	}
+	
+	function generateID() {
+		return '_' + Math.random().toString(36).substr(2, 9);
+	}
+	
+	function validateUrl(url) {
+		var re = /^(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i;
+		var regex = new RegExp(re);
+		return regex.test(url);
+	}
+	
+	function prependHttp(str) {
+		if (!/^https?:\/\//i.test(str)) {
+			str = 'http://' + str;
+		}
+		return str;
+	}
+	
+	/**
+	 * Enumerate over the properties of obj, calling function 'fn'
+	 * for each property: value pair in turn. If ctx is provided,
+	 * fn is bound to it, otherwise bound to obj.
+	 *
+	 * @param {Object} obj
+	 * @param {Function} fn
+	 * @param {Mixed} ctx
+	 * @api private
+	 */
+	function forIn(obj, fn, ctx) {
+		ctx = ctx || obj;
+		for (var property in obj) {
+			if (hasOwnProperty(obj, property)) {
+				fn.call(ctx, property, obj[property]);
+			}
+		}
+	}
+	
+	/**
+	 * Get length of obj keys, including properties 
+	 * set to null or undefined.
+	 *
+	 * @param {Object} obj
+	 * @return {Number}
+	 * @api private
+	 */
+	function objectSize(obj) {
+		var size = 0,
+		    key = void 0;
+		for (key in obj) {
+			if (hasOwnProperty(obj, key)) size++;
+		}
+		return size;
+	}
+	
+	/**
+	 * Determine if str ends with suffix.
+	 *
+	 * @param {String} str
+	 * @param {String} suffix
+	 * @return {Boolean}
+	 * @api private
+	 */
+	function endsWith(str, suffix) {
+		return str.slice(-suffix.length) == suffix;
+	}
+	
+	/**
+	 * Set url parameters from provided hash map on given string.
+	 *
+	 * @param {String} url
+	 * @param {Object} params
+	 * @return {String}
+	 * @api private
+	 */
+	function setParams(url, params) {
+		var str = void 0;
+		if (objectSize(params) && !endsWith(url, '?')) {
+			url += '?';
+		}
+		forIn(params, function (property, value) {
+			str = property + '=' + value + '&';
+			url += str;
+		});
+		if (endsWith(url, '&')) url = url.slice(0, -1);
+		return url;
+	}
+	
+	function getUrlDetails(url) {
+		var anchor = document.createElement('a');
+		anchor.href = url;
+		var hostname = anchor.hostname,
+		    search = anchor.search,
+		    pathname = anchor.pathname,
+		    protocol = anchor.protocol;
+	
+		return { hostname: hostname, pathname: pathname, protocol: protocol };
+	}
+
+/***/ },
+/* 232 */
 /*!***********************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/header/css/header.scss ***!
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/search/css/search.scss ***!
   \***********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./header.scss */ 231);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./search.scss */ 233);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 233)(content, {});
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./header.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./header.scss");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./search.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./search.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -27547,24 +27808,24 @@
 	}
 
 /***/ },
-/* 231 */
+/* 233 */
 /*!******************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/header/css/header.scss ***!
+  !*** ./~/css-loader!./~/sass-loader!./app/components/search/css/search.scss ***!
   \******************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 232)();
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".site-header {\n  border-bottom: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  padding: 0 20px;\n  text-shadow: 1px 1px 0px #fefefe;\n  overflow: hidden; }\n  .site-header .site-title {\n    font-size: 1.2rem;\n    font-weight: bold;\n    color: #777; }\n    .site-header .site-title a {\n      text-decoration: none;\n      line-height: 2.4rem;\n      display: inline-block;\n      font-size: 85%; }\n\n.site-header__nav {\n  padding: 0;\n  margin: 0;\n  list-style-type: none; }\n  .site-header__nav li {\n    display: inline-block; }\n    .site-header__nav li:last-child a {\n      border-right: 1px solid #ccc; }\n  .site-header__nav a {\n    text-decoration: none;\n    font-size: 80%;\n    line-height: 2.4rem;\n    display: block;\n    border-left: 1px solid #ccc;\n    padding: 0px 10px; }\n", ""]);
+	exports.push([module.id, ".search-form {\n  margin: 0;\n  font-size: 80%; }\n  .search-form .field {\n    height: 2.4rem;\n    border: 0px;\n    border-left: 1px solid #ccc;\n    padding: 0 10px;\n    max-width: 130px;\n    border-radius: 0px; }\n    .search-form .field:focus {\n      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n    @media screen and (min-width: 376px) {\n      .search-form .field {\n        max-width: 160px; } }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 232 */
+/* 234 */
 /*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
@@ -27622,7 +27883,7 @@
 	};
 
 /***/ },
-/* 233 */
+/* 235 */
 /*!*************************************!*\
   !*** ./~/style-loader/addStyles.js ***!
   \*************************************/
@@ -27877,7 +28138,53 @@
 
 
 /***/ },
-/* 234 */
+/* 236 */
+/*!***********************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/header/css/header.scss ***!
+  \***********************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./header.scss */ 237);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./header.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./header.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 237 */
+/*!******************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/header/css/header.scss ***!
+  \******************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".site-header {\n  border-bottom: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  text-shadow: 1px 1px 0px #fefefe;\n  overflow: hidden; }\n  .site-header .site-title {\n    font-size: 1.2rem;\n    font-weight: bold;\n    margin-left: 20px;\n    color: #777;\n    display: inline-block; }\n    .site-header .site-title a {\n      text-decoration: none;\n      line-height: 2.4rem;\n      display: inline-block;\n      font-size: 85%; }\n\n.site-header__menu-icon {\n  line-height: 2.4rem;\n  text-decoration: none;\n  padding: 0 20px;\n  border-left: 1px solid #ccc; }\n\n.site-header__nav {\n  padding: 0;\n  margin: 0;\n  list-style-type: none;\n  display: inline-block; }\n  .site-header__nav li {\n    display: inline-block;\n    float: right; }\n    .site-header__nav li:first-child {\n      border-right: 0px; }\n  .site-header__nav a {\n    text-decoration: none;\n    line-height: 2.4rem;\n    display: block;\n    border-left: 1px solid #ccc;\n    padding: 0px 14px;\n    font-weight: bold; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 238 */
 /*!*************************************!*\
   !*** ./app/lib/addEventListener.js ***!
   \*************************************/
@@ -27902,7 +28209,7 @@
 	exports.default = addEventListener;
 
 /***/ },
-/* 235 */
+/* 239 */
 /*!*********************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/app.scss ***!
   \*********************************************************************************/
@@ -27911,10 +28218,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./app.scss */ 236);
+	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./app.scss */ 240);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 233)(content, {});
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 235)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27931,24 +28238,24 @@
 	}
 
 /***/ },
-/* 236 */
+/* 240 */
 /*!****************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./app/components/app.scss ***!
   \****************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 232)();
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 234)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto;\n  overflow: hidden; }\n\n.content {\n  padding: 20px; }\n", ""]);
+	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto;\n  overflow: hidden; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 237 */
+/* 241 */
 /*!***************************************!*\
   !*** ./app/components/list/index.jsx ***!
   \***************************************/
@@ -27966,7 +28273,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _item = __webpack_require__(/*! ../item/item.jsx */ 259);
+	var _item = __webpack_require__(/*! ../item/item.jsx */ 242);
 	
 	var _item2 = _interopRequireDefault(_item);
 	
@@ -27979,7 +28286,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/list.scss */ 241);
+	__webpack_require__(/*! style!css!sass!./css/list.scss */ 245);
 	
 	var ListComponent = function (_React$Component) {
 		_inherits(ListComponent, _React$Component);
@@ -27993,7 +28300,7 @@
 	
 	
 			_this.state = {
-				bookmarks: bookmarks.get() || []
+				bookmarks: bookmarks.all() || []
 			};
 	
 			_this.addBookmarks = _this.addModels.bind(_this);
@@ -28025,7 +28332,7 @@
 					bookmarks.search(query);
 				} else {
 					this.setState({
-						bookmarks: bookmarks.get()
+						bookmarks: bookmarks.all()
 					});
 				}
 			}
@@ -28065,10 +28372,160 @@
 	exports.default = ListComponent;
 
 /***/ },
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */
+/* 242 */
+/*!**************************************!*\
+  !*** ./app/components/item/item.jsx ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 172);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/item.scss */ 243);
+	
+	var BookmarkItemComponent = function (_React$Component) {
+		_inherits(BookmarkItemComponent, _React$Component);
+	
+		function BookmarkItemComponent(props, context) {
+			_classCallCheck(this, BookmarkItemComponent);
+	
+			var _this = _possibleConstructorReturn(this, (BookmarkItemComponent.__proto__ || Object.getPrototypeOf(BookmarkItemComponent)).call(this, props, context));
+	
+			_this.state = {
+				shouldShowTags: false
+			};
+			return _this;
+		}
+	
+		_createClass(BookmarkItemComponent, [{
+			key: 'showTags',
+			value: function showTags() {
+				this.setState({
+					shouldShowTags: true
+				});
+			}
+		}, {
+			key: 'hideTags',
+			value: function hideTags() {
+				this.setState({
+					shouldShowTags: false
+				});
+			}
+		}, {
+			key: 'toggleTags',
+			value: function toggleTags() {
+				this.setState({
+					shouldShowTags: !this.state.shouldShowTags
+				});
+			}
+		}, {
+			key: 'renderTags',
+			value: function renderTags() {}
+		}, {
+			key: 'render',
+			value: function render() {
+				var bookmark = this.props.bookmark;
+				var shouldShowTags = this.state.shouldShowTags;
+	
+	
+				var tags = void 0;
+	
+				if (shouldShowTags) tags = this.renderTags();
+	
+				return _react2.default.createElement(
+					'li',
+					{ className: 'bookmark-item box' },
+					_react2.default.createElement(
+						'header',
+						{ className: 'bookmark-item__header' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ className: 'bookmark-item__link', to: "/detail/" + bookmark.id },
+							bookmark.title
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'bookmark-item__options' },
+						bookmark.domain
+					)
+				);
+			}
+		}]);
+	
+		return BookmarkItemComponent;
+	}(_react2.default.Component);
+	
+	exports.default = BookmarkItemComponent;
+
+/***/ },
+/* 243 */
+/*!*******************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/item/css/item.scss ***!
+  \*******************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./item.scss */ 244);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./item.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./item.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 244 */
+/*!**************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/item/css/item.scss ***!
+  \**************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".bookmark-item {\n  display: block;\n  margin-top: 20px; }\n  .bookmark-item:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__link {\n    text-decoration: none; }\n  .bookmark-item .bookmark-item__header {\n    padding: 10px 20px; }\n  .bookmark-item .bookmark-item__options {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    border-top: 1px solid #ccc;\n    font-size: 75%;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 245 */
 /*!*******************************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/list/css/list.scss ***!
   \*******************************************************************************************/
@@ -28077,10 +28534,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./list.scss */ 242);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./list.scss */ 246);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 233)(content, {});
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -28097,13 +28554,13 @@
 	}
 
 /***/ },
-/* 242 */
+/* 246 */
 /*!**************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./app/components/list/css/list.scss ***!
   \**************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 232)();
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
 	// imports
 	
 	
@@ -28114,7 +28571,7 @@
 
 
 /***/ },
-/* 243 */
+/* 247 */
 /*!***************************************!*\
   !*** ./app/components/form/index.jsx ***!
   \***************************************/
@@ -28132,11 +28589,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 250);
+	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 231);
 	
 	var _ = _interopRequireWildcard(_tools);
 	
-	var _validators = __webpack_require__(/*! ../../lib/validators.js */ 266);
+	var _validators = __webpack_require__(/*! ../../lib/validators.js */ 248);
 	
 	var validators = _interopRequireWildcard(_validators);
 	
@@ -28151,7 +28608,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/form.scss */ 244);
+	__webpack_require__(/*! style!css!sass!./css/form.scss */ 249);
 	
 	var BookmarkFormComponent = function (_React$Component) {
 		_inherits(BookmarkFormComponent, _React$Component);
@@ -28183,18 +28640,26 @@
 				}
 			}
 		}, {
+			key: 'validateField',
+			value: function validateField(field, value) {
+				var validator = this.validator[field];
+				if (validator) {
+					var result = validator(value);
+					if (result) {
+						return result;
+					}
+				}
+			}
+		}, {
 			key: 'validate',
 			value: function validate(obj) {
 				var validated = true;
 				var errors = {};
-				for (var prop in obj) {
-					var validator = this.validator[prop];
-					if (validator) {
-						var result = validator(obj[prop]);
-						if (result) {
-							errors[prop] = result;
-							validated = false;
-						}
+				for (var field in obj) {
+					var result = this.validateField(field, obj[field]);
+					if (result) {
+						errors[field] = result;
+						validated = false;
 					}
 				}
 				this.setState({ errors: errors });
@@ -28213,8 +28678,6 @@
 	
 				var titleValue = title.value.trim();
 				var urlValue = url.value.trim();
-	
-				urlValue = urlValue ? _.prependHttp(urlValue) : urlValue;
 	
 				var validated = this.validate({
 					title: titleValue,
@@ -28261,7 +28724,37 @@
 	exports.default = BookmarkFormComponent;
 
 /***/ },
-/* 244 */
+/* 248 */
+/*!*******************************!*\
+  !*** ./app/lib/validators.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.bookmarks = undefined;
+	
+	var _tools = __webpack_require__(/*! ./tools.js */ 231);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var bookmarks = exports.bookmarks = {
+		title: function title(_title) {
+			if (!_title.trim()) return 'Please enter a title';
+		},
+		url: function url(_url) {
+			if (!_url.trim()) return 'Please enter a URL';
+			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
+		}
+	};
+
+/***/ },
+/* 249 */
 /*!*******************************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/form/css/form.scss ***!
   \*******************************************************************************************/
@@ -28270,10 +28763,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./form.scss */ 245);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./form.scss */ 250);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 233)(content, {});
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -28290,24 +28783,24 @@
 	}
 
 /***/ },
-/* 245 */
+/* 250 */
 /*!**************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./app/components/form/css/form.scss ***!
   \**************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 232)();
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-form {\n  padding: 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n  .bookmark-form .field {\n    margin-bottom: 10px; }\n  .bookmark-form .field-error {\n    font-size: 80%;\n    display: block;\n    margin-bottom: 10px; }\n", ""]);
+	exports.push([module.id, ".bookmark-form {\n  padding: 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n  .bookmark-form .field {\n    margin-bottom: 10px; }\n  .bookmark-form .field-error {\n    font-size: 70%;\n    display: block;\n    margin-bottom: 10px;\n    background: #f8f8f8; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 246 */
+/* 251 */
 /*!************************************!*\
   !*** ./app/components/context.jsx ***!
   \************************************/
@@ -28365,7 +28858,7 @@
 	exports.default = ContextComponent;
 
 /***/ },
-/* 247 */
+/* 252 */
 /*!*****************************************!*\
   !*** ./app/components/detail/index.jsx ***!
   \*****************************************/
@@ -28392,7 +28885,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/detail.scss */ 262);
+	__webpack_require__(/*! style!css!sass!./css/detail.scss */ 253);
 	
 	var DetailComponent = function (_React$Component) {
 		_inherits(DetailComponent, _React$Component);
@@ -28466,7 +28959,79 @@
 	exports.default = DetailComponent;
 
 /***/ },
-/* 248 */
+/* 253 */
+/*!***********************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/detail/css/detail.scss ***!
+  \***********************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./detail.scss */ 254);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./detail.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./detail.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 254 */
+/*!******************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/detail/css/detail.scss ***!
+  \******************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".bookmark-detail {\n  padding: 10px 20px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 255 */
+/*!******************************!*\
+  !*** ./app/lib/polyfills.js ***!
+  \******************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	if (!Array.prototype.filter) {
+		Array.prototype.filter = function (fun /*, thisp*/) {
+			var len = this.length >>> 0;
+			if (typeof fun != "function") throw new TypeError();
+	
+			var res = [];
+			var thisp = arguments[1];
+			for (var i = 0; i < len; i++) {
+				if (i in this) {
+					var val = this[i]; // in case fun mutates this
+					if (fun.call(thisp, val, i, this)) res.push(val);
+				}
+			}
+			return res;
+		};
+	}
+
+/***/ },
+/* 256 */
 /*!******************************************!*\
   !*** ./app/lib/collections/bookmarks.js ***!
   \******************************************/
@@ -28480,15 +29045,15 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _jsSearch = __webpack_require__(/*! js-search */ 269);
+	var _jsSearch = __webpack_require__(/*! js-search */ 257);
 	
 	var _jsSearch2 = _interopRequireDefault(_jsSearch);
 	
-	var _tools = __webpack_require__(/*! ../tools.js */ 250);
+	var _tools = __webpack_require__(/*! ../tools.js */ 231);
 	
 	var _ = _interopRequireWildcard(_tools);
 	
-	var _localstorage = __webpack_require__(/*! ./localstorage.js */ 249);
+	var _localstorage = __webpack_require__(/*! ./localstorage.js */ 258);
 	
 	var _localstorage2 = _interopRequireDefault(_localstorage);
 	
@@ -28511,11 +29076,20 @@
 			var _this = _possibleConstructorReturn(this, (BookmarksCollection.__proto__ || Object.getPrototypeOf(BookmarksCollection)).call(this));
 	
 			_this.setUpSearchDispatcherEvents();
-			_this.setUpPostCreateEvents();
+			_this.setUpPreCreateHooks();
 			return _this;
 		}
 	
 		_createClass(BookmarksCollection, [{
+			key: 'shell',
+			value: function shell() {
+				return {
+					title: '',
+					url: '',
+					tags: []
+				};
+			}
+		}, {
 			key: 'setUpSearchDispatcherEvents',
 			value: function setUpSearchDispatcherEvents() {
 				var _this2 = this;
@@ -28531,9 +29105,10 @@
 				};
 			}
 		}, {
-			key: 'setUpPostCreateEvents',
-			value: function setUpPostCreateEvents() {
-				this.preSave(function (model) {
+			key: 'setUpPreCreateHooks',
+			value: function setUpPreCreateHooks() {
+				this.preCreate(function (model) {
+					model.url = _.prependHttp(model.url);
 					var details = _.getUrlDetails(model.url);
 					model.domain = details.hostname;
 					return model;
@@ -28546,7 +29121,7 @@
 				search.addIndex('title');
 				search.addIndex('url');
 	
-				search.addDocuments(this.get());
+				search.addDocuments(this.all());
 				var results = search.search(query);
 				this.triggerSearch(results);
 			}
@@ -28558,7 +29133,635 @@
 	exports.default = BookmarksCollection;
 
 /***/ },
-/* 249 */
+/* 257 */
+/*!***************************************!*\
+  !*** ./~/js-search/dist/js-search.js ***!
+  \***************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	var JsSearch;
+	(function (JsSearch) {
+	    var AllSubstringsIndexStrategy = function () {
+	        function AllSubstringsIndexStrategy() {}
+	        AllSubstringsIndexStrategy.prototype.expandToken = function (token) {
+	            var expandedTokens = [];
+	            for (var i = 0, length = token.length; i < length; ++i) {
+	                for (var j = i; j < length; ++j) {
+	                    expandedTokens.push(token.substring(i, j + 1));
+	                }
+	            }
+	            return expandedTokens;
+	        };
+	        return AllSubstringsIndexStrategy;
+	    }();
+	    JsSearch.AllSubstringsIndexStrategy = AllSubstringsIndexStrategy;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=all-substrings-index-strategy.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var ExactWordIndexStrategy = function () {
+	        function ExactWordIndexStrategy() {}
+	        ExactWordIndexStrategy.prototype.expandToken = function (token) {
+	            return token ? [token] : [];
+	        };
+	        return ExactWordIndexStrategy;
+	    }();
+	    JsSearch.ExactWordIndexStrategy = ExactWordIndexStrategy;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=exact-word-index-strategy.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=index-strategy.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var PrefixIndexStrategy = function () {
+	        function PrefixIndexStrategy() {}
+	        PrefixIndexStrategy.prototype.expandToken = function (token) {
+	            var expandedTokens = [];
+	            for (var i = 0, length = token.length; i < length; ++i) {
+	                expandedTokens.push(token.substring(0, i + 1));
+	            }
+	            return expandedTokens;
+	        };
+	        return PrefixIndexStrategy;
+	    }();
+	    JsSearch.PrefixIndexStrategy = PrefixIndexStrategy;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=prefix-index-strategy.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var CaseSensitiveSanitizer = function () {
+	        function CaseSensitiveSanitizer() {}
+	        CaseSensitiveSanitizer.prototype.sanitize = function (text) {
+	            return text ? text.trim() : '';
+	        };
+	        return CaseSensitiveSanitizer;
+	    }();
+	    JsSearch.CaseSensitiveSanitizer = CaseSensitiveSanitizer;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=case-sensitive-sanitizer.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var LowerCaseSanitizer = function () {
+	        function LowerCaseSanitizer() {}
+	        LowerCaseSanitizer.prototype.sanitize = function (text) {
+	            return text ? text.toLocaleLowerCase().trim() : '';
+	        };
+	        return LowerCaseSanitizer;
+	    }();
+	    JsSearch.LowerCaseSanitizer = LowerCaseSanitizer;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=lower-case-sanitizer.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=sanitizer.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=search-index.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var TfIdfSearchIndex = function () {
+	        function TfIdfSearchIndex(uidFieldName) {
+	            this.uidFieldName_ = uidFieldName;
+	            this.tokenToIdfCache_ = {};
+	            this.tokenMap_ = {};
+	        }
+	        TfIdfSearchIndex.prototype.indexDocument = function (token, uid, document) {
+	            this.tokenToIdfCache_ = {};
+	            if (_typeof(this.tokenMap_[token]) !== 'object') {
+	                this.tokenMap_[token] = {
+	                    $numDocumentOccurrences: 0,
+	                    $totalNumOccurrences: 1,
+	                    $uidMap: {}
+	                };
+	            } else {
+	                this.tokenMap_[token].$totalNumOccurrences++;
+	            }
+	            if (!this.tokenMap_[token].$uidMap[uid]) {
+	                this.tokenMap_[token].$numDocumentOccurrences++;
+	                this.tokenMap_[token].$uidMap[uid] = {
+	                    $document: document,
+	                    $numTokenOccurrences: 1
+	                };
+	            } else {
+	                this.tokenMap_[token].$uidMap[uid].$numTokenOccurrences++;
+	            }
+	        };
+	        TfIdfSearchIndex.prototype.search = function (tokens, corpus) {
+	            var uidToDocumentMap = {};
+	            for (var i = 0, numTokens = tokens.length; i < numTokens; i++) {
+	                var token = tokens[i];
+	                var tokenMetadata = this.tokenMap_[token];
+	                if (!tokenMetadata) {
+	                    return [];
+	                }
+	                if (i === 0) {
+	                    for (var uid in tokenMetadata.$uidMap) {
+	                        uidToDocumentMap[uid] = tokenMetadata.$uidMap[uid].$document;
+	                    }
+	                } else {
+	                    for (var uid in uidToDocumentMap) {
+	                        if (!tokenMetadata.$uidMap[uid]) {
+	                            delete uidToDocumentMap[uid];
+	                        }
+	                    }
+	                }
+	            }
+	            var documents = [];
+	            for (var uid in uidToDocumentMap) {
+	                documents.push(uidToDocumentMap[uid]);
+	            }
+	            return documents.sort(function (documentA, documentB) {
+	                return this.calculateTfIdf_(tokens, documentB, corpus) - this.calculateTfIdf_(tokens, documentA, corpus);
+	            }.bind(this));
+	        };
+	        TfIdfSearchIndex.prototype.calculateIdf_ = function (token, documents) {
+	            if (!this.tokenToIdfCache_[token]) {
+	                var numDocumentsWithToken = this.tokenMap_[token] && this.tokenMap_[token].$numDocumentOccurrences || 0;
+	                this.tokenToIdfCache_[token] = 1 + Math.log(documents.length / (1 + numDocumentsWithToken));
+	            }
+	            return this.tokenToIdfCache_[token];
+	        };
+	        TfIdfSearchIndex.prototype.calculateTfIdf_ = function (tokens, document, documents) {
+	            var score = 0;
+	            for (var i = 0, numTokens = tokens.length; i < numTokens; ++i) {
+	                var token = tokens[i];
+	                var inverseDocumentFrequency = this.calculateIdf_(token, documents);
+	                if (inverseDocumentFrequency === Infinity) {
+	                    inverseDocumentFrequency = 0;
+	                }
+	                var uid = document && document[this.uidFieldName_];
+	                var termFrequency = this.tokenMap_[token] && this.tokenMap_[token].$uidMap[uid] && this.tokenMap_[token].$uidMap[uid].$numTokenOccurrences || 0;
+	                score += termFrequency * inverseDocumentFrequency;
+	            }
+	            return score;
+	        };
+	        return TfIdfSearchIndex;
+	    }();
+	    JsSearch.TfIdfSearchIndex = TfIdfSearchIndex;
+	    ;
+	    ;
+	    ;
+	    ;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=tf-idf-search-index.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var UnorderedSearchIndex = function () {
+	        function UnorderedSearchIndex() {
+	            this.tokenToUidToDocumentMap_ = {};
+	        }
+	        UnorderedSearchIndex.prototype.indexDocument = function (token, uid, document) {
+	            if (!this.tokenToUidToDocumentMap_[token]) {
+	                this.tokenToUidToDocumentMap_[token] = {};
+	            }
+	            this.tokenToUidToDocumentMap_[token][uid] = document;
+	        };
+	        UnorderedSearchIndex.prototype.search = function (tokens, corpus) {
+	            var uidToDocumentMap = {};
+	            for (var i = 0, numTokens = tokens.length; i < numTokens; i++) {
+	                var token = tokens[i];
+	                var currentUidToDocumentMap = this.tokenToUidToDocumentMap_[token] || {};
+	                if (i === 0) {
+	                    for (var uid in currentUidToDocumentMap) {
+	                        uidToDocumentMap[uid] = currentUidToDocumentMap[uid];
+	                    }
+	                } else {
+	                    for (var uid in uidToDocumentMap) {
+	                        if (!currentUidToDocumentMap[uid]) {
+	                            delete uidToDocumentMap[uid];
+	                        }
+	                    }
+	                }
+	            }
+	            var documents = [];
+	            for (var uid in uidToDocumentMap) {
+	                documents.push(uidToDocumentMap[uid]);
+	            }
+	            return documents;
+	        };
+	        return UnorderedSearchIndex;
+	    }();
+	    JsSearch.UnorderedSearchIndex = UnorderedSearchIndex;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=unordered-search-index.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var Search = function () {
+	        function Search(uidFieldName) {
+	            this.uidFieldName_ = uidFieldName;
+	            this.indexStrategy_ = new JsSearch.PrefixIndexStrategy();
+	            this.searchIndex_ = new JsSearch.TfIdfSearchIndex(uidFieldName);
+	            this.sanitizer_ = new JsSearch.LowerCaseSanitizer();
+	            this.tokenizer_ = new JsSearch.SimpleTokenizer();
+	            this.documents_ = [];
+	            this.searchableFields = [];
+	        }
+	        Object.defineProperty(Search.prototype, "indexStrategy", {
+	            get: function get() {
+	                return this.indexStrategy_;
+	            },
+	            set: function set(value) {
+	                if (this.initialized_) {
+	                    throw Error('IIndexStrategy cannot be set after initialization');
+	                }
+	                this.indexStrategy_ = value;
+	            },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        Object.defineProperty(Search.prototype, "sanitizer", {
+	            get: function get() {
+	                return this.sanitizer_;
+	            },
+	            set: function set(value) {
+	                if (this.initialized_) {
+	                    throw Error('ISanitizer cannot be set after initialization');
+	                }
+	                this.sanitizer_ = value;
+	            },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        Object.defineProperty(Search.prototype, "searchIndex", {
+	            get: function get() {
+	                return this.searchIndex_;
+	            },
+	            set: function set(value) {
+	                if (this.initialized_) {
+	                    throw Error('ISearchIndex cannot be set after initialization');
+	                }
+	                this.searchIndex_ = value;
+	            },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        Object.defineProperty(Search.prototype, "tokenizer", {
+	            get: function get() {
+	                return this.tokenizer_;
+	            },
+	            set: function set(value) {
+	                if (this.initialized_) {
+	                    throw Error('ITokenizer cannot be set after initialization');
+	                }
+	                this.tokenizer_ = value;
+	            },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        Search.prototype.addDocument = function (document) {
+	            this.addDocuments([document]);
+	        };
+	        Search.prototype.addDocuments = function (documents) {
+	            this.documents_ = this.documents_.concat(documents);
+	            this.indexDocuments_(documents, this.searchableFields);
+	        };
+	        Search.prototype.addIndex = function (field) {
+	            this.searchableFields.push(field);
+	            this.indexDocuments_(this.documents_, [field]);
+	        };
+	        Search.prototype.search = function (query) {
+	            var tokens = this.tokenizer_.tokenize(this.sanitizer_.sanitize(query));
+	            return this.searchIndex_.search(tokens, this.documents_);
+	        };
+	        Search.prototype.indexDocuments_ = function (documents, searchableFields) {
+	            this.initialized_ = true;
+	            for (var di = 0, numDocuments = documents.length; di < numDocuments; di++) {
+	                var document = documents[di];
+	                var uid = document[this.uidFieldName_];
+	                for (var sfi = 0, numSearchableFields = searchableFields.length; sfi < numSearchableFields; sfi++) {
+	                    var fieldValue;
+	                    var searchableField = searchableFields[sfi];
+	                    if (searchableField instanceof Array) {
+	                        fieldValue = Search.getNestedFieldValue(document, searchableField);
+	                    } else {
+	                        fieldValue = document[searchableField];
+	                    }
+	                    if (fieldValue != null && typeof fieldValue !== 'string' && fieldValue.toString) {
+	                        fieldValue = fieldValue.toString();
+	                    }
+	                    if (typeof fieldValue === 'string') {
+	                        var fieldTokens = this.tokenizer_.tokenize(this.sanitizer_.sanitize(fieldValue));
+	                        for (var fti = 0, numFieldValues = fieldTokens.length; fti < numFieldValues; fti++) {
+	                            var fieldToken = fieldTokens[fti];
+	                            var expandedTokens = this.indexStrategy_.expandToken(fieldToken);
+	                            for (var eti = 0, nummExpandedTokens = expandedTokens.length; eti < nummExpandedTokens; eti++) {
+	                                var expandedToken = expandedTokens[eti];
+	                                this.searchIndex_.indexDocument(expandedToken, uid, document);
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+	        };
+	        Search.getNestedFieldValue = function (object, path) {
+	            path = path || [];
+	            object = object || {};
+	            var value = object;
+	            for (var i = 0; i < path.length; i++) {
+	                value = value[path[i]];
+	                if (value == null) {
+	                    return null;
+	                }
+	            }
+	            return value;
+	        };
+	        return Search;
+	    }();
+	    JsSearch.Search = Search;
+	})(JsSearch || (JsSearch = {}));
+	//# sourceMappingURL=search.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    JsSearch.StopWordsMap = {
+	        a: 'a',
+	        able: 'able',
+	        about: 'about',
+	        across: 'across',
+	        after: 'after',
+	        all: 'all',
+	        almost: 'almost',
+	        also: 'also',
+	        am: 'am',
+	        among: 'among',
+	        an: 'an',
+	        and: 'and',
+	        any: 'any',
+	        are: 'are',
+	        as: 'as',
+	        at: 'at',
+	        be: 'be',
+	        because: 'because',
+	        been: 'been',
+	        but: 'but',
+	        by: 'by',
+	        can: 'can',
+	        cannot: 'cannot',
+	        could: 'could',
+	        dear: 'dear',
+	        did: 'did',
+	        'do': 'do',
+	        does: 'does',
+	        either: 'either',
+	        'else': 'else',
+	        ever: 'ever',
+	        every: 'every',
+	        'for': 'for',
+	        from: 'from',
+	        'get': 'get',
+	        got: 'got',
+	        had: 'had',
+	        has: 'has',
+	        have: 'have',
+	        he: 'he',
+	        her: 'her',
+	        hers: 'hers',
+	        him: 'him',
+	        his: 'his',
+	        how: 'how',
+	        however: 'however',
+	        i: 'i',
+	        'if': 'if',
+	        'in': 'in',
+	        into: 'into',
+	        is: 'is',
+	        it: 'it',
+	        its: 'its',
+	        just: 'just',
+	        least: 'least',
+	        let: 'let',
+	        like: 'like',
+	        likely: 'likely',
+	        may: 'may',
+	        me: 'me',
+	        might: 'might',
+	        most: 'most',
+	        must: 'must',
+	        my: 'my',
+	        neither: 'neither',
+	        no: 'no',
+	        nor: 'nor',
+	        not: 'not',
+	        of: 'of',
+	        off: 'off',
+	        often: 'often',
+	        on: 'on',
+	        only: 'only',
+	        or: 'or',
+	        other: 'other',
+	        our: 'our',
+	        own: 'own',
+	        rather: 'rather',
+	        said: 'said',
+	        say: 'say',
+	        says: 'says',
+	        she: 'she',
+	        should: 'should',
+	        since: 'since',
+	        so: 'so',
+	        some: 'some',
+	        than: 'than',
+	        that: 'that',
+	        the: 'the',
+	        their: 'their',
+	        them: 'them',
+	        then: 'then',
+	        there: 'there',
+	        these: 'these',
+	        they: 'they',
+	        'this': 'this',
+	        tis: 'tis',
+	        to: 'to',
+	        too: 'too',
+	        twas: 'twas',
+	        us: 'us',
+	        wants: 'wants',
+	        was: 'was',
+	        we: 'we',
+	        were: 'were',
+	        what: 'what',
+	        when: 'when',
+	        where: 'where',
+	        which: 'which',
+	        'while': 'while',
+	        who: 'who',
+	        whom: 'whom',
+	        why: 'why',
+	        will: 'will',
+	        'with': 'with',
+	        would: 'would',
+	        yet: 'yet',
+	        you: 'you',
+	        your: 'your'
+	    };
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=stop-words-map.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var TokenHighlighter = function () {
+	        function TokenHighlighter(opt_indexStrategy, opt_sanitizer, opt_wrapperTagName) {
+	            this.indexStrategy_ = opt_indexStrategy || new JsSearch.PrefixIndexStrategy();
+	            this.sanitizer_ = opt_sanitizer || new JsSearch.LowerCaseSanitizer();
+	            this.wrapperTagName_ = opt_wrapperTagName || 'mark';
+	        }
+	        TokenHighlighter.prototype.highlight = function (text, tokens) {
+	            var tagsLength = this.wrapText_('').length;
+	            var tokenDictionary = {};
+	            for (var i = 0, numTokens = tokens.length; i < numTokens; i++) {
+	                var token = this.sanitizer_.sanitize(tokens[i]);
+	                var expandedTokens = this.indexStrategy_.expandToken(token);
+	                for (var j = 0, numExpandedTokens = expandedTokens.length; j < numExpandedTokens; j++) {
+	                    var expandedToken = expandedTokens[j];
+	                    if (!tokenDictionary[expandedToken]) {
+	                        tokenDictionary[expandedToken] = [token];
+	                    } else {
+	                        tokenDictionary[expandedToken].push(token);
+	                    }
+	                }
+	            }
+	            var actualCurrentWord = '';
+	            var sanitizedCurrentWord = '';
+	            var currentWordStartIndex = 0;
+	            for (var i = 0, textLength = text.length; i < textLength; i++) {
+	                var character = text.charAt(i);
+	                if (character === ' ') {
+	                    actualCurrentWord = '';
+	                    sanitizedCurrentWord = '';
+	                    currentWordStartIndex = i + 1;
+	                } else {
+	                    actualCurrentWord += character;
+	                    sanitizedCurrentWord += this.sanitizer_.sanitize(character);
+	                }
+	                if (tokenDictionary[sanitizedCurrentWord] && tokenDictionary[sanitizedCurrentWord].indexOf(sanitizedCurrentWord) >= 0) {
+	                    actualCurrentWord = this.wrapText_(actualCurrentWord);
+	                    text = text.substring(0, currentWordStartIndex) + actualCurrentWord + text.substring(i + 1);
+	                    i += tagsLength;
+	                    textLength += tagsLength;
+	                }
+	            }
+	            return text;
+	        };
+	        TokenHighlighter.prototype.wrapText_ = function (text) {
+	            return "<" + this.wrapperTagName_ + ">" + text + "</" + this.wrapperTagName_ + ">";
+	        };
+	        return TokenHighlighter;
+	    }();
+	    JsSearch.TokenHighlighter = TokenHighlighter;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=token-highlighter.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var SimpleTokenizer = function () {
+	        function SimpleTokenizer() {}
+	        SimpleTokenizer.prototype.tokenize = function (text) {
+	            return text.split(/[^a-zA-Z0-9\-']+/).filter(function (text) {
+	                return !!text;
+	            });
+	        };
+	        return SimpleTokenizer;
+	    }();
+	    JsSearch.SimpleTokenizer = SimpleTokenizer;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=simple-tokenizer.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var StemmingTokenizer = function () {
+	        function StemmingTokenizer(stemmingFunction, decoratedTokenizer) {
+	            this.stemmingFunction_ = stemmingFunction;
+	            this.tokenizer_ = decoratedTokenizer;
+	        }
+	        StemmingTokenizer.prototype.tokenize = function (text) {
+	            return this.tokenizer_.tokenize(text).map(function (token) {
+	                return this.stemmingFunction_(token);
+	            }, this);
+	        };
+	        return StemmingTokenizer;
+	    }();
+	    JsSearch.StemmingTokenizer = StemmingTokenizer;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=stemming-tokenizer.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    var StopWordsTokenizer = function () {
+	        function StopWordsTokenizer(decoratedTokenizer) {
+	            this.tokenizer_ = decoratedTokenizer;
+	        }
+	        StopWordsTokenizer.prototype.tokenize = function (text) {
+	            return this.tokenizer_.tokenize(text).filter(function (token) {
+	                return token && JsSearch.StopWordsMap[token] !== token;
+	            });
+	        };
+	        return StopWordsTokenizer;
+	    }();
+	    JsSearch.StopWordsTokenizer = StopWordsTokenizer;
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=stop-words-filtering-tokenizer.js.map
+	"use strict";
+	var JsSearch;
+	(function (JsSearch) {
+	    ;
+	})(JsSearch || (JsSearch = {}));
+	;
+	//# sourceMappingURL=tokenizer.js.map
+	(function (JsSearch) {
+	    if (typeof module !== 'undefined' && module.exports && JsSearch) {
+	        module.exports = JsSearch;
+	    }
+	})(JsSearch || (JsSearch = {}));
+
+/***/ },
+/* 258 */
 /*!*********************************************!*\
   !*** ./app/lib/collections/localstorage.js ***!
   \*********************************************/
@@ -28572,15 +29775,15 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _tools = __webpack_require__(/*! ../tools.js */ 250);
+	var _tools = __webpack_require__(/*! ../tools.js */ 231);
 	
 	var _ = _interopRequireWildcard(_tools);
 	
-	var _base = __webpack_require__(/*! ./base.js */ 251);
+	var _base = __webpack_require__(/*! ./base.js */ 259);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
-	var _localstorage = __webpack_require__(/*! ../behaviour/localstorage.js */ 253);
+	var _localstorage = __webpack_require__(/*! ../behaviour/localstorage.js */ 261);
 	
 	var _localstorage2 = _interopRequireDefault(_localstorage);
 	
@@ -28711,160 +29914,7 @@
 	exports.default = LocalStorageCollection;
 
 /***/ },
-/* 250 */
-/*!**************************!*\
-  !*** ./app/lib/tools.js ***!
-  \**************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.toString = toString;
-	exports.isObject = isObject;
-	exports.isString = isString;
-	exports.isArray = isArray;
-	exports.hasOwnProperty = hasOwnProperty;
-	exports.keys = keys;
-	exports.generateID = generateID;
-	exports.validateUrl = validateUrl;
-	exports.prependHttp = prependHttp;
-	exports.forIn = forIn;
-	exports.objectSize = objectSize;
-	exports.endsWith = endsWith;
-	exports.setParams = setParams;
-	exports.getUrlDetails = getUrlDetails;
-	function toString(obj) {
-		return Object.prototype.toString.call(obj);
-	}
-	
-	function isObject(obj) {
-		return toString(obj) == '[object Object]';
-	}
-	
-	function isString(obj) {
-		return toString(obj) == '[object String]';
-	}
-	
-	function isArray(obj) {
-		return toString(obj) == '[object Array]';
-	}
-	
-	function hasOwnProperty(obj, property) {
-		return Object.prototype.hasOwnProperty.call(obj, property);
-	}
-	
-	function keys(obj) {
-		var objKeys = [];
-		for (var property in obj) {
-			if (hasOwnProperty(obj, property)) {
-				objKeys.push(property);
-			}
-		}
-		return objKeys;
-	}
-	
-	function generateID() {
-		return '_' + Math.random().toString(36).substr(2, 9);
-	}
-	
-	function validateUrl(url) {
-		var re = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i;
-		var regex = new RegExp(re);
-		return regex.test(url);
-	}
-	
-	function prependHttp(str) {
-		if (!/^https?:\/\//i.test(str)) {
-			str = 'http://' + str;
-		}
-		return str;
-	}
-	
-	/**
-	 * Enumerate over the properties of obj, calling function 'fn'
-	 * for each property: value pair in turn. If ctx is provided,
-	 * fn is bound to it, otherwise bound to obj.
-	 *
-	 * @param {Object} obj
-	 * @param {Function} fn
-	 * @param {Mixed} ctx
-	 * @api private
-	 */
-	function forIn(obj, fn, ctx) {
-		ctx = ctx || obj;
-		for (var property in obj) {
-			if (hasOwnProperty(obj, property)) {
-				fn.call(ctx, property, obj[property]);
-			}
-		}
-	}
-	
-	/**
-	 * Get length of obj keys, including properties 
-	 * set to null or undefined.
-	 *
-	 * @param {Object} obj
-	 * @return {Number}
-	 * @api private
-	 */
-	function objectSize(obj) {
-		var size = 0,
-		    key = void 0;
-		for (key in obj) {
-			if (hasOwnProperty(obj, key)) size++;
-		}
-		return size;
-	}
-	
-	/**
-	 * Determine if str ends with suffix.
-	 *
-	 * @param {String} str
-	 * @param {String} suffix
-	 * @return {Boolean}
-	 * @api private
-	 */
-	function endsWith(str, suffix) {
-		return str.slice(-suffix.length) == suffix;
-	}
-	
-	/**
-	 * Set url parameters from provided hash map on given string.
-	 *
-	 * @param {String} url
-	 * @param {Object} params
-	 * @return {String}
-	 * @api private
-	 */
-	function setParams(url, params) {
-		var str = void 0;
-		if (objectSize(params) && !endsWith(url, '?')) {
-			url += '?';
-		}
-		forIn(params, function (property, value) {
-			str = property + '=' + value + '&';
-			url += str;
-		});
-		if (endsWith(url, '&')) url = url.slice(0, -1);
-		return url;
-	}
-	
-	function getUrlDetails(url) {
-		var anchor = document.createElement('a');
-		anchor.href = url;
-		var hostname = anchor.hostname,
-		    search = anchor.search,
-		    pathname = anchor.pathname,
-		    protocol = anchor.protocol;
-	
-		return { hostname: hostname, pathname: pathname, protocol: protocol };
-	}
-
-/***/ },
-/* 251 */
+/* 259 */
 /*!*************************************!*\
   !*** ./app/lib/collections/base.js ***!
   \*************************************/
@@ -28878,11 +29928,11 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _tools = __webpack_require__(/*! ../tools.js */ 250);
+	var _tools = __webpack_require__(/*! ../tools.js */ 231);
 	
 	var _ = _interopRequireWildcard(_tools);
 	
-	var _dispatcher = __webpack_require__(/*! ../dispatcher.js */ 252);
+	var _dispatcher = __webpack_require__(/*! ../dispatcher.js */ 260);
 	
 	var _dispatcher2 = _interopRequireDefault(_dispatcher);
 	
@@ -28909,6 +29959,46 @@
 			value: function shell() {
 				return new Object();
 			}
+	
+			// hooks
+	
+		}, {
+			key: 'preCreate',
+			value: function preCreate(fn) {
+				this.hooks.pre.push(fn);
+			}
+		}, {
+			key: 'callHooks',
+			value: function callHooks(hook, model) {
+				var hooks = this.hooks[hook];
+				if (hooks) {
+					for (var i = 0, l = hooks.length; i < l; i++) {
+						var hookFn = hooks[i];
+						model = hookFn(model);
+					}
+				}
+				return model;
+			}
+	
+			// query models
+	
+		}, {
+			key: 'all',
+			value: function all() {
+				var _this = this;
+	
+				return Object.keys(this.models).map(function (key) {
+					return _this.models[key];
+				});
+			}
+		}, {
+			key: 'get',
+			value: function get(id) {
+				if (id) return this.models[id];
+				return false;
+			}
+	
+			// events
 	
 			// change fires for all events
 	
@@ -28972,23 +30062,6 @@
 				this.dispatcher.broadcast('remove', model);
 				this.triggerChange();
 			}
-		}, {
-			key: 'preSave',
-			value: function preSave(fn) {
-				this.hooks.pre.push(fn);
-			}
-		}, {
-			key: 'callHooks',
-			value: function callHooks(hook, model) {
-				var hooks = this.hooks[hook];
-				if (hooks) {
-					for (var i = 0, l = hooks.length; i < l; i++) {
-						var hookFn = hooks[i];
-						model = hookFn(model);
-					}
-				}
-				return model;
-			}
 	
 			// change models
 	
@@ -29004,11 +30077,11 @@
 		}, {
 			key: 'createMany',
 			value: function createMany(models) {
-				var _this = this;
+				var _this2 = this;
 	
 				var created = models.map(function (model) {
 					model.id = _.generateID();
-					_this.models[model.id] = model;
+					_this2.models[model.id] = model;
 					return model;
 				});
 				this.triggerCreate(created);
@@ -29024,10 +30097,10 @@
 		}, {
 			key: 'addMany',
 			value: function addMany(models) {
-				var _this2 = this;
+				var _this3 = this;
 	
 				models.forEach(function (model) {
-					_this2.models[model.id] = model;
+					_this3.models[model.id] = model;
 				});
 				this.triggerAdd(models);
 				return models;
@@ -29049,24 +30122,12 @@
 				if (_.isObject(model)) {
 					id = model.id;
 				} else {
+					// model is a string id
 					model = this.get(model);
 					id = model.id;
 				}
 				delete this.models[id];
 				this.triggerRemove(model);
-			}
-	
-			// query models
-	
-		}, {
-			key: 'get',
-			value: function get(id) {
-				var _this3 = this;
-	
-				if (id) return this.models[id];
-				return Object.keys(this.models).map(function (key) {
-					return _this3.models[key];
-				});
 			}
 		}]);
 	
@@ -29076,7 +30137,7 @@
 	exports.default = Collection;
 
 /***/ },
-/* 252 */
+/* 260 */
 /*!*******************************!*\
   !*** ./app/lib/dispatcher.js ***!
   \*******************************/
@@ -29143,7 +30204,7 @@
 	exports.default = Dispatcher;
 
 /***/ },
-/* 253 */
+/* 261 */
 /*!*******************************************!*\
   !*** ./app/lib/behaviour/localstorage.js ***!
   \*******************************************/
@@ -29157,7 +30218,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _lodash = __webpack_require__(/*! lodash */ 254);
+	var _lodash = __webpack_require__(/*! lodash */ 262);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -29218,7 +30279,7 @@
 	exports.default = LocalStorageBehaviour;
 
 /***/ },
-/* 254 */
+/* 262 */
 /*!****************************!*\
   !*** ./~/lodash/lodash.js ***!
   \****************************/
@@ -38635,7 +39696,7 @@
 	lodash.prototype.at=wrapperAt;lodash.prototype.chain=wrapperChain;lodash.prototype.commit=wrapperCommit;lodash.prototype.next=wrapperNext;lodash.prototype.plant=wrapperPlant;lodash.prototype.reverse=wrapperReverse;lodash.prototype.toJSON=lodash.prototype.valueOf=lodash.prototype.value=wrapperValue;// Add lazy aliases.
 	lodash.prototype.first=lodash.prototype.head;if(symIterator){lodash.prototype[symIterator]=wrapperToIterator;}return lodash;};/*--------------------------------------------------------------------------*/// Export lodash.
 	var _=runInContext();// Some AMD build optimizers, like r.js, check for condition patterns like:
-	if("function"=='function'&&_typeof(__webpack_require__(/*! !webpack amd options */ 256))=='object'&&__webpack_require__(/*! !webpack amd options */ 256)){// Expose Lodash on the global object to prevent errors when Lodash is
+	if("function"=='function'&&_typeof(__webpack_require__(/*! !webpack amd options */ 264))=='object'&&__webpack_require__(/*! !webpack amd options */ 264)){// Expose Lodash on the global object to prevent errors when Lodash is
 	// loaded by a script tag in the presence of an AMD loader.
 	// See http://requirejs.org/docs/errors.html#mismatch for more details.
 	// Use `_.noConflict` to remove Lodash from the global object.
@@ -38646,10 +39707,10 @@
 	(freeModule.exports=_)._=_;// Export for CommonJS support.
 	freeExports._=_;}else{// Export to the global object.
 	root._=_;}}).call(undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(/*! ./../webpack/buildin/module.js */ 255)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(/*! ./../webpack/buildin/module.js */ 263)(module)))
 
 /***/ },
-/* 255 */
+/* 263 */
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
   \***********************************/
@@ -38669,7 +39730,7 @@
 	};
 
 /***/ },
-/* 256 */
+/* 264 */
 /*!****************************************!*\
   !*** (webpack)/buildin/amd-options.js ***!
   \****************************************/
@@ -38680,7 +39741,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 257 */
+/* 265 */
 /*!***************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/css/site.scss ***!
   \***************************************************************************/
@@ -38689,10 +39750,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./site.scss */ 258);
+	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./site.scss */ 266);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 233)(content, {});
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 235)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -38709,1067 +39770,21 @@
 	}
 
 /***/ },
-/* 258 */
+/* 266 */
 /*!**********************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./app/css/site.scss ***!
   \**********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 232)();
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 234)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "/* vendor */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  box-sizing: content-box;\n  /* 2 */ }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/* base */\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background: #FCFCFC;\n  font-family: \"Open Sans\", \"Lucida Grande\", sans-serif;\n  padding: 20px; }\n\na {\n  color: #777; }\n\na:hover {\n  color: black; }\n\nlabel {\n  display: block;\n  color: #777;\n  margin-bottom: 6px; }\n\n.form--inline .form__group {\n  display: inline-block;\n  vertical-align: middle; }\n\n.field {\n  display: block;\n  width: 100%;\n  max-width: 100%;\n  padding: 6px 8px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }\n\n.field:focus {\n  outline: none; }\n\n.inline-field {\n  display: inline-block;\n  padding: 0 5px; }\n\n.inline-field:first-child {\n  padding-left: 0px; }\n\n.form-error, .field-error {\n  margin-bottom: 10px;\n  display: block;\n  color: #BA2B04; }\n\n.field-error {\n  border: 1px solid #ccc;\n  border-top: 0px;\n  padding: 6px 10px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px;\n  margin-top: -10px; }\n\n/* grid */\n.container {\n  max-width: 1200px;\n  margin: 0 auto; }\n\n/* helpers */\n.border-top {\n  border-top: 1px solid #ccc; }\n\n.border-right {\n  border-right: 1px solid #ccc; }\n\n.border-bottom {\n  border-bottom: 1px solid #ccc; }\n\n.border-left {\n  border-left: 1px solid #ccc; }\n\n.border-vertical {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc; }\n\n.border-horizontal {\n  border-left: 1px solid #ccc;\n  border-right: 1px solid #ccc; }\n\n/**\n * For modern browsers\n * 1. The space content is one way to avoid an Opera bug when the\n *    contenteditable attribute is included anywhere else in the document.\n *    Otherwise it causes space to appear at the top and bottom of elements\n *    that are clearfixed.\n * 2. The use of `table` rather than `block` is only necessary if using\n *    `:before` to contain the top-margins of child elements.\n */\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  /* 1 */\n  display: table;\n  /* 2 */ }\n\n.clearfix:after {\n  clear: both; }\n\n/**\n * For IE 6/7 only\n * Include this rule to trigger hasLayout and contain floats.\n */\n.clearfix {\n  *zoom: 1; }\n\n.margin {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin.margin-left-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin.margin-bottom-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-left {\n  margin-left: 20px; }\n\n.margin-bottom {\n  margin-bottom: 20px; }\n\n.margin-right {\n  margin-right: 20px; }\n\n.margin-top {\n  margin-top: 20px; }\n\n.margin-left-sm {\n  margin-left: 10px; }\n\n.margin-bottom-sm {\n  margin-bottom: 10px; }\n\n.margin-right-sm {\n  margin-right: 10px; }\n\n.margin-top-sm {\n  margin-top: 10px; }\n\n.margin-vertical {\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-left {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-vertical-sm.margin-left {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-vertical.margin-left-sm {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-vertical-sm.margin-left-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-right {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal {\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm {\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom {\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom-sm {\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom-sm {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-horizontal-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-vertical-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-except-top {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-right {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-bottom {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-except-left {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-sm-except-top {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-right {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-bottom {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-left {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.padding {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding.padding-left-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding.padding-bottom-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-left {\n  padding-left: 20px; }\n\n.padding-bottom {\n  padding-bottom: 20px; }\n\n.padding-right {\n  padding-right: 20px; }\n\n.padding-top {\n  padding-top: 20px; }\n\n.padding-left-sm {\n  padding-left: 10px; }\n\n.padding-bottom-sm {\n  padding-bottom: 10px; }\n\n.padding-right-sm {\n  padding-right: 10px; }\n\n.padding-top-sm {\n  padding-top: 10px; }\n\n.padding-vertical {\n  padding-top: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-left {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-vertical-sm.padding-left {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-vertical.padding-left-sm {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-vertical-sm.padding-left-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-right {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal {\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm {\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom {\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom-sm {\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom-sm {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-horizontal-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-vertical-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-except-top {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-right {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-bottom {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-except-left {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-sm-except-top {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-right {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-bottom {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-left {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px; }\n\n.margin-right--sm {\n  margin-right: 5px; }\n\n.opaque {\n  opacity: 1; }\n\n.black {\n  color: black; }\n\n.hidden {\n  display: none; }\n\n.seethrough {\n  opacity: 0; }\n\n.invisible {\n  visibility: hidden; }\n\n.muted {\n  color: #777; }\n\n.muted {\n  color: #777; }\n\n.pull-right {\n  float: right; }\n\n.full-height {\n  min-height: 100vh; }\n\n.centred {\n  margin: 0 auto; }\n\n.centred.margin-top {\n  margin: 20px auto 0px; }\n\n.centred.margin-bottom {\n  margin: 0px auto 20px; }\n\n.hover-cursor--pointer:hover {\n  cursor: pointer; }\n\n.hover-cursor--default {\n  cursor: default; }\n\n.box-shadow {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.box-shadow-inset {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n/* objects */\n.box {\n  background: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  border-radius: 2px; }\n\n.btn {\n  display: inline-block;\n  border: 1px solid #ccc;\n  background: white;\n  padding: 4px 8px;\n  text-decoration: none;\n  font-size: 90%;\n  color: #777;\n  border-radius: 0px; }\n\n.btn:hover {\n  background: #393a73;\n  border-color: #393a73;\n  color: white;\n  cursor: pointer; }\n\n.btn:active {\n  border-color: #ccc;\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.btn-group .btn {\n  margin-right: 2px; }\n\n.btn-group .btn:last-child {\n  margin-right: 0px; }\n\n.btn-wide {\n  padding: 4px 16px; }\n\n.btn-tall {\n  padding: 8px 8px; }\n\n.btn-large {\n  padding: 8px 16px; }\n\n.loading {\n  position: absolute;\n  top: 45%;\n  left: 10%;\n  display: block;\n  padding: 20px 60px;\n  font-weight: bold; }\n", ""]);
+	exports.push([module.id, "/* vendor */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  box-sizing: content-box;\n  /* 2 */ }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/* base */\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background: #FCFCFC;\n  font-family: \"Open Sans\", \"Lucida Grande\", sans-serif;\n  padding: 20px; }\n\na {\n  color: #777; }\n\na:hover {\n  color: black; }\n\nlabel {\n  display: block;\n  color: #777;\n  margin-bottom: 6px; }\n\n.form--inline .form__group {\n  display: inline-block;\n  vertical-align: middle; }\n\n.field {\n  display: block;\n  width: 100%;\n  max-width: 100%;\n  padding: 6px 8px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }\n\n.field:focus {\n  outline: none; }\n\n.inline-field {\n  display: inline-block;\n  padding: 0 5px; }\n\n.inline-field:first-child {\n  padding-left: 0px; }\n\n.form-error, .field-error {\n  margin-bottom: 10px;\n  display: block;\n  color: #BA2B04; }\n\n.field-error {\n  border: 1px solid #ddd;\n  border-top: 0px;\n  padding: 6px 10px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px;\n  margin-top: -10px; }\n\n/* grid */\n.container {\n  max-width: 1200px;\n  margin: 0 auto; }\n\n/* helpers */\n.border-top {\n  border-top: 1px solid #ccc; }\n\n.border-right {\n  border-right: 1px solid #ccc; }\n\n.border-bottom {\n  border-bottom: 1px solid #ccc; }\n\n.border-left {\n  border-left: 1px solid #ccc; }\n\n.border-vertical {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc; }\n\n.border-horizontal {\n  border-left: 1px solid #ccc;\n  border-right: 1px solid #ccc; }\n\n/**\n * For modern browsers\n * 1. The space content is one way to avoid an Opera bug when the\n *    contenteditable attribute is included anywhere else in the document.\n *    Otherwise it causes space to appear at the top and bottom of elements\n *    that are clearfixed.\n * 2. The use of `table` rather than `block` is only necessary if using\n *    `:before` to contain the top-margins of child elements.\n */\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  /* 1 */\n  display: table;\n  /* 2 */ }\n\n.clearfix:after {\n  clear: both; }\n\n/**\n * For IE 6/7 only\n * Include this rule to trigger hasLayout and contain floats.\n */\n.clearfix {\n  *zoom: 1; }\n\n.margin {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin.margin-left-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin.margin-bottom-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-left {\n  margin-left: 20px; }\n\n.margin-bottom {\n  margin-bottom: 20px; }\n\n.margin-right {\n  margin-right: 20px; }\n\n.margin-top {\n  margin-top: 20px; }\n\n.margin-left-sm {\n  margin-left: 10px; }\n\n.margin-bottom-sm {\n  margin-bottom: 10px; }\n\n.margin-right-sm {\n  margin-right: 10px; }\n\n.margin-top-sm {\n  margin-top: 10px; }\n\n.margin-vertical {\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-left {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-vertical-sm.margin-left {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-vertical.margin-left-sm {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-vertical-sm.margin-left-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-right {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal {\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm {\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom {\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom-sm {\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom-sm {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-horizontal-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-vertical-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-except-top {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-right {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-bottom {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-except-left {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-sm-except-top {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-right {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-bottom {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-left {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.padding {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding.padding-left-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding.padding-bottom-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-left {\n  padding-left: 20px; }\n\n.padding-bottom {\n  padding-bottom: 20px; }\n\n.padding-right {\n  padding-right: 20px; }\n\n.padding-top {\n  padding-top: 20px; }\n\n.padding-left-sm {\n  padding-left: 10px; }\n\n.padding-bottom-sm {\n  padding-bottom: 10px; }\n\n.padding-right-sm {\n  padding-right: 10px; }\n\n.padding-top-sm {\n  padding-top: 10px; }\n\n.padding-vertical {\n  padding-top: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-left {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-vertical-sm.padding-left {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-vertical.padding-left-sm {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-vertical-sm.padding-left-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-right {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal {\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm {\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom {\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom-sm {\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom-sm {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-horizontal-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-vertical-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-except-top {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-right {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-bottom {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-except-left {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-sm-except-top {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-right {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-bottom {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-left {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px; }\n\n.margin-right--sm {\n  margin-right: 5px; }\n\n.opaque {\n  opacity: 1; }\n\n.black {\n  color: black; }\n\n.hidden {\n  display: none; }\n\n.seethrough {\n  opacity: 0; }\n\n.invisible {\n  visibility: hidden; }\n\n.muted {\n  color: #777; }\n\n.muted {\n  color: #777; }\n\n.pull-right {\n  float: right; }\n\n.full-height {\n  min-height: 100vh; }\n\n.centred {\n  margin: 0 auto; }\n\n.centred.margin-top {\n  margin: 20px auto 0px; }\n\n.centred.margin-bottom {\n  margin: 0px auto 20px; }\n\n.hover-cursor--pointer:hover {\n  cursor: pointer; }\n\n.hover-cursor--default {\n  cursor: default; }\n\n.box-shadow {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.box-shadow-inset {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n/* objects */\n.box {\n  background: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  border-radius: 2px; }\n\n.btn {\n  display: inline-block;\n  border: 1px solid #ccc;\n  background: white;\n  padding: 4px 8px;\n  text-decoration: none;\n  font-size: 90%;\n  color: #777;\n  border-radius: 0px; }\n\n.btn:hover {\n  background: #393a73;\n  border-color: #393a73;\n  color: white;\n  cursor: pointer; }\n\n.btn:active {\n  border-color: #ccc;\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.btn-group .btn {\n  margin-right: 2px; }\n\n.btn-group .btn:last-child {\n  margin-right: 0px; }\n\n.btn-wide {\n  padding: 4px 16px; }\n\n.btn-tall {\n  padding: 8px 8px; }\n\n.btn-large {\n  padding: 8px 16px; }\n\n.loading {\n  position: absolute;\n  top: 45%;\n  left: 10%;\n  display: block;\n  padding: 20px 60px;\n  font-weight: bold; }\n", ""]);
 	
 	// exports
 
-
-/***/ },
-/* 259 */
-/*!**************************************!*\
-  !*** ./app/components/item/item.jsx ***!
-  \**************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 172);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/item.scss */ 260);
-	
-	var BookmarkItemComponent = function (_React$Component) {
-		_inherits(BookmarkItemComponent, _React$Component);
-	
-		function BookmarkItemComponent(props, context) {
-			_classCallCheck(this, BookmarkItemComponent);
-	
-			var _this = _possibleConstructorReturn(this, (BookmarkItemComponent.__proto__ || Object.getPrototypeOf(BookmarkItemComponent)).call(this, props, context));
-	
-			_this.state = {
-				shouldShowTags: false
-			};
-			return _this;
-		}
-	
-		_createClass(BookmarkItemComponent, [{
-			key: 'showTags',
-			value: function showTags() {
-				this.setState({
-					shouldShowTags: true
-				});
-			}
-		}, {
-			key: 'hideTags',
-			value: function hideTags() {
-				this.setState({
-					shouldShowTags: false
-				});
-			}
-		}, {
-			key: 'toggleTags',
-			value: function toggleTags() {
-				this.setState({
-					shouldShowTags: !this.state.shouldShowTags
-				});
-			}
-		}, {
-			key: 'renderTags',
-			value: function renderTags() {}
-		}, {
-			key: 'render',
-			value: function render() {
-				var bookmark = this.props.bookmark;
-				var shouldShowTags = this.state.shouldShowTags;
-	
-	
-				var tags = void 0;
-	
-				if (shouldShowTags) tags = this.renderTags();
-	
-				return _react2.default.createElement(
-					'li',
-					{ className: 'bookmark-item box' },
-					_react2.default.createElement(
-						'header',
-						{ className: 'bookmark-item__header' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ className: 'bookmark-item__link', to: "/detail/" + bookmark.id },
-							bookmark.title
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'bookmark-item__options' },
-						bookmark.domain
-					)
-				);
-			}
-		}]);
-	
-		return BookmarkItemComponent;
-	}(_react2.default.Component);
-	
-	exports.default = BookmarkItemComponent;
-
-/***/ },
-/* 260 */
-/*!*******************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/item/css/item.scss ***!
-  \*******************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./item.scss */ 261);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 233)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./item.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./item.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 261 */
-/*!**************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/item/css/item.scss ***!
-  \**************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 232)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".bookmark-item {\n  display: block;\n  margin-top: 20px; }\n  .bookmark-item:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__link {\n    text-decoration: none; }\n  .bookmark-item .bookmark-item__header {\n    padding: 10px 20px; }\n  .bookmark-item .bookmark-item__options {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    border-top: 1px solid #ccc;\n    font-size: 75%;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 262 */
-/*!***********************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/detail/css/detail.scss ***!
-  \***********************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./detail.scss */ 263);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 233)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./detail.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./detail.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 263 */
-/*!******************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/detail/css/detail.scss ***!
-  \******************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 232)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".bookmark-detail {\n  padding: 10px 20px; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 264 */
-/*!*****************************************!*\
-  !*** ./app/components/search/index.jsx ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 250);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/search.scss */ 267);
-	
-	var SearchComponent = function (_React$Component) {
-		_inherits(SearchComponent, _React$Component);
-	
-		function SearchComponent() {
-			_classCallCheck(this, SearchComponent);
-	
-			return _possibleConstructorReturn(this, (SearchComponent.__proto__ || Object.getPrototypeOf(SearchComponent)).apply(this, arguments));
-		}
-	
-		_createClass(SearchComponent, [{
-			key: 'onSubmit',
-			value: function onSubmit(event) {
-				event.preventDefault();
-				this.search();
-			}
-		}, {
-			key: 'onKeyUp',
-			value: function onKeyUp(event) {
-				this.search();
-			}
-		}, {
-			key: 'search',
-			value: function search() {
-				var _context = this.context,
-				    router = _context.router,
-				    bookmarks = _context.bookmarks;
-	
-				var term = this.refs.search.value;
-				var url = void 0;
-				if (term) {
-					url = _.setParams('/search', {
-						query: term
-					});
-				} else {
-					url = '/';
-				}
-				router.push(url);
-			}
-		}, {
-			key: 'componentWillReceiveProps',
-			value: function componentWillReceiveProps() {
-				var _context2 = this.context,
-				    router = _context2.router,
-				    bookmarks = _context2.bookmarks;
-	
-	
-				var location = router.location.query;
-				var query = location.query;
-	
-				if (!query) {
-					this.refs.search.value = '';
-				}
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var _context3 = this.context,
-				    bookmarks = _context3.bookmarks,
-				    router = _context3.router;
-	
-	
-				var location = router.location.query;
-				var query = location.query;
-	
-				return _react2.default.createElement(
-					'form',
-					{ onSubmit: this.onSubmit.bind(this), onKeyUp: this.onKeyUp.bind(this), className: 'search-form' },
-					_react2.default.createElement('input', { placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: query })
-				);
-			}
-		}]);
-	
-		return SearchComponent;
-	}(_react2.default.Component);
-	
-	SearchComponent.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = SearchComponent;
-
-/***/ },
-/* 265 */
-/*!******************************!*\
-  !*** ./app/lib/polyfills.js ***!
-  \******************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	if (!Array.prototype.filter) {
-		Array.prototype.filter = function (fun /*, thisp*/) {
-			var len = this.length >>> 0;
-			if (typeof fun != "function") throw new TypeError();
-	
-			var res = [];
-			var thisp = arguments[1];
-			for (var i = 0; i < len; i++) {
-				if (i in this) {
-					var val = this[i]; // in case fun mutates this
-					if (fun.call(thisp, val, i, this)) res.push(val);
-				}
-			}
-			return res;
-		};
-	}
-
-/***/ },
-/* 266 */
-/*!*******************************!*\
-  !*** ./app/lib/validators.js ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.bookmarks = undefined;
-	
-	var _tools = __webpack_require__(/*! ./tools.js */ 250);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	var bookmarks = exports.bookmarks = {
-		title: function title(_title) {
-			if (!_title.trim()) return 'Please enter a title';
-		},
-		url: function url(_url) {
-			if (!_url.trim()) return 'Please enter a URL';
-			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
-		}
-	};
-
-/***/ },
-/* 267 */
-/*!***********************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/search/css/search.scss ***!
-  \***********************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./search.scss */ 268);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 233)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./search.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./search.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 268 */
-/*!******************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/search/css/search.scss ***!
-  \******************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 232)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".search-form {\n  margin: 0;\n  font-size: 80%; }\n  .search-form .field {\n    height: 2.4rem;\n    border-top: 0px;\n    border-bottom: 0px;\n    border-right: 0px;\n    max-width: 160px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 269 */
-/*!***************************************!*\
-  !*** ./~/js-search/dist/js-search.js ***!
-  \***************************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
-	var JsSearch;
-	(function (JsSearch) {
-	    var AllSubstringsIndexStrategy = function () {
-	        function AllSubstringsIndexStrategy() {}
-	        AllSubstringsIndexStrategy.prototype.expandToken = function (token) {
-	            var expandedTokens = [];
-	            for (var i = 0, length = token.length; i < length; ++i) {
-	                for (var j = i; j < length; ++j) {
-	                    expandedTokens.push(token.substring(i, j + 1));
-	                }
-	            }
-	            return expandedTokens;
-	        };
-	        return AllSubstringsIndexStrategy;
-	    }();
-	    JsSearch.AllSubstringsIndexStrategy = AllSubstringsIndexStrategy;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=all-substrings-index-strategy.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var ExactWordIndexStrategy = function () {
-	        function ExactWordIndexStrategy() {}
-	        ExactWordIndexStrategy.prototype.expandToken = function (token) {
-	            return token ? [token] : [];
-	        };
-	        return ExactWordIndexStrategy;
-	    }();
-	    JsSearch.ExactWordIndexStrategy = ExactWordIndexStrategy;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=exact-word-index-strategy.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=index-strategy.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var PrefixIndexStrategy = function () {
-	        function PrefixIndexStrategy() {}
-	        PrefixIndexStrategy.prototype.expandToken = function (token) {
-	            var expandedTokens = [];
-	            for (var i = 0, length = token.length; i < length; ++i) {
-	                expandedTokens.push(token.substring(0, i + 1));
-	            }
-	            return expandedTokens;
-	        };
-	        return PrefixIndexStrategy;
-	    }();
-	    JsSearch.PrefixIndexStrategy = PrefixIndexStrategy;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=prefix-index-strategy.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var CaseSensitiveSanitizer = function () {
-	        function CaseSensitiveSanitizer() {}
-	        CaseSensitiveSanitizer.prototype.sanitize = function (text) {
-	            return text ? text.trim() : '';
-	        };
-	        return CaseSensitiveSanitizer;
-	    }();
-	    JsSearch.CaseSensitiveSanitizer = CaseSensitiveSanitizer;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=case-sensitive-sanitizer.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var LowerCaseSanitizer = function () {
-	        function LowerCaseSanitizer() {}
-	        LowerCaseSanitizer.prototype.sanitize = function (text) {
-	            return text ? text.toLocaleLowerCase().trim() : '';
-	        };
-	        return LowerCaseSanitizer;
-	    }();
-	    JsSearch.LowerCaseSanitizer = LowerCaseSanitizer;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=lower-case-sanitizer.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=sanitizer.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=search-index.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var TfIdfSearchIndex = function () {
-	        function TfIdfSearchIndex(uidFieldName) {
-	            this.uidFieldName_ = uidFieldName;
-	            this.tokenToIdfCache_ = {};
-	            this.tokenMap_ = {};
-	        }
-	        TfIdfSearchIndex.prototype.indexDocument = function (token, uid, document) {
-	            this.tokenToIdfCache_ = {};
-	            if (_typeof(this.tokenMap_[token]) !== 'object') {
-	                this.tokenMap_[token] = {
-	                    $numDocumentOccurrences: 0,
-	                    $totalNumOccurrences: 1,
-	                    $uidMap: {}
-	                };
-	            } else {
-	                this.tokenMap_[token].$totalNumOccurrences++;
-	            }
-	            if (!this.tokenMap_[token].$uidMap[uid]) {
-	                this.tokenMap_[token].$numDocumentOccurrences++;
-	                this.tokenMap_[token].$uidMap[uid] = {
-	                    $document: document,
-	                    $numTokenOccurrences: 1
-	                };
-	            } else {
-	                this.tokenMap_[token].$uidMap[uid].$numTokenOccurrences++;
-	            }
-	        };
-	        TfIdfSearchIndex.prototype.search = function (tokens, corpus) {
-	            var uidToDocumentMap = {};
-	            for (var i = 0, numTokens = tokens.length; i < numTokens; i++) {
-	                var token = tokens[i];
-	                var tokenMetadata = this.tokenMap_[token];
-	                if (!tokenMetadata) {
-	                    return [];
-	                }
-	                if (i === 0) {
-	                    for (var uid in tokenMetadata.$uidMap) {
-	                        uidToDocumentMap[uid] = tokenMetadata.$uidMap[uid].$document;
-	                    }
-	                } else {
-	                    for (var uid in uidToDocumentMap) {
-	                        if (!tokenMetadata.$uidMap[uid]) {
-	                            delete uidToDocumentMap[uid];
-	                        }
-	                    }
-	                }
-	            }
-	            var documents = [];
-	            for (var uid in uidToDocumentMap) {
-	                documents.push(uidToDocumentMap[uid]);
-	            }
-	            return documents.sort(function (documentA, documentB) {
-	                return this.calculateTfIdf_(tokens, documentB, corpus) - this.calculateTfIdf_(tokens, documentA, corpus);
-	            }.bind(this));
-	        };
-	        TfIdfSearchIndex.prototype.calculateIdf_ = function (token, documents) {
-	            if (!this.tokenToIdfCache_[token]) {
-	                var numDocumentsWithToken = this.tokenMap_[token] && this.tokenMap_[token].$numDocumentOccurrences || 0;
-	                this.tokenToIdfCache_[token] = 1 + Math.log(documents.length / (1 + numDocumentsWithToken));
-	            }
-	            return this.tokenToIdfCache_[token];
-	        };
-	        TfIdfSearchIndex.prototype.calculateTfIdf_ = function (tokens, document, documents) {
-	            var score = 0;
-	            for (var i = 0, numTokens = tokens.length; i < numTokens; ++i) {
-	                var token = tokens[i];
-	                var inverseDocumentFrequency = this.calculateIdf_(token, documents);
-	                if (inverseDocumentFrequency === Infinity) {
-	                    inverseDocumentFrequency = 0;
-	                }
-	                var uid = document && document[this.uidFieldName_];
-	                var termFrequency = this.tokenMap_[token] && this.tokenMap_[token].$uidMap[uid] && this.tokenMap_[token].$uidMap[uid].$numTokenOccurrences || 0;
-	                score += termFrequency * inverseDocumentFrequency;
-	            }
-	            return score;
-	        };
-	        return TfIdfSearchIndex;
-	    }();
-	    JsSearch.TfIdfSearchIndex = TfIdfSearchIndex;
-	    ;
-	    ;
-	    ;
-	    ;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=tf-idf-search-index.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var UnorderedSearchIndex = function () {
-	        function UnorderedSearchIndex() {
-	            this.tokenToUidToDocumentMap_ = {};
-	        }
-	        UnorderedSearchIndex.prototype.indexDocument = function (token, uid, document) {
-	            if (!this.tokenToUidToDocumentMap_[token]) {
-	                this.tokenToUidToDocumentMap_[token] = {};
-	            }
-	            this.tokenToUidToDocumentMap_[token][uid] = document;
-	        };
-	        UnorderedSearchIndex.prototype.search = function (tokens, corpus) {
-	            var uidToDocumentMap = {};
-	            for (var i = 0, numTokens = tokens.length; i < numTokens; i++) {
-	                var token = tokens[i];
-	                var currentUidToDocumentMap = this.tokenToUidToDocumentMap_[token] || {};
-	                if (i === 0) {
-	                    for (var uid in currentUidToDocumentMap) {
-	                        uidToDocumentMap[uid] = currentUidToDocumentMap[uid];
-	                    }
-	                } else {
-	                    for (var uid in uidToDocumentMap) {
-	                        if (!currentUidToDocumentMap[uid]) {
-	                            delete uidToDocumentMap[uid];
-	                        }
-	                    }
-	                }
-	            }
-	            var documents = [];
-	            for (var uid in uidToDocumentMap) {
-	                documents.push(uidToDocumentMap[uid]);
-	            }
-	            return documents;
-	        };
-	        return UnorderedSearchIndex;
-	    }();
-	    JsSearch.UnorderedSearchIndex = UnorderedSearchIndex;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=unordered-search-index.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var Search = function () {
-	        function Search(uidFieldName) {
-	            this.uidFieldName_ = uidFieldName;
-	            this.indexStrategy_ = new JsSearch.PrefixIndexStrategy();
-	            this.searchIndex_ = new JsSearch.TfIdfSearchIndex(uidFieldName);
-	            this.sanitizer_ = new JsSearch.LowerCaseSanitizer();
-	            this.tokenizer_ = new JsSearch.SimpleTokenizer();
-	            this.documents_ = [];
-	            this.searchableFields = [];
-	        }
-	        Object.defineProperty(Search.prototype, "indexStrategy", {
-	            get: function get() {
-	                return this.indexStrategy_;
-	            },
-	            set: function set(value) {
-	                if (this.initialized_) {
-	                    throw Error('IIndexStrategy cannot be set after initialization');
-	                }
-	                this.indexStrategy_ = value;
-	            },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        Object.defineProperty(Search.prototype, "sanitizer", {
-	            get: function get() {
-	                return this.sanitizer_;
-	            },
-	            set: function set(value) {
-	                if (this.initialized_) {
-	                    throw Error('ISanitizer cannot be set after initialization');
-	                }
-	                this.sanitizer_ = value;
-	            },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        Object.defineProperty(Search.prototype, "searchIndex", {
-	            get: function get() {
-	                return this.searchIndex_;
-	            },
-	            set: function set(value) {
-	                if (this.initialized_) {
-	                    throw Error('ISearchIndex cannot be set after initialization');
-	                }
-	                this.searchIndex_ = value;
-	            },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        Object.defineProperty(Search.prototype, "tokenizer", {
-	            get: function get() {
-	                return this.tokenizer_;
-	            },
-	            set: function set(value) {
-	                if (this.initialized_) {
-	                    throw Error('ITokenizer cannot be set after initialization');
-	                }
-	                this.tokenizer_ = value;
-	            },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        Search.prototype.addDocument = function (document) {
-	            this.addDocuments([document]);
-	        };
-	        Search.prototype.addDocuments = function (documents) {
-	            this.documents_ = this.documents_.concat(documents);
-	            this.indexDocuments_(documents, this.searchableFields);
-	        };
-	        Search.prototype.addIndex = function (field) {
-	            this.searchableFields.push(field);
-	            this.indexDocuments_(this.documents_, [field]);
-	        };
-	        Search.prototype.search = function (query) {
-	            var tokens = this.tokenizer_.tokenize(this.sanitizer_.sanitize(query));
-	            return this.searchIndex_.search(tokens, this.documents_);
-	        };
-	        Search.prototype.indexDocuments_ = function (documents, searchableFields) {
-	            this.initialized_ = true;
-	            for (var di = 0, numDocuments = documents.length; di < numDocuments; di++) {
-	                var document = documents[di];
-	                var uid = document[this.uidFieldName_];
-	                for (var sfi = 0, numSearchableFields = searchableFields.length; sfi < numSearchableFields; sfi++) {
-	                    var fieldValue;
-	                    var searchableField = searchableFields[sfi];
-	                    if (searchableField instanceof Array) {
-	                        fieldValue = Search.getNestedFieldValue(document, searchableField);
-	                    } else {
-	                        fieldValue = document[searchableField];
-	                    }
-	                    if (fieldValue != null && typeof fieldValue !== 'string' && fieldValue.toString) {
-	                        fieldValue = fieldValue.toString();
-	                    }
-	                    if (typeof fieldValue === 'string') {
-	                        var fieldTokens = this.tokenizer_.tokenize(this.sanitizer_.sanitize(fieldValue));
-	                        for (var fti = 0, numFieldValues = fieldTokens.length; fti < numFieldValues; fti++) {
-	                            var fieldToken = fieldTokens[fti];
-	                            var expandedTokens = this.indexStrategy_.expandToken(fieldToken);
-	                            for (var eti = 0, nummExpandedTokens = expandedTokens.length; eti < nummExpandedTokens; eti++) {
-	                                var expandedToken = expandedTokens[eti];
-	                                this.searchIndex_.indexDocument(expandedToken, uid, document);
-	                            }
-	                        }
-	                    }
-	                }
-	            }
-	        };
-	        Search.getNestedFieldValue = function (object, path) {
-	            path = path || [];
-	            object = object || {};
-	            var value = object;
-	            for (var i = 0; i < path.length; i++) {
-	                value = value[path[i]];
-	                if (value == null) {
-	                    return null;
-	                }
-	            }
-	            return value;
-	        };
-	        return Search;
-	    }();
-	    JsSearch.Search = Search;
-	})(JsSearch || (JsSearch = {}));
-	//# sourceMappingURL=search.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    JsSearch.StopWordsMap = {
-	        a: 'a',
-	        able: 'able',
-	        about: 'about',
-	        across: 'across',
-	        after: 'after',
-	        all: 'all',
-	        almost: 'almost',
-	        also: 'also',
-	        am: 'am',
-	        among: 'among',
-	        an: 'an',
-	        and: 'and',
-	        any: 'any',
-	        are: 'are',
-	        as: 'as',
-	        at: 'at',
-	        be: 'be',
-	        because: 'because',
-	        been: 'been',
-	        but: 'but',
-	        by: 'by',
-	        can: 'can',
-	        cannot: 'cannot',
-	        could: 'could',
-	        dear: 'dear',
-	        did: 'did',
-	        'do': 'do',
-	        does: 'does',
-	        either: 'either',
-	        'else': 'else',
-	        ever: 'ever',
-	        every: 'every',
-	        'for': 'for',
-	        from: 'from',
-	        'get': 'get',
-	        got: 'got',
-	        had: 'had',
-	        has: 'has',
-	        have: 'have',
-	        he: 'he',
-	        her: 'her',
-	        hers: 'hers',
-	        him: 'him',
-	        his: 'his',
-	        how: 'how',
-	        however: 'however',
-	        i: 'i',
-	        'if': 'if',
-	        'in': 'in',
-	        into: 'into',
-	        is: 'is',
-	        it: 'it',
-	        its: 'its',
-	        just: 'just',
-	        least: 'least',
-	        let: 'let',
-	        like: 'like',
-	        likely: 'likely',
-	        may: 'may',
-	        me: 'me',
-	        might: 'might',
-	        most: 'most',
-	        must: 'must',
-	        my: 'my',
-	        neither: 'neither',
-	        no: 'no',
-	        nor: 'nor',
-	        not: 'not',
-	        of: 'of',
-	        off: 'off',
-	        often: 'often',
-	        on: 'on',
-	        only: 'only',
-	        or: 'or',
-	        other: 'other',
-	        our: 'our',
-	        own: 'own',
-	        rather: 'rather',
-	        said: 'said',
-	        say: 'say',
-	        says: 'says',
-	        she: 'she',
-	        should: 'should',
-	        since: 'since',
-	        so: 'so',
-	        some: 'some',
-	        than: 'than',
-	        that: 'that',
-	        the: 'the',
-	        their: 'their',
-	        them: 'them',
-	        then: 'then',
-	        there: 'there',
-	        these: 'these',
-	        they: 'they',
-	        'this': 'this',
-	        tis: 'tis',
-	        to: 'to',
-	        too: 'too',
-	        twas: 'twas',
-	        us: 'us',
-	        wants: 'wants',
-	        was: 'was',
-	        we: 'we',
-	        were: 'were',
-	        what: 'what',
-	        when: 'when',
-	        where: 'where',
-	        which: 'which',
-	        'while': 'while',
-	        who: 'who',
-	        whom: 'whom',
-	        why: 'why',
-	        will: 'will',
-	        'with': 'with',
-	        would: 'would',
-	        yet: 'yet',
-	        you: 'you',
-	        your: 'your'
-	    };
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=stop-words-map.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var TokenHighlighter = function () {
-	        function TokenHighlighter(opt_indexStrategy, opt_sanitizer, opt_wrapperTagName) {
-	            this.indexStrategy_ = opt_indexStrategy || new JsSearch.PrefixIndexStrategy();
-	            this.sanitizer_ = opt_sanitizer || new JsSearch.LowerCaseSanitizer();
-	            this.wrapperTagName_ = opt_wrapperTagName || 'mark';
-	        }
-	        TokenHighlighter.prototype.highlight = function (text, tokens) {
-	            var tagsLength = this.wrapText_('').length;
-	            var tokenDictionary = {};
-	            for (var i = 0, numTokens = tokens.length; i < numTokens; i++) {
-	                var token = this.sanitizer_.sanitize(tokens[i]);
-	                var expandedTokens = this.indexStrategy_.expandToken(token);
-	                for (var j = 0, numExpandedTokens = expandedTokens.length; j < numExpandedTokens; j++) {
-	                    var expandedToken = expandedTokens[j];
-	                    if (!tokenDictionary[expandedToken]) {
-	                        tokenDictionary[expandedToken] = [token];
-	                    } else {
-	                        tokenDictionary[expandedToken].push(token);
-	                    }
-	                }
-	            }
-	            var actualCurrentWord = '';
-	            var sanitizedCurrentWord = '';
-	            var currentWordStartIndex = 0;
-	            for (var i = 0, textLength = text.length; i < textLength; i++) {
-	                var character = text.charAt(i);
-	                if (character === ' ') {
-	                    actualCurrentWord = '';
-	                    sanitizedCurrentWord = '';
-	                    currentWordStartIndex = i + 1;
-	                } else {
-	                    actualCurrentWord += character;
-	                    sanitizedCurrentWord += this.sanitizer_.sanitize(character);
-	                }
-	                if (tokenDictionary[sanitizedCurrentWord] && tokenDictionary[sanitizedCurrentWord].indexOf(sanitizedCurrentWord) >= 0) {
-	                    actualCurrentWord = this.wrapText_(actualCurrentWord);
-	                    text = text.substring(0, currentWordStartIndex) + actualCurrentWord + text.substring(i + 1);
-	                    i += tagsLength;
-	                    textLength += tagsLength;
-	                }
-	            }
-	            return text;
-	        };
-	        TokenHighlighter.prototype.wrapText_ = function (text) {
-	            return "<" + this.wrapperTagName_ + ">" + text + "</" + this.wrapperTagName_ + ">";
-	        };
-	        return TokenHighlighter;
-	    }();
-	    JsSearch.TokenHighlighter = TokenHighlighter;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=token-highlighter.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var SimpleTokenizer = function () {
-	        function SimpleTokenizer() {}
-	        SimpleTokenizer.prototype.tokenize = function (text) {
-	            return text.split(/[^a-zA-Z0-9\-']+/).filter(function (text) {
-	                return !!text;
-	            });
-	        };
-	        return SimpleTokenizer;
-	    }();
-	    JsSearch.SimpleTokenizer = SimpleTokenizer;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=simple-tokenizer.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var StemmingTokenizer = function () {
-	        function StemmingTokenizer(stemmingFunction, decoratedTokenizer) {
-	            this.stemmingFunction_ = stemmingFunction;
-	            this.tokenizer_ = decoratedTokenizer;
-	        }
-	        StemmingTokenizer.prototype.tokenize = function (text) {
-	            return this.tokenizer_.tokenize(text).map(function (token) {
-	                return this.stemmingFunction_(token);
-	            }, this);
-	        };
-	        return StemmingTokenizer;
-	    }();
-	    JsSearch.StemmingTokenizer = StemmingTokenizer;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=stemming-tokenizer.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    var StopWordsTokenizer = function () {
-	        function StopWordsTokenizer(decoratedTokenizer) {
-	            this.tokenizer_ = decoratedTokenizer;
-	        }
-	        StopWordsTokenizer.prototype.tokenize = function (text) {
-	            return this.tokenizer_.tokenize(text).filter(function (token) {
-	                return token && JsSearch.StopWordsMap[token] !== token;
-	            });
-	        };
-	        return StopWordsTokenizer;
-	    }();
-	    JsSearch.StopWordsTokenizer = StopWordsTokenizer;
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=stop-words-filtering-tokenizer.js.map
-	"use strict";
-	var JsSearch;
-	(function (JsSearch) {
-	    ;
-	})(JsSearch || (JsSearch = {}));
-	;
-	//# sourceMappingURL=tokenizer.js.map
-	(function (JsSearch) {
-	    if (typeof module !== 'undefined' && module.exports && JsSearch) {
-	        module.exports = JsSearch;
-	    }
-	})(JsSearch || (JsSearch = {}));
 
 /***/ }
 /******/ ]);

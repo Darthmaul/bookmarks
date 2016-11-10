@@ -17,7 +17,7 @@ export default class ListComponent extends React.Component {
 		const { bookmarks } = this.context;
 
 		this.state = {
-			bookmarks: bookmarks.get() || []
+			bookmarks: bookmarks.all() || []
 		};
 
 		this.addBookmarks = this.addModels.bind(this);
@@ -41,7 +41,7 @@ export default class ListComponent extends React.Component {
 			bookmarks.search(query);
 		} else {
 			this.setState({
-				bookmarks: bookmarks.get()
+				bookmarks: bookmarks.all()
 			});
 		}
 	}
@@ -56,7 +56,7 @@ export default class ListComponent extends React.Component {
 
 	render() {
 		const { bookmarks } = this.state;
-		
+
 		return (
 			<ul className="bookmark-list">
 				{bookmarks.map(bookmark => (
