@@ -40,6 +40,12 @@ export default class BookmarksCollection extends LocalStorageCollection {
 			model.tags = model.tags.split(',').map(tag => tag.trim()).filter(Boolean);
 			return model;
 		});
+
+		this.preCreate(model => {
+			// ensure sure there are no duplicate tags
+			model.tags = model.tags.filter((item, pos, arr) => arr.indexOf(item) == pos);
+			return model;
+		});
 	}
 
 	findByTag(tag) {

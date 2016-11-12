@@ -28613,7 +28613,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item {\n  display: block;\n  margin-top: 20px; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item .bookmark-item__header {\n    padding: 10px 20px; }\n  .bookmark-item .bookmark-item__options {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    border-top: 1px solid #ccc;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item .bookmark-item__tag-toggle {\n    text-decoration: none; }\n  .bookmark-item .bookmark-item__tags {\n    padding: 4px 20px;\n    border-top: 1px solid #ccc; }\n  .bookmark-item .bookmark-item__tag {\n    display: inline-block;\n    border: 1px solid #ccc;\n    font-size: 70%;\n    padding: 2px 6px;\n    border-radius: 4px;\n    margin-left: 10px;\n    background: #f8f8f8;\n    color: #777; }\n    .bookmark-item .bookmark-item__tag:first-child {\n      margin-left: 0px; }\n", ""]);
+	exports.push([module.id, ".bookmark-item {\n  display: block;\n  margin-top: 20px; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item .bookmark-item__header {\n    padding: 10px 20px; }\n  .bookmark-item .bookmark-item__options {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    border-top: 1px solid #ccc;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item .bookmark-item__tag-toggle {\n    text-decoration: none; }\n  .bookmark-item .bookmark-item__tags {\n    padding: 0 15px;\n    border-top: 1px solid #ccc; }\n  .bookmark-item .bookmark-item__tag {\n    display: inline-block;\n    border: 1px solid #ccc;\n    font-size: 70%;\n    padding: 2px 6px;\n    border-radius: 4px;\n    margin: 4px 5px;\n    background: #f8f8f8;\n    color: #777; }\n", ""]);
 	
 	// exports
 
@@ -29063,15 +29063,23 @@
 /*!***********************************!*\
   !*** ./app/components/errors.jsx ***!
   \***********************************/
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.NotFoundComponent = undefined;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	var NotFoundComponent = exports.NotFoundComponent = function NotFoundComponent() {
-		return React.createElement(
+		return _react2.default.createElement(
 			"div",
 			{ className: "not-found box" },
 			"Not found!"
@@ -29234,6 +29242,14 @@
 					model.tags = model.tags.split(',').map(function (tag) {
 						return tag.trim();
 					}).filter(Boolean);
+					return model;
+				});
+	
+				this.preCreate(function (model) {
+					// ensure sure there are no duplicate tags
+					model.tags = model.tags.filter(function (item, pos, arr) {
+						return arr.indexOf(item) == pos;
+					});
 					return model;
 				});
 			}
