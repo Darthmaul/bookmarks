@@ -1,7 +1,11 @@
 body {
 	background: #FCFCFC;
 	font-family: "Open Sans", "Lucida Grande", sans-serif;
-	padding: 20px;
+	padding: 10px;
+
+	@media screen and (min-width: $break-small)  {
+		max-width: 20px;
+	}
 }
 
 a {
