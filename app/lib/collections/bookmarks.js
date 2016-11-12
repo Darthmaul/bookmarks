@@ -37,14 +37,20 @@ export default class BookmarksCollection extends LocalStorageCollection {
 			model.url = _.prependHttp(model.url);
 			const details = _.getUrlDetails(model.url);
 			model.domain = details.hostname;
+			model.tags = model.tags.split(',').map(tag => tag.trim()).filter(Boolean);
 			return model;
 		});
+	}
+
+	findByTag(tag) {
+		return this.all().filter(bookmark => bookmark.tags.indexOf(tag) >= 0);
 	}
 
 	search(query) {
 		const search = new JsSearch.Search('id');
 		search.addIndex('title');
 		search.addIndex('url');
+		search.addIndex('tags');
 
 		search.addDocuments(this.all());
 		const results = search.search(query);

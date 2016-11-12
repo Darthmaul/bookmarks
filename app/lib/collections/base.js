@@ -1,5 +1,5 @@
 import * as _ from '../tools.js';
-import Dispatcher from '../dispatcher.js';
+import Dispatcher from '../behaviour/dispatcher.js';
 
 export default class Collection {
 
@@ -56,6 +56,10 @@ export default class Collection {
 
 	onAdd(callback) {
 		this.dispatcher.register('add', callback);
+	}
+
+	removeAdd(callback) {
+		this.dispatcher.remove('add', callback);
 	}
 
 	// creating a model genereates a new id

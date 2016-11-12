@@ -20,35 +20,32 @@ export default class SearchComponent extends React.Component {
 		this.search();
 	}
 
+	componentWillReceiveProps(nextState, nextContext) {
+		const { bookmarks } = this.context;
+		const { router } = nextContext;
+		const query = router.location.query;
+		const term = query.query;
+		const { value } = this.refs.search;
+		if (term != value && value != undefined && term != undefined) this.refs.search.value = term;
+	}
+
 	search() {
 		const { router, bookmarks } = this.context;
 		const term = this.refs.search.value;
-		let url;
+		const location = { pathname: '/', query: {} };
+
 		if (term) {
-			url = _.setParams('/search', {
-				query: term
-			});
-		} else {
-			url = '/';
+			location.query.query = term;
 		}
-		router.push(url);
-	}
 
-	componentWillReceiveProps() {
-		const { router, bookmarks } = this.context;
-
-		const location = router.location.query;
-		const { query } = location;
-		if (!query) {
-			this.refs.search.value = '';
-		}
+		router.push(location);
 	}
 
 	render() {
-		const { bookmarks, router } = this.context;
-
+		const { router } = this.context;
 		const location = router.location.query;
 		const { query } = location;
+
 		return (
 			<form onSubmit={this.onSubmit.bind(this)} onKeyUp={this.onKeyUp.bind(this)} className="search-form">
 				<input placeholder="search" ref="search" type="text" className="field" defaultValue={query} />

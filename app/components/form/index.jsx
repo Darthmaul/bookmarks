@@ -1,6 +1,6 @@
 import React from 'react';
 import * as _ from '../../lib/tools.js';
-import * as validators from '../../lib/validators.js';
+import * as validators from '../../lib/collections/validators.js';
 
 // import styles for this component
 require('!style!css!sass!./css/form.scss');
@@ -56,17 +56,19 @@ export default class BookmarkFormComponent extends React.Component {
 	submitHandler(event) {
 		event.preventDefault();
 		const { bookmarks, router } = this.context;
-		const { title, url } = this.refs;
+		const { title, url, tags } = this.refs;
 		const titleValue = title.value.trim();
 		const urlValue = url.value.trim();
+		const tagsValue = tags.value.trim();
 
 		const validated = this.validate({
 			title: titleValue,
 			url: urlValue,
+			tags: tagsValue
 		});
 
 		if (validated) {
-			const bookmark = bookmarks.create({ title: titleValue, url: urlValue });
+			const bookmark = bookmarks.create({ title: titleValue, url: urlValue, tags: tagsValue });
 			router.push('/detail/' + bookmark.id);
 		}
 	}
@@ -78,7 +80,7 @@ export default class BookmarkFormComponent extends React.Component {
 				{this.renderError('title')}
 				<input ref="url" placeholder="url" type="text" className="field" />
 				{this.renderError('url')}
-				<input ref="tags" placeholder="tags" type="text" className="field" />
+				<input ref="tags" placeholder="tags (separate with a comma)" type="text" className="field" />
 				{this.renderError('tags')}
 				<div className="controls">
 					<button type="submit" className="btn">create</button>

@@ -14,6 +14,10 @@ export function isArray(obj) {
 	return toString(obj) == '[object Array]';
 }
 
+export function isFunction(obj) {
+	return obj && typeof obj === 'function';
+}
+
 export function hasOwnProperty(obj, property) {
 	return Object.prototype.hasOwnProperty.call(obj, property);
 }

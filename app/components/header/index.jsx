@@ -16,7 +16,7 @@ export default class HeaderComponent extends React.Component {
 					<li><SearchComponent /></li>
 				</ul>
 				<h1 className="site-title pull-left">
-					<Link to="/">BOOKMARKS</Link>
+					<Link to="/">Bookmarks</Link>
 				</h1>
 			</header>
 		);

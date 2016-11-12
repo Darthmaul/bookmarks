@@ -27,30 +27,46 @@ export default class BookmarkItemComponent extends React.Component {
 		});
 	}
 
-	toggleTags() {
+	toggleTags(event) {
+		event.preventDefault();
 		this.setState({
 			shouldShowTags: !this.state.shouldShowTags
 		});
 	}
 
 	renderTags() {
-		
+		const { bookmark } = this.props;
+		const tags = bookmark.tags.map(tag => {
+			return <Link to={{ pathName: '/', query: { query: tag } }} key={tag} className="bookmark-item__tag">{tag}</Link>;
+		});
+		return <div className="bookmark-item__tags">{tags}</div>;
 	}
 
 	render() {
+		let tags, tagsToggle;
 		const { bookmark } = this.props;
 		const { shouldShowTags } = this.state;
 
-		let tags;
+		if (bookmark.tags.length) {
 
-		if (shouldShowTags) tags = this.renderTags();
+			let tagText = 'show tags';
+
+			if (shouldShowTags) {
+				tags = this.renderTags();
+				tagText = 'hide tags';
+			}
+
+			tagsToggle = <a href="#" onClick={this.toggleTags.bind(this)} className="pull-right bookmark-item__tag-toggle"><small>{tagText}</small></a>;
+		}
 
 		return (
 			<li className="bookmark-item box">
 				<header className="bookmark-item__header">
-					<Link className="bookmark-item__link" to={"/detail/" + bookmark.id}>{bookmark.title}</Link>
+					<Link className="bookmark-item__title" to={"/detail/" + bookmark.id}>{bookmark.title}</Link>
 				</header>
+				{tags}
 				<div className="bookmark-item__options">
+					{tagsToggle}
 					{bookmark.domain}
 				</div>
 			</li>
