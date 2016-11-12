@@ -4,6 +4,12 @@ label {
 	margin-bottom: 6px;
 }
 
+input {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
 .form--inline {
 	.form__group {
 		display: inline-block;
