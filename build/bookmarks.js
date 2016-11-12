@@ -27337,7 +27337,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var routes = function routes(bookmarks) {
-	
 		return _react2.default.createElement(
 			_context2.default,
 			{ bookmarks: bookmarks },
