@@ -28278,7 +28278,8 @@
 	
 	
 			_this.state = {
-				bookmarks: bookmarks.all()
+				bookmarks: bookmarks.all(),
+				isMounted: false
 			};
 	
 			_this.addBookmarks = _this.addModels.bind(_this);
@@ -28288,9 +28289,12 @@
 		_createClass(HomeComponent, [{
 			key: 'addModels',
 			value: function addModels(models) {
-				this.setState({
-					bookmarks: models
-				});
+				// https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
+				if (this.state.isMounted) {
+					this.setState({
+						bookmarks: models
+					});
+				}
 			}
 		}, {
 			key: 'componentDidMount',
@@ -28301,6 +28305,9 @@
 	
 				var query = router.location.query;
 				var term = query.query;
+				this.setState({
+					isMounted: true
+				});
 				bookmarks.onSearch(this.addBookmarks);
 				if (term) {
 					bookmarks.search(term);
@@ -28314,6 +28321,9 @@
 				var bookmarks = this.context.bookmarks;
 	
 				bookmarks.removeSearch(this.addBookmarks);
+				this.setState({
+					isMounted: false
+				});
 			}
 		}, {
 			key: 'componentWillReceiveProps',
