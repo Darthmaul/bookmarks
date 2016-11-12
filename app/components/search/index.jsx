@@ -26,7 +26,9 @@ export default class SearchComponent extends React.Component {
 		const query = router.location.query;
 		const term = query.query;
 		const { value } = this.refs.search;
-		if (term != value && value != undefined && term != undefined) this.refs.search.value = term;
+		if (term != value && value != undefined && term != undefined) {
+			this.refs.search.value = term;
+		}
 	}
 
 	search() {

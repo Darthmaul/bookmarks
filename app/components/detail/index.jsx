@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { NotFoundComponent } from '../errors.jsx';
+
 // import styles for this component
 require('!style!css!sass!./css/detail.scss');
 
@@ -16,11 +18,7 @@ export default class DetailComponent extends React.Component {
 		const { params: { id } } = props;
 		const bookmark = bookmarks.get(id);
 
-		if (bookmark) {
-			this.state = { bookmark };
-		} else {
-			router.push('/');
-		}
+		this.state = { bookmark };
 	}
 
 	remove(event) {
@@ -34,13 +32,18 @@ export default class DetailComponent extends React.Component {
 	render() {
 		const { bookmark } = this.state;
 
-		return (
-			<div className="bookmark-detail box">
-				<header className="bookmark-detail__header">{bookmark.title}</header>
-				<a href={bookmark.url} className="btn">{bookmark.url}</a>
-				<a href="#" onClick={this.remove.bind(this)} className="btn">remove</a>
-			</div>
-		);
+		if (bookmark) {
+
+			return (
+				<div className="bookmark-detail box">
+					<header className="bookmark-detail__header">{bookmark.title}</header>
+					<a href={bookmark.url} className="btn">{bookmark.url}</a>
+					<a href="#" onClick={this.remove.bind(this)} className="btn">remove</a>
+				</div>
+			);
+		} else {
+			return <NotFoundComponent />
+		}
 	}
 
 }

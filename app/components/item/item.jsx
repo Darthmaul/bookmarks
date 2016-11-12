@@ -47,7 +47,7 @@ export default class BookmarkItemComponent extends React.Component {
 		const { bookmark } = this.props;
 		const { shouldShowTags } = this.state;
 
-		if (bookmark.tags.length) {
+		if (bookmark.tags && bookmark.tags.length) {
 
 			let tagText = 'show tags';
 
