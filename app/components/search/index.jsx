@@ -22,12 +22,16 @@ export default class SearchComponent extends React.Component {
 
 	componentWillReceiveProps(nextState, nextContext) {
 		const { bookmarks } = this.context;
-		const { router } = nextContext;
-		const query = router.location.query;
-		const term = query.query;
+		const nextRouter = nextContext.router;
+		const nextQuery = nextRouter.location.query;
+		const nextTerm = nextQuery.query;
 		const { value } = this.refs.search;
-		if (term != value && value != undefined && term != undefined) {
-			this.refs.search.value = term;
+		if (nextTerm != value && value != undefined && nextTerm != undefined) {
+			this.refs.search.value = nextTerm;
+		}
+
+		if (nextTerm == undefined) {
+			this.refs.search.value = '';
 		}
 	}
 

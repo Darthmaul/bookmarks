@@ -27570,14 +27570,18 @@
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextState, nextContext) {
 				var bookmarks = this.context.bookmarks;
-				var router = nextContext.router;
 	
-				var query = router.location.query;
-				var term = query.query;
+				var nextRouter = nextContext.router;
+				var nextQuery = nextRouter.location.query;
+				var nextTerm = nextQuery.query;
 				var value = this.refs.search.value;
 	
-				if (term != value && value != undefined && term != undefined) {
-					this.refs.search.value = term;
+				if (nextTerm != value && value != undefined && nextTerm != undefined) {
+					this.refs.search.value = nextTerm;
+				}
+	
+				if (nextTerm == undefined) {
+					this.refs.search.value = '';
 				}
 			}
 		}, {
