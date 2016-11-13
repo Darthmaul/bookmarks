@@ -108,9 +108,9 @@ export default class BookmarkItemComponent extends React.Component {
 				{tagsHtml}
 				<div className="bookmark-item__options">
 					<ul className="bookmark-item__options-toggles">
-						{tagsToggle}
-						{imgToggle}
 						{textToggle}
+						{imgToggle}
+						{tagsToggle}
 					</ul>
 					{bookmark.domain}
 				</div>

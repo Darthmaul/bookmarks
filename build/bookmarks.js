@@ -28651,9 +28651,9 @@
 						_react2.default.createElement(
 							'ul',
 							{ className: 'bookmark-item__options-toggles' },
-							tagsToggle,
+							textToggle,
 							imgToggle,
-							textToggle
+							tagsToggle
 						),
 						bookmark.domain
 					),
