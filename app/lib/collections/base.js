@@ -7,6 +7,7 @@ export default class Collection {
 		this.models = {};
 		this.hooks = [];
 		this.dispatcher = new Dispatcher();
+		this.validator = {};
 		this.name = this.constructor.name;
 	}
 
@@ -94,6 +95,29 @@ export default class Collection {
 	triggerRemove(model) {
 		this.dispatcher.broadcast('remove', model);
 		this.triggerChange();
+	}
+
+	validateField(field, value) {
+		const validator = this.validator[field];
+		if (validator) {
+			const result = validator(value);
+			if (result) {
+				return result;
+			}
+		}
+	}
+
+	validate(obj) {
+		const errors = {};
+		let validated = true;
+		for (var field in obj) {
+			const result = this.validateField(field, obj[field]);
+			if (result) {
+				errors[field] = result;
+				validated = false;
+			}
+		}
+		return { errors, validated };
 	}
 
 	// change models

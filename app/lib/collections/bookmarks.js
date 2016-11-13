@@ -3,6 +3,19 @@ import * as _ from '../tools.js';
 
 import LocalStorageCollection from './localstorage.js';
 
+export const validator = {
+	title(title) {
+		if (!title.trim())
+			return 'Please enter a title';
+	},
+	url(url) {
+		if (!url.trim()) 
+			return 'Please enter a URL';
+		if (!_.validateUrl(url))
+			return 'Please enter a valid URL';
+	}
+};
+
 export default class BookmarksCollection extends LocalStorageCollection {
 
 	constructor() {
@@ -10,6 +23,7 @@ export default class BookmarksCollection extends LocalStorageCollection {
 
 		this.setUpSearchDispatcherEvents();
 		this.setUpModelHooks();
+		this.validator = validator;
 	}
 
 	shell() {
@@ -17,7 +31,8 @@ export default class BookmarksCollection extends LocalStorageCollection {
 			title: '',
 			url: '',
 			tags: [],
-			text: ''
+			text: '',
+			slug: '',
 		}
 	}
 
@@ -58,6 +73,12 @@ export default class BookmarksCollection extends LocalStorageCollection {
 		this.preCreate(model => {
 			// ensure there are no duplicate tags
 			model.tags = model.tags.filter((item, pos, arr) => arr.indexOf(item) == pos);
+			return model;
+		});
+
+		this.preCreate(model => {
+			// set slug
+			model.slug = _.slugify(model.title);
 			return model;
 		});
 	}

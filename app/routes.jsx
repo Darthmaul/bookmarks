@@ -13,7 +13,7 @@ const routes = (bookmarks) => (
 			<Route path="/" component={AppComponent}>
 				<IndexRoute component={HomeComponent} />
 				<Route path="/create" component={FormComponent} />
-				<Route path="/detail/:id" component={DetailComponent} />
+				<Route path="/bookmark/:id/:slug" component={DetailComponent} />
 			</Route>
 		</Router>
 	</ContextComponent>

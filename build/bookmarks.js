@@ -27348,7 +27348,7 @@
 					{ path: '/', component: _app2.default },
 					_react2.default.createElement(_reactRouter.IndexRoute, { component: _index2.default }),
 					_react2.default.createElement(_reactRouter.Route, { path: '/create', component: _index4.default }),
-					_react2.default.createElement(_reactRouter.Route, { path: '/detail/:id', component: _index6.default })
+					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug', component: _index6.default })
 				)
 			)
 		);
@@ -27654,6 +27654,7 @@
 	exports.setParams = setParams;
 	exports.getUrlDetails = getUrlDetails;
 	exports.extend = extend;
+	exports.slugify = slugify;
 	function toString(obj) {
 		return Object.prototype.toString.call(obj);
 	}
@@ -27810,6 +27811,15 @@
 			}
 		}
 		return obj;
+	}
+	
+	function slugify(text) {
+		return text.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
+		.replace(/[.,]/g, '-') // Replace full stops & commas with -
+		.replace(/[^\w\-]+/g, '') // Remove all non-word chars
+		.replace(/\-\-+/g, '-') // Replace multiple - with single -
+		.replace(/^-+/, '') // Trim - from start of text
+		.replace(/-+$/, ''); // Trim - from end of text
 	}
 
 /***/ },
@@ -28509,10 +28519,15 @@
 	
 			var _this = _possibleConstructorReturn(this, (BookmarkItemComponent.__proto__ || Object.getPrototypeOf(BookmarkItemComponent)).call(this, props, context));
 	
+			var shouldShowTags = props.shouldShowTags,
+			    shouldShowImage = props.shouldShowImage,
+			    shouldShowText = props.shouldShowText;
+	
+	
 			_this.state = {
-				shouldShowTags: false,
-				shouldShowImage: false,
-				shouldShowText: false
+				shouldShowTags: shouldShowTags || false,
+				shouldShowImage: shouldShowImage || false,
+				shouldShowText: shouldShowText || false
 			};
 			return _this;
 		}
@@ -28542,6 +28557,18 @@
 				});
 			}
 		}, {
+			key: 'remove',
+			value: function remove(event) {
+				event.preventDefault();
+				var bookmark = this.state.bookmark;
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+	
+				bookmarks.remove(bookmark.id);
+				router.push('/');
+			}
+		}, {
 			key: 'renderTags',
 			value: function renderTags() {
 				var bookmark = this.props.bookmark;
@@ -28567,8 +28594,11 @@
 				    imgHtml = void 0,
 				    imgToggle = void 0,
 				    textHtml = void 0,
-				    textToggle = void 0;
-				var bookmark = this.props.bookmark;
+				    textToggle = void 0,
+				    editOptions = void 0;
+				var _props = this.props,
+				    bookmark = _props.bookmark,
+				    shouldShowEditOptions = _props.shouldShowEditOptions;
 				var _state = this.state,
 				    shouldShowTags = _state.shouldShowTags,
 				    shouldShowImage = _state.shouldShowImage,
@@ -28586,7 +28616,7 @@
 						_react2.default.createElement(
 							'a',
 							{ href: '#', onClick: this.toggleTags.bind(this) },
-							_react2.default.createElement('i', { className: (0, _classnames2.default)({ "ion-ios-pricetags-outline": true, "icon--active": shouldShowTags }) })
+							_react2.default.createElement('i', { className: (0, _classnames2.default)({ "ion-ios-pricetags": true, "icon--active": shouldShowTags }) })
 						)
 					);
 				}
@@ -28631,6 +28661,23 @@
 					);
 				}
 	
+				if (shouldShowEditOptions) {
+					editOptions = _react2.default.createElement(
+						'div',
+						{ className: 'bookmark-item__edit-options padding padding-vertical-sm' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: "/bookmark/" + bookmark.id + '/' + bookmark.slug + "/edit" },
+							_react2.default.createElement('i', { className: 'ion-edit' })
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: '#', onClick: this.remove.bind(this) },
+							_react2.default.createElement('i', { className: 'ion-ios-trash' })
+						)
+					);
+				}
+	
 				return _react2.default.createElement(
 					'li',
 					{ className: 'bookmark-item box' },
@@ -28639,7 +28686,7 @@
 						{ className: 'bookmark-item__header' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ className: 'bookmark-item__title', to: "/detail/" + bookmark.id },
+							{ className: 'bookmark-item__title', to: "/bookmark/" + bookmark.id + '/' + bookmark.slug },
 							bookmark.title
 						)
 					),
@@ -28651,12 +28698,22 @@
 						_react2.default.createElement(
 							'ul',
 							{ className: 'bookmark-item__options-toggles' },
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ className: 'bookmark-item__link', href: bookmark.url },
+									_react2.default.createElement('i', { className: 'ion-link' })
+								)
+							),
 							textToggle,
 							imgToggle,
 							tagsToggle
 						),
 						bookmark.domain
 					),
+					editOptions,
 					textHtml
 				);
 			}
@@ -28708,7 +28765,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item {\n  display: block;\n  margin-top: 20px; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item .bookmark-item__header {\n    padding: 10px 20px;\n    border-bottom: 1px solid #ccc; }\n  .bookmark-item .bookmark-item__tag-toggle {\n    text-decoration: none; }\n  .bookmark-item .bookmark-item__image-wrap {\n    border-bottom: 1px solid #ccc;\n    position: relative;\n    padding: 10px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item .bookmark-item__image {\n    max-width: 100%;\n    max-height: 600px;\n    margin: 0 auto;\n    display: block; }\n  .bookmark-item .bookmark-item__tags {\n    padding: 0 15px;\n    border-bottom: 1px solid #ccc; }\n  .bookmark-item .bookmark-item__tag {\n    display: inline-block;\n    border: 1px solid #ccc;\n    font-size: 70%;\n    padding: 2px 6px;\n    border-radius: 4px;\n    margin: 4px 5px;\n    background: #f8f8f8;\n    color: #777; }\n  .bookmark-item .bookmark-item__options {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item .bookmark-item__options-toggles {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    float: right; }\n    .bookmark-item .bookmark-item__options-toggles li {\n      display: inline-block;\n      margin-left: 20px; }\n      .bookmark-item .bookmark-item__options-toggles li i {\n        font-size: 1.1rem; }\n  .bookmark-item .bookmark-item__text {\n    border-top: 1px solid #ccc;\n    padding: 10px 20px;\n    font-size: 90%; }\n", ""]);
+	exports.push([module.id, ".bookmark-item {\n  display: block;\n  margin-top: 20px; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    font-weight: bold; }\n  .bookmark-item .bookmark-item__header {\n    padding: 10px 20px;\n    border-bottom: 1px solid #ccc;\n    position: relative; }\n  .bookmark-item .bookmark-item__link {\n    font-size: 1.1rem;\n    margin-left: 10px; }\n  .bookmark-item .bookmark-item__image-wrap {\n    border-bottom: 1px solid #ccc;\n    position: relative;\n    padding: 10px 20px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item .bookmark-item__image {\n    max-width: 100%;\n    max-height: 600px;\n    margin: 0 auto;\n    display: block; }\n  .bookmark-item .bookmark-item__tags {\n    padding: 0 15px;\n    border-bottom: 1px solid #ccc; }\n  .bookmark-item .bookmark-item__tag {\n    display: inline-block;\n    border: 1px solid #ccc;\n    font-size: 70%;\n    padding: 2px 6px;\n    border-radius: 4px;\n    margin: 4px 5px;\n    background: #f8f8f8;\n    color: #777; }\n  .bookmark-item .bookmark-item__options {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item .bookmark-item__options-toggles {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    float: right; }\n    .bookmark-item .bookmark-item__options-toggles li {\n      display: inline-block;\n      margin-left: 20px; }\n      .bookmark-item .bookmark-item__options-toggles li i {\n        font-size: 1.1rem; }\n  .bookmark-item .bookmark-item__text {\n    border-top: 1px solid #ccc;\n    padding: 10px 20px;\n    font-size: 90%; }\n  .bookmark-item .bookmark-item__edit-options {\n    border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 
@@ -28782,10 +28839,6 @@
 	
 	var _ = _interopRequireWildcard(_tools);
 	
-	var _validators = __webpack_require__(/*! ../../lib/collections/validators.js */ 248);
-	
-	var validators = _interopRequireWildcard(_validators);
-	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28807,7 +28860,6 @@
 	
 			var _this = _possibleConstructorReturn(this, (BookmarkFormComponent.__proto__ || Object.getPrototypeOf(BookmarkFormComponent)).call(this, props, context));
 	
-			_this.validator = validators.bookmarks;
 			_this.state = {
 				errors: {}
 			};
@@ -28829,32 +28881,6 @@
 				}
 			}
 		}, {
-			key: 'validateField',
-			value: function validateField(field, value) {
-				var validator = this.validator[field];
-				if (validator) {
-					var result = validator(value);
-					if (result) {
-						return result;
-					}
-				}
-			}
-		}, {
-			key: 'validate',
-			value: function validate(obj) {
-				var validated = true;
-				var errors = {};
-				for (var field in obj) {
-					var result = this.validateField(field, obj[field]);
-					if (result) {
-						errors[field] = result;
-						validated = false;
-					}
-				}
-				this.setState({ errors: errors });
-				return validated;
-			}
-		}, {
 			key: 'submitHandler',
 			value: function submitHandler(event) {
 				event.preventDefault();
@@ -28872,16 +28898,20 @@
 				var tagsValue = tags.value.trim();
 				var textValue = text.value.trim();
 	
-				var validated = this.validate({
+				var _bookmarks$validate = bookmarks.validate({
 					title: titleValue,
 					url: urlValue,
 					tags: tagsValue,
 					text: textValue
-				});
+				}),
+				    errors = _bookmarks$validate.errors,
+				    validated = _bookmarks$validate.validated;
 	
 				if (validated) {
 					var bookmark = bookmarks.create({ title: titleValue, url: urlValue, tags: tagsValue, text: textValue });
-					router.push('/detail/' + bookmark.id);
+					router.push('/bookmark/' + bookmark.id + '/' + bookmark.slug);
+				} else {
+					this.setState({ errors: errors });
 				}
 			}
 		}, {
@@ -28921,36 +28951,7 @@
 	exports.default = BookmarkFormComponent;
 
 /***/ },
-/* 248 */
-/*!*******************************************!*\
-  !*** ./app/lib/collections/validators.js ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.bookmarks = undefined;
-	
-	var _tools = __webpack_require__(/*! ../tools.js */ 231);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	var bookmarks = exports.bookmarks = {
-		title: function title(_title) {
-			if (!_title.trim()) return 'Please enter a title';
-		},
-		url: function url(_url) {
-			if (!_url.trim()) return 'Please enter a URL';
-			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
-		}
-	};
-
-/***/ },
+/* 248 */,
 /* 249 */
 /*!*******************************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/form/css/form.scss ***!
@@ -29073,7 +29074,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(/*! react-router */ 172);
+	
 	var _errors = __webpack_require__(/*! ../errors.jsx */ 253);
+	
+	var _item = __webpack_require__(/*! ../item/item.jsx */ 242);
+	
+	var _item2 = _interopRequireDefault(_item);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -29105,43 +29112,16 @@
 		}
 	
 		_createClass(DetailComponent, [{
-			key: 'remove',
-			value: function remove(event) {
-				event.preventDefault();
-				var bookmark = this.state.bookmark;
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-	
-				bookmarks.remove(bookmark.id);
-				router.push('/');
-			}
-		}, {
 			key: 'render',
 			value: function render() {
 				var bookmark = this.state.bookmark;
 	
 	
 				if (bookmark) {
-	
 					return _react2.default.createElement(
 						'div',
-						{ className: 'bookmark-detail box' },
-						_react2.default.createElement(
-							'header',
-							{ className: 'bookmark-detail__header' },
-							bookmark.title
-						),
-						_react2.default.createElement(
-							'a',
-							{ href: bookmark.url, className: 'btn' },
-							bookmark.url
-						),
-						_react2.default.createElement(
-							'a',
-							{ href: '#', onClick: this.remove.bind(this), className: 'btn' },
-							'remove'
-						)
+						{ className: 'bookmark-detail' },
+						_react2.default.createElement(_item2.default, { shouldShowTags: true, shouldShowImage: true, shouldShowText: true, shouldShowEditOptions: true, bookmark: bookmark })
 					);
 				} else {
 					return _react2.default.createElement(_errors.NotFoundComponent, null);
@@ -29227,7 +29207,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-detail {\n  padding: 10px 20px; }\n", ""]);
+	exports.push([module.id, ".bookmark-detail__options i {\n  font-size: 1.1rem;\n  margin-right: 20px; }\n", ""]);
 	
 	// exports
 
@@ -29270,6 +29250,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.validator = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -29295,6 +29276,16 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var validator = exports.validator = {
+		title: function title(_title) {
+			if (!_title.trim()) return 'Please enter a title';
+		},
+		url: function url(_url) {
+			if (!_url.trim()) return 'Please enter a URL';
+			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
+		}
+	};
+	
 	var BookmarksCollection = function (_LocalStorageCollecti) {
 		_inherits(BookmarksCollection, _LocalStorageCollecti);
 	
@@ -29305,6 +29296,7 @@
 	
 			_this.setUpSearchDispatcherEvents();
 			_this.setUpModelHooks();
+			_this.validator = validator;
 			return _this;
 		}
 	
@@ -29315,7 +29307,8 @@
 					title: '',
 					url: '',
 					tags: [],
-					text: ''
+					text: '',
+					slug: ''
 				};
 			}
 		}, {
@@ -29364,6 +29357,12 @@
 					model.tags = model.tags.filter(function (item, pos, arr) {
 						return arr.indexOf(item) == pos;
 					});
+					return model;
+				});
+	
+				this.preCreate(function (model) {
+					// set slug
+					model.slug = _.slugify(model.title);
 					return model;
 				});
 			}
@@ -30210,6 +30209,7 @@
 			this.models = {};
 			this.hooks = [];
 			this.dispatcher = new _dispatcher2.default();
+			this.validator = {};
 			this.name = this.constructor.name;
 		}
 	
@@ -30323,6 +30323,31 @@
 			value: function triggerRemove(model) {
 				this.dispatcher.broadcast('remove', model);
 				this.triggerChange();
+			}
+		}, {
+			key: 'validateField',
+			value: function validateField(field, value) {
+				var validator = this.validator[field];
+				if (validator) {
+					var result = validator(value);
+					if (result) {
+						return result;
+					}
+				}
+			}
+		}, {
+			key: 'validate',
+			value: function validate(obj) {
+				var errors = {};
+				var validated = true;
+				for (var field in obj) {
+					var result = this.validateField(field, obj[field]);
+					if (result) {
+						errors[field] = result;
+						validated = false;
+					}
+				}
+				return { errors: errors, validated: validated };
 			}
 	
 			// change models

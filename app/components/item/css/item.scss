@@ -12,22 +12,25 @@
 
 	.bookmark-item__title {
 		text-decoration: none;
-		text-shadow: 0 1px rgba(255, 255, 255, 0.25)
+		text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+		font-weight: bold;
 	}
 
 	.bookmark-item__header {
 		padding: 10px 20px;
 		border-bottom: 1px solid #ccc;
+		position: relative;
 	}
 
-	.bookmark-item__tag-toggle {
-		text-decoration: none;
+	.bookmark-item__link {
+		font-size: 1.1rem;
+		margin-left: 10px;
 	}
 
 	.bookmark-item__image-wrap {
 		border-bottom: 1px solid #ccc;
 		position: relative;
-		padding: 10px;
+		padding: 10px 20px;
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
 	}
 
@@ -84,5 +87,9 @@
 		border-top: 1px solid #ccc;
 		padding: 10px 20px;
 		font-size: 90%;
+	}
+
+	.bookmark-item__edit-options {
+		border-top: 1px solid #ccc;
 	}
 }

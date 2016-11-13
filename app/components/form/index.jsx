@@ -1,6 +1,5 @@
 import React from 'react';
 import * as _ from '../../lib/tools.js';
-import * as validators from '../../lib/collections/validators.js';
 
 // import styles for this component
 require('!style!css!sass!./css/form.scss');
@@ -15,7 +14,6 @@ export default class BookmarkFormComponent extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		
-		this.validator = validators.bookmarks;
 		this.state = {
 			errors: {}
 		}
@@ -29,30 +27,6 @@ export default class BookmarkFormComponent extends React.Component {
 		}
 	}
 
-	validateField(field, value) {
-		const validator = this.validator[field];
-		if (validator) {
-			const result = validator(value);
-			if (result) {
-				return result;
-			}
-		}
-	}
-
-	validate(obj) {
-		let validated = true;
-		const errors = {};
-		for (var field in obj) {
-			const result = this.validateField(field, obj[field]);
-			if (result) {
-				errors[field] = result;
-				validated = false;
-			}
-		}
-		this.setState({ errors });
-		return validated;
-	}
-
 	submitHandler(event) {
 		event.preventDefault();
 		const { bookmarks, router } = this.context;
@@ -62,7 +36,7 @@ export default class BookmarkFormComponent extends React.Component {
 		const tagsValue = tags.value.trim();
 		const textValue = text.value.trim();
 
-		const validated = this.validate({
+		const { errors, validated } = bookmarks.validate({
 			title: titleValue,
 			url: urlValue,
 			tags: tagsValue,
@@ -71,7 +45,9 @@ export default class BookmarkFormComponent extends React.Component {
 
 		if (validated) {
 			const bookmark = bookmarks.create({ title: titleValue, url: urlValue, tags: tagsValue, text: textValue });
-			router.push('/detail/' + bookmark.id);
+			router.push('/bookmark/' + bookmark.id + '/' + bookmark.slug);
+		} else {
+			this.setState({ errors });
 		}
 	}
 
