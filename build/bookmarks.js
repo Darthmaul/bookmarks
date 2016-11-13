@@ -28892,7 +28892,7 @@
 					{ onSubmit: this.submitHandler.bind(this), className: 'bookmark-form box' },
 					_react2.default.createElement('input', { ref: 'title', placeholder: 'title', type: 'text', className: 'field' }),
 					this.renderError('title'),
-					_react2.default.createElement('input', { ref: 'url', placeholder: 'url', type: 'text', className: 'field', autocapitalize: 'none' }),
+					_react2.default.createElement('input', { ref: 'url', placeholder: 'url', type: 'text', className: 'field', autoCapitalize: 'none' }),
 					this.renderError('url'),
 					_react2.default.createElement('textarea', { ref: 'text', placeholder: 'text', type: 'text', className: 'field' }),
 					this.renderError('text'),

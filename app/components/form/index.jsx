@@ -80,7 +80,7 @@ export default class BookmarkFormComponent extends React.Component {
 			<form onSubmit={this.submitHandler.bind(this)} className="bookmark-form box">
 				<input ref="title" placeholder="title" type="text" className="field" />
 				{this.renderError('title')}
-				<input ref="url" placeholder="url" type="text" className="field" autocapitalize="none" />
+				<input ref="url" placeholder="url" type="text" className="field" autoCapitalize="none" />
 				{this.renderError('url')}
 				<textarea ref="text" placeholder="text" type="text" className="field" />
 				{this.renderError('text')}
