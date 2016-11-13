@@ -42,6 +42,13 @@ export function validateUrl(url) {
 	return regex.test(url);
 }
 
+export function validateImageUrl(url) {
+    if (_.isString(url)) {
+        return validateUrl(url) && ( url.match(/\.(jpeg|jpg|gif|png)$/) != null );
+    }
+    return false;
+}
+
 export function prependHttp(str) {
 	if (!/^https?:\/\//i.test(str)) {
 	    str = 'http://' + str;
@@ -123,4 +130,24 @@ export function getUrlDetails(url) {
 	anchor.href = url;
 	const { hostname, search, pathname, protocol } = anchor;
 	return { hostname, pathname, protocol };
+}
+
+/**
+ * Extend obj with an arbitrary number of source objects.
+ *
+ * @param {Object} obj - Host to extend.
+ * @param {Object} obj - Add to host, ad infinitum.
+ * @return {Object} - Host.
+ * @api private
+ */
+export function extend(obj) {
+	for (let i = 1, l = arguments.length; i < l; i++) {
+		const source = arguments[i];
+		for (const prop in source) {
+			if (hasOwnProperty(source, prop)) {
+				obj[prop] = source[prop];
+			}
+		}
+	}
+	return obj;
 }

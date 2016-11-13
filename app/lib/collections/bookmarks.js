@@ -9,14 +9,15 @@ export default class BookmarksCollection extends LocalStorageCollection {
 		super();
 
 		this.setUpSearchDispatcherEvents();
-		this.setUpPreCreateHooks();
+		this.setUpModelHooks();
 	}
 
 	shell() {
 		return {
 			title: '',
 			url: '',
-			tags: []
+			tags: [],
+			text: ''
 		}
 	}
 
@@ -32,17 +33,30 @@ export default class BookmarksCollection extends LocalStorageCollection {
 		};
 	}
 
-	setUpPreCreateHooks() {
+	setUpModelHooks() {
 		this.preCreate(model => {
+			// prepend 'http://' to model.url if it isn't at beginning of string
 			model.url = _.prependHttp(model.url);
-			const details = _.getUrlDetails(model.url);
-			model.domain = details.hostname;
-			model.tags = model.tags.split(',').map(tag => tag.trim()).filter(Boolean);
 			return model;
 		});
 
 		this.preCreate(model => {
-			// ensure sure there are no duplicate tags
+			// add url properties to model;
+			const details = _.getUrlDetails(model.url);
+			model.domain = details.hostname;
+			return model;
+		});
+
+		this.preCreate(model => {
+			// turn model tags into an array if it is passed as a string
+			if (_.isString(model.tags)) {
+				model.tags = model.tags.split(',').map(tag => tag.trim()).filter(Boolean);
+			}
+			return model;
+		});
+
+		this.preCreate(model => {
+			// ensure there are no duplicate tags
 			model.tags = model.tags.filter((item, pos, arr) => arr.indexOf(item) == pos);
 			return model;
 		});

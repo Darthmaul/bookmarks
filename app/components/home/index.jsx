@@ -33,10 +33,12 @@ export default class HomeComponent extends React.Component {
 		const { bookmarks, router } = this.context;
 		const query = router.location.query;
 		const term = query.query;
+		const tags = query.tags;
 		this.setState({
 			isMounted: true
 		});
 		bookmarks.onSearch(this.addBookmarks);
+		
 		if (term) {
 			bookmarks.search(term);
 		} else {

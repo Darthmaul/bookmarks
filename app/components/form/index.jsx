@@ -56,19 +56,21 @@ export default class BookmarkFormComponent extends React.Component {
 	submitHandler(event) {
 		event.preventDefault();
 		const { bookmarks, router } = this.context;
-		const { title, url, tags } = this.refs;
+		const { title, url, tags, text } = this.refs;
 		const titleValue = title.value.trim();
 		const urlValue = url.value.trim();
 		const tagsValue = tags.value.trim();
+		const textValue = text.value.trim();
 
 		const validated = this.validate({
 			title: titleValue,
 			url: urlValue,
-			tags: tagsValue
+			tags: tagsValue,
+			text: textValue
 		});
 
 		if (validated) {
-			const bookmark = bookmarks.create({ title: titleValue, url: urlValue, tags: tagsValue });
+			const bookmark = bookmarks.create({ title: titleValue, url: urlValue, tags: tagsValue, text: textValue });
 			router.push('/detail/' + bookmark.id);
 		}
 	}
@@ -78,8 +80,10 @@ export default class BookmarkFormComponent extends React.Component {
 			<form onSubmit={this.submitHandler.bind(this)} className="bookmark-form box">
 				<input ref="title" placeholder="title" type="text" className="field" />
 				{this.renderError('title')}
-				<input ref="url" placeholder="url" type="text" className="field" />
+				<input ref="url" placeholder="url" type="text" className="field" autocapitalize="none" />
 				{this.renderError('url')}
+				<textarea ref="text" placeholder="text" type="text" className="field" />
+				{this.renderError('text')}
 				<input ref="tags" placeholder="tags (separate with a comma)" type="text" className="field" />
 				{this.renderError('tags')}
 				<div className="controls">

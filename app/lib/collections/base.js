@@ -28,6 +28,7 @@ export default class Collection {
 			for (var i = 0, l = hooks.length; i < l; i++) {
 				const hookFn = hooks[i];
 				model = hookFn(model);
+				if (!model) throw new Error('You must return a model from collection hook callbacks');
 			}
 		}
 		return model;
@@ -103,6 +104,7 @@ export default class Collection {
 	// change models
 
 	create(model) {
+		model = _.extend(this.shell(), model);
 		model.id = _.generateID();
 		model = this.callHooks('pre', model);
 		this.models[model.id] = model;
