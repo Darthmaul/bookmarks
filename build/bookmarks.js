@@ -28611,7 +28611,7 @@
 					);
 				}
 	
-				if (bookmark.text.length) {
+				if (bookmark.text && bookmark.text.length) {
 					if (shouldShowText) {
 						textHtml = _react2.default.createElement(
 							'div',

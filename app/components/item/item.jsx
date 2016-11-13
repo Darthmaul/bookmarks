@@ -81,7 +81,7 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
-		if (bookmark.text.length) {
+		if (bookmark.text && bookmark.text.length) {
 			if (shouldShowText) {
 				textHtml = (
 					<div className="bookmark-item__text">
