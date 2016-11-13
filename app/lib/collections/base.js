@@ -5,9 +5,7 @@ export default class Collection {
 
 	constructor() {
 		this.models = {};
-		this.hooks = {};
-		this.hooks.pre = [];
-		this.hooks.post = [];
+		this.hooks = [];
 		this.dispatcher = new Dispatcher();
 		this.name = this.constructor.name;
 	}
@@ -19,17 +17,14 @@ export default class Collection {
 	// hooks
 
 	preCreate(fn) {
-		this.hooks.pre.push(fn);
+		this.hooks.push(fn);
 	}
 
-	callHooks(hook, model) {
-		const hooks = this.hooks[hook];
-		if (hooks) {
-			for (var i = 0, l = hooks.length; i < l; i++) {
-				const hookFn = hooks[i];
-				model = hookFn(model);
-				if (!model) throw new Error('You must return a model from collection hook callbacks');
-			}
+	callHooks(model) {
+		for (var i = 0, l = this.hooks.length; i < l; i++) {
+			const hookFn = this.hooks[i];
+			model = hookFn(model);
+			if (!model) throw new Error('You must return a model from collection hook callbacks');
 		}
 		return model;
 	}
@@ -106,7 +101,7 @@ export default class Collection {
 	create(model) {
 		model = _.extend(this.shell(), model);
 		model.id = _.generateID();
-		model = this.callHooks('pre', model);
+		model = this.callHooks(model);
 		this.models[model.id] = model;
 		this.triggerCreate(model);
 		return model;
@@ -115,6 +110,7 @@ export default class Collection {
 	createMany(models) {
 		const created = models.map((model) => {
 			model.id = _.generateID();
+			model = this.callHooks(model);
 			this.models[model.id] = model;
 			return model;
 		});

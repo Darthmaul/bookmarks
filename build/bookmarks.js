@@ -30208,9 +30208,7 @@
 			_classCallCheck(this, Collection);
 	
 			this.models = {};
-			this.hooks = {};
-			this.hooks.pre = [];
-			this.hooks.post = [];
+			this.hooks = [];
 			this.dispatcher = new _dispatcher2.default();
 			this.name = this.constructor.name;
 		}
@@ -30226,18 +30224,15 @@
 		}, {
 			key: 'preCreate',
 			value: function preCreate(fn) {
-				this.hooks.pre.push(fn);
+				this.hooks.push(fn);
 			}
 		}, {
 			key: 'callHooks',
-			value: function callHooks(hook, model) {
-				var hooks = this.hooks[hook];
-				if (hooks) {
-					for (var i = 0, l = hooks.length; i < l; i++) {
-						var hookFn = hooks[i];
-						model = hookFn(model);
-						if (!model) throw new Error('You must return a model from collection hook callbacks');
-					}
+			value: function callHooks(model) {
+				for (var i = 0, l = this.hooks.length; i < l; i++) {
+					var hookFn = this.hooks[i];
+					model = hookFn(model);
+					if (!model) throw new Error('You must return a model from collection hook callbacks');
 				}
 				return model;
 			}
@@ -30337,7 +30332,7 @@
 			value: function create(model) {
 				model = _.extend(this.shell(), model);
 				model.id = _.generateID();
-				model = this.callHooks('pre', model);
+				model = this.callHooks(model);
 				this.models[model.id] = model;
 				this.triggerCreate(model);
 				return model;
@@ -30349,6 +30344,7 @@
 	
 				var created = models.map(function (model) {
 					model.id = _.generateID();
+					model = _this2.callHooks(model);
 					_this2.models[model.id] = model;
 					return model;
 				});
