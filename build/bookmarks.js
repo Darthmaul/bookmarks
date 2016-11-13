@@ -28626,7 +28626,7 @@
 						_react2.default.createElement(
 							'a',
 							{ href: '#', onClick: this.toggleText.bind(this) },
-							_react2.default.createElement('i', { className: (0, _classnames2.default)({ "ion-document-text": true, "icon--active": shouldShowImage }) })
+							_react2.default.createElement('i', { className: (0, _classnames2.default)({ "ion-document-text": true, "icon--active": shouldShowText }) })
 						)
 					);
 				}

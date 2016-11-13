@@ -93,7 +93,7 @@ export default class BookmarkItemComponent extends React.Component {
 			textToggle = (
 				<li>
 					<a href="#" onClick={this.toggleText.bind(this)}>
-						<i className={classNames({ "ion-document-text": true, "icon--active": shouldShowImage })} />
+						<i className={classNames({ "ion-document-text": true, "icon--active": shouldShowText })} />
 					</a>
 				</li>
 			);
