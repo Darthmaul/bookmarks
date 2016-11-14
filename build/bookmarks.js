@@ -29073,41 +29073,26 @@
 			value: function setUpModelHooks() {
 				this.preCreate(function (model) {
 					model.date = new Date();
-					return model;
-				});
 	
-				this.preCreate(function (model) {
 					// prepend 'http://' to model.url if it isn't at beginning of string
 					model.url = _.prependHttp(model.url);
-					return model;
-				});
 	
-				this.preCreate(function (model) {
 					// add url properties to model;
 					var details = _.getUrlDetails(model.url);
 					model.domain = details.hostname;
-					return model;
-				});
 	
-				this.preCreate(function (model) {
 					// turn model tags into an array if it is passed as a string
 					if (_.isString(model.tags)) {
 						model.tags = model.tags.split(',').map(function (tag) {
 							return tag.trim();
 						}).filter(Boolean);
 					}
-					return model;
-				});
 	
-				this.preCreate(function (model) {
 					// ensure there are no duplicate tags
 					model.tags = model.tags.filter(function (item, pos, arr) {
 						return arr.indexOf(item) == pos;
 					});
-					return model;
-				});
 	
-				this.preCreate(function (model) {
 					// set slug
 					model.slug = _.slugify(model.title);
 					return model;
