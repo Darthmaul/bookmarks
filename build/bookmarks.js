@@ -28678,7 +28678,37 @@
 	exports.default = BookmarkFormComponent;
 
 /***/ },
-/* 248 */,
+/* 248 */
+/*!*******************************************!*\
+  !*** ./app/lib/collections/validators.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _tools = __webpack_require__(/*! ../tools.js */ 231);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var bookmarkValidator = {
+		title: function title(_title) {
+			if (!_title.trim()) return 'Please enter a title';
+		},
+		url: function url(_url) {
+			if (!_url.trim()) return 'Please enter a URL';
+			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
+		}
+	};
+	
+	exports.default = bookmarkValidator;
+
+/***/ },
 /* 249 */
 /*!*******************************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/form/css/form.scss ***!
@@ -28967,7 +28997,6 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.validator = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28987,6 +29016,14 @@
 	
 	var _bookmark2 = _interopRequireDefault(_bookmark);
 	
+	var _defaults = __webpack_require__(/*! ./defaults.js */ 282);
+	
+	var _defaults2 = _interopRequireDefault(_defaults);
+	
+	var _validators = __webpack_require__(/*! ./validators.js */ 248);
+	
+	var _validators2 = _interopRequireDefault(_validators);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28996,16 +29033,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var validator = exports.validator = {
-		title: function title(_title) {
-			if (!_title.trim()) return 'Please enter a title';
-		},
-		url: function url(_url) {
-			if (!_url.trim()) return 'Please enter a URL';
-			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
-		}
-	};
 	
 	var Bookmarks = function (_LocalStorageCollecti) {
 		_inherits(Bookmarks, _LocalStorageCollecti);
@@ -29017,35 +29044,14 @@
 	
 			_this.setUpSearchDispatcherEvents();
 			_this.setUpModelHooks();
-			_this.validator = validator;
+			_this.validator = _validators2.default;
 			return _this;
 		}
 	
 		_createClass(Bookmarks, [{
 			key: 'defaultModels',
 			value: function defaultModels() {
-				return [{
-					title: 'Some of my photography',
-					url: 'https://www.flickr.com/photos/fergusruston/',
-					domain: 'www.flickr.com',
-					text: 'Go see it on Flickr!',
-					tags: ['default bookmark', 'photography'],
-					slug: 'some-of-my-photography'
-				}, {
-					title: 'Github profile',
-					url: 'http://github.com/ergusto',
-					domain: 'www.github.com',
-					notes: 'You can see this project on Github.',
-					tags: ['default bookmark'],
-					slug: 'github-profile'
-				}, {
-					title: 'Twitter profile',
-					url: 'http://twitter.com/ergusto',
-					domain: 'www.twitter.com',
-					notes: 'Tweet terwoo',
-					tags: ['default bookmark'],
-					slug: 'twitter-profile'
-				}];
+				return _defaults2.default;
 			}
 		}, {
 			key: 'setUpSearchDispatcherEvents',
@@ -29065,6 +29071,11 @@
 		}, {
 			key: 'setUpModelHooks',
 			value: function setUpModelHooks() {
+				this.preCreate(function (model) {
+					model.date = new Date();
+					return model;
+				});
+	
 				this.preCreate(function (model) {
 					// prepend 'http://' to model.url if it isn't at beginning of string
 					model.url = _.prependHttp(model.url);
@@ -40179,9 +40190,15 @@
 		}, {
 			key: 'addOrUpdateModelToLocalStorage',
 			value: function addOrUpdateModelToLocalStorage(model) {
-				delete model._collection;
+				var attrs = {};
+				for (var prop in model) {
+					// assume it shouldn't be stored if it starts with an underscore
+					if (prop.charAt(0) != '_') {
+						attrs[prop] = model[prop];
+					}
+				}
 				this.store.update(function (store) {
-					store[model.id] = model;
+					store[attrs.id] = attrs;
 					return store;
 				});
 			}
@@ -40635,6 +40652,46 @@
 		router: _react2.default.PropTypes.object
 	};
 	exports.default = EditPage;
+
+/***/ },
+/* 282 */
+/*!*****************************************!*\
+  !*** ./app/lib/collections/defaults.js ***!
+  \*****************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var defaultBookmarks = [{
+		title: 'Some of my photography',
+		url: 'https://www.flickr.com/photos/fergusruston/',
+		domain: 'www.flickr.com',
+		text: 'Go see it on Flickr!',
+		tags: ['default bookmark', 'photography'],
+		slug: 'some-of-my-photography',
+		date: new Date()
+	}, {
+		title: 'Github profile',
+		url: 'http://github.com/ergusto',
+		domain: 'www.github.com',
+		notes: 'You can see this project on Github.',
+		tags: ['default bookmark'],
+		slug: 'github-profile',
+		date: new Date()
+	}, {
+		title: 'Twitter profile',
+		url: 'http://twitter.com/ergusto',
+		domain: 'www.twitter.com',
+		notes: 'Tweet terwoo',
+		tags: ['default bookmark'],
+		slug: 'twitter-profile',
+		date: new Date()
+	}];
+	
+	exports.default = defaultBookmarks;
 
 /***/ }
 /******/ ]);

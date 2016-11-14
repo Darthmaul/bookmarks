@@ -4,18 +4,8 @@ import * as _ from '../tools.js';
 import LocalStorageCollection from './base/localstorage.js';
 import Bookmark from './bookmark.js';
 
-export const validator = {
-	title(title) {
-		if (!title.trim())
-			return 'Please enter a title';
-	},
-	url(url) {
-		if (!url.trim()) 
-			return 'Please enter a URL';
-		if (!_.validateUrl(url))
-			return 'Please enter a valid URL';
-	}
-};
+import defaultBookmarks from './defaults.js';
+import bookmarkValidator from './validators.js';
 
 export default class Bookmarks extends LocalStorageCollection {
 
@@ -24,7 +14,7 @@ export default class Bookmarks extends LocalStorageCollection {
 
 		this.setUpSearchDispatcherEvents();
 		this.setUpModelHooks();
-		this.validator = validator;
+		this.validator = bookmarkValidator;
 	}
 
 	get model() {
@@ -32,32 +22,7 @@ export default class Bookmarks extends LocalStorageCollection {
 	}
 
 	defaultModels() {
-		return [
-			{ 
-				title: 'Some of my photography',
-				url: 'https://www.flickr.com/photos/fergusruston/',
-				domain: 'www.flickr.com',
-				text: 'Go see it on Flickr!',
-				tags: ['default bookmark', 'photography'],
-				slug: 'some-of-my-photography'
-			},
-			{
-				title: 'Github profile',
-				url: 'http://github.com/ergusto', 
-				domain: 'www.github.com',
-				notes: 'You can see this project on Github.',
-				tags: ['default bookmark'],
-				slug: 'github-profile'
-			},
-			{
-				title: 'Twitter profile',
-				url: 'http://twitter.com/ergusto', 
-				domain: 'www.twitter.com',
-				notes: 'Tweet terwoo',
-				tags: ['default bookmark'],
-				slug: 'twitter-profile'
-			}
-		]
+		return defaultBookmarks;
 	}
 
 	setUpSearchDispatcherEvents() {
@@ -73,6 +38,11 @@ export default class Bookmarks extends LocalStorageCollection {
 	}
 
 	setUpModelHooks() {
+		this.preCreate(model => {
+			model.date = new Date;
+			return model;
+		});
+
 		this.preCreate(model => {
 			// prepend 'http://' to model.url if it isn't at beginning of string
 			model.url = _.prependHttp(model.url);

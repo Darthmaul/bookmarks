@@ -75,9 +75,15 @@ export default class LocalStorageCollection extends Collection {
 	}
 
 	addOrUpdateModelToLocalStorage(model) {
-		delete model._collection;
+		const attrs = {};
+		for (var prop in model) {
+			// assume it shouldn't be stored if it starts with an underscore
+			if (prop.charAt(0) != '_') {
+				attrs[prop] = model[prop];
+			}
+		}
 		this.store.update((store) => {
-			store[model.id] = model;
+			store[attrs.id] = attrs;
 			return store;
 		});
 	}

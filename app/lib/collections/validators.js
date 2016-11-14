@@ -1,6 +1,6 @@
 import * as _ from '../tools.js';
 
-export const bookmarks = {
+const bookmarkValidator = {
 	title(title) {
 		if (!title.trim())
 			return 'Please enter a title';
@@ -11,4 +11,6 @@ export const bookmarks = {
 		if (!_.validateUrl(url))
 			return 'Please enter a valid URL';
 	}
-}
+};
+
+export default bookmarkValidator;
