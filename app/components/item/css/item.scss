@@ -45,18 +45,11 @@
 		-o-animation: fadeIn 200ms;
 		animation: fadeIn 200ms;
 		border-top: 1px solid #ccc;
+		background: #FCFAF9;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
 	}
 
 	.bookmark-item__tag {
-		display: inline-block;
-		border: 1px solid #ccc;
-		font-size: 70%;
-		padding: 2px 6px;
-		border-radius: 4px;
-		margin: 4px 5px;
-		background: #f8f8f8;
-		color: #777;
-		text-decoration: none;
 	}
 
 	.bookmark-item__options {

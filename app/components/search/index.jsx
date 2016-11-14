@@ -27,7 +27,7 @@ export default class SearchComponent extends React.Component {
 		const nextTerm = nextQuery.query;
 		const { value } = this.refs.search;
 		if (nextTerm != value && value != undefined && nextTerm != undefined) {
-			this.refs.search.value = '';
+			this.refs.search.value = ' ';
 			this.refs.search.value = nextTerm;
 		}
 
