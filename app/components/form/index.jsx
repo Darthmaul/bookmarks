@@ -82,14 +82,14 @@ export default class BookmarkFormComponent extends React.Component {
 	tagsFieldKeyDownHandler(event) {
 		if (event.keyCode == 13 || event.charCode == 13) {
 			event.preventDefault();
-			// http://stackoverflow.com/questions/24415631/reactjs-syntheticevent-stoppropagation-only-works-with-react-events#comment37772453_24415631
-			event.nativeEvent.stopImmediatePropagation();
 			const tag = this.refs.tags.value;
-			const { tags } = this.state;
-			if (tags.indexOf(tag.trim()) == -1) {
-				tags.push(tag);
-				this.refs.tags.value = '';
-				this.setState({ tags });
+			if (tag.trim()) {
+				const { tags } = this.state;
+				if (tags.indexOf(tag.trim()) == -1) {
+					tags.push(tag);
+					this.refs.tags.value = '';
+					this.setState({ tags });
+				}
 			}
 		}
 	}

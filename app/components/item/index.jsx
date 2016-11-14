@@ -111,7 +111,6 @@ export default class BookmarkItemComponent extends React.Component {
 					<Link className="bookmark-item__title" to={bookmark.getDetailUrl()}>{bookmark.title}</Link>
 				</header>
 				{imgHtml}
-				{tagsHtml}
 				<div className="bookmark-item__options">
 					<ul className="bookmark-item__options-toggles">
 						{textToggle}
@@ -120,6 +119,7 @@ export default class BookmarkItemComponent extends React.Component {
 					</ul>
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
 				</div>
+				{tagsHtml}
 				{textHtml}
 			</div>
 		);
