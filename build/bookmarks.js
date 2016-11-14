@@ -28560,7 +28560,7 @@
 			key: 'remove',
 			value: function remove(event) {
 				event.preventDefault();
-				var bookmark = this.state.bookmark;
+				var bookmark = this.props.bookmark;
 				var _context = this.context,
 				    bookmarks = _context.bookmarks,
 				    router = _context.router;
@@ -28686,7 +28686,7 @@
 						{ className: 'bookmark-item__header' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ className: 'bookmark-item__title', to: "/bookmark/" + bookmark.id + '/' + bookmark.slug },
+							{ className: 'bookmark-item__title', to: bookmark.getDetailUrl() },
 							bookmark.title
 						)
 					),
@@ -28722,6 +28722,10 @@
 		return BookmarkItemComponent;
 	}(_react2.default.Component);
 	
+	BookmarkItemComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
 	exports.default = BookmarkItemComponent;
 
 /***/ },
@@ -28898,18 +28902,20 @@
 				var tagsValue = tags.value.trim();
 				var textValue = text.value.trim();
 	
-				var _bookmarks$validate = bookmarks.validate({
+				var properties = {
 					title: titleValue,
 					url: urlValue,
 					tags: tagsValue,
 					text: textValue
-				}),
+				};
+	
+				var _bookmarks$validate = bookmarks.validate(properties),
 				    errors = _bookmarks$validate.errors,
 				    validated = _bookmarks$validate.validated;
 	
 				if (validated) {
-					var bookmark = bookmarks.create({ title: titleValue, url: urlValue, tags: tagsValue, text: textValue });
-					router.push('/bookmark/' + bookmark.id + '/' + bookmark.slug);
+					var bookmark = bookmarks.create(properties);
+					router.push(bookmark.getDetailUrl());
 				} else {
 					this.setState({ errors: errors });
 				}
@@ -29266,6 +29272,10 @@
 	
 	var _localstorage2 = _interopRequireDefault(_localstorage);
 	
+	var _bookmark = __webpack_require__(/*! ./bookmark.js */ 270);
+	
+	var _bookmark2 = _interopRequireDefault(_bookmark);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29301,17 +29311,6 @@
 		}
 	
 		_createClass(BookmarksCollection, [{
-			key: 'shell',
-			value: function shell() {
-				return {
-					title: '',
-					url: '',
-					tags: [],
-					text: '',
-					slug: ''
-				};
-			}
-		}, {
 			key: 'setUpSearchDispatcherEvents',
 			value: function setUpSearchDispatcherEvents() {
 				var _this2 = this;
@@ -29384,6 +29383,11 @@
 				search.addDocuments(this.all());
 				var results = search.search(query);
 				this.triggerSearch(results);
+			}
+		}, {
+			key: 'model',
+			get: function get() {
+				return _bookmark2.default;
 			}
 		}]);
 	
@@ -30196,6 +30200,10 @@
 	
 	var _dispatcher2 = _interopRequireDefault(_dispatcher);
 	
+	var _model = __webpack_require__(/*! ./model.js */ 269);
+	
+	var _model2 = _interopRequireDefault(_model);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -30208,21 +30216,17 @@
 	
 			this.models = {};
 			this.hooks = [];
-			this.dispatcher = new _dispatcher2.default();
 			this.validator = {};
 			this.name = this.constructor.name;
+			this.dispatcher = new _dispatcher2.default();
 		}
 	
 		_createClass(Collection, [{
-			key: 'shell',
-			value: function shell() {
-				return new Object();
-			}
+			key: 'preCreate',
+	
 	
 			// hooks
 	
-		}, {
-			key: 'preCreate',
 			value: function preCreate(fn) {
 				this.hooks.push(fn);
 			}
@@ -30355,7 +30359,7 @@
 		}, {
 			key: 'create',
 			value: function create(model) {
-				model = _.extend(this.shell(), model);
+				model = new this.model(model);
 				model.id = _.generateID();
 				model = this.callHooks(model);
 				this.models[model.id] = model;
@@ -30368,6 +30372,7 @@
 				var _this2 = this;
 	
 				var created = models.map(function (model) {
+					model = new _this2.model(model);
 					model.id = _.generateID();
 					model = _this2.callHooks(model);
 					_this2.models[model.id] = model;
@@ -30379,6 +30384,7 @@
 		}, {
 			key: 'add',
 			value: function add(model) {
+				model = new this.model(model);
 				this.models[model.id] = model;
 				this.triggerAdd(model);
 				return model;
@@ -30388,11 +30394,13 @@
 			value: function addMany(models) {
 				var _this3 = this;
 	
-				models.forEach(function (model) {
+				var result = models.forEach(function (model) {
+					model = new _this3.model(model);
 					_this3.models[model.id] = model;
+					return model;
 				});
-				this.triggerAdd(models);
-				return models;
+				this.triggerAdd(result);
+				return result;
 			}
 		}, {
 			key: 'update',
@@ -30417,6 +30425,11 @@
 				}
 				delete this.models[id];
 				this.triggerRemove(model);
+			}
+		}, {
+			key: 'model',
+			get: function get() {
+				return _model2.default;
 			}
 		}]);
 	
@@ -40134,6 +40147,88 @@
 			window.classNames = classNames;
 		}
 	})();
+
+/***/ },
+/* 269 */
+/*!**************************************!*\
+  !*** ./app/lib/collections/model.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _tools = __webpack_require__(/*! ../tools.js */ 231);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var Model = function Model(properties) {
+		_classCallCheck(this, Model);
+	
+		_.extend(this, properties);
+	};
+	
+	exports.default = Model;
+
+/***/ },
+/* 270 */
+/*!*****************************************!*\
+  !*** ./app/lib/collections/bookmark.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _model = __webpack_require__(/*! ./model */ 269);
+	
+	var _model2 = _interopRequireDefault(_model);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Bookmark = function (_Model) {
+		_inherits(Bookmark, _Model);
+	
+		function Bookmark(properties) {
+			_classCallCheck(this, Bookmark);
+	
+			return _possibleConstructorReturn(this, (Bookmark.__proto__ || Object.getPrototypeOf(Bookmark)).call(this, properties));
+		}
+	
+		_createClass(Bookmark, [{
+			key: 'getDetailUrl',
+			value: function getDetailUrl() {
+				return "/bookmark/" + this.id + '/' + this.slug;
+			}
+		}, {
+			key: 'getEditUrl',
+			value: function getEditUrl() {
+				return "/bookmark/" + this.id + '/' + this.slug + "/edit";
+			}
+		}]);
+	
+		return Bookmark;
+	}(_model2.default);
+	
+	exports.default = Bookmark;
 
 /***/ }
 /******/ ]);

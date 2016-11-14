@@ -9,6 +9,11 @@ require('!style!css!sass!./css/item.scss');
 
 export default class BookmarkItemComponent extends React.Component {
 
+	static contextTypes = {
+		bookmarks: React.PropTypes.object,
+		router: React.PropTypes.object
+	};
+
 	constructor(props, context) {
 		super(props, context);
 		const { shouldShowTags, shouldShowImage, shouldShowText } = props;
@@ -43,7 +48,7 @@ export default class BookmarkItemComponent extends React.Component {
 
 	remove(event) {
 		event.preventDefault();
-		const { bookmark } = this.state;
+		const { bookmark } = this.props;
 		const { bookmarks, router } = this.context;
 		bookmarks.remove(bookmark.id);
 		router.push('/');
@@ -120,7 +125,7 @@ export default class BookmarkItemComponent extends React.Component {
 		return (
 			<li className="bookmark-item box">
 				<header className="bookmark-item__header">
-					<Link className="bookmark-item__title" to={"/bookmark/" + bookmark.id + '/' + bookmark.slug}>{bookmark.title}</Link>
+					<Link className="bookmark-item__title" to={bookmark.getDetailUrl()}>{bookmark.title}</Link>
 				</header>
 				{imgHtml}
 				{tagsHtml}

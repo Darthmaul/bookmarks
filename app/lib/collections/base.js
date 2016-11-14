@@ -1,18 +1,19 @@
 import * as _ from '../tools.js';
 import Dispatcher from '../behaviour/dispatcher.js';
+import Model from './model.js';
 
 export default class Collection {
 
 	constructor() {
 		this.models = {};
 		this.hooks = [];
-		this.dispatcher = new Dispatcher();
 		this.validator = {};
 		this.name = this.constructor.name;
+		this.dispatcher = new Dispatcher();
 	}
 
-	shell() {
-		return new Object;
+	get model() {
+		return Model;
 	}
 
 	// hooks
@@ -123,7 +124,7 @@ export default class Collection {
 	// change models
 
 	create(model) {
-		model = _.extend(this.shell(), model);
+		model = new this.model(model);
 		model.id = _.generateID();
 		model = this.callHooks(model);
 		this.models[model.id] = model;
@@ -133,6 +134,7 @@ export default class Collection {
 
 	createMany(models) {
 		const created = models.map((model) => {
+			model = new this.model(model);
 			model.id = _.generateID();
 			model = this.callHooks(model);
 			this.models[model.id] = model;
@@ -143,17 +145,20 @@ export default class Collection {
 	}
 
 	add(model) {
+		model = new this.model(model);
 		this.models[model.id] = model;
 		this.triggerAdd(model);
 		return model;
 	}
 
 	addMany(models) {
-		models.forEach((model) => {
+		const result = models.forEach(model => {
+			model = new this.model(model);
 			this.models[model.id] = model;
+			return model;
 		});
-		this.triggerAdd(models);
-		return models;
+		this.triggerAdd(result);
+		return result;
 	}
 
 	update(model) {

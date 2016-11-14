@@ -36,16 +36,18 @@ export default class BookmarkFormComponent extends React.Component {
 		const tagsValue = tags.value.trim();
 		const textValue = text.value.trim();
 
-		const { errors, validated } = bookmarks.validate({
+		const properties = {
 			title: titleValue,
 			url: urlValue,
 			tags: tagsValue,
 			text: textValue
-		});
+		};
+
+		const { errors, validated } = bookmarks.validate(properties);
 
 		if (validated) {
-			const bookmark = bookmarks.create({ title: titleValue, url: urlValue, tags: tagsValue, text: textValue });
-			router.push('/bookmark/' + bookmark.id + '/' + bookmark.slug);
+			const bookmark = bookmarks.create(properties);
+			router.push(bookmark.getDetailUrl());
 		} else {
 			this.setState({ errors });
 		}

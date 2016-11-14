@@ -2,6 +2,7 @@ import JsSearch from 'js-search';
 import * as _ from '../tools.js';
 
 import LocalStorageCollection from './localstorage.js';
+import Bookmark from './bookmark.js';
 
 export const validator = {
 	title(title) {
@@ -26,14 +27,8 @@ export default class BookmarksCollection extends LocalStorageCollection {
 		this.validator = validator;
 	}
 
-	shell() {
-		return {
-			title: '',
-			url: '',
-			tags: [],
-			text: '',
-			slug: '',
-		}
+	get model() {
+		return Bookmark;
 	}
 
 	setUpSearchDispatcherEvents() {
