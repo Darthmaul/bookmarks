@@ -20,15 +20,6 @@ export default class HomePage extends React.Component {
 		this.addBookmarks = this.addModels.bind(this);
 	}
 
-	addModels(models) {
-		// https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
-		if (this.state.isMounted) {
-			this.setState({
-				bookmarks: models
-			});
-		}
-	}
-
 	componentDidMount() {
 		const { bookmarks, router } = this.context;
 		const query = router.location.query;
@@ -38,12 +29,7 @@ export default class HomePage extends React.Component {
 			isMounted: true
 		});
 		bookmarks.onSearch(this.addBookmarks);
-		
-		if (term) {
-			bookmarks.search(term);
-		} else {
-			this.addModels(bookmarks.all());
-		}
+		this.search(term);
 	}
 
 	componentWillUnmount() {
@@ -55,14 +41,27 @@ export default class HomePage extends React.Component {
 	}
 
 	componentWillReceiveProps(nextState, nextContext) {
-		const { bookmarks } = this.context;
 		const { router } = nextContext;
 		const query = router.location.query;
 		const term = query.query;
+		this.search(term);
+	}
+
+	search(term) {
+		const { bookmarks } = this.context;
 		if (term) {
 			bookmarks.search(term);
 		} else {
 			this.addModels(bookmarks.all());
+		}
+	}
+
+	addModels(models) {
+		// https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
+		if (this.state.isMounted) {
+			this.setState({
+				bookmarks: models
+			});
 		}
 	}
 

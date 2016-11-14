@@ -11,11 +11,15 @@ export default class DetailPage extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
+		this.state = { bookmark: false };
+	}
+
+	componentDidMount() {
 		const { bookmarks, router } = context;
 		const { params: { id } } = props;
 		const bookmark = bookmarks.get(id);
 
-		this.state = { bookmark };
+		this.setState({ bookmark });
 	}
 
 	render() {
