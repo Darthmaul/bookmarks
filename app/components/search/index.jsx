@@ -48,6 +48,7 @@ export default class SearchComponent extends React.Component {
 
 		if (nextTerm == undefined) {
 			this.refs.search.value = '';
+			this.setState({ queryLength: 0 });
 		}
 	}
 

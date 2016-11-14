@@ -27600,6 +27600,7 @@
 	
 				if (nextTerm == undefined) {
 					this.refs.search.value = '';
+					this.setState({ queryLength: 0 });
 				}
 			}
 		}, {
