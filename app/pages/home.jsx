@@ -1,7 +1,7 @@
 import React from 'react';
-import ListComponent from '../list/index.jsx';
+import ListComponent from '../components/list/index.jsx';
 
-export default class HomeComponent extends React.Component {
+export default class HomePage extends React.Component {
 
 	static contextTypes = {
 		bookmarks: React.PropTypes.object,

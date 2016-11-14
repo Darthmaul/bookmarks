@@ -9,22 +9,8 @@ require('!style!css!sass!./css/detail.scss');
 
 export default class DetailComponent extends React.Component {
 
-	static contextTypes = {
-		bookmarks: React.PropTypes.object,
-		router: React.PropTypes.object
-	};
-
-	constructor(props, context) {
-		super(props, context);
-		const { bookmarks, router } = context;
-		const { params: { id } } = props;
-		const bookmark = bookmarks.get(id);
-
-		this.state = { bookmark };
-	}
-
 	render() {
-		const { bookmark } = this.state;
+		const { bookmark } = this.props;
 
 		if (bookmark) {
 			return (
