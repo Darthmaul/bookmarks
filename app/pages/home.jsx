@@ -22,9 +22,8 @@ export default class HomePage extends React.Component {
 
 	componentDidMount() {
 		const { bookmarks, router } = this.context;
-		const query = router.location.query;
-		const term = query.query;
-		const tags = query.tags;
+		const { query } = router.location;
+		const term = query.search;
 		bookmarks.onSearch(this.addBookmarks);
 		this.setState({
 			isMounted: true
@@ -48,8 +47,8 @@ export default class HomePage extends React.Component {
 	componentWillReceiveProps(nextState, nextContext) {
 		const { bookmarks } = this.context;
 		const { router } = nextContext;
-		const query = router.location.query;
-		const term = query.query;
+		const { query } = router.location;
+		const term = query.search;
 		if (term) {
 			this.search(term);
 		} else {

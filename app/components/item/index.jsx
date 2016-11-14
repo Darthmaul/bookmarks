@@ -49,7 +49,7 @@ export default class BookmarkItemComponent extends React.Component {
 	renderTags() {
 		const { bookmark } = this.props;
 		const tags = bookmark.tags.map(tag => {
-			return <Link to={{ pathName: '/', query: { query: tag } }} key={tag} className="bookmark-item__tag tag">{tag}</Link>;
+			return <Link to={{ pathName: '/', query: { search: tag } }} key={tag} className="bookmark-item__tag tag">{tag}</Link>;
 		});
 		return <div className="bookmark-item__tags">{tags}</div>;
 	}

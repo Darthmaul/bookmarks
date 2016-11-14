@@ -27559,13 +27559,12 @@
 			var _this = _possibleConstructorReturn(this, (SearchComponent.__proto__ || Object.getPrototypeOf(SearchComponent)).call(this, props, context));
 	
 			var router = _this.context.router;
-	
-			var location = router.location.query;
-			var query = location.query;
+			var query = router.location.query;
+			var search = query.search;
 	
 	
 			_this.state = {
-				queryLength: query ? query.length : 0
+				queryLength: search ? search.length : 0
 			};
 			return _this;
 		}
@@ -27591,7 +27590,7 @@
 	
 				var nextRouter = nextContext.router;
 				var nextQuery = nextRouter.location.query;
-				var nextTerm = nextQuery.query;
+				var nextTerm = nextQuery.search;
 				var value = this.refs.search.value;
 	
 				if (nextTerm != value && value != undefined && nextTerm != undefined) {
@@ -27614,7 +27613,7 @@
 				var location = { pathname: '/', query: {} };
 	
 				if (term) {
-					location.query.query = term;
+					location.query.search = term;
 				}
 	
 				router.push(location);
@@ -27634,7 +27633,7 @@
 				var router = this.context.router;
 	
 				var location = router.location.query;
-				var query = location.query;
+				var search = location.search;
 				var queryLength = this.state.queryLength;
 	
 	
@@ -27647,7 +27646,7 @@
 				return _react2.default.createElement(
 					'form',
 					{ onSubmit: this.onSubmit.bind(this), className: 'search-form' },
-					_react2.default.createElement('input', { onKeyUp: this.onKeyUp.bind(this), placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: query }),
+					_react2.default.createElement('input', { onKeyUp: this.onKeyUp.bind(this), placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: search }),
 					clearBtnHtml
 				);
 			}
@@ -39586,10 +39585,9 @@
 				var _context = this.context,
 				    bookmarks = _context.bookmarks,
 				    router = _context.router;
-	
 				var query = router.location.query;
-				var term = query.query;
-				var tags = query.tags;
+	
+				var term = query.search;
 				bookmarks.onSearch(this.addBookmarks);
 				this.setState({
 					isMounted: true
@@ -39616,9 +39614,9 @@
 			value: function componentWillReceiveProps(nextState, nextContext) {
 				var bookmarks = this.context.bookmarks;
 				var router = nextContext.router;
-	
 				var query = router.location.query;
-				var term = query.query;
+	
+				var term = query.search;
 				if (term) {
 					this.search(term);
 				} else {
@@ -39952,7 +39950,7 @@
 				var tags = bookmark.tags.map(function (tag) {
 					return _react2.default.createElement(
 						_reactRouter.Link,
-						{ to: { pathName: '/', query: { query: tag } }, key: tag, className: 'bookmark-item__tag tag' },
+						{ to: { pathName: '/', query: { search: tag } }, key: tag, className: 'bookmark-item__tag tag' },
 						tag
 					);
 				});

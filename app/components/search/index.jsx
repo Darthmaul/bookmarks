@@ -15,11 +15,11 @@ export default class SearchComponent extends React.Component {
 		super(props, context);
 		
 		const { router } = this.context;
-		const location = router.location.query;
-		const { query } = location;
+		const { query } = router.location;
+		const { search } = query;
 
 		this.state = {
-			queryLength: query ? query.length : 0
+			queryLength: search ? search.length : 0
 		}
 	}
 
@@ -39,7 +39,7 @@ export default class SearchComponent extends React.Component {
 		const { bookmarks } = this.context;
 		const nextRouter = nextContext.router;
 		const nextQuery = nextRouter.location.query;
-		const nextTerm = nextQuery.query;
+		const nextTerm = nextQuery.search;
 		const { value } = this.refs.search;
 		if (nextTerm != value && value != undefined && nextTerm != undefined) {
 			this.refs.search.value = ' ';
@@ -57,7 +57,7 @@ export default class SearchComponent extends React.Component {
 		const location = { pathname: '/', query: {} };
 
 		if (term) {
-			location.query.query = term;
+			location.query.search = term;
 		}
 
 		router.push(location);
@@ -74,14 +74,14 @@ export default class SearchComponent extends React.Component {
 		let clearBtnHtml;
 		const { router } = this.context;
 		const location = router.location.query;
-		const { query } = location;
+		const { search } = location;
 		const { queryLength } = this.state;
 
 		if (queryLength > 0) clearBtnHtml = <a href="#" onClick={this.clearInputClickHandler.bind(this)} className="search__clear">&times;</a>;
 
 		return (
 			<form onSubmit={this.onSubmit.bind(this)} className="search-form">
-				<input onKeyUp={this.onKeyUp.bind(this)} placeholder="search" ref="search" type="text" className="field" defaultValue={query} />
+				<input onKeyUp={this.onKeyUp.bind(this)} placeholder="search" ref="search" type="text" className="field" defaultValue={search} />
 				{clearBtnHtml}
 			</form>
 		);
