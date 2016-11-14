@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 
 import { Link } from 'react-router';
 import * as _ from '../../lib/tools.js';
