@@ -4,12 +4,6 @@ label {
 	margin-bottom: 6px;
 }
 
-input {
-	-webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
 .form--inline {
 	.form__group {
 		display: inline-block;
@@ -34,6 +28,9 @@ input {
 	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .field:focus {
