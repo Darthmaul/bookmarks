@@ -11,6 +11,18 @@ export default class SearchComponent extends React.Component {
 		router: React.PropTypes.object
 	};
 
+	constructor(props, context) {
+		super(props, context);
+		
+		const { router } = this.context;
+		const location = router.location.query;
+		const { query } = location;
+
+		this.state = {
+			queryLength: query ? query.length : 0
+		}
+	}
+
 	onSubmit(event) {
 		event.preventDefault();
 		this.search();
@@ -18,6 +30,9 @@ export default class SearchComponent extends React.Component {
 
 	onKeyUp(event) {
 		this.search();
+		this.setState({
+			queryLength: event.target.value.length
+		});
 	}
 
 	componentWillReceiveProps(nextState, nextContext) {
@@ -48,14 +63,26 @@ export default class SearchComponent extends React.Component {
 		router.push(location);
 	}
 
+	clearInputClickHandler(event) {
+		event.preventDefault();
+		this.refs.search.value = '';
+		this.setState({ queryLength: 0 });
+		this.search();
+	}
+
 	render() {
+		let clearBtnHtml;
 		const { router } = this.context;
 		const location = router.location.query;
 		const { query } = location;
+		const { queryLength } = this.state;
+
+		if (queryLength > 0) clearBtnHtml = <a href="#" onClick={this.clearInputClickHandler.bind(this)} className="search__clear">&times;</a>;
 
 		return (
-			<form onSubmit={this.onSubmit.bind(this)} onKeyUp={this.onKeyUp.bind(this)} className="search-form">
-				<input placeholder="search" ref="search" type="text" className="field" defaultValue={query} />
+			<form onSubmit={this.onSubmit.bind(this)} className="search-form">
+				<input onKeyUp={this.onKeyUp.bind(this)} placeholder="search" ref="search" type="text" className="field" defaultValue={query} />
+				{clearBtnHtml}
 			</form>
 		);
 	}

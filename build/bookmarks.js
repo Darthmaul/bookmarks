@@ -27483,10 +27483,10 @@
 						{ className: 'site-header__nav pull-right' },
 						_react2.default.createElement(
 							'li',
-							{ className: 'site-header__create-link' },
+							null,
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ to: '/create' },
+								{ className: 'site-header__create', to: '/create' },
 								'+'
 							)
 						),
@@ -27553,10 +27553,21 @@
 	var SearchComponent = function (_React$Component) {
 		_inherits(SearchComponent, _React$Component);
 	
-		function SearchComponent() {
+		function SearchComponent(props, context) {
 			_classCallCheck(this, SearchComponent);
 	
-			return _possibleConstructorReturn(this, (SearchComponent.__proto__ || Object.getPrototypeOf(SearchComponent)).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, (SearchComponent.__proto__ || Object.getPrototypeOf(SearchComponent)).call(this, props, context));
+	
+			var router = _this.context.router;
+	
+			var location = router.location.query;
+			var query = location.query;
+	
+	
+			_this.state = {
+				queryLength: query ? query.length : 0
+			};
+			return _this;
 		}
 	
 		_createClass(SearchComponent, [{
@@ -27569,6 +27580,9 @@
 			key: 'onKeyUp',
 			value: function onKeyUp(event) {
 				this.search();
+				this.setState({
+					queryLength: event.target.value.length
+				});
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -27606,18 +27620,35 @@
 				router.push(location);
 			}
 		}, {
+			key: 'clearInputClickHandler',
+			value: function clearInputClickHandler(event) {
+				event.preventDefault();
+				this.refs.search.value = '';
+				this.setState({ queryLength: 0 });
+				this.search();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
+				var clearBtnHtml = void 0;
 				var router = this.context.router;
 	
 				var location = router.location.query;
 				var query = location.query;
+				var queryLength = this.state.queryLength;
 	
+	
+				if (queryLength > 0) clearBtnHtml = _react2.default.createElement(
+					'a',
+					{ href: '#', onClick: this.clearInputClickHandler.bind(this), className: 'search__clear' },
+					'\xD7'
+				);
 	
 				return _react2.default.createElement(
 					'form',
-					{ onSubmit: this.onSubmit.bind(this), onKeyUp: this.onKeyUp.bind(this), className: 'search-form' },
-					_react2.default.createElement('input', { placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: query })
+					{ onSubmit: this.onSubmit.bind(this), className: 'search-form' },
+					_react2.default.createElement('input', { onKeyUp: this.onKeyUp.bind(this), placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: query }),
+					clearBtnHtml
 				);
 			}
 		}]);
@@ -27869,7 +27900,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".search-form {\n  margin: 0;\n  font-size: 80%; }\n  .search-form .field {\n    height: 2.4rem;\n    border: 0px;\n    border-left: 1px solid #ccc;\n    padding: 0 10px;\n    max-width: 130px;\n    border-radius: 0px; }\n    .search-form .field:focus {\n      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n    @media screen and (min-width: 376px) {\n      .search-form .field {\n        max-width: 160px; } }\n", ""]);
+	exports.push([module.id, ".search-form {\n  margin: 0;\n  font-size: 80%;\n  position: relative; }\n  .search-form .field {\n    height: 2.4rem;\n    border: 0px;\n    border-left: 1px solid #ccc;\n    padding: 0 25px 0 10px;\n    max-width: 130px;\n    border-radius: 0px;\n    display: inline-block; }\n    .search-form .field:focus {\n      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n    @media screen and (min-width: 376px) {\n      .search-form .field {\n        max-width: 160px; } }\n  .search-form .search__clear {\n    display: inline-block;\n    font-size: 1.2rem;\n    text-decoration: none;\n    line-height: 2.4rem;\n    position: absolute;\n    right: 10px;\n    opacity: 0.5; }\n    .search-form .search__clear:hover {\n      opacity: 0.8; }\n", ""]);
 	
 	// exports
 
@@ -28228,7 +28259,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".site-header {\n  border-bottom: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  text-shadow: 1px 1px 0px #fefefe;\n  overflow: hidden; }\n  .site-header .site-title {\n    font-size: 1.2rem;\n    font-weight: bold;\n    margin-left: 20px;\n    color: #777;\n    display: inline-block;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    text-transform: uppercase; }\n    .site-header .site-title a {\n      text-decoration: none;\n      line-height: 2.4rem;\n      display: inline-block;\n      font-size: 85%; }\n\n.site-header__menu-icon {\n  line-height: 2.4rem;\n  text-decoration: none;\n  padding: 0 20px;\n  border-left: 1px solid #ccc; }\n\n.site-header__nav {\n  padding: 0;\n  margin: 0;\n  list-style-type: none;\n  display: inline-block; }\n  .site-header__nav li {\n    display: inline-block;\n    float: right; }\n    .site-header__nav li:first-child {\n      border-right: 0px; }\n  .site-header__nav a {\n    text-decoration: none;\n    line-height: 2.4rem;\n    display: block;\n    border-left: 1px solid #ccc;\n    padding: 0px 14px;\n    font-weight: bold; }\n", ""]);
+	exports.push([module.id, ".site-header {\n  border-bottom: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  text-shadow: 1px 1px 0px #fefefe;\n  overflow: hidden; }\n  .site-header .site-title {\n    font-size: 1.2rem;\n    font-weight: bold;\n    margin-left: 20px;\n    color: #777;\n    display: inline-block;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    text-transform: uppercase; }\n    .site-header .site-title a {\n      text-decoration: none;\n      line-height: 2.4rem;\n      display: inline-block;\n      font-size: 85%; }\n\n.site-header__menu-icon {\n  line-height: 2.4rem;\n  text-decoration: none;\n  padding: 0 20px;\n  border-left: 1px solid #ccc; }\n\n.site-header__nav {\n  padding: 0;\n  margin: 0;\n  list-style-type: none;\n  display: inline-block; }\n  .site-header__nav li {\n    display: inline-block;\n    float: right; }\n    .site-header__nav li:first-child {\n      border-right: 0px; }\n  .site-header__nav .site-header__create {\n    text-decoration: none;\n    line-height: 2.4rem;\n    display: block;\n    border-left: 1px solid #ccc;\n    padding: 0px 14px;\n    font-weight: bold; }\n", ""]);
 	
 	// exports
 
