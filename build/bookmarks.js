@@ -39698,8 +39698,7 @@
 				var _context = this.context,
 				    bookmarks = _context.bookmarks,
 				    router = _context.router;
-				var _props = props,
-				    id = _props.params.id;
+				var id = this.props.params.id;
 	
 				var bookmark = bookmarks.get(id);
 	

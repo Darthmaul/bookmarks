@@ -16,7 +16,7 @@ export default class DetailPage extends React.Component {
 
 	componentDidMount() {
 		const { bookmarks, router } = this.context;
-		const { params: { id } } = props;
+		const { params: { id } } = this.props;
 		const bookmark = bookmarks.get(id);
 
 		this.setState({ bookmark });
