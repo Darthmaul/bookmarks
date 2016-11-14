@@ -31,6 +31,32 @@ export default class BookmarksCollection extends LocalStorageCollection {
 		return Bookmark;
 	}
 
+	defaultModels() {
+		return [
+			{ 
+				title: 'Some of my photography',
+				url: 'https://www.flickr.com/photos/fergusruston/',
+				domain: 'www.flickr.com',
+				text: 'Go see it on Flickr!',
+				tags: ['default bookmark', 'photography']
+			},
+			{
+				title: 'Github profile',
+				url: 'http://github.com/ergusto', 
+				domain: 'www.github.com',
+				notes: 'You can see this project on Github.',
+				tags: ['default bookmark']
+			},
+			{
+				title: 'Twitter profile',
+				url: 'http://twitter.com/ergusto', 
+				domain: 'www.twitter.com',
+				notes: 'Tweet terwoo',
+				tags: ['default bookmark']
+			}
+		]
+	}
+
 	setUpSearchDispatcherEvents() {
 		this.onSearch = callback => {
 			this.dispatcher.register('search', callback);

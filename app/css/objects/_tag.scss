@@ -1,0 +1,16 @@
+.tag {
+	display: inline-block;
+	border: 1px solid #ccc;
+	font-size: 70%;
+	padding: 2px 6px;
+	border-radius: 4px;
+	margin: 4px 5px;
+	background: #f8f8f8;
+	color: #777;
+	text-decoration: none;
+
+	.tag-remove {
+		margin-left: 6px;
+		text-decoration: none;
+	}
+}

@@ -13,5 +13,18 @@
 		margin-bottom: 10px;
 		background: #f8f8f8;
 	}
+
+	.tags-input__tags {
+		margin: 0;
+		padding: 0;
+		margin-bottom: 10px;
+	}
+
+	.tags-input__tag {
+		margin-top: 0px;
+		&:first-child {
+			margin-left: 0px;
+		}
+	}
 	
 }

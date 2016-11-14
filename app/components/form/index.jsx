@@ -13,9 +13,11 @@ export default class BookmarkFormComponent extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
+		const { bookmark } = this.props;
 		
 		this.state = {
-			errors: {}
+			errors: {},
+			tags: bookmark ? bookmark.tags : [],
 		}
 	}
 
@@ -34,13 +36,12 @@ export default class BookmarkFormComponent extends React.Component {
 		const { title, url, tags, text } = this.refs;
 		const titleValue = title.value.trim();
 		const urlValue = url.value.trim();
-		const tagsValue = tags.value.trim();
 		const textValue = text.value.trim();
 
 		const properties = {
 			title: titleValue,
 			url: urlValue,
-			tags: tagsValue,
+			tags: this.state.tags,
 			text: textValue
 		};
 
@@ -51,6 +52,45 @@ export default class BookmarkFormComponent extends React.Component {
 			router.push(saved.getDetailUrl());
 		} else {
 			this.setState({ errors });
+		}
+	}
+
+	removeTag(tag, event) {
+		event.preventDefault();
+		const { tags } = this.state;
+		const index = tags.indexOf(tag.trim());
+		if (index >= 0) {
+			tags.splice(index, 1);
+		}
+		this.setState({ tags });
+	}
+
+	renderTags() {
+		const { tags } = this.state;
+		return (
+			<ul className="tags-input__tags">
+				{tags.map((tag, index) => (
+					<li key={index} className="tags-input__tag tag">
+						{tag}
+						<a onClick={this.removeTag.bind(this, tag)} href="#" className="tag-remove">&times;</a>
+					</li>)
+				)}
+			</ul>
+		);
+	}
+
+	tagsFieldKeyDownHandler(event) {
+		if (event.keyCode == 13 || event.charCode == 13) {
+			event.preventDefault();
+			// http://stackoverflow.com/questions/24415631/reactjs-syntheticevent-stoppropagation-only-works-with-react-events#comment37772453_24415631
+			event.nativeEvent.stopImmediatePropagation();
+			const tag = this.refs.tags.value;
+			const { tags } = this.state;
+			if (tags.indexOf(tag.trim()) == -1) {
+				tags.push(tag);
+				this.refs.tags.value = '';
+				this.setState({ tags });
+			}
 		}
 	}
 
@@ -65,8 +105,9 @@ export default class BookmarkFormComponent extends React.Component {
 				{this.renderError('url')}
 				<textarea ref="text" defaultValue={bookmark ? bookmark.text : ''} placeholder="text" type="text" className="field" />
 				{this.renderError('text')}
-				<input ref="tags" defaultValue={bookmark ? bookmark.tags.join(', ') : ''} placeholder="tags (separate with a comma)" type="text" className="field" />
+				<input onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} ref="tags" placeholder="tags (enter to add)" type="text" className="field" />
 				{this.renderError('tags')}
+				{this.renderTags()}
 				<div className="controls">
 					<button type="submit" className="btn">{bookmark ? 'update' : 'create'}</button>
 				</div>
