@@ -40616,7 +40616,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-options {\n  font-size: 80%; }\n  .bookmark-options a {\n    line-height: 1.6rem;\n    display: inline-block;\n    text-decoration: none;\n    padding: 0 20px;\n    border: 0px;\n    border-right: 1px solid #ccc; }\n    .bookmark-options a:hover {\n      background: rgba(0, 0, 0, 0.05);\n      color: black; }\n", ""]);
+	exports.push([module.id, "div.bookmark-options {\n  font-size: 80%;\n  background: #FCFAF9; }\n  div.bookmark-options a {\n    line-height: 1.6rem;\n    display: inline-block;\n    text-decoration: none;\n    padding: 0 20px;\n    border: 0px;\n    border-right: 1px solid #ccc; }\n    div.bookmark-options a:hover {\n      background: rgba(0, 0, 0, 0.05);\n      color: black; }\n", ""]);
 	
 	// exports
 
