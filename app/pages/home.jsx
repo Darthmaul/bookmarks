@@ -13,7 +13,7 @@ export default class HomePage extends React.Component {
 		const { bookmarks } = this.context;
 
 		this.state = {
-			bookmarks: bookmarks.all(),
+			bookmarks: [],
 			isMounted: false,
 		};
 
@@ -28,8 +28,15 @@ export default class HomePage extends React.Component {
 		const tags = query.tags;
 		this.setState({
 			isMounted: true
+		}, () => {
+			if (term) {
+				this.search(term);
+			} else {
+				this.setState({
+					bookmarks: bookmarks.all()
+				});
+			}
 		});
-		this.search(term);
 	}
 
 	componentWillUnmount() {
@@ -41,19 +48,20 @@ export default class HomePage extends React.Component {
 	}
 
 	componentWillReceiveProps(nextState, nextContext) {
+		const { bookmarks } = this.context;
 		const { router } = nextContext;
 		const query = router.location.query;
 		const term = query.query;
-		this.search(term);
+		if (term) {
+			this.search(term);
+		} else {
+			this.addModels(bookmarks.all());
+		}
 	}
 
 	search(term) {
 		const { bookmarks } = this.context;
-		if (term) {
-			bookmarks.search(term);
-		} else {
-			this.addModels(bookmarks.all());
-		}
+		bookmarks.search(term);
 	}
 
 	addModels(models) {

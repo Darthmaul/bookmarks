@@ -39536,7 +39536,7 @@
 	
 	
 			_this.state = {
-				bookmarks: bookmarks.all(),
+				bookmarks: [],
 				isMounted: false
 			};
 	
@@ -39548,6 +39548,8 @@
 		_createClass(HomePage, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				var _this2 = this;
+	
 				var _context = this.context,
 				    bookmarks = _context.bookmarks,
 				    router = _context.router;
@@ -39557,8 +39559,15 @@
 				var tags = query.tags;
 				this.setState({
 					isMounted: true
+				}, function () {
+					if (term) {
+						_this2.search(term);
+					} else {
+						_this2.setState({
+							bookmarks: bookmarks.all()
+						});
+					}
 				});
-				this.search(term);
 			}
 		}, {
 			key: 'componentWillUnmount',
@@ -39573,22 +39582,23 @@
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextState, nextContext) {
+				var bookmarks = this.context.bookmarks;
 				var router = nextContext.router;
 	
 				var query = router.location.query;
 				var term = query.query;
-				this.search(term);
+				if (term) {
+					this.search(term);
+				} else {
+					this.addModels(bookmarks.all());
+				}
 			}
 		}, {
 			key: 'search',
 			value: function search(term) {
 				var bookmarks = this.context.bookmarks;
 	
-				if (term) {
-					bookmarks.search(term);
-				} else {
-					this.addModels(bookmarks.all());
-				}
+				bookmarks.search(term);
 			}
 		}, {
 			key: 'addModels',
