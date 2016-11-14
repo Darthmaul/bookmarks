@@ -75,6 +75,7 @@ export default class LocalStorageCollection extends Collection {
 	}
 
 	addOrUpdateModelToLocalStorage(model) {
+		delete model._collection;
 		this.store.update((store) => {
 			store[model.id] = model;
 			return store;

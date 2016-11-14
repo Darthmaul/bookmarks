@@ -37,12 +37,19 @@ export default class Collection {
 		return Object.keys(this.models).map(key => this.models[key]);
 	}
 
+	make(attrs) {
+		return new this.model(attrs, this);
+	}
+
 	// get model from single id or array of ids
 	get(id) {
-		if (_.isString(id)) return this.models[id];
+		if (_.isString(id)) {
+			const attrs = this.models[id];
+			return this.make(attrs);
+		}
 		if (_.isArray(id)) {
 			const ids = id, models = this.all();
-			return models.filter(model => ids.indexOf(model.id) >= 0);
+			return models.filter(attrs => ids.indexOf(attrs.id) >= 0).map(attrs => this.make(attrs));
 		}
 		return false;
 	}
@@ -129,7 +136,7 @@ export default class Collection {
 	// change models
 
 	create(attrs) {
-		let model = new this.model(attrs);
+		let model = this.make(attrs);
 		model.id = _.generateID();
 		model = this.callHooks(model);
 		this.models[model.id] = model;
@@ -139,7 +146,7 @@ export default class Collection {
 
 	createMany(models) {
 		const created = models.map((attrs) => {
-			let model = new this.model(attrs);
+			let model = this.make(attrs);
 			model.id = _.generateID();
 			model = this.callHooks(model);
 			this.models[model.id] = model;
@@ -150,7 +157,7 @@ export default class Collection {
 	}
 
 	add(model) {
-		model = new this.model(model);
+		model = this.make(model);
 		this.models[model.id] = model;
 		this.triggerAdd(model);
 		return model;
@@ -158,7 +165,7 @@ export default class Collection {
 
 	addMany(models) {
 		const result = models.forEach(model => {
-			model = new this.model(model);
+			model = this.make(model);
 			this.models[model.id] = model;
 			return model;
 		});
@@ -169,9 +176,10 @@ export default class Collection {
 	update(attrs) {
 		const id = attrs.id;
 		if (id) {
-			let model = this.models[id];
+			let model = this.get(id);
 			if (model) {
 				model = _.extend(model, attrs);
+				model = this.callHooks(model);
 				this.models[id] = model;
 				this.triggerUpdate(model);
 				return model;

@@ -67,7 +67,7 @@ export default class BookmarkItemComponent extends React.Component {
 			tagsToggle = (
 				<li>
 					<a href="#" onClick={this.toggleTags.bind(this)}>
-						<i className={classNames({ "ion-ios-pricetags": true, "icon--active": shouldShowTags })} />
+						<i className="ion-ios-pricetags" />
 					</a>
 				</li>
 			);
@@ -81,7 +81,7 @@ export default class BookmarkItemComponent extends React.Component {
 			imgToggle = (
 				<li>
 					<a href="#" onClick={this.toggleImage.bind(this)}>
-						<i className={classNames({ "ion-image": true, "icon--active": shouldShowImage })} />
+						<i className="ion-image" />
 					</a>
 				</li>
 			);
@@ -99,7 +99,7 @@ export default class BookmarkItemComponent extends React.Component {
 			textToggle = (
 				<li>
 					<a href="#" onClick={this.toggleText.bind(this)}>
-						<i className={classNames({ "ion-document-text": true, "icon--active": shouldShowText })} />
+						<i className="ion-document-text" />
 					</a>
 				</li>
 			);
@@ -114,12 +114,11 @@ export default class BookmarkItemComponent extends React.Component {
 				{tagsHtml}
 				<div className="bookmark-item__options">
 					<ul className="bookmark-item__options-toggles">
-						<li><a className="bookmark-item__link" href={bookmark.url}><i className="ion-link" /></a></li>
 						{textToggle}
 						{imgToggle}
 						{tagsToggle}
 					</ul>
-					{bookmark.domain}
+					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
 				</div>
 				{textHtml}
 			</div>

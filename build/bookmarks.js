@@ -28397,7 +28397,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 0 15px;\n  border-bottom: 1px solid #ccc; }\n  .bookmark-item .bookmark-item__tags .tags-label {\n    display: inline-block;\n    color: #777; }\n\n.bookmark-item .bookmark-item__tag {\n  display: inline-block;\n  border: 1px solid #ccc;\n  font-size: 70%;\n  padding: 2px 6px;\n  border-radius: 4px;\n  margin: 4px 5px;\n  background: #f8f8f8;\n  color: #777; }\n\n.bookmark-item .bookmark-item__options {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__options-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__options-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__options-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__text {\n  border-top: 1px solid #ccc;\n  padding: 10px 20px;\n  font-size: 80%;\n  color: #777; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
+	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 0 15px;\n  border-bottom: 1px solid #ccc; }\n  .bookmark-item .bookmark-item__tags .tags-label {\n    display: inline-block;\n    color: #777; }\n\n.bookmark-item .bookmark-item__tag {\n  display: inline-block;\n  border: 1px solid #ccc;\n  font-size: 70%;\n  padding: 2px 6px;\n  border-radius: 4px;\n  margin: 4px 5px;\n  background: #f8f8f8;\n  color: #777; }\n\n.bookmark-item .bookmark-item__options {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__options-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__options-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__options-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__text {\n  border-top: 1px solid #ccc;\n  padding: 10px 20px;\n  font-size: 80%;\n  color: #777; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 
@@ -28543,8 +28543,8 @@
 				    validated = _bookmarks$validate.validated;
 	
 				if (validated) {
-					var _bookmark = _bookmark ? bookmarks.update(properties) : bookmarks.create(properties);
-					router.push(_bookmark.getDetailUrl());
+					var saved = bookmark ? bookmark.update(properties) : bookmarks.create(properties);
+					router.push(saved.getDetailUrl());
 				} else {
 					this.setState({ errors: errors });
 				}
@@ -39389,10 +39389,10 @@
 	var Bookmark = function (_Model) {
 		_inherits(Bookmark, _Model);
 	
-		function Bookmark(properties) {
+		function Bookmark() {
 			_classCallCheck(this, Bookmark);
 	
-			return _possibleConstructorReturn(this, (Bookmark.__proto__ || Object.getPrototypeOf(Bookmark)).call(this, properties));
+			return _possibleConstructorReturn(this, (Bookmark.__proto__ || Object.getPrototypeOf(Bookmark)).apply(this, arguments));
 		}
 	
 		_createClass(Bookmark, [{
@@ -39866,7 +39866,7 @@
 						_react2.default.createElement(
 							'a',
 							{ href: '#', onClick: this.toggleTags.bind(this) },
-							_react2.default.createElement('i', { className: (0, _classnames2.default)({ "ion-ios-pricetags": true, "icon--active": shouldShowTags }) })
+							_react2.default.createElement('i', { className: 'ion-ios-pricetags' })
 						)
 					);
 				}
@@ -39886,7 +39886,7 @@
 						_react2.default.createElement(
 							'a',
 							{ href: '#', onClick: this.toggleImage.bind(this) },
-							_react2.default.createElement('i', { className: (0, _classnames2.default)({ "ion-image": true, "icon--active": shouldShowImage }) })
+							_react2.default.createElement('i', { className: 'ion-image' })
 						)
 					);
 				}
@@ -39906,7 +39906,7 @@
 						_react2.default.createElement(
 							'a',
 							{ href: '#', onClick: this.toggleText.bind(this) },
-							_react2.default.createElement('i', { className: (0, _classnames2.default)({ "ion-document-text": true, "icon--active": shouldShowText }) })
+							_react2.default.createElement('i', { className: 'ion-document-text' })
 						)
 					);
 				}
@@ -39931,20 +39931,15 @@
 						_react2.default.createElement(
 							'ul',
 							{ className: 'bookmark-item__options-toggles' },
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ className: 'bookmark-item__link', href: bookmark.url },
-									_react2.default.createElement('i', { className: 'ion-link' })
-								)
-							),
 							textToggle,
 							imgToggle,
 							tagsToggle
 						),
-						bookmark.domain
+						_react2.default.createElement(
+							'a',
+							{ className: 'bookmark-item__domain', href: bookmark.url },
+							bookmark.domain
+						)
 					),
 					textHtml
 				);
@@ -39973,6 +39968,8 @@
 		value: true
 	});
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
 	var _tools = __webpack_require__(/*! ../../tools.js */ 231);
 	
 	var _ = _interopRequireWildcard(_tools);
@@ -39981,11 +39978,24 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var Model = function Model(properties) {
-		_classCallCheck(this, Model);
+	var Model = function () {
+		function Model(properties, collection) {
+			_classCallCheck(this, Model);
 	
-		_.extend(this, properties);
-	};
+			_.extend(this, properties);
+			this._collection = collection;
+		}
+	
+		_createClass(Model, [{
+			key: 'update',
+			value: function update(attrs) {
+				this._collection.update(_.extend(this, attrs));
+				return this;
+			}
+		}]);
+	
+		return Model;
+	}();
 	
 	exports.default = Model;
 
@@ -40109,6 +40119,7 @@
 		}, {
 			key: 'addOrUpdateModelToLocalStorage',
 			value: function addOrUpdateModelToLocalStorage(model) {
+				delete model._collection;
 				this.store.update(function (store) {
 					store[model.id] = model;
 					return store;
@@ -40219,6 +40230,11 @@
 					return _this.models[key];
 				});
 			}
+		}, {
+			key: 'make',
+			value: function make(attrs) {
+				return new this.model(attrs, this);
+			}
 	
 			// get model from single id or array of ids
 	
@@ -40227,14 +40243,19 @@
 			value: function get(id) {
 				var _this2 = this;
 	
-				if (_.isString(id)) return this.models[id];
+				if (_.isString(id)) {
+					var attrs = this.models[id];
+					return this.make(attrs);
+				}
 				if (_.isArray(id)) {
 					var _ret = function () {
 						var ids = id,
 						    models = _this2.all();
 						return {
-							v: models.filter(function (model) {
-								return ids.indexOf(model.id) >= 0;
+							v: models.filter(function (attrs) {
+								return ids.indexOf(attrs.id) >= 0;
+							}).map(function (attrs) {
+								return _this2.make(attrs);
 							})
 						};
 					}();
@@ -40344,7 +40365,7 @@
 		}, {
 			key: 'create',
 			value: function create(attrs) {
-				var model = new this.model(attrs);
+				var model = this.make(attrs);
 				model.id = _.generateID();
 				model = this.callHooks(model);
 				this.models[model.id] = model;
@@ -40357,7 +40378,7 @@
 				var _this3 = this;
 	
 				var created = models.map(function (attrs) {
-					var model = new _this3.model(attrs);
+					var model = _this3.make(attrs);
 					model.id = _.generateID();
 					model = _this3.callHooks(model);
 					_this3.models[model.id] = model;
@@ -40369,7 +40390,7 @@
 		}, {
 			key: 'add',
 			value: function add(model) {
-				model = new this.model(model);
+				model = this.make(model);
 				this.models[model.id] = model;
 				this.triggerAdd(model);
 				return model;
@@ -40380,7 +40401,7 @@
 				var _this4 = this;
 	
 				var result = models.forEach(function (model) {
-					model = new _this4.model(model);
+					model = _this4.make(model);
 					_this4.models[model.id] = model;
 					return model;
 				});
@@ -40392,9 +40413,10 @@
 			value: function update(attrs) {
 				var id = attrs.id;
 				if (id) {
-					var model = this.models[id];
+					var model = this.get(id);
 					if (model) {
 						model = _.extend(model, attrs);
+						model = this.callHooks(model);
 						this.models[id] = model;
 						this.triggerUpdate(model);
 						return model;
@@ -40470,7 +40492,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-options {\n  font-size: 80%; }\n  .bookmark-options a {\n    line-height: 1.8rem;\n    display: inline-block;\n    text-decoration: none;\n    padding: 0 20px;\n    border: 0px;\n    border-right: 1px solid #ccc; }\n    .bookmark-options a:hover {\n      background: rgba(0, 0, 0, 0.05);\n      color: black; }\n", ""]);
+	exports.push([module.id, ".bookmark-options {\n  font-size: 80%; }\n  .bookmark-options a {\n    line-height: 1.6rem;\n    display: inline-block;\n    text-decoration: none;\n    padding: 0 20px;\n    border: 0px;\n    border-right: 1px solid #ccc; }\n    .bookmark-options a:hover {\n      background: rgba(0, 0, 0, 0.05);\n      color: black; }\n", ""]);
 	
 	// exports
 

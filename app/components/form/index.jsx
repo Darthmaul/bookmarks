@@ -29,7 +29,7 @@ export default class BookmarkFormComponent extends React.Component {
 
 	submitHandler(event) {
 		event.preventDefault();
-		const { bookmark } = this.props;
+		let { bookmark } = this.props;
 		const { bookmarks, router } = this.context;
 		const { title, url, tags, text } = this.refs;
 		const titleValue = title.value.trim();
@@ -47,8 +47,8 @@ export default class BookmarkFormComponent extends React.Component {
 		const { errors, validated } = bookmarks.validate(properties);
 
 		if (validated) {
-			const bookmark =  bookmark ? bookmarks.update(properties) : bookmarks.create(properties);
-			router.push(bookmark.getDetailUrl());
+			const saved =  bookmark ? bookmark.update(properties) : bookmarks.create(properties);
+			router.push(saved.getDetailUrl());
 		} else {
 			this.setState({ errors });
 		}
@@ -56,7 +56,7 @@ export default class BookmarkFormComponent extends React.Component {
 
 	render() {
 		const { bookmark } = this.props;
-
+		
 		return (
 			<form onSubmit={this.submitHandler.bind(this)} className="bookmark-form box">
 				<input ref="title" defaultValue={bookmark ? bookmark.title : ''} placeholder="title" type="text" className="field" />
