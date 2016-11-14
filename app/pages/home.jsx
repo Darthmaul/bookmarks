@@ -18,7 +18,6 @@ export default class HomePage extends React.Component {
 		};
 
 		this.addBookmarks = this.addModels.bind(this);
-		bookmarks.onSearch(this.addBookmarks);
 	}
 
 	componentDidMount() {
@@ -26,15 +25,14 @@ export default class HomePage extends React.Component {
 		const query = router.location.query;
 		const term = query.query;
 		const tags = query.tags;
+		bookmarks.onSearch(this.addBookmarks);
 		this.setState({
 			isMounted: true
 		}, () => {
 			if (term) {
 				this.search(term);
 			} else {
-				this.setState({
-					bookmarks: bookmarks.all()
-				});
+				this.addModels(bookmarks.all());
 			}
 		});
 	}

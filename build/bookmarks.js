@@ -39541,7 +39541,6 @@
 			};
 	
 			_this.addBookmarks = _this.addModels.bind(_this);
-			bookmarks.onSearch(_this.addBookmarks);
 			return _this;
 		}
 	
@@ -39557,15 +39556,14 @@
 				var query = router.location.query;
 				var term = query.query;
 				var tags = query.tags;
+				bookmarks.onSearch(this.addBookmarks);
 				this.setState({
 					isMounted: true
 				}, function () {
 					if (term) {
 						_this2.search(term);
 					} else {
-						_this2.setState({
-							bookmarks: bookmarks.all()
-						});
+						_this2.addModels(bookmarks.all());
 					}
 				});
 			}
