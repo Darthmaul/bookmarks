@@ -39680,17 +39680,39 @@
 		}
 	
 		_createClass(OptionsComponent, [{
+			key: 'remove',
+			value: function remove(event) {
+				event.preventDefault();
+				var bookmark = this.props.bookmark;
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+	
+				bookmarks.remove(bookmark.id);
+				router.push('/');
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var bookmark = this.props.bookmark;
 	
 				return _react2.default.createElement(
 					'div',
-					{ className: 'bookmark-options box margin-bottom' },
+					{ className: 'bookmark-options box margin-bottom-sm' },
+					_react2.default.createElement(
+						'a',
+						{ className: 'btn', href: bookmark.url },
+						'visit'
+					),
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: bookmark.getEditUrl(), className: 'btn' },
 						'edit'
+					),
+					_react2.default.createElement(
+						'a',
+						{ className: 'btn', href: '#', onClick: this.remove.bind(this) },
+						'delete'
 					)
 				);
 			}
@@ -39699,6 +39721,10 @@
 		return OptionsComponent;
 	}(_react2.default.Component);
 	
+	OptionsComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
 	exports.default = OptionsComponent;
 
 /***/ },
@@ -39787,18 +39813,6 @@
 				this.setState({
 					shouldShowText: !this.state.shouldShowText
 				});
-			}
-		}, {
-			key: 'remove',
-			value: function remove(event) {
-				event.preventDefault();
-				var bookmark = this.props.bookmark;
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-	
-				bookmarks.remove(bookmark.id);
-				router.push('/');
 			}
 		}, {
 			key: 'renderTags',
@@ -40456,7 +40470,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-options a {\n  line-height: 2.1rem;\n  display: inline-block;\n  text-decoration: none;\n  padding: 0 20px;\n  border: 0px;\n  border-right: 1px solid #ccc; }\n  .bookmark-options a:hover {\n    background: rgba(0, 0, 0, 0.05);\n    color: black; }\n", ""]);
+	exports.push([module.id, ".bookmark-options {\n  font-size: 80%; }\n  .bookmark-options a {\n    line-height: 1.8rem;\n    display: inline-block;\n    text-decoration: none;\n    padding: 0 20px;\n    border: 0px;\n    border-right: 1px solid #ccc; }\n    .bookmark-options a:hover {\n      background: rgba(0, 0, 0, 0.05);\n      color: black; }\n", ""]);
 	
 	// exports
 

@@ -46,14 +46,6 @@ export default class BookmarkItemComponent extends React.Component {
 		});
 	}
 
-	remove(event) {
-		event.preventDefault();
-		const { bookmark } = this.props;
-		const { bookmarks, router } = this.context;
-		bookmarks.remove(bookmark.id);
-		router.push('/');
-	}
-
 	renderTags() {
 		const { bookmark } = this.props;
 		const tags = bookmark.tags.map(tag => {
