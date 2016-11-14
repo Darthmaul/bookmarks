@@ -29,6 +29,7 @@ export default class BookmarkFormComponent extends React.Component {
 
 	submitHandler(event) {
 		event.preventDefault();
+		const { bookmark } = this.props;
 		const { bookmarks, router } = this.context;
 		const { title, url, tags, text } = this.refs;
 		const titleValue = title.value.trim();
@@ -46,7 +47,7 @@ export default class BookmarkFormComponent extends React.Component {
 		const { errors, validated } = bookmarks.validate(properties);
 
 		if (validated) {
-			const bookmark = bookmarks.create(properties);
+			const bookmark =  bookmark ? bookmarks.update(properties) : bookmarks.create(properties);
 			router.push(bookmark.getDetailUrl());
 		} else {
 			this.setState({ errors });
@@ -54,18 +55,20 @@ export default class BookmarkFormComponent extends React.Component {
 	}
 
 	render() {
+		const { bookmark } = this.props;
+
 		return (
 			<form onSubmit={this.submitHandler.bind(this)} className="bookmark-form box">
-				<input ref="title" placeholder="title" type="text" className="field" />
+				<input ref="title" defaultValue={bookmark ? bookmark.title : ''} placeholder="title" type="text" className="field" />
 				{this.renderError('title')}
-				<input ref="url" placeholder="url" type="text" className="field" autoCapitalize="none" />
+				<input ref="url" defaultValue={bookmark ? bookmark.url : ''} placeholder="url" type="text" className="field" autoCapitalize="none" />
 				{this.renderError('url')}
-				<textarea ref="text" placeholder="text" type="text" className="field" />
+				<textarea ref="text" defaultValue={bookmark ? bookmark.text : ''} placeholder="text" type="text" className="field" />
 				{this.renderError('text')}
-				<input ref="tags" placeholder="tags (separate with a comma)" type="text" className="field" />
+				<input ref="tags" defaultValue={bookmark ? bookmark.tags.join(', ') : ''} placeholder="tags (separate with a comma)" type="text" className="field" />
 				{this.renderError('tags')}
 				<div className="controls">
-					<button type="submit" className="btn">create</button>
+					<button type="submit" className="btn">{bookmark ? 'update' : 'create'}</button>
 				</div>
 			</form>
 		)

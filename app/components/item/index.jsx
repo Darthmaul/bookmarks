@@ -59,12 +59,12 @@ export default class BookmarkItemComponent extends React.Component {
 		const tags = bookmark.tags.map(tag => {
 			return <Link to={{ pathName: '/', query: { query: tag } }} key={tag} className="bookmark-item__tag">{tag}</Link>;
 		});
-		return <div className="bookmark-item__tags">{tags}</div>;
+		return <div className="bookmark-item__tags"><small className="tags-label">tags:</small> {tags}</div>;
 	}
 
 	render() {
 		let tagsHtml, tagsToggle, imgHtml, imgToggle, textHtml, textToggle, editOptions;
-		const { bookmark, shouldShowEditOptions } = this.props;
+		const { bookmark } = this.props;
 		const { shouldShowTags, shouldShowImage, shouldShowText } = this.state;
 
 		if (bookmark.tags && bookmark.tags.length) {
@@ -113,17 +113,8 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
-		if (shouldShowEditOptions) {
-			editOptions = (
-				<div className="bookmark-item__edit-options padding padding-vertical-sm">
-					<Link to={"/bookmark/" + bookmark.id + '/' + bookmark.slug + "/edit"}><i className="ion-edit" /></Link>
-					<a href="#" onClick={this.remove.bind(this)}><i className="ion-ios-trash" /></a>
-				</div>
-			);
-		}
-
 		return (
-			<li className="bookmark-item box">
+			<div className="bookmark-item box">
 				<header className="bookmark-item__header">
 					<Link className="bookmark-item__title" to={bookmark.getDetailUrl()}>{bookmark.title}</Link>
 				</header>
@@ -138,9 +129,8 @@ export default class BookmarkItemComponent extends React.Component {
 					</ul>
 					{bookmark.domain}
 				</div>
-				{editOptions}
 				{textHtml}
-			</li>
+			</div>
 		);
 	}
 

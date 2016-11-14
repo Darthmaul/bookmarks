@@ -1,5 +1,5 @@
-import * as _ from '../tools.js';
-import Dispatcher from '../behaviour/dispatcher.js';
+import * as _ from '../../tools.js';
+import Dispatcher from '../../behaviour/dispatcher.js';
 import Model from './model.js';
 
 export default class Collection {
@@ -37,8 +37,13 @@ export default class Collection {
 		return Object.keys(this.models).map(key => this.models[key]);
 	}
 
+	// get model from single id or array of ids
 	get(id) {
-		if (id) return this.models[id];
+		if (_.isString(id)) return this.models[id];
+		if (_.isArray(id)) {
+			const ids = id, models = this.all();
+			return models.filter(model => ids.indexOf(model.id) >= 0);
+		}
 		return false;
 	}
 
@@ -123,8 +128,8 @@ export default class Collection {
 
 	// change models
 
-	create(model) {
-		model = new this.model(model);
+	create(attrs) {
+		let model = new this.model(attrs);
 		model.id = _.generateID();
 		model = this.callHooks(model);
 		this.models[model.id] = model;
@@ -133,8 +138,8 @@ export default class Collection {
 	}
 
 	createMany(models) {
-		const created = models.map((model) => {
-			model = new this.model(model);
+		const created = models.map((attrs) => {
+			let model = new this.model(attrs);
 			model.id = _.generateID();
 			model = this.callHooks(model);
 			this.models[model.id] = model;
@@ -161,13 +166,19 @@ export default class Collection {
 		return result;
 	}
 
-	update(model) {
-		const id = model.id;
+	update(attrs) {
+		const id = attrs.id;
 		if (id) {
-			this.models[id] = model;
-			this.triggerUpdate(model);
+			let model = this.models[id];
+			if (model) {
+				model = _.extend(model, attrs);
+				this.models[id] = model;
+				this.triggerUpdate(model);
+				return model;
+			} else {
+				throw new Error('Could not update the provided model. Does it have an ID property?');
+			}
 		}
-		return model;
 	}
 
 	remove(model) {

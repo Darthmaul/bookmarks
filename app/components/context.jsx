@@ -8,7 +8,7 @@ export default class ContextComponent extends React.Component {
 
 	getChildContext() {
 		const { bookmarks } = this.props;
-		return { bookmarks: bookmarks };
+		return { bookmarks };
 	}
 
 	render() {

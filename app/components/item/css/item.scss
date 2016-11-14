@@ -1,13 +1,7 @@
 .bookmark-item {
-	display: block;
-	margin-top: 20px;
 
 	&:hover .boomark-item__tag-toggle {
 		display: inline-block;
-	}
-
-	&:first-child {
-		margin-top: 0px;
 	}
 
 	.bookmark-item__title {
@@ -44,6 +38,11 @@
 	.bookmark-item__tags {
 		padding: 0 15px;
 		border-bottom: 1px solid #ccc;
+
+		.tags-label {
+			display: inline-block;
+			color: #777;
+		}
 	}
 
 	.bookmark-item__tag {
@@ -86,7 +85,8 @@
 	.bookmark-item__text {
 		border-top: 1px solid #ccc;
 		padding: 10px 20px;
-		font-size: 90%;
+		font-size: 80%;
+		color: #777;
 	}
 
 	.bookmark-item__edit-options {

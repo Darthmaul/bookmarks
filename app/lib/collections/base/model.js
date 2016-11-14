@@ -1,4 +1,4 @@
-import * as _ from '../tools.js';
+import * as _ from '../../tools.js';
 
 export default class Model {
 

@@ -1,7 +1,7 @@
 import JsSearch from 'js-search';
 import * as _ from '../tools.js';
 
-import LocalStorageCollection from './localstorage.js';
+import LocalStorageCollection from './base/localstorage.js';
 import Bookmark from './bookmark.js';
 
 export const validator = {

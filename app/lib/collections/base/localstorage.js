@@ -1,6 +1,6 @@
-import * as _ from '../tools.js';
+import * as _ from '../../tools.js';
 import Collection from './base.js';
-import LocalStorageBehaviour from '../behaviour/localstorage.js';
+import LocalStorageBehaviour from '../../behaviour/localstorage.js';
 
 export default class LocalStorageCollection extends Collection {
 

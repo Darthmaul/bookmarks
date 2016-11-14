@@ -8,7 +8,7 @@ import ContextComponent from './components/context.jsx';
 
 import HomePage from './pages/home.jsx';
 import CreatePage from './pages/create.jsx';
-import EditPage from './pages/create.jsx';
+import EditPage from './pages/edit.jsx';
 import DetailPage from './pages/detail.jsx';
 
 const routes = bookmarks => (

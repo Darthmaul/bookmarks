@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BookmarkItemComponent from '../item/item.jsx';
+import BookmarkItemComponent from '../item/index.jsx';
 
 // import styles for this component
 require('!style!css!sass!./css/list.scss');
@@ -14,7 +14,7 @@ export default class ListComponent extends React.Component {
 			return (
 				<ul className="bookmark-list">
 					{bookmarks.map(bookmark => (
-						<BookmarkItemComponent key={bookmark.id} bookmark={bookmark} />
+						<li key={bookmark.id} className="margin-bottom"><BookmarkItemComponent bookmark={bookmark} /></li>
 					))}
 				</ul>
 			);

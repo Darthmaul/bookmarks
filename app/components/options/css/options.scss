@@ -1,0 +1,15 @@
+.bookmark-options {
+	a {
+		line-height: 2.1rem;
+		display: inline-block;
+		text-decoration: none;
+		padding: 0 20px;
+		border: 0px;
+		border-right: 1px solid #ccc;
+
+		&:hover {
+			background: rgba(0, 0, 0, 0.05);
+			color: black;
+		}
+	}
+}
