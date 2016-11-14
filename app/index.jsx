@@ -5,13 +5,13 @@ import routes from './routes.jsx';
 
 import './lib/polyfills.js';
 
-import BookmarksCollection from './lib/collections/bookmarks.js';
+import Bookmarks from './lib/collections/bookmarks.js';
 
 // import generic/site wide styles
 require('!style!css!sass!./css/site.scss');
 
 function init() {
-	const bookmarks = new BookmarksCollection();
+	const bookmarks = new Bookmarks();
 
 	render(routes(bookmarks), document.getElementById('app'));
 }

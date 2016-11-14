@@ -28976,13 +28976,13 @@
 		}
 	};
 	
-	var BookmarksCollection = function (_LocalStorageCollecti) {
-		_inherits(BookmarksCollection, _LocalStorageCollecti);
+	var Bookmarks = function (_LocalStorageCollecti) {
+		_inherits(Bookmarks, _LocalStorageCollecti);
 	
-		function BookmarksCollection() {
-			_classCallCheck(this, BookmarksCollection);
+		function Bookmarks() {
+			_classCallCheck(this, Bookmarks);
 	
-			var _this = _possibleConstructorReturn(this, (BookmarksCollection.__proto__ || Object.getPrototypeOf(BookmarksCollection)).call(this));
+			var _this = _possibleConstructorReturn(this, (Bookmarks.__proto__ || Object.getPrototypeOf(Bookmarks)).call(this));
 	
 			_this.setUpSearchDispatcherEvents();
 			_this.setUpModelHooks();
@@ -28990,7 +28990,7 @@
 			return _this;
 		}
 	
-		_createClass(BookmarksCollection, [{
+		_createClass(Bookmarks, [{
 			key: 'defaultModels',
 			value: function defaultModels() {
 				return [{
@@ -29094,10 +29094,10 @@
 			}
 		}]);
 	
-		return BookmarksCollection;
+		return Bookmarks;
 	}(_localstorage2.default);
 	
-	exports.default = BookmarksCollection;
+	exports.default = Bookmarks;
 
 /***/ },
 /* 258 */
@@ -39695,7 +39695,7 @@
 		_createClass(DetailPage, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _context = context,
+				var _context = this.context,
 				    bookmarks = _context.bookmarks,
 				    router = _context.router;
 				var _props = props,
@@ -40628,7 +40628,7 @@
 		_createClass(EditPage, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _context = context,
+				var _context = this.context,
 				    bookmarks = _context.bookmarks,
 				    router = _context.router;
 				var _props = props,

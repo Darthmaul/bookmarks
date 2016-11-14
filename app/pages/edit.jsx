@@ -15,7 +15,7 @@ export default class EditPage extends React.Component {
 	}
 
 	componentDidMount() {
-		const { bookmarks, router } = context;
+		const { bookmarks, router } = this.context;
 		const { params: { id } } = props;
 		const bookmark = bookmarks.get(id);
 

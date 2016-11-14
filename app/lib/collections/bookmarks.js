@@ -17,7 +17,7 @@ export const validator = {
 	}
 };
 
-export default class BookmarksCollection extends LocalStorageCollection {
+export default class Bookmarks extends LocalStorageCollection {
 
 	constructor() {
 		super();
