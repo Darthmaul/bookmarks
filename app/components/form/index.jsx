@@ -105,7 +105,7 @@ export default class BookmarkFormComponent extends React.Component {
 				{this.renderError('url')}
 				<textarea ref="text" defaultValue={bookmark ? bookmark.text : ''} placeholder="text" type="text" className="field" />
 				{this.renderError('text')}
-				<input onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} ref="tags" placeholder="tags (enter to add)" type="text" className="field" />
+				<input onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} ref="tags" placeholder="tags (enter to add)" type="text" className="field field--tags" />
 				{this.renderError('tags')}
 				{this.renderTags()}
 				<div className="controls">

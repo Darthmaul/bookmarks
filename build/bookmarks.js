@@ -28652,7 +28652,7 @@
 					this.renderError('url'),
 					_react2.default.createElement('textarea', { ref: 'text', defaultValue: bookmark ? bookmark.text : '', placeholder: 'text', type: 'text', className: 'field' }),
 					this.renderError('text'),
-					_react2.default.createElement('input', { onKeyDown: this.tagsFieldKeyDownHandler.bind(this), ref: 'tags', placeholder: 'tags (enter to add)', type: 'text', className: 'field' }),
+					_react2.default.createElement('input', { onKeyDown: this.tagsFieldKeyDownHandler.bind(this), ref: 'tags', placeholder: 'tags (enter to add)', type: 'text', className: 'field field--tags' }),
 					this.renderError('tags'),
 					this.renderTags(),
 					_react2.default.createElement(
@@ -28719,7 +28719,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-form {\n  padding: 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n  .bookmark-form .field {\n    margin-bottom: 10px; }\n  .bookmark-form .field-error {\n    font-size: 70%;\n    display: block;\n    margin-bottom: 10px;\n    background: #f8f8f8; }\n  .bookmark-form .tags-input__tags {\n    margin: 0;\n    padding: 0;\n    margin-bottom: 10px; }\n  .bookmark-form .tags-input__tag {\n    margin-top: 0px; }\n    .bookmark-form .tags-input__tag:first-child {\n      margin-left: 0px; }\n", ""]);
+	exports.push([module.id, ".bookmark-form {\n  padding: 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n  .bookmark-form .field {\n    margin-bottom: 10px; }\n  .bookmark-form .field--tags {\n    margin-bottom: 0px; }\n  .bookmark-form .field-error {\n    font-size: 70%;\n    display: block;\n    margin-bottom: 10px;\n    background: #f8f8f8; }\n  .bookmark-form .tags-input__tags {\n    margin: 10px 0;\n    padding: 0; }\n  .bookmark-form .tags-input__tag {\n    margin-top: 0px; }\n    .bookmark-form .tags-input__tag:first-child {\n      margin-left: 0px; }\n", ""]);
 	
 	// exports
 
@@ -29029,19 +29029,22 @@
 					url: 'https://www.flickr.com/photos/fergusruston/',
 					domain: 'www.flickr.com',
 					text: 'Go see it on Flickr!',
-					tags: ['default bookmark', 'photography']
+					tags: ['default bookmark', 'photography'],
+					slug: 'some-of-my-photography'
 				}, {
 					title: 'Github profile',
 					url: 'http://github.com/ergusto',
 					domain: 'www.github.com',
 					notes: 'You can see this project on Github.',
-					tags: ['default bookmark']
+					tags: ['default bookmark'],
+					slug: 'github-profile'
 				}, {
 					title: 'Twitter profile',
 					url: 'http://twitter.com/ergusto',
 					domain: 'www.twitter.com',
 					notes: 'Tweet terwoo',
-					tags: ['default bookmark']
+					tags: ['default bookmark'],
+					slug: 'twitter-profile'
 				}];
 			}
 		}, {

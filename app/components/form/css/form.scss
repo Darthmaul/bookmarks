@@ -7,6 +7,10 @@
 		margin-bottom: 10px;
 	}
 
+	.field--tags {
+		margin-bottom: 0px;
+	}
+
 	.field-error {
 		font-size: 70%;
 		display: block;
@@ -15,9 +19,8 @@
 	}
 
 	.tags-input__tags {
-		margin: 0;
+		margin: 10px 0;
 		padding: 0;
-		margin-bottom: 10px;
 	}
 
 	.tags-input__tag {

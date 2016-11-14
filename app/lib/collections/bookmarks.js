@@ -38,21 +38,24 @@ export default class Bookmarks extends LocalStorageCollection {
 				url: 'https://www.flickr.com/photos/fergusruston/',
 				domain: 'www.flickr.com',
 				text: 'Go see it on Flickr!',
-				tags: ['default bookmark', 'photography']
+				tags: ['default bookmark', 'photography'],
+				slug: 'some-of-my-photography'
 			},
 			{
 				title: 'Github profile',
 				url: 'http://github.com/ergusto', 
 				domain: 'www.github.com',
 				notes: 'You can see this project on Github.',
-				tags: ['default bookmark']
+				tags: ['default bookmark'],
+				slug: 'github-profile'
 			},
 			{
 				title: 'Twitter profile',
 				url: 'http://twitter.com/ergusto', 
 				domain: 'www.twitter.com',
 				notes: 'Tweet terwoo',
-				tags: ['default bookmark']
+				tags: ['default bookmark'],
+				slug: 'twitter-profile'
 			}
 		]
 	}
