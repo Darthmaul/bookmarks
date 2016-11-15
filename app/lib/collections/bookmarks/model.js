@@ -1,6 +1,6 @@
-import Model from './base/model.js';
+import Model from '../base/model.js';
 
-export default class Bookmark extends Model {
+export default class BookmarkModel extends Model {
 
 	getDetailUrl() {
 		return "/bookmark/" + this.id + '/' + this.slug;

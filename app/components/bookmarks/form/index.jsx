@@ -1,5 +1,5 @@
 import React from 'react';
-import * as _ from '../../lib/tools.js';
+import * as _ from '../../../lib/tools.js';
 
 // import styles for this component
 require('!style!css!sass!./css/form.scss');
@@ -31,7 +31,7 @@ export default class BookmarkFormComponent extends React.Component {
 
 	submitHandler(event) {
 		event.preventDefault();
-		let { bookmark } = this.props;
+		const { bookmark } = this.props;
 		const { bookmarks, router } = this.context;
 		const { title, url, tags, text } = this.refs;
 		const titleValue = title.value.trim();

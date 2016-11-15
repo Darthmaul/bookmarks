@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NotFoundComponent } from '../errors.jsx';
+import { NotFoundComponent } from '../../errors.jsx';
 import BookmarkItemComponent from '../item/index.jsx';
 import BookmarkOptionsComponent from '../options/index.jsx';
 

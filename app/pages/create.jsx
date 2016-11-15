@@ -1,6 +1,6 @@
 import React from 'react';
-import FormComponent from '../components/form/index.jsx';
+import CreateComponent from '../components/create/index.jsx';
 
-const CreatePage = () => <FormComponent />;
+const CreatePage = () => <CreateComponent />;
 
 export default CreatePage;

@@ -1,9 +1,9 @@
 import JsSearch from 'js-search';
-import * as _ from '../tools.js';
 
-import LocalStorageCollection from './base/localstorage.js';
-import Bookmark from './bookmark.js';
+import LocalStorageCollection from '../base/localstorage.js';
+import * as _ from '../../tools.js';
 
+import BookmarkModel from './model.js';
 import defaultBookmarks from './defaults.js';
 import bookmarkValidator from './validators.js';
 
@@ -14,11 +14,14 @@ export default class Bookmarks extends LocalStorageCollection {
 
 		this.setUpSearchDispatcherEvents();
 		this.setUpModelHooks();
-		this.validator = bookmarkValidator;
 	}
 
 	get model() {
-		return Bookmark;
+		return BookmarkModel;
+	}
+
+	get validator() {
+		return bookmarkValidator;
 	}
 
 	defaultModels() {
@@ -41,7 +44,7 @@ export default class Bookmarks extends LocalStorageCollection {
 		this.preCreate(model => {
 			model.date = new Date;
 
-			// prepend 'http://' to model.url if it isn't at beginning of string
+			// prepend 'http://' to model.url if it isn't already at beginning of string
 			model.url = _.prependHttp(model.url);
 
 			// add url properties to model;

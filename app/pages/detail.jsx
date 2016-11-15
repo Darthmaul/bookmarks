@@ -1,5 +1,5 @@
 import React from 'react';
-import DetailComponent from '../components/detail/index.jsx';
+import DetailComponent from '../components/bookmarks/detail/index.jsx';
 import { NotFoundComponent } from '../components/errors.jsx';
 
 export default class DetailPage extends React.Component {

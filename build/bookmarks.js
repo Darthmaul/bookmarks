@@ -61,21 +61,26 @@
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	__webpack_require__(/*! ./lib/polyfills.js */ 256);
+	__webpack_require__(/*! ./lib/polyfills.js */ 261);
 	
-	var _bookmarks = __webpack_require__(/*! ./lib/collections/bookmarks.js */ 257);
+	var _index = __webpack_require__(/*! ./lib/collections/bookmarks/index.js */ 297);
 	
-	var _bookmarks2 = _interopRequireDefault(_bookmarks);
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _index3 = __webpack_require__(/*! ./lib/collections/lists/index.js */ 301);
+	
+	var _index4 = _interopRequireDefault(_index3);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// import generic/site wide styles
-	__webpack_require__(/*! style!css!sass!./css/site.scss */ 266);
+	__webpack_require__(/*! style!css!sass!./css/site.scss */ 275);
 	
 	function init() {
-		var bookmarks = new _bookmarks2.default();
+		var bookmarks = new _index2.default();
+		var lists = new _index4.default();
 	
-		(0, _reactDom.render)((0, _routes2.default)(bookmarks), document.getElementById('app'));
+		(0, _reactDom.render)((0, _routes2.default)(bookmarks, lists), document.getElementById('app'));
 	}
 	
 	init();
@@ -27308,31 +27313,39 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 172);
 	
-	var _tools = __webpack_require__(/*! ./lib/tools */ 231);
+	var _tools = __webpack_require__(/*! ./lib/tools */ 228);
 	
 	var _ = _interopRequireWildcard(_tools);
 	
-	var _app = __webpack_require__(/*! ./components/app.jsx */ 228);
+	var _app = __webpack_require__(/*! ./components/app.jsx */ 229);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _context = __webpack_require__(/*! ./components/context.jsx */ 251);
+	var _context = __webpack_require__(/*! ./components/context.jsx */ 240);
 	
 	var _context2 = _interopRequireDefault(_context);
 	
-	var _home = __webpack_require__(/*! ./pages/home.jsx */ 271);
+	var _home = __webpack_require__(/*! ./pages/home.jsx */ 241);
 	
 	var _home2 = _interopRequireDefault(_home);
 	
-	var _create = __webpack_require__(/*! ./pages/create.jsx */ 272);
+	var _create = __webpack_require__(/*! ./pages/create.jsx */ 248);
 	
 	var _create2 = _interopRequireDefault(_create);
 	
-	var _edit = __webpack_require__(/*! ./pages/edit.jsx */ 281);
+	var _createBookmark = __webpack_require__(/*! ./pages/create-bookmark.jsx */ 280);
+	
+	var _createBookmark2 = _interopRequireDefault(_createBookmark);
+	
+	var _createList = __webpack_require__(/*! ./pages/create-list.jsx */ 281);
+	
+	var _createList2 = _interopRequireDefault(_createList);
+	
+	var _edit = __webpack_require__(/*! ./pages/edit.jsx */ 252);
 	
 	var _edit2 = _interopRequireDefault(_edit);
 	
-	var _detail = __webpack_require__(/*! ./pages/detail.jsx */ 273);
+	var _detail = __webpack_require__(/*! ./pages/detail.jsx */ 254);
 	
 	var _detail2 = _interopRequireDefault(_detail);
 	
@@ -27340,10 +27353,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var routes = function routes(bookmarks) {
+	var routes = function routes(bookmarks, lists) {
 		return _react2.default.createElement(
 			_context2.default,
-			{ bookmarks: bookmarks },
+			{ bookmarks: bookmarks, lists: lists },
 			_react2.default.createElement(
 				_reactRouter.Router,
 				{ history: _reactRouter.hashHistory },
@@ -27352,6 +27365,8 @@
 					{ path: '/', component: _app2.default },
 					_react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default }),
 					_react2.default.createElement(_reactRouter.Route, { path: '/create', component: _create2.default }),
+					_react2.default.createElement(_reactRouter.Route, { path: '/create-bookmark', component: _createBookmark2.default }),
+					_react2.default.createElement(_reactRouter.Route, { path: '/create-list', component: _createList2.default }),
 					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug', component: _detail2.default }),
 					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug/edit', component: _edit2.default })
 				)
@@ -27363,307 +27378,6 @@
 
 /***/ },
 /* 228 */
-/*!********************************!*\
-  !*** ./app/components/app.jsx ***!
-  \********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _index = __webpack_require__(/*! ./header/index.jsx */ 229);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./app.scss */ 238);
-	
-	var AppComponent = function (_React$Component) {
-		_inherits(AppComponent, _React$Component);
-	
-		function AppComponent() {
-			_classCallCheck(this, AppComponent);
-	
-			return _possibleConstructorReturn(this, (AppComponent.__proto__ || Object.getPrototypeOf(AppComponent)).apply(this, arguments));
-		}
-	
-		_createClass(AppComponent, [{
-			key: 'render',
-			value: function render() {
-				var children = this.props.children;
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'app' },
-					_react2.default.createElement(_index2.default, null),
-					_react2.default.createElement(
-						'div',
-						{ className: 'content' },
-						children
-					)
-				);
-			}
-		}]);
-	
-		return AppComponent;
-	}(_react2.default.Component);
-	
-	exports.default = AppComponent;
-
-/***/ },
-/* 229 */
-/*!*****************************************!*\
-  !*** ./app/components/header/index.jsx ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 172);
-	
-	var _index = __webpack_require__(/*! ../search/index.jsx */ 230);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/header.scss */ 236);
-	
-	var HeaderComponent = function (_React$Component) {
-		_inherits(HeaderComponent, _React$Component);
-	
-		function HeaderComponent() {
-			_classCallCheck(this, HeaderComponent);
-	
-			return _possibleConstructorReturn(this, (HeaderComponent.__proto__ || Object.getPrototypeOf(HeaderComponent)).apply(this, arguments));
-		}
-	
-		_createClass(HeaderComponent, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'header',
-					{ className: 'site-header box' },
-					_react2.default.createElement(
-						'ul',
-						{ className: 'site-header__nav pull-right' },
-						_react2.default.createElement(
-							'li',
-							null,
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ className: 'site-header__create', to: '/create' },
-								'+'
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							null,
-							_react2.default.createElement(_index2.default, null)
-						)
-					),
-					_react2.default.createElement(
-						'h1',
-						{ className: 'site-title pull-left' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/' },
-							'Bookmarks'
-						)
-					)
-				);
-			}
-		}]);
-	
-		return HeaderComponent;
-	}(_react2.default.Component);
-	
-	exports.default = HeaderComponent;
-
-/***/ },
-/* 230 */
-/*!*****************************************!*\
-  !*** ./app/components/search/index.jsx ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 231);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/search.scss */ 232);
-	
-	var SearchComponent = function (_React$Component) {
-		_inherits(SearchComponent, _React$Component);
-	
-		function SearchComponent(props, context) {
-			_classCallCheck(this, SearchComponent);
-	
-			var _this = _possibleConstructorReturn(this, (SearchComponent.__proto__ || Object.getPrototypeOf(SearchComponent)).call(this, props, context));
-	
-			var router = _this.context.router;
-			var query = router.location.query;
-			var search = query.search;
-	
-	
-			_this.state = {
-				queryLength: search ? search.length : 0
-			};
-			return _this;
-		}
-	
-		_createClass(SearchComponent, [{
-			key: 'onSubmit',
-			value: function onSubmit(event) {
-				event.preventDefault();
-				this.search();
-			}
-		}, {
-			key: 'onKeyUp',
-			value: function onKeyUp(event) {
-				this.search();
-				this.setState({
-					queryLength: event.target.value.length
-				});
-			}
-		}, {
-			key: 'componentWillReceiveProps',
-			value: function componentWillReceiveProps(nextState, nextContext) {
-				var bookmarks = this.context.bookmarks;
-	
-				var nextRouter = nextContext.router;
-				var nextQuery = nextRouter.location.query;
-				var nextTerm = nextQuery.search;
-				var value = this.refs.search.value;
-	
-				if (nextTerm != value && value != undefined && nextTerm != undefined) {
-					this.refs.search.value = ' ';
-					this.refs.search.value = nextTerm;
-				}
-	
-				if (nextTerm == undefined) {
-					this.refs.search.value = '';
-					this.setState({ queryLength: 0 });
-				}
-			}
-		}, {
-			key: 'search',
-			value: function search() {
-				var _context = this.context,
-				    router = _context.router,
-				    bookmarks = _context.bookmarks;
-	
-				var term = this.refs.search.value;
-				var location = { pathname: '/', query: {} };
-	
-				if (term) {
-					location.query.search = term;
-				}
-	
-				router.push(location);
-			}
-		}, {
-			key: 'clearInputClickHandler',
-			value: function clearInputClickHandler(event) {
-				event.preventDefault();
-				this.refs.search.value = '';
-				this.setState({ queryLength: 0 });
-				this.search();
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var clearBtnHtml = void 0;
-				var router = this.context.router;
-	
-				var location = router.location.query;
-				var search = location.search;
-				var queryLength = this.state.queryLength;
-	
-	
-				if (queryLength > 0) clearBtnHtml = _react2.default.createElement(
-					'a',
-					{ href: '#', onClick: this.clearInputClickHandler.bind(this), className: 'search__clear' },
-					'\xD7'
-				);
-	
-				return _react2.default.createElement(
-					'form',
-					{ onSubmit: this.onSubmit.bind(this), className: 'search-form' },
-					_react2.default.createElement('input', { onKeyUp: this.onKeyUp.bind(this), placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: search }),
-					clearBtnHtml
-				);
-			}
-		}]);
-	
-		return SearchComponent;
-	}(_react2.default.Component);
-	
-	SearchComponent.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = SearchComponent;
-
-/***/ },
-/* 231 */
 /*!**************************!*\
   !*** ./app/lib/tools.js ***!
   \**************************/
@@ -27727,7 +27441,7 @@
 	}
 	
 	function generateID() {
-		return '_' + Math.random().toString(36).substr(2, 9);
+		return Math.random().toString(36).substr(2, 9);
 	}
 	
 	function validateUrl(url) {
@@ -27860,6 +27574,307 @@
 	}
 
 /***/ },
+/* 229 */
+/*!********************************!*\
+  !*** ./app/components/app.jsx ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ./header/index.jsx */ 230);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./app.scss */ 238);
+	
+	var AppComponent = function (_React$Component) {
+		_inherits(AppComponent, _React$Component);
+	
+		function AppComponent() {
+			_classCallCheck(this, AppComponent);
+	
+			return _possibleConstructorReturn(this, (AppComponent.__proto__ || Object.getPrototypeOf(AppComponent)).apply(this, arguments));
+		}
+	
+		_createClass(AppComponent, [{
+			key: 'render',
+			value: function render() {
+				var children = this.props.children;
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'app' },
+					_react2.default.createElement(_index2.default, null),
+					_react2.default.createElement(
+						'div',
+						{ className: 'content' },
+						children
+					)
+				);
+			}
+		}]);
+	
+		return AppComponent;
+	}(_react2.default.Component);
+	
+	exports.default = AppComponent;
+
+/***/ },
+/* 230 */
+/*!*****************************************!*\
+  !*** ./app/components/header/index.jsx ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 172);
+	
+	var _index = __webpack_require__(/*! ../search/index.jsx */ 231);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/header.scss */ 236);
+	
+	var HeaderComponent = function (_React$Component) {
+		_inherits(HeaderComponent, _React$Component);
+	
+		function HeaderComponent() {
+			_classCallCheck(this, HeaderComponent);
+	
+			return _possibleConstructorReturn(this, (HeaderComponent.__proto__ || Object.getPrototypeOf(HeaderComponent)).apply(this, arguments));
+		}
+	
+		_createClass(HeaderComponent, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'header',
+					{ className: 'site-header box' },
+					_react2.default.createElement(
+						'ul',
+						{ className: 'site-header__nav pull-right' },
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ className: 'site-header__create', to: '/create' },
+								'+'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(_index2.default, null)
+						)
+					),
+					_react2.default.createElement(
+						'h1',
+						{ className: 'site-title pull-left' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/' },
+							'Bookmarks'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return HeaderComponent;
+	}(_react2.default.Component);
+	
+	exports.default = HeaderComponent;
+
+/***/ },
+/* 231 */
+/*!*****************************************!*\
+  !*** ./app/components/search/index.jsx ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/search.scss */ 232);
+	
+	var SearchComponent = function (_React$Component) {
+		_inherits(SearchComponent, _React$Component);
+	
+		function SearchComponent(props, context) {
+			_classCallCheck(this, SearchComponent);
+	
+			var _this = _possibleConstructorReturn(this, (SearchComponent.__proto__ || Object.getPrototypeOf(SearchComponent)).call(this, props, context));
+	
+			var router = _this.context.router;
+			var query = router.location.query;
+			var search = query.search;
+	
+	
+			_this.state = {
+				queryLength: search ? search.length : 0
+			};
+			return _this;
+		}
+	
+		_createClass(SearchComponent, [{
+			key: 'onSubmit',
+			value: function onSubmit(event) {
+				event.preventDefault();
+				this.search();
+			}
+		}, {
+			key: 'onKeyUp',
+			value: function onKeyUp(event) {
+				this.search();
+				this.setState({
+					queryLength: event.target.value.length
+				});
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextState, nextContext) {
+				var bookmarks = this.context.bookmarks;
+	
+				var nextRouter = nextContext.router;
+				var nextQuery = nextRouter.location.query;
+				var nextTerm = nextQuery.search;
+				var value = this.refs.search.value;
+	
+				if (nextTerm != value && value != undefined && nextTerm != undefined) {
+					this.refs.search.value = ' ';
+					this.refs.search.value = nextTerm;
+				}
+	
+				if (nextTerm == undefined) {
+					this.refs.search.value = '';
+					this.setState({ queryLength: 0 });
+				}
+			}
+		}, {
+			key: 'search',
+			value: function search() {
+				var _context = this.context,
+				    router = _context.router,
+				    bookmarks = _context.bookmarks;
+	
+				var term = this.refs.search.value;
+				var location = { pathname: '/', query: {} };
+	
+				if (term) {
+					location.query.search = term;
+				}
+	
+				router.push(location);
+			}
+		}, {
+			key: 'clearInputClickHandler',
+			value: function clearInputClickHandler(event) {
+				event.preventDefault();
+				this.refs.search.value = '';
+				this.setState({ queryLength: 0 });
+				this.search();
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var clearBtnHtml = void 0;
+				var router = this.context.router;
+	
+				var location = router.location.query;
+				var search = location.search;
+				var queryLength = this.state.queryLength;
+	
+	
+				if (queryLength > 0) clearBtnHtml = _react2.default.createElement(
+					'a',
+					{ href: '#', onClick: this.clearInputClickHandler.bind(this), className: 'search__clear' },
+					'\xD7'
+				);
+	
+				return _react2.default.createElement(
+					'form',
+					{ onSubmit: this.onSubmit.bind(this), className: 'search-form' },
+					_react2.default.createElement('input', { onKeyUp: this.onKeyUp.bind(this), placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: search }),
+					clearBtnHtml
+				);
+			}
+		}]);
+	
+		return SearchComponent;
+	}(_react2.default.Component);
+	
+	SearchComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = SearchComponent;
+
+/***/ },
 /* 232 */
 /*!***********************************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/search/css/search.scss ***!
@@ -27900,7 +27915,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".search-form {\n  margin: 0;\n  font-size: 80%;\n  position: relative; }\n  .search-form .field {\n    height: 2.4rem;\n    border: 0px;\n    border-left: 1px solid #ccc;\n    padding: 0 25px 0 10px;\n    max-width: 130px;\n    border-radius: 0px;\n    display: inline-block; }\n    .search-form .field:focus {\n      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n    @media screen and (min-width: 376px) {\n      .search-form .field {\n        max-width: 160px; } }\n  .search-form .search__clear {\n    display: inline-block;\n    font-size: 1.2rem;\n    text-decoration: none;\n    line-height: 2.4rem;\n    position: absolute;\n    right: 10px;\n    opacity: 0.5; }\n    .search-form .search__clear:hover {\n      opacity: 0.8; }\n", ""]);
+	exports.push([module.id, ".search-form {\n  margin: 0;\n  font-size: 80%;\n  position: relative; }\n  .search-form .field {\n    height: 2.4rem;\n    border: 0px;\n    border-left: 1px solid #ccc;\n    padding: 0 25px 0 10px;\n    margin: 0px;\n    max-width: 130px;\n    border-radius: 0px;\n    display: inline-block; }\n    .search-form .field:focus {\n      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n    @media screen and (min-width: 376px) {\n      .search-form .field {\n        max-width: 160px; } }\n  .search-form .search__clear {\n    display: inline-block;\n    font-size: 1.2rem;\n    text-decoration: none;\n    line-height: 2.4rem;\n    position: absolute;\n    right: 10px;\n    opacity: 0.5; }\n    .search-form .search__clear:hover {\n      opacity: 0.8; }\n", ""]);
 	
 	// exports
 
@@ -28311,8 +28326,200 @@
 
 
 /***/ },
-/* 240 */,
+/* 240 */
+/*!************************************!*\
+  !*** ./app/components/context.jsx ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ContextComponent = function (_React$Component) {
+		_inherits(ContextComponent, _React$Component);
+	
+		function ContextComponent() {
+			_classCallCheck(this, ContextComponent);
+	
+			return _possibleConstructorReturn(this, (ContextComponent.__proto__ || Object.getPrototypeOf(ContextComponent)).apply(this, arguments));
+		}
+	
+		_createClass(ContextComponent, [{
+			key: 'getChildContext',
+			value: function getChildContext() {
+				var _props = this.props,
+				    bookmarks = _props.bookmarks,
+				    lists = _props.lists;
+	
+				return { bookmarks: bookmarks, lists: lists };
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return this.props.children;
+			}
+		}]);
+	
+		return ContextComponent;
+	}(_react2.default.Component);
+	
+	ContextComponent.childContextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		lists: _react2.default.PropTypes.object
+	};
+	exports.default = ContextComponent;
+
+/***/ },
 /* 241 */
+/*!****************************!*\
+  !*** ./app/pages/home.jsx ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../components/list/index.jsx */ 242);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var HomePage = function (_React$Component) {
+		_inherits(HomePage, _React$Component);
+	
+		function HomePage(props, context) {
+			_classCallCheck(this, HomePage);
+	
+			var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props, context));
+	
+			var bookmarks = _this.context.bookmarks;
+	
+	
+			_this.state = {
+				bookmarks: [],
+				isMounted: false
+			};
+	
+			_this.addBookmarks = _this.addModels.bind(_this);
+			return _this;
+		}
+	
+		_createClass(HomePage, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
+	
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+				var query = router.location.query;
+	
+				var term = query.search;
+				bookmarks.onSearch(this.addBookmarks);
+				this.setState({
+					isMounted: true
+				}, function () {
+					if (term) {
+						_this2.search(term);
+					} else {
+						_this2.addModels(bookmarks.all());
+					}
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				var bookmarks = this.context.bookmarks;
+	
+				bookmarks.removeSearch(this.addBookmarks);
+				this.setState({
+					isMounted: false
+				});
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextState, nextContext) {
+				var bookmarks = this.context.bookmarks;
+				var router = nextContext.router;
+				var query = router.location.query;
+	
+				var term = query.search;
+				if (term) {
+					this.search(term);
+				} else {
+					this.addModels(bookmarks.all());
+				}
+			}
+		}, {
+			key: 'search',
+			value: function search(term) {
+				var bookmarks = this.context.bookmarks;
+	
+				bookmarks.search(term);
+			}
+		}, {
+			key: 'addModels',
+			value: function addModels(models) {
+				// https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
+				if (this.state.isMounted) {
+					this.setState({
+						bookmarks: models
+					});
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var bookmarks = this.state.bookmarks;
+	
+				return _react2.default.createElement(_index2.default, { bookmarks: bookmarks });
+			}
+		}]);
+	
+		return HomePage;
+	}(_react2.default.Component);
+	
+	HomePage.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = HomePage;
+
+/***/ },
+/* 242 */
 /*!***************************************!*\
   !*** ./app/components/list/index.jsx ***!
   \***************************************/
@@ -28330,7 +28537,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _index = __webpack_require__(/*! ../item/index.jsx */ 275);
+	var _index = __webpack_require__(/*! ../item/index.jsx */ 243);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -28343,7 +28550,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/list.scss */ 245);
+	__webpack_require__(/*! style!css!sass!./css/list.scss */ 246);
 	
 	var ListComponent = function (_React$Component) {
 		_inherits(ListComponent, _React$Component);
@@ -28388,8 +28595,225 @@
 	exports.default = ListComponent;
 
 /***/ },
-/* 242 */,
 /* 243 */
+/*!***************************************!*\
+  !*** ./app/components/item/index.jsx ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 172);
+	
+	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/item.scss */ 244);
+	
+	var BookmarkItemComponent = function (_React$Component) {
+		_inherits(BookmarkItemComponent, _React$Component);
+	
+		function BookmarkItemComponent(props, context) {
+			_classCallCheck(this, BookmarkItemComponent);
+	
+			var _this = _possibleConstructorReturn(this, (BookmarkItemComponent.__proto__ || Object.getPrototypeOf(BookmarkItemComponent)).call(this, props, context));
+	
+			var shouldShowTags = props.shouldShowTags,
+			    shouldShowImage = props.shouldShowImage,
+			    shouldShowText = props.shouldShowText;
+	
+	
+			_this.state = {
+				shouldShowTags: shouldShowTags || false,
+				shouldShowImage: shouldShowImage || false,
+				shouldShowText: shouldShowText || false
+			};
+			return _this;
+		}
+	
+		_createClass(BookmarkItemComponent, [{
+			key: 'toggleTags',
+			value: function toggleTags(event) {
+				event.preventDefault();
+				this.setState({
+					shouldShowTags: !this.state.shouldShowTags
+				});
+			}
+		}, {
+			key: 'toggleImage',
+			value: function toggleImage(event) {
+				event.preventDefault();
+				this.setState({
+					shouldShowImage: !this.state.shouldShowImage
+				});
+			}
+		}, {
+			key: 'toggleText',
+			value: function toggleText(event) {
+				event.preventDefault();
+				this.setState({
+					shouldShowText: !this.state.shouldShowText
+				});
+			}
+		}, {
+			key: 'renderTags',
+			value: function renderTags() {
+				var bookmark = this.props.bookmark;
+	
+				var tags = bookmark.tags.map(function (tag) {
+					return _react2.default.createElement(
+						_reactRouter.Link,
+						{ to: { pathName: '/', query: { search: tag } }, key: tag, className: 'bookmark-item__tag tag' },
+						tag
+					);
+				});
+				return _react2.default.createElement(
+					'div',
+					{ className: 'bookmark-item__tags' },
+					tags
+				);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var tagsHtml = void 0,
+				    tagsToggle = void 0,
+				    imgHtml = void 0,
+				    imgToggle = void 0,
+				    textHtml = void 0,
+				    textToggle = void 0,
+				    editOptions = void 0;
+				var bookmark = this.props.bookmark;
+				var _state = this.state,
+				    shouldShowTags = _state.shouldShowTags,
+				    shouldShowImage = _state.shouldShowImage,
+				    shouldShowText = _state.shouldShowText;
+	
+	
+				if (bookmark.tags && bookmark.tags.length) {
+					if (shouldShowTags) {
+						tagsHtml = this.renderTags();
+					}
+	
+					tagsToggle = _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: '#', onClick: this.toggleTags.bind(this) },
+							_react2.default.createElement('i', { className: 'ion-ios-pricetags' })
+						)
+					);
+				}
+	
+				if (_.validateImageUrl(bookmark.url)) {
+					if (shouldShowImage) {
+						imgHtml = _react2.default.createElement(
+							'div',
+							{ className: 'bookmark-item__image-wrap' },
+							_react2.default.createElement('img', { className: 'bookmark-item__image', src: bookmark.url })
+						);
+					}
+	
+					imgToggle = _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: '#', onClick: this.toggleImage.bind(this) },
+							_react2.default.createElement('i', { className: 'ion-image' })
+						)
+					);
+				}
+	
+				if (bookmark.text && bookmark.text.length) {
+					if (shouldShowText) {
+						textHtml = _react2.default.createElement(
+							'div',
+							{ className: 'bookmark-item__text' },
+							bookmark.text
+						);
+					}
+	
+					textToggle = _react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: '#', onClick: this.toggleText.bind(this) },
+							_react2.default.createElement('i', { className: 'ion-document-text' })
+						)
+					);
+				}
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'bookmark-item box' },
+					_react2.default.createElement(
+						'header',
+						{ className: 'bookmark-item__header' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ className: 'bookmark-item__title', to: bookmark.getDetailUrl() },
+							bookmark.title
+						)
+					),
+					imgHtml,
+					_react2.default.createElement(
+						'div',
+						{ className: 'bookmark-item__options' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'bookmark-item__options-toggles' },
+							textToggle,
+							imgToggle,
+							tagsToggle
+						),
+						_react2.default.createElement(
+							'a',
+							{ className: 'bookmark-item__domain', href: bookmark.url },
+							bookmark.domain
+						)
+					),
+					tagsHtml,
+					textHtml
+				);
+			}
+		}]);
+	
+		return BookmarkItemComponent;
+	}(_react2.default.Component);
+	
+	BookmarkItemComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = BookmarkItemComponent;
+
+/***/ },
+/* 244 */
 /*!*******************************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/item/css/item.scss ***!
   \*******************************************************************************************/
@@ -28398,7 +28822,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./item.scss */ 244);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./item.scss */ 245);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
@@ -28418,7 +28842,7 @@
 	}
 
 /***/ },
-/* 244 */
+/* 245 */
 /*!**************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./app/components/item/css/item.scss ***!
   \**************************************************************************/
@@ -28435,7 +28859,7 @@
 
 
 /***/ },
-/* 245 */
+/* 246 */
 /*!*******************************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/list/css/list.scss ***!
   \*******************************************************************************************/
@@ -28444,7 +28868,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./list.scss */ 246);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./list.scss */ 247);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
@@ -28464,7 +28888,7 @@
 	}
 
 /***/ },
-/* 246 */
+/* 247 */
 /*!**************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./app/components/list/css/list.scss ***!
   \**************************************************************************/
@@ -28481,365 +28905,61 @@
 
 
 /***/ },
-/* 247 */
-/*!***************************************!*\
-  !*** ./app/components/form/index.jsx ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 231);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/form.scss */ 249);
-	
-	var BookmarkFormComponent = function (_React$Component) {
-		_inherits(BookmarkFormComponent, _React$Component);
-	
-		function BookmarkFormComponent(props, context) {
-			_classCallCheck(this, BookmarkFormComponent);
-	
-			var _this = _possibleConstructorReturn(this, (BookmarkFormComponent.__proto__ || Object.getPrototypeOf(BookmarkFormComponent)).call(this, props, context));
-	
-			var bookmark = _this.props.bookmark;
-	
-	
-			_this.state = {
-				errors: {},
-				tags: bookmark ? bookmark.tags : []
-			};
-			return _this;
-		}
-	
-		_createClass(BookmarkFormComponent, [{
-			key: 'renderError',
-			value: function renderError(field) {
-				var errors = this.state.errors;
-	
-				var error = errors[field];
-				if (error) {
-					return _react2.default.createElement(
-						'span',
-						{ className: 'field-error' },
-						error
-					);
-				}
-			}
-		}, {
-			key: 'submitHandler',
-			value: function submitHandler(event) {
-				event.preventDefault();
-				var bookmark = this.props.bookmark;
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-				var _refs = this.refs,
-				    title = _refs.title,
-				    url = _refs.url,
-				    tags = _refs.tags,
-				    text = _refs.text;
-	
-				var titleValue = title.value.trim();
-				var urlValue = url.value.trim();
-				var textValue = text.value.trim();
-	
-				var properties = {
-					title: titleValue,
-					url: urlValue,
-					tags: this.state.tags,
-					text: textValue
-				};
-	
-				var _bookmarks$validate = bookmarks.validate(properties),
-				    errors = _bookmarks$validate.errors,
-				    validated = _bookmarks$validate.validated;
-	
-				if (validated) {
-					var saved = bookmark ? bookmark.update(properties) : bookmarks.create(properties);
-					router.push(saved.getDetailUrl());
-				} else {
-					this.setState({ errors: errors });
-				}
-			}
-		}, {
-			key: 'removeTag',
-			value: function removeTag(tag, event) {
-				event.preventDefault();
-				var tags = this.state.tags;
-	
-				var index = tags.indexOf(tag.trim());
-				if (index >= 0) {
-					tags.splice(index, 1);
-				}
-				this.setState({ tags: tags });
-			}
-		}, {
-			key: 'renderTags',
-			value: function renderTags() {
-				var _this2 = this;
-	
-				var tags = this.state.tags;
-	
-				return _react2.default.createElement(
-					'ul',
-					{ className: 'tags-input__tags' },
-					tags.map(function (tag, index) {
-						return _react2.default.createElement(
-							'li',
-							{ key: index, className: 'tags-input__tag tag' },
-							tag,
-							_react2.default.createElement(
-								'a',
-								{ onClick: _this2.removeTag.bind(_this2, tag), href: '#', className: 'tag-remove' },
-								'\xD7'
-							)
-						);
-					})
-				);
-			}
-		}, {
-			key: 'tagsFieldKeyDownHandler',
-			value: function tagsFieldKeyDownHandler(event) {
-				if (event.keyCode == 13 || event.charCode == 13) {
-					event.preventDefault();
-					var tag = this.refs.tags.value;
-					if (tag.trim()) {
-						var tags = this.state.tags;
-	
-						if (tags.indexOf(tag.trim()) == -1) {
-							tags.push(tag);
-							this.refs.tags.value = '';
-							this.setState({ tags: tags });
-						}
-					}
-				}
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var bookmark = this.props.bookmark;
-	
-	
-				return _react2.default.createElement(
-					'form',
-					{ onSubmit: this.submitHandler.bind(this), className: 'bookmark-form box' },
-					_react2.default.createElement('input', { ref: 'title', defaultValue: bookmark ? bookmark.title : '', placeholder: 'title', type: 'text', className: 'field' }),
-					this.renderError('title'),
-					_react2.default.createElement('input', { ref: 'url', defaultValue: bookmark ? bookmark.url : '', placeholder: 'url', type: 'text', className: 'field', autoCapitalize: 'none' }),
-					this.renderError('url'),
-					_react2.default.createElement('textarea', { ref: 'text', defaultValue: bookmark ? bookmark.text : '', placeholder: 'text', type: 'text', className: 'field' }),
-					this.renderError('text'),
-					_react2.default.createElement('input', { onKeyDown: this.tagsFieldKeyDownHandler.bind(this), ref: 'tags', placeholder: 'tags (enter to add)', type: 'text', className: 'field field--tags' }),
-					this.renderError('tags'),
-					this.renderTags(),
-					_react2.default.createElement(
-						'div',
-						{ className: 'controls' },
-						_react2.default.createElement(
-							'button',
-							{ type: 'submit', className: 'btn' },
-							bookmark ? 'update' : 'create'
-						)
-					)
-				);
-			}
-		}]);
-	
-		return BookmarkFormComponent;
-	}(_react2.default.Component);
-	
-	BookmarkFormComponent.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = BookmarkFormComponent;
-
-/***/ },
 /* 248 */
-/*!*******************************************!*\
-  !*** ./app/lib/collections/validators.js ***!
-  \*******************************************/
+/*!******************************!*\
+  !*** ./app/pages/create.jsx ***!
+  \******************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
-	
-	var _tools = __webpack_require__(/*! ../tools.js */ 231);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	var bookmarkValidator = {
-		title: function title(_title) {
-			if (!_title.trim()) return 'Please enter a title';
-		},
-		url: function url(_url) {
-			if (!_url.trim()) return 'Please enter a URL';
-			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
-		}
-	};
-	
-	exports.default = bookmarkValidator;
-
-/***/ },
-/* 249 */
-/*!*******************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/form/css/form.scss ***!
-  \*******************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./form.scss */ 250);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./form.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./form.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 250 */
-/*!**************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/form/css/form.scss ***!
-  \**************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".bookmark-form {\n  padding: 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n  .bookmark-form .field {\n    margin-bottom: 10px; }\n  .bookmark-form .field--tags {\n    margin-bottom: 0px; }\n  .bookmark-form .field-error {\n    font-size: 70%;\n    display: block;\n    margin-bottom: 10px;\n    background: #f8f8f8; }\n  .bookmark-form .tags-input__tags {\n    margin: 10px 0;\n    padding: 0; }\n  .bookmark-form .tags-input__tag {\n    margin-top: 0px; }\n    .bookmark-form .tags-input__tag:first-child {\n      margin-left: 0px; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 251 */
-/*!************************************!*\
-  !*** ./app/components/context.jsx ***!
-  \************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var ContextComponent = function (_React$Component) {
-		_inherits(ContextComponent, _React$Component);
-	
-		function ContextComponent() {
-			_classCallCheck(this, ContextComponent);
-	
-			return _possibleConstructorReturn(this, (ContextComponent.__proto__ || Object.getPrototypeOf(ContextComponent)).apply(this, arguments));
-		}
-	
-		_createClass(ContextComponent, [{
-			key: 'getChildContext',
-			value: function getChildContext() {
-				var bookmarks = this.props.bookmarks;
-	
-				return { bookmarks: bookmarks };
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return this.props.children;
-			}
-		}]);
-	
-		return ContextComponent;
-	}(_react2.default.Component);
-	
-	ContextComponent.childContextTypes = {
-		bookmarks: _react2.default.PropTypes.object
-	};
-	exports.default = ContextComponent;
-
-/***/ },
-/* 252 */
-/*!*****************************************!*\
-  !*** ./app/components/detail/index.jsx ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _errors = __webpack_require__(/*! ../errors.jsx */ 253);
-	
-	var _index = __webpack_require__(/*! ../item/index.jsx */ 275);
+	var _index = __webpack_require__(/*! ../components/create/index.jsx */ 277);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _index3 = __webpack_require__(/*! ../options/index.jsx */ 274);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var _index4 = _interopRequireDefault(_index3);
+	var CreatePage = function CreatePage() {
+	  return _react2.default.createElement(_index2.default, null);
+	};
+	
+	exports.default = CreatePage;
+
+/***/ },
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */
+/*!****************************!*\
+  !*** ./app/pages/edit.jsx ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../components/bookmarks/form/index.jsx */ 291);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -28849,41 +28969,51 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/detail.scss */ 254);
+	var EditPage = function (_React$Component) {
+		_inherits(EditPage, _React$Component);
 	
-	var DetailComponent = function (_React$Component) {
-		_inherits(DetailComponent, _React$Component);
+		function EditPage(props, context) {
+			_classCallCheck(this, EditPage);
 	
-		function DetailComponent() {
-			_classCallCheck(this, DetailComponent);
+			var _this = _possibleConstructorReturn(this, (EditPage.__proto__ || Object.getPrototypeOf(EditPage)).call(this, props, context));
 	
-			return _possibleConstructorReturn(this, (DetailComponent.__proto__ || Object.getPrototypeOf(DetailComponent)).apply(this, arguments));
+			_this.state = { bookmark: false };
+			return _this;
 		}
 	
-		_createClass(DetailComponent, [{
+		_createClass(EditPage, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+				var id = this.props.params.id;
+	
+				var bookmark = bookmarks.get(id);
+	
+				this.setState({ bookmark: bookmark });
+			}
+		}, {
 			key: 'render',
 			value: function render() {
-				var bookmark = this.props.bookmark;
-	
+				var bookmark = this.state.bookmark;
 	
 				if (bookmark) {
-					return _react2.default.createElement(
-						'div',
-						{ className: 'bookmark-detail' },
-						_react2.default.createElement(_index4.default, { bookmark: bookmark }),
-						_react2.default.createElement(_index2.default, { shouldShowTags: true, shouldShowImage: true, shouldShowText: true, bookmark: bookmark })
-					);
+					return _react2.default.createElement(_index2.default, { bookmark: bookmark });
 				} else {
 					return _react2.default.createElement(_errors.NotFoundComponent, null);
 				}
 			}
 		}]);
 	
-		return DetailComponent;
+		return EditPage;
 	}(_react2.default.Component);
 	
-	exports.default = DetailComponent;
+	EditPage.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = EditPage;
 
 /***/ },
 /* 253 */
@@ -28915,52 +29045,91 @@
 
 /***/ },
 /* 254 */
-/*!***********************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/detail/css/detail.scss ***!
-  \***********************************************************************************************/
+/*!******************************!*\
+  !*** ./app/pages/detail.jsx ***!
+  \******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	'use strict';
 	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./detail.scss */ 255);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./detail.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./detail.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../components/bookmarks/detail/index.jsx */ 282);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var DetailPage = function (_React$Component) {
+		_inherits(DetailPage, _React$Component);
+	
+		function DetailPage(props, context) {
+			_classCallCheck(this, DetailPage);
+	
+			var _this = _possibleConstructorReturn(this, (DetailPage.__proto__ || Object.getPrototypeOf(DetailPage)).call(this, props, context));
+	
+			_this.state = { bookmark: false };
+			return _this;
 		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
+	
+		_createClass(DetailPage, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+				var id = this.props.params.id;
+	
+				var bookmark = bookmarks.get(id);
+	
+				this.setState({ bookmark: bookmark });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var bookmark = this.state.bookmark;
+	
+				if (bookmark) {
+					return _react2.default.createElement(_index2.default, { bookmark: bookmark });
+				} else {
+					return _react2.default.createElement(_errors.NotFoundComponent, null);
+				}
+			}
+		}]);
+	
+		return DetailPage;
+	}(_react2.default.Component);
+	
+	DetailPage.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = DetailPage;
 
 /***/ },
-/* 255 */
-/*!******************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/detail/css/detail.scss ***!
-  \******************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".bookmark-detail__options i {\n  font-size: 1.1rem;\n  margin-right: 20px; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 256 */
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */
 /*!******************************!*\
   !*** ./app/lib/polyfills.js ***!
   \******************************/
@@ -28986,151 +29155,8 @@
 	}
 
 /***/ },
-/* 257 */
-/*!******************************************!*\
-  !*** ./app/lib/collections/bookmarks.js ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _jsSearch = __webpack_require__(/*! js-search */ 258);
-	
-	var _jsSearch2 = _interopRequireDefault(_jsSearch);
-	
-	var _tools = __webpack_require__(/*! ../tools.js */ 231);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	var _localstorage = __webpack_require__(/*! ./base/localstorage.js */ 277);
-	
-	var _localstorage2 = _interopRequireDefault(_localstorage);
-	
-	var _bookmark = __webpack_require__(/*! ./bookmark.js */ 270);
-	
-	var _bookmark2 = _interopRequireDefault(_bookmark);
-	
-	var _defaults = __webpack_require__(/*! ./defaults.js */ 282);
-	
-	var _defaults2 = _interopRequireDefault(_defaults);
-	
-	var _validators = __webpack_require__(/*! ./validators.js */ 248);
-	
-	var _validators2 = _interopRequireDefault(_validators);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Bookmarks = function (_LocalStorageCollecti) {
-		_inherits(Bookmarks, _LocalStorageCollecti);
-	
-		function Bookmarks() {
-			_classCallCheck(this, Bookmarks);
-	
-			var _this = _possibleConstructorReturn(this, (Bookmarks.__proto__ || Object.getPrototypeOf(Bookmarks)).call(this));
-	
-			_this.setUpSearchDispatcherEvents();
-			_this.setUpModelHooks();
-			_this.validator = _validators2.default;
-			return _this;
-		}
-	
-		_createClass(Bookmarks, [{
-			key: 'defaultModels',
-			value: function defaultModels() {
-				return _defaults2.default;
-			}
-		}, {
-			key: 'setUpSearchDispatcherEvents',
-			value: function setUpSearchDispatcherEvents() {
-				var _this2 = this;
-	
-				this.onSearch = function (callback) {
-					_this2.dispatcher.register('search', callback);
-				};
-				this.removeSearch = function (callback) {
-					_this2.dispatcher.remove('search', callback);
-				};
-				this.triggerSearch = function (results) {
-					_this2.dispatcher.broadcast('search', results);
-				};
-			}
-		}, {
-			key: 'setUpModelHooks',
-			value: function setUpModelHooks() {
-				this.preCreate(function (model) {
-					model.date = new Date();
-	
-					// prepend 'http://' to model.url if it isn't at beginning of string
-					model.url = _.prependHttp(model.url);
-	
-					// add url properties to model;
-					var details = _.getUrlDetails(model.url);
-					model.domain = details.hostname;
-	
-					// turn model tags into an array if it is passed as a string
-					if (_.isString(model.tags)) {
-						model.tags = model.tags.split(',').map(function (tag) {
-							return tag.trim();
-						}).filter(Boolean);
-					}
-	
-					// ensure there are no duplicate tags
-					model.tags = model.tags.filter(function (item, pos, arr) {
-						return arr.indexOf(item) == pos;
-					});
-	
-					// set slug
-					model.slug = _.slugify(model.title);
-					return model;
-				});
-			}
-		}, {
-			key: 'findByTag',
-			value: function findByTag(tag) {
-				return this.all().filter(function (bookmark) {
-					return bookmark.tags.indexOf(tag) >= 0;
-				});
-			}
-		}, {
-			key: 'search',
-			value: function search(query) {
-				var search = new _jsSearch2.default.Search('id');
-				search.addIndex('title');
-				search.addIndex('url');
-				search.addIndex('tags');
-	
-				search.addDocuments(this.all());
-				var results = search.search(query);
-				this.triggerSearch(results);
-			}
-		}, {
-			key: 'model',
-			get: function get() {
-				return _bookmark2.default;
-			}
-		}]);
-	
-		return Bookmarks;
-	}(_localstorage2.default);
-	
-	exports.default = Bookmarks;
-
-/***/ },
-/* 258 */
+/* 262 */,
+/* 263 */
 /*!***************************************!*\
   !*** ./~/js-search/dist/js-search.js ***!
   \***************************************/
@@ -29758,9 +29784,464 @@
 	})(JsSearch || (JsSearch = {}));
 
 /***/ },
-/* 259 */,
-/* 260 */,
-/* 261 */
+/* 264 */
+/*!**************************************************!*\
+  !*** ./app/lib/collections/base/localstorage.js ***!
+  \**************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _tools = __webpack_require__(/*! ../../tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	var _base = __webpack_require__(/*! ./base.js */ 265);
+	
+	var _base2 = _interopRequireDefault(_base);
+	
+	var _localstorage = __webpack_require__(/*! ../../behaviour/localstorage.js */ 268);
+	
+	var _localstorage2 = _interopRequireDefault(_localstorage);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var LocalStorageCollection = function (_Collection) {
+		_inherits(LocalStorageCollection, _Collection);
+	
+		function LocalStorageCollection() {
+			_classCallCheck(this, LocalStorageCollection);
+	
+			var _this = _possibleConstructorReturn(this, (LocalStorageCollection.__proto__ || Object.getPrototypeOf(LocalStorageCollection)).call(this));
+	
+			if (window && window.localStorage) {
+				// always add bevhaiour in the constructor
+				_this.storeName = 'bookmarks:collection:' + _this.name;
+				_this.store = new _localstorage2.default(_this.storeName);
+				_this.setUpLocalStorage();
+			} else {
+				_this.usingLocalStorage = false;
+				_this.addDefaults();
+			}
+			return _this;
+		}
+	
+		_createClass(LocalStorageCollection, [{
+			key: 'setUpLocalStorage',
+			value: function setUpLocalStorage() {
+				this.usingLocalStorage = true;
+				this.hasLocallyStoredModels = this.store.hasContents();
+				this.initialiseLocalStorageEvents();
+	
+				if (this.hasLocallyStoredModels) {
+					var storeList = this.getListFromLocalStorage();
+					this.addMany(storeList);
+				} else {
+					this.addDefaults();
+				}
+			}
+		}, {
+			key: 'initialiseLocalStorageEvents',
+			value: function initialiseLocalStorageEvents() {
+				var _this2 = this;
+	
+				this.onCreate(function (model) {
+					if (model) {
+						var models = _.isArray(model) ? model : [model];
+						models.forEach(function (created) {
+							if (created && created.id) {
+								_this2.addOrUpdateModelToLocalStorage(created);
+							}
+						});
+					}
+				});
+	
+				this.onUpdate(function (model) {
+					if (model) {
+						var models = _.isArray(model) ? model : [model];
+						models.forEach(function (updated) {
+							if (updated && updated.id) {
+								_this2.addOrUpdateModelToLocalStorage(updated);
+							}
+						});
+					}
+				});
+	
+				this.onRemove(function (model) {
+					if (model) {
+						var models = _.isArray(model) ? model : [model];
+						models.forEach(function (removed) {
+							if (removed && removed.id) {
+								_this2.removeModelFromLocalStorage(removed);
+							}
+						});
+					}
+				});
+			}
+		}, {
+			key: 'addDefaults',
+			value: function addDefaults() {
+				if (this.defaultModels) {
+					var defaults = this.defaultModels();
+					this.createMany(defaults);
+				}
+			}
+		}, {
+			key: 'addOrUpdateModelToLocalStorage',
+			value: function addOrUpdateModelToLocalStorage(model) {
+				var attrs = {};
+				for (var prop in model) {
+					// assume it shouldn't be stored if it starts with an underscore
+					if (prop.charAt(0) != '_') {
+						attrs[prop] = model[prop];
+					}
+				}
+				this.store.update(function (store) {
+					store[attrs.id] = attrs;
+					return store;
+				});
+			}
+		}, {
+			key: 'removeModelFromLocalStorageById',
+			value: function removeModelFromLocalStorageById(id) {
+				this.store.update(function (store) {
+					delete store[id];
+					return store;
+				});
+			}
+		}, {
+			key: 'removeModelFromLocalStorage',
+			value: function removeModelFromLocalStorage(model) {
+				this.removeModelFromLocalStorageById(model.id);
+			}
+		}, {
+			key: 'getListFromLocalStorage',
+			value: function getListFromLocalStorage() {
+				var store = this.store.get();
+				return _.keys(store).map(function (id) {
+					return store[id];
+				});
+			}
+		}]);
+	
+		return LocalStorageCollection;
+	}(_base2.default);
+	
+	exports.default = LocalStorageCollection;
+
+/***/ },
+/* 265 */
+/*!******************************************!*\
+  !*** ./app/lib/collections/base/base.js ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _tools = __webpack_require__(/*! ../../tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	var _dispatcher = __webpack_require__(/*! ../../behaviour/dispatcher.js */ 266);
+	
+	var _dispatcher2 = _interopRequireDefault(_dispatcher);
+	
+	var _model = __webpack_require__(/*! ./model.js */ 267);
+	
+	var _model2 = _interopRequireDefault(_model);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var Collection = function () {
+		function Collection() {
+			_classCallCheck(this, Collection);
+	
+			this.models = {};
+			this.hooks = [];
+			this.name = this.constructor.name;
+			this.dispatcher = new _dispatcher2.default();
+		}
+	
+		_createClass(Collection, [{
+			key: 'preCreate',
+	
+	
+			// hooks
+	
+			value: function preCreate(fn) {
+				this.hooks.push(fn);
+			}
+		}, {
+			key: 'callHooks',
+			value: function callHooks(model) {
+				for (var i = 0, l = this.hooks.length; i < l; i++) {
+					var hookFn = this.hooks[i];
+					model = hookFn(model);
+					if (!model) throw new Error('You must return a model from collection hook callbacks');
+				}
+				return model;
+			}
+	
+			// query models
+	
+		}, {
+			key: 'all',
+			value: function all() {
+				var _this = this;
+	
+				return Object.keys(this.models).map(function (key) {
+					return _this.models[key];
+				});
+			}
+		}, {
+			key: 'make',
+			value: function make(attrs) {
+				return new this.model(attrs, this);
+			}
+	
+			// get model from single id or array of ids
+	
+		}, {
+			key: 'get',
+			value: function get(id) {
+				var _this2 = this;
+	
+				if (_.isString(id)) {
+					var attrs = this.models[id];
+					return this.make(attrs);
+				}
+				if (_.isArray(id)) {
+					var _ret = function () {
+						var ids = id,
+						    models = _this2.all();
+						return {
+							v: models.filter(function (attrs) {
+								return ids.indexOf(attrs.id) >= 0;
+							}).map(function (attrs) {
+								return _this2.make(attrs);
+							})
+						};
+					}();
+	
+					if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+				}
+				return false;
+			}
+	
+			// events
+	
+			// change fires for all events
+	
+		}, {
+			key: 'onChange',
+			value: function onChange(callback) {
+				this.dispatcher.register('change', callback);
+			}
+	
+			// add models when you don't want to give them a new id
+	
+		}, {
+			key: 'onAdd',
+			value: function onAdd(callback) {
+				this.dispatcher.register('add', callback);
+			}
+		}, {
+			key: 'removeAdd',
+			value: function removeAdd(callback) {
+				this.dispatcher.remove('add', callback);
+			}
+	
+			// creating a model genereates a new id
+	
+		}, {
+			key: 'onCreate',
+			value: function onCreate(callback) {
+				this.dispatcher.register('create', callback);
+			}
+		}, {
+			key: 'onUpdate',
+			value: function onUpdate(callback) {
+				this.dispatcher.register('update', callback);
+			}
+		}, {
+			key: 'onRemove',
+			value: function onRemove(callback) {
+				this.dispatcher.register('remove', callback);
+			}
+		}, {
+			key: 'triggerChange',
+			value: function triggerChange() {
+				this.dispatcher.broadcast('change');
+			}
+		}, {
+			key: 'triggerAdd',
+			value: function triggerAdd(model) {
+				this.dispatcher.broadcast('add', model);
+				this.triggerChange();
+			}
+		}, {
+			key: 'triggerCreate',
+			value: function triggerCreate(model) {
+				this.dispatcher.broadcast('create', model);
+				this.triggerChange();
+			}
+		}, {
+			key: 'triggerUpdate',
+			value: function triggerUpdate(model) {
+				this.dispatcher.broadcast('update', model);
+				this.triggerChange();
+			}
+		}, {
+			key: 'triggerRemove',
+			value: function triggerRemove(model) {
+				this.dispatcher.broadcast('remove', model);
+				this.triggerChange();
+			}
+		}, {
+			key: 'validateField',
+			value: function validateField(field, value) {
+				var validator = this.validator[field];
+				if (validator) {
+					var result = validator(value);
+					if (result) {
+						return result;
+					}
+				}
+			}
+		}, {
+			key: 'validate',
+			value: function validate(obj) {
+				var errors = {};
+				var validated = true;
+				for (var field in obj) {
+					var result = this.validateField(field, obj[field]);
+					if (result) {
+						errors[field] = result;
+						validated = false;
+					}
+				}
+				return { errors: errors, validated: validated };
+			}
+	
+			// change models
+	
+		}, {
+			key: 'create',
+			value: function create(attrs) {
+				var model = this.make(attrs);
+				model.id = _.generateID();
+				model = this.callHooks(model);
+				this.models[model.id] = model;
+				this.triggerCreate(model);
+				return model;
+			}
+		}, {
+			key: 'createMany',
+			value: function createMany(models) {
+				var _this3 = this;
+	
+				var created = models.map(function (attrs) {
+					var model = _this3.make(attrs);
+					model.id = _.generateID();
+					model = _this3.callHooks(model);
+					_this3.models[model.id] = model;
+					return model;
+				});
+				this.triggerCreate(created);
+				return created;
+			}
+		}, {
+			key: 'add',
+			value: function add(model) {
+				model = this.make(model);
+				this.models[model.id] = model;
+				this.triggerAdd(model);
+				return model;
+			}
+		}, {
+			key: 'addMany',
+			value: function addMany(models) {
+				var _this4 = this;
+	
+				var result = models.forEach(function (model) {
+					model = _this4.make(model);
+					_this4.models[model.id] = model;
+					return model;
+				});
+				this.triggerAdd(result);
+				return result;
+			}
+		}, {
+			key: 'update',
+			value: function update(attrs) {
+				var id = attrs.id;
+				if (id) {
+					var model = this.get(id);
+					if (model) {
+						model = _.extend(model, attrs);
+						model = this.callHooks(model);
+						this.models[id] = model;
+						this.triggerUpdate(model);
+						return model;
+					} else {
+						throw new Error('Could not update the provided model. Does it have an ID property?');
+					}
+				}
+			}
+		}, {
+			key: 'remove',
+			value: function remove(model) {
+				var id = void 0;
+				if (_.isObject(model)) {
+					id = model.id;
+				} else {
+					// model is a string id
+					model = this.get(model);
+					id = model.id;
+				}
+				delete this.models[id];
+				this.triggerRemove(model);
+			}
+		}, {
+			key: 'model',
+			get: function get() {
+				return _model2.default;
+			}
+		}]);
+	
+		return Collection;
+	}();
+	
+	exports.default = Collection;
+
+/***/ },
+/* 266 */
 /*!*****************************************!*\
   !*** ./app/lib/behaviour/dispatcher.js ***!
   \*****************************************/
@@ -29827,7 +30308,51 @@
 	exports.default = Dispatcher;
 
 /***/ },
-/* 262 */
+/* 267 */
+/*!*******************************************!*\
+  !*** ./app/lib/collections/base/model.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _tools = __webpack_require__(/*! ../../tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var Model = function () {
+		function Model(properties, collection) {
+			_classCallCheck(this, Model);
+	
+			_.extend(this, properties);
+			this._collection = collection;
+		}
+	
+		_createClass(Model, [{
+			key: 'update',
+			value: function update(attrs) {
+				this._collection.update(_.extend(this, attrs));
+				return this;
+			}
+		}]);
+	
+		return Model;
+	}();
+	
+	exports.default = Model;
+
+/***/ },
+/* 268 */
 /*!*******************************************!*\
   !*** ./app/lib/behaviour/localstorage.js ***!
   \*******************************************/
@@ -29841,7 +30366,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _lodash = __webpack_require__(/*! lodash */ 263);
+	var _lodash = __webpack_require__(/*! lodash */ 269);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -29902,7 +30427,7 @@
 	exports.default = LocalStorageBehaviour;
 
 /***/ },
-/* 263 */
+/* 269 */
 /*!****************************!*\
   !*** ./~/lodash/lodash.js ***!
   \****************************/
@@ -39319,7 +39844,7 @@
 	lodash.prototype.at=wrapperAt;lodash.prototype.chain=wrapperChain;lodash.prototype.commit=wrapperCommit;lodash.prototype.next=wrapperNext;lodash.prototype.plant=wrapperPlant;lodash.prototype.reverse=wrapperReverse;lodash.prototype.toJSON=lodash.prototype.valueOf=lodash.prototype.value=wrapperValue;// Add lazy aliases.
 	lodash.prototype.first=lodash.prototype.head;if(symIterator){lodash.prototype[symIterator]=wrapperToIterator;}return lodash;};/*--------------------------------------------------------------------------*/// Export lodash.
 	var _=runInContext();// Some AMD build optimizers, like r.js, check for condition patterns like:
-	if("function"=='function'&&_typeof(__webpack_require__(/*! !webpack amd options */ 265))=='object'&&__webpack_require__(/*! !webpack amd options */ 265)){// Expose Lodash on the global object to prevent errors when Lodash is
+	if("function"=='function'&&_typeof(__webpack_require__(/*! !webpack amd options */ 271))=='object'&&__webpack_require__(/*! !webpack amd options */ 271)){// Expose Lodash on the global object to prevent errors when Lodash is
 	// loaded by a script tag in the presence of an AMD loader.
 	// See http://requirejs.org/docs/errors.html#mismatch for more details.
 	// Use `_.noConflict` to remove Lodash from the global object.
@@ -39330,10 +39855,10 @@
 	(freeModule.exports=_)._=_;// Export for CommonJS support.
 	freeExports._=_;}else{// Export to the global object.
 	root._=_;}}).call(undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(/*! ./../webpack/buildin/module.js */ 264)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(/*! ./../webpack/buildin/module.js */ 270)(module)))
 
 /***/ },
-/* 264 */
+/* 270 */
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
   \***********************************/
@@ -39353,7 +39878,7 @@
 	};
 
 /***/ },
-/* 265 */
+/* 271 */
 /*!****************************************!*\
   !*** (webpack)/buildin/amd-options.js ***!
   \****************************************/
@@ -39364,7 +39889,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 266 */
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */
 /*!***************************************************************************!*\
   !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/css/site.scss ***!
   \***************************************************************************/
@@ -39373,7 +39901,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./site.scss */ 267);
+	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./site.scss */ 276);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 235)(content, {});
@@ -39393,7 +39921,7 @@
 	}
 
 /***/ },
-/* 267 */
+/* 276 */
 /*!**********************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./app/css/site.scss ***!
   \**********************************************************/
@@ -39404,311 +39932,16 @@
 	
 	
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n/* vendor */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  box-sizing: content-box;\n  /* 2 */ }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/*!\n  Ionicons, v2.0.0\n  Created by Ben Sperry for the Ionic Framework, http://ionicons.com/\n  https://twitter.com/benjsperry  https://twitter.com/ionicframework\n  MIT License: https://github.com/driftyco/ionicons\n\n  Android-style icons originally built by Google’s\n  Material Design Icons: https://github.com/google/material-design-icons\n  used under CC BY http://creativecommons.org/licenses/by/4.0/\n  Modified icons to fit ionicon’s grid from original.\n*/\n@font-face {\n  font-family: \"Ionicons\";\n  src: url(\"/static/fonts/ionicons.eot\");\n  src: url(\"/static/fonts/ionicons.eot?v=2.0.0#iefix\") format(\"embedded-opentype\"), url(\"/static/fonts/ionicons.ttf\") format(\"truetype\"), url(\"/static/fonts/ionicons.woff\") format(\"woff\"), url(\"/static/fonts/ionicons.svg\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n.ion, .ionicons, .ion-alert:before, .ion-alert-circled:before, .ion-android-add:before, .ion-android-add-circle:before, .ion-android-alarm-clock:before, .ion-android-alert:before, .ion-android-apps:before, .ion-android-archive:before, .ion-android-arrow-back:before, .ion-android-arrow-down:before, .ion-android-arrow-dropdown:before, .ion-android-arrow-dropdown-circle:before, .ion-android-arrow-dropleft:before, .ion-android-arrow-dropleft-circle:before, .ion-android-arrow-dropright:before, .ion-android-arrow-dropright-circle:before, .ion-android-arrow-dropup:before, .ion-android-arrow-dropup-circle:before, .ion-android-arrow-forward:before, .ion-android-arrow-up:before, .ion-android-attach:before, .ion-android-bar:before, .ion-android-bicycle:before, .ion-android-boat:before, .ion-android-bookmark:before, .ion-android-bulb:before, .ion-android-bus:before, .ion-android-calendar:before, .ion-android-call:before, .ion-android-camera:before, .ion-android-cancel:before, .ion-android-car:before, .ion-android-cart:before, .ion-android-chat:before, .ion-android-checkbox:before, .ion-android-checkbox-blank:before, .ion-android-checkbox-outline:before, .ion-android-checkbox-outline-blank:before, .ion-android-checkmark-circle:before, .ion-android-clipboard:before, .ion-android-close:before, .ion-android-cloud:before, .ion-android-cloud-circle:before, .ion-android-cloud-done:before, .ion-android-cloud-outline:before, .ion-android-color-palette:before, .ion-android-compass:before, .ion-android-contact:before, .ion-android-contacts:before, .ion-android-contract:before, .ion-android-create:before, .ion-android-delete:before, .ion-android-desktop:before, .ion-android-document:before, .ion-android-done:before, .ion-android-done-all:before, .ion-android-download:before, .ion-android-drafts:before, .ion-android-exit:before, .ion-android-expand:before, .ion-android-favorite:before, .ion-android-favorite-outline:before, .ion-android-film:before, .ion-android-folder:before, .ion-android-folder-open:before, .ion-android-funnel:before, .ion-android-globe:before, .ion-android-hand:before, .ion-android-hangout:before, .ion-android-happy:before, .ion-android-home:before, .ion-android-image:before, .ion-android-laptop:before, .ion-android-list:before, .ion-android-locate:before, .ion-android-lock:before, .ion-android-mail:before, .ion-android-map:before, .ion-android-menu:before, .ion-android-microphone:before, .ion-android-microphone-off:before, .ion-android-more-horizontal:before, .ion-android-more-vertical:before, .ion-android-navigate:before, .ion-android-notifications:before, .ion-android-notifications-none:before, .ion-android-notifications-off:before, .ion-android-open:before, .ion-android-options:before, .ion-android-people:before, .ion-android-person:before, .ion-android-person-add:before, .ion-android-phone-landscape:before, .ion-android-phone-portrait:before, .ion-android-pin:before, .ion-android-plane:before, .ion-android-playstore:before, .ion-android-print:before, .ion-android-radio-button-off:before, .ion-android-radio-button-on:before, .ion-android-refresh:before, .ion-android-remove:before, .ion-android-remove-circle:before, .ion-android-restaurant:before, .ion-android-sad:before, .ion-android-search:before, .ion-android-send:before, .ion-android-settings:before, .ion-android-share:before, .ion-android-share-alt:before, .ion-android-star:before, .ion-android-star-half:before, .ion-android-star-outline:before, .ion-android-stopwatch:before, .ion-android-subway:before, .ion-android-sunny:before, .ion-android-sync:before, .ion-android-textsms:before, .ion-android-time:before, .ion-android-train:before, .ion-android-unlock:before, .ion-android-upload:before, .ion-android-volume-down:before, .ion-android-volume-mute:before, .ion-android-volume-off:before, .ion-android-volume-up:before, .ion-android-walk:before, .ion-android-warning:before, .ion-android-watch:before, .ion-android-wifi:before, .ion-aperture:before, .ion-archive:before, .ion-arrow-down-a:before, .ion-arrow-down-b:before, .ion-arrow-down-c:before, .ion-arrow-expand:before, .ion-arrow-graph-down-left:before, .ion-arrow-graph-down-right:before, .ion-arrow-graph-up-left:before, .ion-arrow-graph-up-right:before, .ion-arrow-left-a:before, .ion-arrow-left-b:before, .ion-arrow-left-c:before, .ion-arrow-move:before, .ion-arrow-resize:before, .ion-arrow-return-left:before, .ion-arrow-return-right:before, .ion-arrow-right-a:before, .ion-arrow-right-b:before, .ion-arrow-right-c:before, .ion-arrow-shrink:before, .ion-arrow-swap:before, .ion-arrow-up-a:before, .ion-arrow-up-b:before, .ion-arrow-up-c:before, .ion-asterisk:before, .ion-at:before, .ion-backspace:before, .ion-backspace-outline:before, .ion-bag:before, .ion-battery-charging:before, .ion-battery-empty:before, .ion-battery-full:before, .ion-battery-half:before, .ion-battery-low:before, .ion-beaker:before, .ion-beer:before, .ion-bluetooth:before, .ion-bonfire:before, .ion-bookmark:before, .ion-bowtie:before, .ion-briefcase:before, .ion-bug:before, .ion-calculator:before, .ion-calendar:before, .ion-camera:before, .ion-card:before, .ion-cash:before, .ion-chatbox:before, .ion-chatbox-working:before, .ion-chatboxes:before, .ion-chatbubble:before, .ion-chatbubble-working:before, .ion-chatbubbles:before, .ion-checkmark:before, .ion-checkmark-circled:before, .ion-checkmark-round:before, .ion-chevron-down:before, .ion-chevron-left:before, .ion-chevron-right:before, .ion-chevron-up:before, .ion-clipboard:before, .ion-clock:before, .ion-close:before, .ion-close-circled:before, .ion-close-round:before, .ion-closed-captioning:before, .ion-cloud:before, .ion-code:before, .ion-code-download:before, .ion-code-working:before, .ion-coffee:before, .ion-compass:before, .ion-compose:before, .ion-connection-bars:before, .ion-contrast:before, .ion-crop:before, .ion-cube:before, .ion-disc:before, .ion-document:before, .ion-document-text:before, .ion-drag:before, .ion-earth:before, .ion-easel:before, .ion-edit:before, .ion-egg:before, .ion-eject:before, .ion-email:before, .ion-email-unread:before, .ion-erlenmeyer-flask:before, .ion-erlenmeyer-flask-bubbles:before, .ion-eye:before, .ion-eye-disabled:before, .ion-female:before, .ion-filing:before, .ion-film-marker:before, .ion-fireball:before, .ion-flag:before, .ion-flame:before, .ion-flash:before, .ion-flash-off:before, .ion-folder:before, .ion-fork:before, .ion-fork-repo:before, .ion-forward:before, .ion-funnel:before, .ion-gear-a:before, .ion-gear-b:before, .ion-grid:before, .ion-hammer:before, .ion-happy:before, .ion-happy-outline:before, .ion-headphone:before, .ion-heart:before, .ion-heart-broken:before, .ion-help:before, .ion-help-buoy:before, .ion-help-circled:before, .ion-home:before, .ion-icecream:before, .ion-image:before, .ion-images:before, .ion-information:before, .ion-information-circled:before, .ion-ionic:before, .ion-ios-alarm:before, .ion-ios-alarm-outline:before, .ion-ios-albums:before, .ion-ios-albums-outline:before, .ion-ios-americanfootball:before, .ion-ios-americanfootball-outline:before, .ion-ios-analytics:before, .ion-ios-analytics-outline:before, .ion-ios-arrow-back:before, .ion-ios-arrow-down:before, .ion-ios-arrow-forward:before, .ion-ios-arrow-left:before, .ion-ios-arrow-right:before, .ion-ios-arrow-thin-down:before, .ion-ios-arrow-thin-left:before, .ion-ios-arrow-thin-right:before, .ion-ios-arrow-thin-up:before, .ion-ios-arrow-up:before, .ion-ios-at:before, .ion-ios-at-outline:before, .ion-ios-barcode:before, .ion-ios-barcode-outline:before, .ion-ios-baseball:before, .ion-ios-baseball-outline:before, .ion-ios-basketball:before, .ion-ios-basketball-outline:before, .ion-ios-bell:before, .ion-ios-bell-outline:before, .ion-ios-body:before, .ion-ios-body-outline:before, .ion-ios-bolt:before, .ion-ios-bolt-outline:before, .ion-ios-book:before, .ion-ios-book-outline:before, .ion-ios-bookmarks:before, .ion-ios-bookmarks-outline:before, .ion-ios-box:before, .ion-ios-box-outline:before, .ion-ios-briefcase:before, .ion-ios-briefcase-outline:before, .ion-ios-browsers:before, .ion-ios-browsers-outline:before, .ion-ios-calculator:before, .ion-ios-calculator-outline:before, .ion-ios-calendar:before, .ion-ios-calendar-outline:before, .ion-ios-camera:before, .ion-ios-camera-outline:before, .ion-ios-cart:before, .ion-ios-cart-outline:before, .ion-ios-chatboxes:before, .ion-ios-chatboxes-outline:before, .ion-ios-chatbubble:before, .ion-ios-chatbubble-outline:before, .ion-ios-checkmark:before, .ion-ios-checkmark-empty:before, .ion-ios-checkmark-outline:before, .ion-ios-circle-filled:before, .ion-ios-circle-outline:before, .ion-ios-clock:before, .ion-ios-clock-outline:before, .ion-ios-close:before, .ion-ios-close-empty:before, .ion-ios-close-outline:before, .ion-ios-cloud:before, .ion-ios-cloud-download:before, .ion-ios-cloud-download-outline:before, .ion-ios-cloud-outline:before, .ion-ios-cloud-upload:before, .ion-ios-cloud-upload-outline:before, .ion-ios-cloudy:before, .ion-ios-cloudy-night:before, .ion-ios-cloudy-night-outline:before, .ion-ios-cloudy-outline:before, .ion-ios-cog:before, .ion-ios-cog-outline:before, .ion-ios-color-filter:before, .ion-ios-color-filter-outline:before, .ion-ios-color-wand:before, .ion-ios-color-wand-outline:before, .ion-ios-compose:before, .ion-ios-compose-outline:before, .ion-ios-contact:before, .ion-ios-contact-outline:before, .ion-ios-copy:before, .ion-ios-copy-outline:before, .ion-ios-crop:before, .ion-ios-crop-strong:before, .ion-ios-download:before, .ion-ios-download-outline:before, .ion-ios-drag:before, .ion-ios-email:before, .ion-ios-email-outline:before, .ion-ios-eye:before, .ion-ios-eye-outline:before, .ion-ios-fastforward:before, .ion-ios-fastforward-outline:before, .ion-ios-filing:before, .ion-ios-filing-outline:before, .ion-ios-film:before, .ion-ios-film-outline:before, .ion-ios-flag:before, .ion-ios-flag-outline:before, .ion-ios-flame:before, .ion-ios-flame-outline:before, .ion-ios-flask:before, .ion-ios-flask-outline:before, .ion-ios-flower:before, .ion-ios-flower-outline:before, .ion-ios-folder:before, .ion-ios-folder-outline:before, .ion-ios-football:before, .ion-ios-football-outline:before, .ion-ios-game-controller-a:before, .ion-ios-game-controller-a-outline:before, .ion-ios-game-controller-b:before, .ion-ios-game-controller-b-outline:before, .ion-ios-gear:before, .ion-ios-gear-outline:before, .ion-ios-glasses:before, .ion-ios-glasses-outline:before, .ion-ios-grid-view:before, .ion-ios-grid-view-outline:before, .ion-ios-heart:before, .ion-ios-heart-outline:before, .ion-ios-help:before, .ion-ios-help-empty:before, .ion-ios-help-outline:before, .ion-ios-home:before, .ion-ios-home-outline:before, .ion-ios-infinite:before, .ion-ios-infinite-outline:before, .ion-ios-information:before, .ion-ios-information-empty:before, .ion-ios-information-outline:before, .ion-ios-ionic-outline:before, .ion-ios-keypad:before, .ion-ios-keypad-outline:before, .ion-ios-lightbulb:before, .ion-ios-lightbulb-outline:before, .ion-ios-list:before, .ion-ios-list-outline:before, .ion-ios-location:before, .ion-ios-location-outline:before, .ion-ios-locked:before, .ion-ios-locked-outline:before, .ion-ios-loop:before, .ion-ios-loop-strong:before, .ion-ios-medical:before, .ion-ios-medical-outline:before, .ion-ios-medkit:before, .ion-ios-medkit-outline:before, .ion-ios-mic:before, .ion-ios-mic-off:before, .ion-ios-mic-outline:before, .ion-ios-minus:before, .ion-ios-minus-empty:before, .ion-ios-minus-outline:before, .ion-ios-monitor:before, .ion-ios-monitor-outline:before, .ion-ios-moon:before, .ion-ios-moon-outline:before, .ion-ios-more:before, .ion-ios-more-outline:before, .ion-ios-musical-note:before, .ion-ios-musical-notes:before, .ion-ios-navigate:before, .ion-ios-navigate-outline:before, .ion-ios-nutrition:before, .ion-ios-nutrition-outline:before, .ion-ios-paper:before, .ion-ios-paper-outline:before, .ion-ios-paperplane:before, .ion-ios-paperplane-outline:before, .ion-ios-partlysunny:before, .ion-ios-partlysunny-outline:before, .ion-ios-pause:before, .ion-ios-pause-outline:before, .ion-ios-paw:before, .ion-ios-paw-outline:before, .ion-ios-people:before, .ion-ios-people-outline:before, .ion-ios-person:before, .ion-ios-person-outline:before, .ion-ios-personadd:before, .ion-ios-personadd-outline:before, .ion-ios-photos:before, .ion-ios-photos-outline:before, .ion-ios-pie:before, .ion-ios-pie-outline:before, .ion-ios-pint:before, .ion-ios-pint-outline:before, .ion-ios-play:before, .ion-ios-play-outline:before, .ion-ios-plus:before, .ion-ios-plus-empty:before, .ion-ios-plus-outline:before, .ion-ios-pricetag:before, .ion-ios-pricetag-outline:before, .ion-ios-pricetags:before, .ion-ios-pricetags-outline:before, .ion-ios-printer:before, .ion-ios-printer-outline:before, .ion-ios-pulse:before, .ion-ios-pulse-strong:before, .ion-ios-rainy:before, .ion-ios-rainy-outline:before, .ion-ios-recording:before, .ion-ios-recording-outline:before, .ion-ios-redo:before, .ion-ios-redo-outline:before, .ion-ios-refresh:before, .ion-ios-refresh-empty:before, .ion-ios-refresh-outline:before, .ion-ios-reload:before, .ion-ios-reverse-camera:before, .ion-ios-reverse-camera-outline:before, .ion-ios-rewind:before, .ion-ios-rewind-outline:before, .ion-ios-rose:before, .ion-ios-rose-outline:before, .ion-ios-search:before, .ion-ios-search-strong:before, .ion-ios-settings:before, .ion-ios-settings-strong:before, .ion-ios-shuffle:before, .ion-ios-shuffle-strong:before, .ion-ios-skipbackward:before, .ion-ios-skipbackward-outline:before, .ion-ios-skipforward:before, .ion-ios-skipforward-outline:before, .ion-ios-snowy:before, .ion-ios-speedometer:before, .ion-ios-speedometer-outline:before, .ion-ios-star:before, .ion-ios-star-half:before, .ion-ios-star-outline:before, .ion-ios-stopwatch:before, .ion-ios-stopwatch-outline:before, .ion-ios-sunny:before, .ion-ios-sunny-outline:before, .ion-ios-telephone:before, .ion-ios-telephone-outline:before, .ion-ios-tennisball:before, .ion-ios-tennisball-outline:before, .ion-ios-thunderstorm:before, .ion-ios-thunderstorm-outline:before, .ion-ios-time:before, .ion-ios-time-outline:before, .ion-ios-timer:before, .ion-ios-timer-outline:before, .ion-ios-toggle:before, .ion-ios-toggle-outline:before, .ion-ios-trash:before, .ion-ios-trash-outline:before, .ion-ios-undo:before, .ion-ios-undo-outline:before, .ion-ios-unlocked:before, .ion-ios-unlocked-outline:before, .ion-ios-upload:before, .ion-ios-upload-outline:before, .ion-ios-videocam:before, .ion-ios-videocam-outline:before, .ion-ios-volume-high:before, .ion-ios-volume-low:before, .ion-ios-wineglass:before, .ion-ios-wineglass-outline:before, .ion-ios-world:before, .ion-ios-world-outline:before, .ion-ipad:before, .ion-iphone:before, .ion-ipod:before, .ion-jet:before, .ion-key:before, .ion-knife:before, .ion-laptop:before, .ion-leaf:before, .ion-levels:before, .ion-lightbulb:before, .ion-link:before, .ion-load-a:before, .ion-load-b:before, .ion-load-c:before, .ion-load-d:before, .ion-location:before, .ion-lock-combination:before, .ion-locked:before, .ion-log-in:before, .ion-log-out:before, .ion-loop:before, .ion-magnet:before, .ion-male:before, .ion-man:before, .ion-map:before, .ion-medkit:before, .ion-merge:before, .ion-mic-a:before, .ion-mic-b:before, .ion-mic-c:before, .ion-minus:before, .ion-minus-circled:before, .ion-minus-round:before, .ion-model-s:before, .ion-monitor:before, .ion-more:before, .ion-mouse:before, .ion-music-note:before, .ion-navicon:before, .ion-navicon-round:before, .ion-navigate:before, .ion-network:before, .ion-no-smoking:before, .ion-nuclear:before, .ion-outlet:before, .ion-paintbrush:before, .ion-paintbucket:before, .ion-paper-airplane:before, .ion-paperclip:before, .ion-pause:before, .ion-person:before, .ion-person-add:before, .ion-person-stalker:before, .ion-pie-graph:before, .ion-pin:before, .ion-pinpoint:before, .ion-pizza:before, .ion-plane:before, .ion-planet:before, .ion-play:before, .ion-playstation:before, .ion-plus:before, .ion-plus-circled:before, .ion-plus-round:before, .ion-podium:before, .ion-pound:before, .ion-power:before, .ion-pricetag:before, .ion-pricetags:before, .ion-printer:before, .ion-pull-request:before, .ion-qr-scanner:before, .ion-quote:before, .ion-radio-waves:before, .ion-record:before, .ion-refresh:before, .ion-reply:before, .ion-reply-all:before, .ion-ribbon-a:before, .ion-ribbon-b:before, .ion-sad:before, .ion-sad-outline:before, .ion-scissors:before, .ion-search:before, .ion-settings:before, .ion-share:before, .ion-shuffle:before, .ion-skip-backward:before, .ion-skip-forward:before, .ion-social-android:before, .ion-social-android-outline:before, .ion-social-angular:before, .ion-social-angular-outline:before, .ion-social-apple:before, .ion-social-apple-outline:before, .ion-social-bitcoin:before, .ion-social-bitcoin-outline:before, .ion-social-buffer:before, .ion-social-buffer-outline:before, .ion-social-chrome:before, .ion-social-chrome-outline:before, .ion-social-codepen:before, .ion-social-codepen-outline:before, .ion-social-css3:before, .ion-social-css3-outline:before, .ion-social-designernews:before, .ion-social-designernews-outline:before, .ion-social-dribbble:before, .ion-social-dribbble-outline:before, .ion-social-dropbox:before, .ion-social-dropbox-outline:before, .ion-social-euro:before, .ion-social-euro-outline:before, .ion-social-facebook:before, .ion-social-facebook-outline:before, .ion-social-foursquare:before, .ion-social-foursquare-outline:before, .ion-social-freebsd-devil:before, .ion-social-github:before, .ion-social-github-outline:before, .ion-social-google:before, .ion-social-google-outline:before, .ion-social-googleplus:before, .ion-social-googleplus-outline:before, .ion-social-hackernews:before, .ion-social-hackernews-outline:before, .ion-social-html5:before, .ion-social-html5-outline:before, .ion-social-instagram:before, .ion-social-instagram-outline:before, .ion-social-javascript:before, .ion-social-javascript-outline:before, .ion-social-linkedin:before, .ion-social-linkedin-outline:before, .ion-social-markdown:before, .ion-social-nodejs:before, .ion-social-octocat:before, .ion-social-pinterest:before, .ion-social-pinterest-outline:before, .ion-social-python:before, .ion-social-reddit:before, .ion-social-reddit-outline:before, .ion-social-rss:before, .ion-social-rss-outline:before, .ion-social-sass:before, .ion-social-skype:before, .ion-social-skype-outline:before, .ion-social-snapchat:before, .ion-social-snapchat-outline:before, .ion-social-tumblr:before, .ion-social-tumblr-outline:before, .ion-social-tux:before, .ion-social-twitch:before, .ion-social-twitch-outline:before, .ion-social-twitter:before, .ion-social-twitter-outline:before, .ion-social-usd:before, .ion-social-usd-outline:before, .ion-social-vimeo:before, .ion-social-vimeo-outline:before, .ion-social-whatsapp:before, .ion-social-whatsapp-outline:before, .ion-social-windows:before, .ion-social-windows-outline:before, .ion-social-wordpress:before, .ion-social-wordpress-outline:before, .ion-social-yahoo:before, .ion-social-yahoo-outline:before, .ion-social-yen:before, .ion-social-yen-outline:before, .ion-social-youtube:before, .ion-social-youtube-outline:before, .ion-soup-can:before, .ion-soup-can-outline:before, .ion-speakerphone:before, .ion-speedometer:before, .ion-spoon:before, .ion-star:before, .ion-stats-bars:before, .ion-steam:before, .ion-stop:before, .ion-thermometer:before, .ion-thumbsdown:before, .ion-thumbsup:before, .ion-toggle:before, .ion-toggle-filled:before, .ion-transgender:before, .ion-trash-a:before, .ion-trash-b:before, .ion-trophy:before, .ion-tshirt:before, .ion-tshirt-outline:before, .ion-umbrella:before, .ion-university:before, .ion-unlocked:before, .ion-upload:before, .ion-usb:before, .ion-videocamera:before, .ion-volume-high:before, .ion-volume-low:before, .ion-volume-medium:before, .ion-volume-mute:before, .ion-wand:before, .ion-waterdrop:before, .ion-wifi:before, .ion-wineglass:before, .ion-woman:before, .ion-wrench:before, .ion-xbox:before {\n  display: inline-block;\n  font-family: \"Ionicons\";\n  speak: none;\n  font-style: normal;\n  font-weight: normal;\n  font-variant: normal;\n  text-transform: none;\n  text-rendering: auto;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.ion-alert:before {\n  content: \"\\F101\"; }\n\n.ion-alert-circled:before {\n  content: \"\\F100\"; }\n\n.ion-android-add:before {\n  content: \"\\F2C7\"; }\n\n.ion-android-add-circle:before {\n  content: \"\\F359\"; }\n\n.ion-android-alarm-clock:before {\n  content: \"\\F35A\"; }\n\n.ion-android-alert:before {\n  content: \"\\F35B\"; }\n\n.ion-android-apps:before {\n  content: \"\\F35C\"; }\n\n.ion-android-archive:before {\n  content: \"\\F2C9\"; }\n\n.ion-android-arrow-back:before {\n  content: \"\\F2CA\"; }\n\n.ion-android-arrow-down:before {\n  content: \"\\F35D\"; }\n\n.ion-android-arrow-dropdown:before {\n  content: \"\\F35F\"; }\n\n.ion-android-arrow-dropdown-circle:before {\n  content: \"\\F35E\"; }\n\n.ion-android-arrow-dropleft:before {\n  content: \"\\F361\"; }\n\n.ion-android-arrow-dropleft-circle:before {\n  content: \"\\F360\"; }\n\n.ion-android-arrow-dropright:before {\n  content: \"\\F363\"; }\n\n.ion-android-arrow-dropright-circle:before {\n  content: \"\\F362\"; }\n\n.ion-android-arrow-dropup:before {\n  content: \"\\F365\"; }\n\n.ion-android-arrow-dropup-circle:before {\n  content: \"\\F364\"; }\n\n.ion-android-arrow-forward:before {\n  content: \"\\F30F\"; }\n\n.ion-android-arrow-up:before {\n  content: \"\\F366\"; }\n\n.ion-android-attach:before {\n  content: \"\\F367\"; }\n\n.ion-android-bar:before {\n  content: \"\\F368\"; }\n\n.ion-android-bicycle:before {\n  content: \"\\F369\"; }\n\n.ion-android-boat:before {\n  content: \"\\F36A\"; }\n\n.ion-android-bookmark:before {\n  content: \"\\F36B\"; }\n\n.ion-android-bulb:before {\n  content: \"\\F36C\"; }\n\n.ion-android-bus:before {\n  content: \"\\F36D\"; }\n\n.ion-android-calendar:before {\n  content: \"\\F2D1\"; }\n\n.ion-android-call:before {\n  content: \"\\F2D2\"; }\n\n.ion-android-camera:before {\n  content: \"\\F2D3\"; }\n\n.ion-android-cancel:before {\n  content: \"\\F36E\"; }\n\n.ion-android-car:before {\n  content: \"\\F36F\"; }\n\n.ion-android-cart:before {\n  content: \"\\F370\"; }\n\n.ion-android-chat:before {\n  content: \"\\F2D4\"; }\n\n.ion-android-checkbox:before {\n  content: \"\\F374\"; }\n\n.ion-android-checkbox-blank:before {\n  content: \"\\F371\"; }\n\n.ion-android-checkbox-outline:before {\n  content: \"\\F373\"; }\n\n.ion-android-checkbox-outline-blank:before {\n  content: \"\\F372\"; }\n\n.ion-android-checkmark-circle:before {\n  content: \"\\F375\"; }\n\n.ion-android-clipboard:before {\n  content: \"\\F376\"; }\n\n.ion-android-close:before {\n  content: \"\\F2D7\"; }\n\n.ion-android-cloud:before {\n  content: \"\\F37A\"; }\n\n.ion-android-cloud-circle:before {\n  content: \"\\F377\"; }\n\n.ion-android-cloud-done:before {\n  content: \"\\F378\"; }\n\n.ion-android-cloud-outline:before {\n  content: \"\\F379\"; }\n\n.ion-android-color-palette:before {\n  content: \"\\F37B\"; }\n\n.ion-android-compass:before {\n  content: \"\\F37C\"; }\n\n.ion-android-contact:before {\n  content: \"\\F2D8\"; }\n\n.ion-android-contacts:before {\n  content: \"\\F2D9\"; }\n\n.ion-android-contract:before {\n  content: \"\\F37D\"; }\n\n.ion-android-create:before {\n  content: \"\\F37E\"; }\n\n.ion-android-delete:before {\n  content: \"\\F37F\"; }\n\n.ion-android-desktop:before {\n  content: \"\\F380\"; }\n\n.ion-android-document:before {\n  content: \"\\F381\"; }\n\n.ion-android-done:before {\n  content: \"\\F383\"; }\n\n.ion-android-done-all:before {\n  content: \"\\F382\"; }\n\n.ion-android-download:before {\n  content: \"\\F2DD\"; }\n\n.ion-android-drafts:before {\n  content: \"\\F384\"; }\n\n.ion-android-exit:before {\n  content: \"\\F385\"; }\n\n.ion-android-expand:before {\n  content: \"\\F386\"; }\n\n.ion-android-favorite:before {\n  content: \"\\F388\"; }\n\n.ion-android-favorite-outline:before {\n  content: \"\\F387\"; }\n\n.ion-android-film:before {\n  content: \"\\F389\"; }\n\n.ion-android-folder:before {\n  content: \"\\F2E0\"; }\n\n.ion-android-folder-open:before {\n  content: \"\\F38A\"; }\n\n.ion-android-funnel:before {\n  content: \"\\F38B\"; }\n\n.ion-android-globe:before {\n  content: \"\\F38C\"; }\n\n.ion-android-hand:before {\n  content: \"\\F2E3\"; }\n\n.ion-android-hangout:before {\n  content: \"\\F38D\"; }\n\n.ion-android-happy:before {\n  content: \"\\F38E\"; }\n\n.ion-android-home:before {\n  content: \"\\F38F\"; }\n\n.ion-android-image:before {\n  content: \"\\F2E4\"; }\n\n.ion-android-laptop:before {\n  content: \"\\F390\"; }\n\n.ion-android-list:before {\n  content: \"\\F391\"; }\n\n.ion-android-locate:before {\n  content: \"\\F2E9\"; }\n\n.ion-android-lock:before {\n  content: \"\\F392\"; }\n\n.ion-android-mail:before {\n  content: \"\\F2EB\"; }\n\n.ion-android-map:before {\n  content: \"\\F393\"; }\n\n.ion-android-menu:before {\n  content: \"\\F394\"; }\n\n.ion-android-microphone:before {\n  content: \"\\F2EC\"; }\n\n.ion-android-microphone-off:before {\n  content: \"\\F395\"; }\n\n.ion-android-more-horizontal:before {\n  content: \"\\F396\"; }\n\n.ion-android-more-vertical:before {\n  content: \"\\F397\"; }\n\n.ion-android-navigate:before {\n  content: \"\\F398\"; }\n\n.ion-android-notifications:before {\n  content: \"\\F39B\"; }\n\n.ion-android-notifications-none:before {\n  content: \"\\F399\"; }\n\n.ion-android-notifications-off:before {\n  content: \"\\F39A\"; }\n\n.ion-android-open:before {\n  content: \"\\F39C\"; }\n\n.ion-android-options:before {\n  content: \"\\F39D\"; }\n\n.ion-android-people:before {\n  content: \"\\F39E\"; }\n\n.ion-android-person:before {\n  content: \"\\F3A0\"; }\n\n.ion-android-person-add:before {\n  content: \"\\F39F\"; }\n\n.ion-android-phone-landscape:before {\n  content: \"\\F3A1\"; }\n\n.ion-android-phone-portrait:before {\n  content: \"\\F3A2\"; }\n\n.ion-android-pin:before {\n  content: \"\\F3A3\"; }\n\n.ion-android-plane:before {\n  content: \"\\F3A4\"; }\n\n.ion-android-playstore:before {\n  content: \"\\F2F0\"; }\n\n.ion-android-print:before {\n  content: \"\\F3A5\"; }\n\n.ion-android-radio-button-off:before {\n  content: \"\\F3A6\"; }\n\n.ion-android-radio-button-on:before {\n  content: \"\\F3A7\"; }\n\n.ion-android-refresh:before {\n  content: \"\\F3A8\"; }\n\n.ion-android-remove:before {\n  content: \"\\F2F4\"; }\n\n.ion-android-remove-circle:before {\n  content: \"\\F3A9\"; }\n\n.ion-android-restaurant:before {\n  content: \"\\F3AA\"; }\n\n.ion-android-sad:before {\n  content: \"\\F3AB\"; }\n\n.ion-android-search:before {\n  content: \"\\F2F5\"; }\n\n.ion-android-send:before {\n  content: \"\\F2F6\"; }\n\n.ion-android-settings:before {\n  content: \"\\F2F7\"; }\n\n.ion-android-share:before {\n  content: \"\\F2F8\"; }\n\n.ion-android-share-alt:before {\n  content: \"\\F3AC\"; }\n\n.ion-android-star:before {\n  content: \"\\F2FC\"; }\n\n.ion-android-star-half:before {\n  content: \"\\F3AD\"; }\n\n.ion-android-star-outline:before {\n  content: \"\\F3AE\"; }\n\n.ion-android-stopwatch:before {\n  content: \"\\F2FD\"; }\n\n.ion-android-subway:before {\n  content: \"\\F3AF\"; }\n\n.ion-android-sunny:before {\n  content: \"\\F3B0\"; }\n\n.ion-android-sync:before {\n  content: \"\\F3B1\"; }\n\n.ion-android-textsms:before {\n  content: \"\\F3B2\"; }\n\n.ion-android-time:before {\n  content: \"\\F3B3\"; }\n\n.ion-android-train:before {\n  content: \"\\F3B4\"; }\n\n.ion-android-unlock:before {\n  content: \"\\F3B5\"; }\n\n.ion-android-upload:before {\n  content: \"\\F3B6\"; }\n\n.ion-android-volume-down:before {\n  content: \"\\F3B7\"; }\n\n.ion-android-volume-mute:before {\n  content: \"\\F3B8\"; }\n\n.ion-android-volume-off:before {\n  content: \"\\F3B9\"; }\n\n.ion-android-volume-up:before {\n  content: \"\\F3BA\"; }\n\n.ion-android-walk:before {\n  content: \"\\F3BB\"; }\n\n.ion-android-warning:before {\n  content: \"\\F3BC\"; }\n\n.ion-android-watch:before {\n  content: \"\\F3BD\"; }\n\n.ion-android-wifi:before {\n  content: \"\\F305\"; }\n\n.ion-aperture:before {\n  content: \"\\F313\"; }\n\n.ion-archive:before {\n  content: \"\\F102\"; }\n\n.ion-arrow-down-a:before {\n  content: \"\\F103\"; }\n\n.ion-arrow-down-b:before {\n  content: \"\\F104\"; }\n\n.ion-arrow-down-c:before {\n  content: \"\\F105\"; }\n\n.ion-arrow-expand:before {\n  content: \"\\F25E\"; }\n\n.ion-arrow-graph-down-left:before {\n  content: \"\\F25F\"; }\n\n.ion-arrow-graph-down-right:before {\n  content: \"\\F260\"; }\n\n.ion-arrow-graph-up-left:before {\n  content: \"\\F261\"; }\n\n.ion-arrow-graph-up-right:before {\n  content: \"\\F262\"; }\n\n.ion-arrow-left-a:before {\n  content: \"\\F106\"; }\n\n.ion-arrow-left-b:before {\n  content: \"\\F107\"; }\n\n.ion-arrow-left-c:before {\n  content: \"\\F108\"; }\n\n.ion-arrow-move:before {\n  content: \"\\F263\"; }\n\n.ion-arrow-resize:before {\n  content: \"\\F264\"; }\n\n.ion-arrow-return-left:before {\n  content: \"\\F265\"; }\n\n.ion-arrow-return-right:before {\n  content: \"\\F266\"; }\n\n.ion-arrow-right-a:before {\n  content: \"\\F109\"; }\n\n.ion-arrow-right-b:before {\n  content: \"\\F10A\"; }\n\n.ion-arrow-right-c:before {\n  content: \"\\F10B\"; }\n\n.ion-arrow-shrink:before {\n  content: \"\\F267\"; }\n\n.ion-arrow-swap:before {\n  content: \"\\F268\"; }\n\n.ion-arrow-up-a:before {\n  content: \"\\F10C\"; }\n\n.ion-arrow-up-b:before {\n  content: \"\\F10D\"; }\n\n.ion-arrow-up-c:before {\n  content: \"\\F10E\"; }\n\n.ion-asterisk:before {\n  content: \"\\F314\"; }\n\n.ion-at:before {\n  content: \"\\F10F\"; }\n\n.ion-backspace:before {\n  content: \"\\F3BF\"; }\n\n.ion-backspace-outline:before {\n  content: \"\\F3BE\"; }\n\n.ion-bag:before {\n  content: \"\\F110\"; }\n\n.ion-battery-charging:before {\n  content: \"\\F111\"; }\n\n.ion-battery-empty:before {\n  content: \"\\F112\"; }\n\n.ion-battery-full:before {\n  content: \"\\F113\"; }\n\n.ion-battery-half:before {\n  content: \"\\F114\"; }\n\n.ion-battery-low:before {\n  content: \"\\F115\"; }\n\n.ion-beaker:before {\n  content: \"\\F269\"; }\n\n.ion-beer:before {\n  content: \"\\F26A\"; }\n\n.ion-bluetooth:before {\n  content: \"\\F116\"; }\n\n.ion-bonfire:before {\n  content: \"\\F315\"; }\n\n.ion-bookmark:before {\n  content: \"\\F26B\"; }\n\n.ion-bowtie:before {\n  content: \"\\F3C0\"; }\n\n.ion-briefcase:before {\n  content: \"\\F26C\"; }\n\n.ion-bug:before {\n  content: \"\\F2BE\"; }\n\n.ion-calculator:before {\n  content: \"\\F26D\"; }\n\n.ion-calendar:before {\n  content: \"\\F117\"; }\n\n.ion-camera:before {\n  content: \"\\F118\"; }\n\n.ion-card:before {\n  content: \"\\F119\"; }\n\n.ion-cash:before {\n  content: \"\\F316\"; }\n\n.ion-chatbox:before {\n  content: \"\\F11B\"; }\n\n.ion-chatbox-working:before {\n  content: \"\\F11A\"; }\n\n.ion-chatboxes:before {\n  content: \"\\F11C\"; }\n\n.ion-chatbubble:before {\n  content: \"\\F11E\"; }\n\n.ion-chatbubble-working:before {\n  content: \"\\F11D\"; }\n\n.ion-chatbubbles:before {\n  content: \"\\F11F\"; }\n\n.ion-checkmark:before {\n  content: \"\\F122\"; }\n\n.ion-checkmark-circled:before {\n  content: \"\\F120\"; }\n\n.ion-checkmark-round:before {\n  content: \"\\F121\"; }\n\n.ion-chevron-down:before {\n  content: \"\\F123\"; }\n\n.ion-chevron-left:before {\n  content: \"\\F124\"; }\n\n.ion-chevron-right:before {\n  content: \"\\F125\"; }\n\n.ion-chevron-up:before {\n  content: \"\\F126\"; }\n\n.ion-clipboard:before {\n  content: \"\\F127\"; }\n\n.ion-clock:before {\n  content: \"\\F26E\"; }\n\n.ion-close:before {\n  content: \"\\F12A\"; }\n\n.ion-close-circled:before {\n  content: \"\\F128\"; }\n\n.ion-close-round:before {\n  content: \"\\F129\"; }\n\n.ion-closed-captioning:before {\n  content: \"\\F317\"; }\n\n.ion-cloud:before {\n  content: \"\\F12B\"; }\n\n.ion-code:before {\n  content: \"\\F271\"; }\n\n.ion-code-download:before {\n  content: \"\\F26F\"; }\n\n.ion-code-working:before {\n  content: \"\\F270\"; }\n\n.ion-coffee:before {\n  content: \"\\F272\"; }\n\n.ion-compass:before {\n  content: \"\\F273\"; }\n\n.ion-compose:before {\n  content: \"\\F12C\"; }\n\n.ion-connection-bars:before {\n  content: \"\\F274\"; }\n\n.ion-contrast:before {\n  content: \"\\F275\"; }\n\n.ion-crop:before {\n  content: \"\\F3C1\"; }\n\n.ion-cube:before {\n  content: \"\\F318\"; }\n\n.ion-disc:before {\n  content: \"\\F12D\"; }\n\n.ion-document:before {\n  content: \"\\F12F\"; }\n\n.ion-document-text:before {\n  content: \"\\F12E\"; }\n\n.ion-drag:before {\n  content: \"\\F130\"; }\n\n.ion-earth:before {\n  content: \"\\F276\"; }\n\n.ion-easel:before {\n  content: \"\\F3C2\"; }\n\n.ion-edit:before {\n  content: \"\\F2BF\"; }\n\n.ion-egg:before {\n  content: \"\\F277\"; }\n\n.ion-eject:before {\n  content: \"\\F131\"; }\n\n.ion-email:before {\n  content: \"\\F132\"; }\n\n.ion-email-unread:before {\n  content: \"\\F3C3\"; }\n\n.ion-erlenmeyer-flask:before {\n  content: \"\\F3C5\"; }\n\n.ion-erlenmeyer-flask-bubbles:before {\n  content: \"\\F3C4\"; }\n\n.ion-eye:before {\n  content: \"\\F133\"; }\n\n.ion-eye-disabled:before {\n  content: \"\\F306\"; }\n\n.ion-female:before {\n  content: \"\\F278\"; }\n\n.ion-filing:before {\n  content: \"\\F134\"; }\n\n.ion-film-marker:before {\n  content: \"\\F135\"; }\n\n.ion-fireball:before {\n  content: \"\\F319\"; }\n\n.ion-flag:before {\n  content: \"\\F279\"; }\n\n.ion-flame:before {\n  content: \"\\F31A\"; }\n\n.ion-flash:before {\n  content: \"\\F137\"; }\n\n.ion-flash-off:before {\n  content: \"\\F136\"; }\n\n.ion-folder:before {\n  content: \"\\F139\"; }\n\n.ion-fork:before {\n  content: \"\\F27A\"; }\n\n.ion-fork-repo:before {\n  content: \"\\F2C0\"; }\n\n.ion-forward:before {\n  content: \"\\F13A\"; }\n\n.ion-funnel:before {\n  content: \"\\F31B\"; }\n\n.ion-gear-a:before {\n  content: \"\\F13D\"; }\n\n.ion-gear-b:before {\n  content: \"\\F13E\"; }\n\n.ion-grid:before {\n  content: \"\\F13F\"; }\n\n.ion-hammer:before {\n  content: \"\\F27B\"; }\n\n.ion-happy:before {\n  content: \"\\F31C\"; }\n\n.ion-happy-outline:before {\n  content: \"\\F3C6\"; }\n\n.ion-headphone:before {\n  content: \"\\F140\"; }\n\n.ion-heart:before {\n  content: \"\\F141\"; }\n\n.ion-heart-broken:before {\n  content: \"\\F31D\"; }\n\n.ion-help:before {\n  content: \"\\F143\"; }\n\n.ion-help-buoy:before {\n  content: \"\\F27C\"; }\n\n.ion-help-circled:before {\n  content: \"\\F142\"; }\n\n.ion-home:before {\n  content: \"\\F144\"; }\n\n.ion-icecream:before {\n  content: \"\\F27D\"; }\n\n.ion-image:before {\n  content: \"\\F147\"; }\n\n.ion-images:before {\n  content: \"\\F148\"; }\n\n.ion-information:before {\n  content: \"\\F14A\"; }\n\n.ion-information-circled:before {\n  content: \"\\F149\"; }\n\n.ion-ionic:before {\n  content: \"\\F14B\"; }\n\n.ion-ios-alarm:before {\n  content: \"\\F3C8\"; }\n\n.ion-ios-alarm-outline:before {\n  content: \"\\F3C7\"; }\n\n.ion-ios-albums:before {\n  content: \"\\F3CA\"; }\n\n.ion-ios-albums-outline:before {\n  content: \"\\F3C9\"; }\n\n.ion-ios-americanfootball:before {\n  content: \"\\F3CC\"; }\n\n.ion-ios-americanfootball-outline:before {\n  content: \"\\F3CB\"; }\n\n.ion-ios-analytics:before {\n  content: \"\\F3CE\"; }\n\n.ion-ios-analytics-outline:before {\n  content: \"\\F3CD\"; }\n\n.ion-ios-arrow-back:before {\n  content: \"\\F3CF\"; }\n\n.ion-ios-arrow-down:before {\n  content: \"\\F3D0\"; }\n\n.ion-ios-arrow-forward:before {\n  content: \"\\F3D1\"; }\n\n.ion-ios-arrow-left:before {\n  content: \"\\F3D2\"; }\n\n.ion-ios-arrow-right:before {\n  content: \"\\F3D3\"; }\n\n.ion-ios-arrow-thin-down:before {\n  content: \"\\F3D4\"; }\n\n.ion-ios-arrow-thin-left:before {\n  content: \"\\F3D5\"; }\n\n.ion-ios-arrow-thin-right:before {\n  content: \"\\F3D6\"; }\n\n.ion-ios-arrow-thin-up:before {\n  content: \"\\F3D7\"; }\n\n.ion-ios-arrow-up:before {\n  content: \"\\F3D8\"; }\n\n.ion-ios-at:before {\n  content: \"\\F3DA\"; }\n\n.ion-ios-at-outline:before {\n  content: \"\\F3D9\"; }\n\n.ion-ios-barcode:before {\n  content: \"\\F3DC\"; }\n\n.ion-ios-barcode-outline:before {\n  content: \"\\F3DB\"; }\n\n.ion-ios-baseball:before {\n  content: \"\\F3DE\"; }\n\n.ion-ios-baseball-outline:before {\n  content: \"\\F3DD\"; }\n\n.ion-ios-basketball:before {\n  content: \"\\F3E0\"; }\n\n.ion-ios-basketball-outline:before {\n  content: \"\\F3DF\"; }\n\n.ion-ios-bell:before {\n  content: \"\\F3E2\"; }\n\n.ion-ios-bell-outline:before {\n  content: \"\\F3E1\"; }\n\n.ion-ios-body:before {\n  content: \"\\F3E4\"; }\n\n.ion-ios-body-outline:before {\n  content: \"\\F3E3\"; }\n\n.ion-ios-bolt:before {\n  content: \"\\F3E6\"; }\n\n.ion-ios-bolt-outline:before {\n  content: \"\\F3E5\"; }\n\n.ion-ios-book:before {\n  content: \"\\F3E8\"; }\n\n.ion-ios-book-outline:before {\n  content: \"\\F3E7\"; }\n\n.ion-ios-bookmarks:before {\n  content: \"\\F3EA\"; }\n\n.ion-ios-bookmarks-outline:before {\n  content: \"\\F3E9\"; }\n\n.ion-ios-box:before {\n  content: \"\\F3EC\"; }\n\n.ion-ios-box-outline:before {\n  content: \"\\F3EB\"; }\n\n.ion-ios-briefcase:before {\n  content: \"\\F3EE\"; }\n\n.ion-ios-briefcase-outline:before {\n  content: \"\\F3ED\"; }\n\n.ion-ios-browsers:before {\n  content: \"\\F3F0\"; }\n\n.ion-ios-browsers-outline:before {\n  content: \"\\F3EF\"; }\n\n.ion-ios-calculator:before {\n  content: \"\\F3F2\"; }\n\n.ion-ios-calculator-outline:before {\n  content: \"\\F3F1\"; }\n\n.ion-ios-calendar:before {\n  content: \"\\F3F4\"; }\n\n.ion-ios-calendar-outline:before {\n  content: \"\\F3F3\"; }\n\n.ion-ios-camera:before {\n  content: \"\\F3F6\"; }\n\n.ion-ios-camera-outline:before {\n  content: \"\\F3F5\"; }\n\n.ion-ios-cart:before {\n  content: \"\\F3F8\"; }\n\n.ion-ios-cart-outline:before {\n  content: \"\\F3F7\"; }\n\n.ion-ios-chatboxes:before {\n  content: \"\\F3FA\"; }\n\n.ion-ios-chatboxes-outline:before {\n  content: \"\\F3F9\"; }\n\n.ion-ios-chatbubble:before {\n  content: \"\\F3FC\"; }\n\n.ion-ios-chatbubble-outline:before {\n  content: \"\\F3FB\"; }\n\n.ion-ios-checkmark:before {\n  content: \"\\F3FF\"; }\n\n.ion-ios-checkmark-empty:before {\n  content: \"\\F3FD\"; }\n\n.ion-ios-checkmark-outline:before {\n  content: \"\\F3FE\"; }\n\n.ion-ios-circle-filled:before {\n  content: \"\\F400\"; }\n\n.ion-ios-circle-outline:before {\n  content: \"\\F401\"; }\n\n.ion-ios-clock:before {\n  content: \"\\F403\"; }\n\n.ion-ios-clock-outline:before {\n  content: \"\\F402\"; }\n\n.ion-ios-close:before {\n  content: \"\\F406\"; }\n\n.ion-ios-close-empty:before {\n  content: \"\\F404\"; }\n\n.ion-ios-close-outline:before {\n  content: \"\\F405\"; }\n\n.ion-ios-cloud:before {\n  content: \"\\F40C\"; }\n\n.ion-ios-cloud-download:before {\n  content: \"\\F408\"; }\n\n.ion-ios-cloud-download-outline:before {\n  content: \"\\F407\"; }\n\n.ion-ios-cloud-outline:before {\n  content: \"\\F409\"; }\n\n.ion-ios-cloud-upload:before {\n  content: \"\\F40B\"; }\n\n.ion-ios-cloud-upload-outline:before {\n  content: \"\\F40A\"; }\n\n.ion-ios-cloudy:before {\n  content: \"\\F410\"; }\n\n.ion-ios-cloudy-night:before {\n  content: \"\\F40E\"; }\n\n.ion-ios-cloudy-night-outline:before {\n  content: \"\\F40D\"; }\n\n.ion-ios-cloudy-outline:before {\n  content: \"\\F40F\"; }\n\n.ion-ios-cog:before {\n  content: \"\\F412\"; }\n\n.ion-ios-cog-outline:before {\n  content: \"\\F411\"; }\n\n.ion-ios-color-filter:before {\n  content: \"\\F414\"; }\n\n.ion-ios-color-filter-outline:before {\n  content: \"\\F413\"; }\n\n.ion-ios-color-wand:before {\n  content: \"\\F416\"; }\n\n.ion-ios-color-wand-outline:before {\n  content: \"\\F415\"; }\n\n.ion-ios-compose:before {\n  content: \"\\F418\"; }\n\n.ion-ios-compose-outline:before {\n  content: \"\\F417\"; }\n\n.ion-ios-contact:before {\n  content: \"\\F41A\"; }\n\n.ion-ios-contact-outline:before {\n  content: \"\\F419\"; }\n\n.ion-ios-copy:before {\n  content: \"\\F41C\"; }\n\n.ion-ios-copy-outline:before {\n  content: \"\\F41B\"; }\n\n.ion-ios-crop:before {\n  content: \"\\F41E\"; }\n\n.ion-ios-crop-strong:before {\n  content: \"\\F41D\"; }\n\n.ion-ios-download:before {\n  content: \"\\F420\"; }\n\n.ion-ios-download-outline:before {\n  content: \"\\F41F\"; }\n\n.ion-ios-drag:before {\n  content: \"\\F421\"; }\n\n.ion-ios-email:before {\n  content: \"\\F423\"; }\n\n.ion-ios-email-outline:before {\n  content: \"\\F422\"; }\n\n.ion-ios-eye:before {\n  content: \"\\F425\"; }\n\n.ion-ios-eye-outline:before {\n  content: \"\\F424\"; }\n\n.ion-ios-fastforward:before {\n  content: \"\\F427\"; }\n\n.ion-ios-fastforward-outline:before {\n  content: \"\\F426\"; }\n\n.ion-ios-filing:before {\n  content: \"\\F429\"; }\n\n.ion-ios-filing-outline:before {\n  content: \"\\F428\"; }\n\n.ion-ios-film:before {\n  content: \"\\F42B\"; }\n\n.ion-ios-film-outline:before {\n  content: \"\\F42A\"; }\n\n.ion-ios-flag:before {\n  content: \"\\F42D\"; }\n\n.ion-ios-flag-outline:before {\n  content: \"\\F42C\"; }\n\n.ion-ios-flame:before {\n  content: \"\\F42F\"; }\n\n.ion-ios-flame-outline:before {\n  content: \"\\F42E\"; }\n\n.ion-ios-flask:before {\n  content: \"\\F431\"; }\n\n.ion-ios-flask-outline:before {\n  content: \"\\F430\"; }\n\n.ion-ios-flower:before {\n  content: \"\\F433\"; }\n\n.ion-ios-flower-outline:before {\n  content: \"\\F432\"; }\n\n.ion-ios-folder:before {\n  content: \"\\F435\"; }\n\n.ion-ios-folder-outline:before {\n  content: \"\\F434\"; }\n\n.ion-ios-football:before {\n  content: \"\\F437\"; }\n\n.ion-ios-football-outline:before {\n  content: \"\\F436\"; }\n\n.ion-ios-game-controller-a:before {\n  content: \"\\F439\"; }\n\n.ion-ios-game-controller-a-outline:before {\n  content: \"\\F438\"; }\n\n.ion-ios-game-controller-b:before {\n  content: \"\\F43B\"; }\n\n.ion-ios-game-controller-b-outline:before {\n  content: \"\\F43A\"; }\n\n.ion-ios-gear:before {\n  content: \"\\F43D\"; }\n\n.ion-ios-gear-outline:before {\n  content: \"\\F43C\"; }\n\n.ion-ios-glasses:before {\n  content: \"\\F43F\"; }\n\n.ion-ios-glasses-outline:before {\n  content: \"\\F43E\"; }\n\n.ion-ios-grid-view:before {\n  content: \"\\F441\"; }\n\n.ion-ios-grid-view-outline:before {\n  content: \"\\F440\"; }\n\n.ion-ios-heart:before {\n  content: \"\\F443\"; }\n\n.ion-ios-heart-outline:before {\n  content: \"\\F442\"; }\n\n.ion-ios-help:before {\n  content: \"\\F446\"; }\n\n.ion-ios-help-empty:before {\n  content: \"\\F444\"; }\n\n.ion-ios-help-outline:before {\n  content: \"\\F445\"; }\n\n.ion-ios-home:before {\n  content: \"\\F448\"; }\n\n.ion-ios-home-outline:before {\n  content: \"\\F447\"; }\n\n.ion-ios-infinite:before {\n  content: \"\\F44A\"; }\n\n.ion-ios-infinite-outline:before {\n  content: \"\\F449\"; }\n\n.ion-ios-information:before {\n  content: \"\\F44D\"; }\n\n.ion-ios-information-empty:before {\n  content: \"\\F44B\"; }\n\n.ion-ios-information-outline:before {\n  content: \"\\F44C\"; }\n\n.ion-ios-ionic-outline:before {\n  content: \"\\F44E\"; }\n\n.ion-ios-keypad:before {\n  content: \"\\F450\"; }\n\n.ion-ios-keypad-outline:before {\n  content: \"\\F44F\"; }\n\n.ion-ios-lightbulb:before {\n  content: \"\\F452\"; }\n\n.ion-ios-lightbulb-outline:before {\n  content: \"\\F451\"; }\n\n.ion-ios-list:before {\n  content: \"\\F454\"; }\n\n.ion-ios-list-outline:before {\n  content: \"\\F453\"; }\n\n.ion-ios-location:before {\n  content: \"\\F456\"; }\n\n.ion-ios-location-outline:before {\n  content: \"\\F455\"; }\n\n.ion-ios-locked:before {\n  content: \"\\F458\"; }\n\n.ion-ios-locked-outline:before {\n  content: \"\\F457\"; }\n\n.ion-ios-loop:before {\n  content: \"\\F45A\"; }\n\n.ion-ios-loop-strong:before {\n  content: \"\\F459\"; }\n\n.ion-ios-medical:before {\n  content: \"\\F45C\"; }\n\n.ion-ios-medical-outline:before {\n  content: \"\\F45B\"; }\n\n.ion-ios-medkit:before {\n  content: \"\\F45E\"; }\n\n.ion-ios-medkit-outline:before {\n  content: \"\\F45D\"; }\n\n.ion-ios-mic:before {\n  content: \"\\F461\"; }\n\n.ion-ios-mic-off:before {\n  content: \"\\F45F\"; }\n\n.ion-ios-mic-outline:before {\n  content: \"\\F460\"; }\n\n.ion-ios-minus:before {\n  content: \"\\F464\"; }\n\n.ion-ios-minus-empty:before {\n  content: \"\\F462\"; }\n\n.ion-ios-minus-outline:before {\n  content: \"\\F463\"; }\n\n.ion-ios-monitor:before {\n  content: \"\\F466\"; }\n\n.ion-ios-monitor-outline:before {\n  content: \"\\F465\"; }\n\n.ion-ios-moon:before {\n  content: \"\\F468\"; }\n\n.ion-ios-moon-outline:before {\n  content: \"\\F467\"; }\n\n.ion-ios-more:before {\n  content: \"\\F46A\"; }\n\n.ion-ios-more-outline:before {\n  content: \"\\F469\"; }\n\n.ion-ios-musical-note:before {\n  content: \"\\F46B\"; }\n\n.ion-ios-musical-notes:before {\n  content: \"\\F46C\"; }\n\n.ion-ios-navigate:before {\n  content: \"\\F46E\"; }\n\n.ion-ios-navigate-outline:before {\n  content: \"\\F46D\"; }\n\n.ion-ios-nutrition:before {\n  content: \"\\F470\"; }\n\n.ion-ios-nutrition-outline:before {\n  content: \"\\F46F\"; }\n\n.ion-ios-paper:before {\n  content: \"\\F472\"; }\n\n.ion-ios-paper-outline:before {\n  content: \"\\F471\"; }\n\n.ion-ios-paperplane:before {\n  content: \"\\F474\"; }\n\n.ion-ios-paperplane-outline:before {\n  content: \"\\F473\"; }\n\n.ion-ios-partlysunny:before {\n  content: \"\\F476\"; }\n\n.ion-ios-partlysunny-outline:before {\n  content: \"\\F475\"; }\n\n.ion-ios-pause:before {\n  content: \"\\F478\"; }\n\n.ion-ios-pause-outline:before {\n  content: \"\\F477\"; }\n\n.ion-ios-paw:before {\n  content: \"\\F47A\"; }\n\n.ion-ios-paw-outline:before {\n  content: \"\\F479\"; }\n\n.ion-ios-people:before {\n  content: \"\\F47C\"; }\n\n.ion-ios-people-outline:before {\n  content: \"\\F47B\"; }\n\n.ion-ios-person:before {\n  content: \"\\F47E\"; }\n\n.ion-ios-person-outline:before {\n  content: \"\\F47D\"; }\n\n.ion-ios-personadd:before {\n  content: \"\\F480\"; }\n\n.ion-ios-personadd-outline:before {\n  content: \"\\F47F\"; }\n\n.ion-ios-photos:before {\n  content: \"\\F482\"; }\n\n.ion-ios-photos-outline:before {\n  content: \"\\F481\"; }\n\n.ion-ios-pie:before {\n  content: \"\\F484\"; }\n\n.ion-ios-pie-outline:before {\n  content: \"\\F483\"; }\n\n.ion-ios-pint:before {\n  content: \"\\F486\"; }\n\n.ion-ios-pint-outline:before {\n  content: \"\\F485\"; }\n\n.ion-ios-play:before {\n  content: \"\\F488\"; }\n\n.ion-ios-play-outline:before {\n  content: \"\\F487\"; }\n\n.ion-ios-plus:before {\n  content: \"\\F48B\"; }\n\n.ion-ios-plus-empty:before {\n  content: \"\\F489\"; }\n\n.ion-ios-plus-outline:before {\n  content: \"\\F48A\"; }\n\n.ion-ios-pricetag:before {\n  content: \"\\F48D\"; }\n\n.ion-ios-pricetag-outline:before {\n  content: \"\\F48C\"; }\n\n.ion-ios-pricetags:before {\n  content: \"\\F48F\"; }\n\n.ion-ios-pricetags-outline:before {\n  content: \"\\F48E\"; }\n\n.ion-ios-printer:before {\n  content: \"\\F491\"; }\n\n.ion-ios-printer-outline:before {\n  content: \"\\F490\"; }\n\n.ion-ios-pulse:before {\n  content: \"\\F493\"; }\n\n.ion-ios-pulse-strong:before {\n  content: \"\\F492\"; }\n\n.ion-ios-rainy:before {\n  content: \"\\F495\"; }\n\n.ion-ios-rainy-outline:before {\n  content: \"\\F494\"; }\n\n.ion-ios-recording:before {\n  content: \"\\F497\"; }\n\n.ion-ios-recording-outline:before {\n  content: \"\\F496\"; }\n\n.ion-ios-redo:before {\n  content: \"\\F499\"; }\n\n.ion-ios-redo-outline:before {\n  content: \"\\F498\"; }\n\n.ion-ios-refresh:before {\n  content: \"\\F49C\"; }\n\n.ion-ios-refresh-empty:before {\n  content: \"\\F49A\"; }\n\n.ion-ios-refresh-outline:before {\n  content: \"\\F49B\"; }\n\n.ion-ios-reload:before {\n  content: \"\\F49D\"; }\n\n.ion-ios-reverse-camera:before {\n  content: \"\\F49F\"; }\n\n.ion-ios-reverse-camera-outline:before {\n  content: \"\\F49E\"; }\n\n.ion-ios-rewind:before {\n  content: \"\\F4A1\"; }\n\n.ion-ios-rewind-outline:before {\n  content: \"\\F4A0\"; }\n\n.ion-ios-rose:before {\n  content: \"\\F4A3\"; }\n\n.ion-ios-rose-outline:before {\n  content: \"\\F4A2\"; }\n\n.ion-ios-search:before {\n  content: \"\\F4A5\"; }\n\n.ion-ios-search-strong:before {\n  content: \"\\F4A4\"; }\n\n.ion-ios-settings:before {\n  content: \"\\F4A7\"; }\n\n.ion-ios-settings-strong:before {\n  content: \"\\F4A6\"; }\n\n.ion-ios-shuffle:before {\n  content: \"\\F4A9\"; }\n\n.ion-ios-shuffle-strong:before {\n  content: \"\\F4A8\"; }\n\n.ion-ios-skipbackward:before {\n  content: \"\\F4AB\"; }\n\n.ion-ios-skipbackward-outline:before {\n  content: \"\\F4AA\"; }\n\n.ion-ios-skipforward:before {\n  content: \"\\F4AD\"; }\n\n.ion-ios-skipforward-outline:before {\n  content: \"\\F4AC\"; }\n\n.ion-ios-snowy:before {\n  content: \"\\F4AE\"; }\n\n.ion-ios-speedometer:before {\n  content: \"\\F4B0\"; }\n\n.ion-ios-speedometer-outline:before {\n  content: \"\\F4AF\"; }\n\n.ion-ios-star:before {\n  content: \"\\F4B3\"; }\n\n.ion-ios-star-half:before {\n  content: \"\\F4B1\"; }\n\n.ion-ios-star-outline:before {\n  content: \"\\F4B2\"; }\n\n.ion-ios-stopwatch:before {\n  content: \"\\F4B5\"; }\n\n.ion-ios-stopwatch-outline:before {\n  content: \"\\F4B4\"; }\n\n.ion-ios-sunny:before {\n  content: \"\\F4B7\"; }\n\n.ion-ios-sunny-outline:before {\n  content: \"\\F4B6\"; }\n\n.ion-ios-telephone:before {\n  content: \"\\F4B9\"; }\n\n.ion-ios-telephone-outline:before {\n  content: \"\\F4B8\"; }\n\n.ion-ios-tennisball:before {\n  content: \"\\F4BB\"; }\n\n.ion-ios-tennisball-outline:before {\n  content: \"\\F4BA\"; }\n\n.ion-ios-thunderstorm:before {\n  content: \"\\F4BD\"; }\n\n.ion-ios-thunderstorm-outline:before {\n  content: \"\\F4BC\"; }\n\n.ion-ios-time:before {\n  content: \"\\F4BF\"; }\n\n.ion-ios-time-outline:before {\n  content: \"\\F4BE\"; }\n\n.ion-ios-timer:before {\n  content: \"\\F4C1\"; }\n\n.ion-ios-timer-outline:before {\n  content: \"\\F4C0\"; }\n\n.ion-ios-toggle:before {\n  content: \"\\F4C3\"; }\n\n.ion-ios-toggle-outline:before {\n  content: \"\\F4C2\"; }\n\n.ion-ios-trash:before {\n  content: \"\\F4C5\"; }\n\n.ion-ios-trash-outline:before {\n  content: \"\\F4C4\"; }\n\n.ion-ios-undo:before {\n  content: \"\\F4C7\"; }\n\n.ion-ios-undo-outline:before {\n  content: \"\\F4C6\"; }\n\n.ion-ios-unlocked:before {\n  content: \"\\F4C9\"; }\n\n.ion-ios-unlocked-outline:before {\n  content: \"\\F4C8\"; }\n\n.ion-ios-upload:before {\n  content: \"\\F4CB\"; }\n\n.ion-ios-upload-outline:before {\n  content: \"\\F4CA\"; }\n\n.ion-ios-videocam:before {\n  content: \"\\F4CD\"; }\n\n.ion-ios-videocam-outline:before {\n  content: \"\\F4CC\"; }\n\n.ion-ios-volume-high:before {\n  content: \"\\F4CE\"; }\n\n.ion-ios-volume-low:before {\n  content: \"\\F4CF\"; }\n\n.ion-ios-wineglass:before {\n  content: \"\\F4D1\"; }\n\n.ion-ios-wineglass-outline:before {\n  content: \"\\F4D0\"; }\n\n.ion-ios-world:before {\n  content: \"\\F4D3\"; }\n\n.ion-ios-world-outline:before {\n  content: \"\\F4D2\"; }\n\n.ion-ipad:before {\n  content: \"\\F1F9\"; }\n\n.ion-iphone:before {\n  content: \"\\F1FA\"; }\n\n.ion-ipod:before {\n  content: \"\\F1FB\"; }\n\n.ion-jet:before {\n  content: \"\\F295\"; }\n\n.ion-key:before {\n  content: \"\\F296\"; }\n\n.ion-knife:before {\n  content: \"\\F297\"; }\n\n.ion-laptop:before {\n  content: \"\\F1FC\"; }\n\n.ion-leaf:before {\n  content: \"\\F1FD\"; }\n\n.ion-levels:before {\n  content: \"\\F298\"; }\n\n.ion-lightbulb:before {\n  content: \"\\F299\"; }\n\n.ion-link:before {\n  content: \"\\F1FE\"; }\n\n.ion-load-a:before {\n  content: \"\\F29A\"; }\n\n.ion-load-b:before {\n  content: \"\\F29B\"; }\n\n.ion-load-c:before {\n  content: \"\\F29C\"; }\n\n.ion-load-d:before {\n  content: \"\\F29D\"; }\n\n.ion-location:before {\n  content: \"\\F1FF\"; }\n\n.ion-lock-combination:before {\n  content: \"\\F4D4\"; }\n\n.ion-locked:before {\n  content: \"\\F200\"; }\n\n.ion-log-in:before {\n  content: \"\\F29E\"; }\n\n.ion-log-out:before {\n  content: \"\\F29F\"; }\n\n.ion-loop:before {\n  content: \"\\F201\"; }\n\n.ion-magnet:before {\n  content: \"\\F2A0\"; }\n\n.ion-male:before {\n  content: \"\\F2A1\"; }\n\n.ion-man:before {\n  content: \"\\F202\"; }\n\n.ion-map:before {\n  content: \"\\F203\"; }\n\n.ion-medkit:before {\n  content: \"\\F2A2\"; }\n\n.ion-merge:before {\n  content: \"\\F33F\"; }\n\n.ion-mic-a:before {\n  content: \"\\F204\"; }\n\n.ion-mic-b:before {\n  content: \"\\F205\"; }\n\n.ion-mic-c:before {\n  content: \"\\F206\"; }\n\n.ion-minus:before {\n  content: \"\\F209\"; }\n\n.ion-minus-circled:before {\n  content: \"\\F207\"; }\n\n.ion-minus-round:before {\n  content: \"\\F208\"; }\n\n.ion-model-s:before {\n  content: \"\\F2C1\"; }\n\n.ion-monitor:before {\n  content: \"\\F20A\"; }\n\n.ion-more:before {\n  content: \"\\F20B\"; }\n\n.ion-mouse:before {\n  content: \"\\F340\"; }\n\n.ion-music-note:before {\n  content: \"\\F20C\"; }\n\n.ion-navicon:before {\n  content: \"\\F20E\"; }\n\n.ion-navicon-round:before {\n  content: \"\\F20D\"; }\n\n.ion-navigate:before {\n  content: \"\\F2A3\"; }\n\n.ion-network:before {\n  content: \"\\F341\"; }\n\n.ion-no-smoking:before {\n  content: \"\\F2C2\"; }\n\n.ion-nuclear:before {\n  content: \"\\F2A4\"; }\n\n.ion-outlet:before {\n  content: \"\\F342\"; }\n\n.ion-paintbrush:before {\n  content: \"\\F4D5\"; }\n\n.ion-paintbucket:before {\n  content: \"\\F4D6\"; }\n\n.ion-paper-airplane:before {\n  content: \"\\F2C3\"; }\n\n.ion-paperclip:before {\n  content: \"\\F20F\"; }\n\n.ion-pause:before {\n  content: \"\\F210\"; }\n\n.ion-person:before {\n  content: \"\\F213\"; }\n\n.ion-person-add:before {\n  content: \"\\F211\"; }\n\n.ion-person-stalker:before {\n  content: \"\\F212\"; }\n\n.ion-pie-graph:before {\n  content: \"\\F2A5\"; }\n\n.ion-pin:before {\n  content: \"\\F2A6\"; }\n\n.ion-pinpoint:before {\n  content: \"\\F2A7\"; }\n\n.ion-pizza:before {\n  content: \"\\F2A8\"; }\n\n.ion-plane:before {\n  content: \"\\F214\"; }\n\n.ion-planet:before {\n  content: \"\\F343\"; }\n\n.ion-play:before {\n  content: \"\\F215\"; }\n\n.ion-playstation:before {\n  content: \"\\F30A\"; }\n\n.ion-plus:before {\n  content: \"\\F218\"; }\n\n.ion-plus-circled:before {\n  content: \"\\F216\"; }\n\n.ion-plus-round:before {\n  content: \"\\F217\"; }\n\n.ion-podium:before {\n  content: \"\\F344\"; }\n\n.ion-pound:before {\n  content: \"\\F219\"; }\n\n.ion-power:before {\n  content: \"\\F2A9\"; }\n\n.ion-pricetag:before {\n  content: \"\\F2AA\"; }\n\n.ion-pricetags:before {\n  content: \"\\F2AB\"; }\n\n.ion-printer:before {\n  content: \"\\F21A\"; }\n\n.ion-pull-request:before {\n  content: \"\\F345\"; }\n\n.ion-qr-scanner:before {\n  content: \"\\F346\"; }\n\n.ion-quote:before {\n  content: \"\\F347\"; }\n\n.ion-radio-waves:before {\n  content: \"\\F2AC\"; }\n\n.ion-record:before {\n  content: \"\\F21B\"; }\n\n.ion-refresh:before {\n  content: \"\\F21C\"; }\n\n.ion-reply:before {\n  content: \"\\F21E\"; }\n\n.ion-reply-all:before {\n  content: \"\\F21D\"; }\n\n.ion-ribbon-a:before {\n  content: \"\\F348\"; }\n\n.ion-ribbon-b:before {\n  content: \"\\F349\"; }\n\n.ion-sad:before {\n  content: \"\\F34A\"; }\n\n.ion-sad-outline:before {\n  content: \"\\F4D7\"; }\n\n.ion-scissors:before {\n  content: \"\\F34B\"; }\n\n.ion-search:before {\n  content: \"\\F21F\"; }\n\n.ion-settings:before {\n  content: \"\\F2AD\"; }\n\n.ion-share:before {\n  content: \"\\F220\"; }\n\n.ion-shuffle:before {\n  content: \"\\F221\"; }\n\n.ion-skip-backward:before {\n  content: \"\\F222\"; }\n\n.ion-skip-forward:before {\n  content: \"\\F223\"; }\n\n.ion-social-android:before {\n  content: \"\\F225\"; }\n\n.ion-social-android-outline:before {\n  content: \"\\F224\"; }\n\n.ion-social-angular:before {\n  content: \"\\F4D9\"; }\n\n.ion-social-angular-outline:before {\n  content: \"\\F4D8\"; }\n\n.ion-social-apple:before {\n  content: \"\\F227\"; }\n\n.ion-social-apple-outline:before {\n  content: \"\\F226\"; }\n\n.ion-social-bitcoin:before {\n  content: \"\\F2AF\"; }\n\n.ion-social-bitcoin-outline:before {\n  content: \"\\F2AE\"; }\n\n.ion-social-buffer:before {\n  content: \"\\F229\"; }\n\n.ion-social-buffer-outline:before {\n  content: \"\\F228\"; }\n\n.ion-social-chrome:before {\n  content: \"\\F4DB\"; }\n\n.ion-social-chrome-outline:before {\n  content: \"\\F4DA\"; }\n\n.ion-social-codepen:before {\n  content: \"\\F4DD\"; }\n\n.ion-social-codepen-outline:before {\n  content: \"\\F4DC\"; }\n\n.ion-social-css3:before {\n  content: \"\\F4DF\"; }\n\n.ion-social-css3-outline:before {\n  content: \"\\F4DE\"; }\n\n.ion-social-designernews:before {\n  content: \"\\F22B\"; }\n\n.ion-social-designernews-outline:before {\n  content: \"\\F22A\"; }\n\n.ion-social-dribbble:before {\n  content: \"\\F22D\"; }\n\n.ion-social-dribbble-outline:before {\n  content: \"\\F22C\"; }\n\n.ion-social-dropbox:before {\n  content: \"\\F22F\"; }\n\n.ion-social-dropbox-outline:before {\n  content: \"\\F22E\"; }\n\n.ion-social-euro:before {\n  content: \"\\F4E1\"; }\n\n.ion-social-euro-outline:before {\n  content: \"\\F4E0\"; }\n\n.ion-social-facebook:before {\n  content: \"\\F231\"; }\n\n.ion-social-facebook-outline:before {\n  content: \"\\F230\"; }\n\n.ion-social-foursquare:before {\n  content: \"\\F34D\"; }\n\n.ion-social-foursquare-outline:before {\n  content: \"\\F34C\"; }\n\n.ion-social-freebsd-devil:before {\n  content: \"\\F2C4\"; }\n\n.ion-social-github:before {\n  content: \"\\F233\"; }\n\n.ion-social-github-outline:before {\n  content: \"\\F232\"; }\n\n.ion-social-google:before {\n  content: \"\\F34F\"; }\n\n.ion-social-google-outline:before {\n  content: \"\\F34E\"; }\n\n.ion-social-googleplus:before {\n  content: \"\\F235\"; }\n\n.ion-social-googleplus-outline:before {\n  content: \"\\F234\"; }\n\n.ion-social-hackernews:before {\n  content: \"\\F237\"; }\n\n.ion-social-hackernews-outline:before {\n  content: \"\\F236\"; }\n\n.ion-social-html5:before {\n  content: \"\\F4E3\"; }\n\n.ion-social-html5-outline:before {\n  content: \"\\F4E2\"; }\n\n.ion-social-instagram:before {\n  content: \"\\F351\"; }\n\n.ion-social-instagram-outline:before {\n  content: \"\\F350\"; }\n\n.ion-social-javascript:before {\n  content: \"\\F4E5\"; }\n\n.ion-social-javascript-outline:before {\n  content: \"\\F4E4\"; }\n\n.ion-social-linkedin:before {\n  content: \"\\F239\"; }\n\n.ion-social-linkedin-outline:before {\n  content: \"\\F238\"; }\n\n.ion-social-markdown:before {\n  content: \"\\F4E6\"; }\n\n.ion-social-nodejs:before {\n  content: \"\\F4E7\"; }\n\n.ion-social-octocat:before {\n  content: \"\\F4E8\"; }\n\n.ion-social-pinterest:before {\n  content: \"\\F2B1\"; }\n\n.ion-social-pinterest-outline:before {\n  content: \"\\F2B0\"; }\n\n.ion-social-python:before {\n  content: \"\\F4E9\"; }\n\n.ion-social-reddit:before {\n  content: \"\\F23B\"; }\n\n.ion-social-reddit-outline:before {\n  content: \"\\F23A\"; }\n\n.ion-social-rss:before {\n  content: \"\\F23D\"; }\n\n.ion-social-rss-outline:before {\n  content: \"\\F23C\"; }\n\n.ion-social-sass:before {\n  content: \"\\F4EA\"; }\n\n.ion-social-skype:before {\n  content: \"\\F23F\"; }\n\n.ion-social-skype-outline:before {\n  content: \"\\F23E\"; }\n\n.ion-social-snapchat:before {\n  content: \"\\F4EC\"; }\n\n.ion-social-snapchat-outline:before {\n  content: \"\\F4EB\"; }\n\n.ion-social-tumblr:before {\n  content: \"\\F241\"; }\n\n.ion-social-tumblr-outline:before {\n  content: \"\\F240\"; }\n\n.ion-social-tux:before {\n  content: \"\\F2C5\"; }\n\n.ion-social-twitch:before {\n  content: \"\\F4EE\"; }\n\n.ion-social-twitch-outline:before {\n  content: \"\\F4ED\"; }\n\n.ion-social-twitter:before {\n  content: \"\\F243\"; }\n\n.ion-social-twitter-outline:before {\n  content: \"\\F242\"; }\n\n.ion-social-usd:before {\n  content: \"\\F353\"; }\n\n.ion-social-usd-outline:before {\n  content: \"\\F352\"; }\n\n.ion-social-vimeo:before {\n  content: \"\\F245\"; }\n\n.ion-social-vimeo-outline:before {\n  content: \"\\F244\"; }\n\n.ion-social-whatsapp:before {\n  content: \"\\F4F0\"; }\n\n.ion-social-whatsapp-outline:before {\n  content: \"\\F4EF\"; }\n\n.ion-social-windows:before {\n  content: \"\\F247\"; }\n\n.ion-social-windows-outline:before {\n  content: \"\\F246\"; }\n\n.ion-social-wordpress:before {\n  content: \"\\F249\"; }\n\n.ion-social-wordpress-outline:before {\n  content: \"\\F248\"; }\n\n.ion-social-yahoo:before {\n  content: \"\\F24B\"; }\n\n.ion-social-yahoo-outline:before {\n  content: \"\\F24A\"; }\n\n.ion-social-yen:before {\n  content: \"\\F4F2\"; }\n\n.ion-social-yen-outline:before {\n  content: \"\\F4F1\"; }\n\n.ion-social-youtube:before {\n  content: \"\\F24D\"; }\n\n.ion-social-youtube-outline:before {\n  content: \"\\F24C\"; }\n\n.ion-soup-can:before {\n  content: \"\\F4F4\"; }\n\n.ion-soup-can-outline:before {\n  content: \"\\F4F3\"; }\n\n.ion-speakerphone:before {\n  content: \"\\F2B2\"; }\n\n.ion-speedometer:before {\n  content: \"\\F2B3\"; }\n\n.ion-spoon:before {\n  content: \"\\F2B4\"; }\n\n.ion-star:before {\n  content: \"\\F24E\"; }\n\n.ion-stats-bars:before {\n  content: \"\\F2B5\"; }\n\n.ion-steam:before {\n  content: \"\\F30B\"; }\n\n.ion-stop:before {\n  content: \"\\F24F\"; }\n\n.ion-thermometer:before {\n  content: \"\\F2B6\"; }\n\n.ion-thumbsdown:before {\n  content: \"\\F250\"; }\n\n.ion-thumbsup:before {\n  content: \"\\F251\"; }\n\n.ion-toggle:before {\n  content: \"\\F355\"; }\n\n.ion-toggle-filled:before {\n  content: \"\\F354\"; }\n\n.ion-transgender:before {\n  content: \"\\F4F5\"; }\n\n.ion-trash-a:before {\n  content: \"\\F252\"; }\n\n.ion-trash-b:before {\n  content: \"\\F253\"; }\n\n.ion-trophy:before {\n  content: \"\\F356\"; }\n\n.ion-tshirt:before {\n  content: \"\\F4F7\"; }\n\n.ion-tshirt-outline:before {\n  content: \"\\F4F6\"; }\n\n.ion-umbrella:before {\n  content: \"\\F2B7\"; }\n\n.ion-university:before {\n  content: \"\\F357\"; }\n\n.ion-unlocked:before {\n  content: \"\\F254\"; }\n\n.ion-upload:before {\n  content: \"\\F255\"; }\n\n.ion-usb:before {\n  content: \"\\F2B8\"; }\n\n.ion-videocamera:before {\n  content: \"\\F256\"; }\n\n.ion-volume-high:before {\n  content: \"\\F257\"; }\n\n.ion-volume-low:before {\n  content: \"\\F258\"; }\n\n.ion-volume-medium:before {\n  content: \"\\F259\"; }\n\n.ion-volume-mute:before {\n  content: \"\\F25A\"; }\n\n.ion-wand:before {\n  content: \"\\F358\"; }\n\n.ion-waterdrop:before {\n  content: \"\\F25B\"; }\n\n.ion-wifi:before {\n  content: \"\\F25C\"; }\n\n.ion-wineglass:before {\n  content: \"\\F2B9\"; }\n\n.ion-woman:before {\n  content: \"\\F25D\"; }\n\n.ion-wrench:before {\n  content: \"\\F2BA\"; }\n\n.ion-xbox:before {\n  content: \"\\F30C\"; }\n\n/* base */\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background: #FCFCFC;\n  font-family: \"Open Sans\", \"Lucida Grande\", sans-serif;\n  padding: 10px; }\n  @media screen and (min-width: 376px) {\n    body {\n      padding: 20px; } }\n\na {\n  color: #777; }\n\na:hover {\n  color: black; }\n\nlabel {\n  display: block;\n  color: #777;\n  margin-bottom: 6px; }\n\n.form--inline .form__group {\n  display: inline-block;\n  vertical-align: middle; }\n\n.field {\n  display: block;\n  width: 100%;\n  max-width: 100%;\n  padding: 6px 8px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none; }\n\n.field:focus {\n  outline: none; }\n\n.inline-field {\n  display: inline-block;\n  padding: 0 5px; }\n\n.inline-field:first-child {\n  padding-left: 0px; }\n\n.form-error, .field-error {\n  margin-bottom: 10px;\n  display: block;\n  color: black; }\n\n.field-error {\n  border: 1px solid #ccc;\n  border-top: 0px;\n  padding: 6px 10px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px;\n  margin-top: -10px; }\n\n/* grid */\n.container {\n  max-width: 1200px;\n  margin: 0 auto; }\n\n/* helpers */\n.border-top {\n  border-top: 1px solid #ccc; }\n\n.border-right {\n  border-right: 1px solid #ccc; }\n\n.border-bottom {\n  border-bottom: 1px solid #ccc; }\n\n.border-left {\n  border-left: 1px solid #ccc; }\n\n.border-vertical {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc; }\n\n.border-horizontal {\n  border-left: 1px solid #ccc;\n  border-right: 1px solid #ccc; }\n\n/**\n * For modern browsers\n * 1. The space content is one way to avoid an Opera bug when the\n *    contenteditable attribute is included anywhere else in the document.\n *    Otherwise it causes space to appear at the top and bottom of elements\n *    that are clearfixed.\n * 2. The use of `table` rather than `block` is only necessary if using\n *    `:before` to contain the top-margins of child elements.\n */\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  /* 1 */\n  display: table;\n  /* 2 */ }\n\n.clearfix:after {\n  clear: both; }\n\n/**\n * For IE 6/7 only\n * Include this rule to trigger hasLayout and contain floats.\n */\n.clearfix {\n  *zoom: 1; }\n\n.margin {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin.margin-left-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin.margin-bottom-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-left {\n  margin-left: 20px; }\n\n.margin-bottom {\n  margin-bottom: 20px; }\n\n.margin-right {\n  margin-right: 20px; }\n\n.margin-top {\n  margin-top: 20px; }\n\n.margin-left-sm {\n  margin-left: 10px; }\n\n.margin-bottom-sm {\n  margin-bottom: 10px; }\n\n.margin-right-sm {\n  margin-right: 10px; }\n\n.margin-top-sm {\n  margin-top: 10px; }\n\n.margin-vertical {\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-left {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-vertical-sm.margin-left {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-vertical.margin-left-sm {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-vertical-sm.margin-left-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-right {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal {\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm {\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom {\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom-sm {\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom-sm {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-horizontal-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-vertical-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-except-top {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-right {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-bottom {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-except-left {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-sm-except-top {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-right {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-bottom {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-left {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.padding {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding.padding-left-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding.padding-bottom-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-left {\n  padding-left: 20px; }\n\n.padding-bottom {\n  padding-bottom: 20px; }\n\n.padding-right {\n  padding-right: 20px; }\n\n.padding-top {\n  padding-top: 20px; }\n\n.padding-left-sm {\n  padding-left: 10px; }\n\n.padding-bottom-sm {\n  padding-bottom: 10px; }\n\n.padding-right-sm {\n  padding-right: 10px; }\n\n.padding-top-sm {\n  padding-top: 10px; }\n\n.padding-vertical {\n  padding-top: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-left {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-vertical-sm.padding-left {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-vertical.padding-left-sm {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-vertical-sm.padding-left-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-right {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal {\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm {\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom {\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom-sm {\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom-sm {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-horizontal-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-vertical-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-except-top {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-right {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-bottom {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-except-left {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-sm-except-top {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-right {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-bottom {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-left {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px; }\n\n.margin-right--sm {\n  margin-right: 5px; }\n\n.opaque {\n  opacity: 1; }\n\n.black {\n  color: black; }\n\n.hidden {\n  display: none; }\n\n.seethrough {\n  opacity: 0; }\n\n.invisible {\n  visibility: hidden; }\n\n.muted {\n  color: #777; }\n\n.muted {\n  color: #777; }\n\n.pull-right {\n  float: right; }\n\n.full-height {\n  min-height: 100vh; }\n\n.centred {\n  margin: 0 auto; }\n\n.centred.margin-top {\n  margin: 20px auto 0px; }\n\n.centred.margin-bottom {\n  margin: 0px auto 20px; }\n\n.hover-cursor--pointer:hover {\n  cursor: pointer; }\n\n.hover-cursor--default {\n  cursor: default; }\n\n.box-shadow {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.box-shadow-inset {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n/* objects */\n.box {\n  background: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  border-radius: 2px; }\n\n.btn {\n  display: inline-block;\n  border: 1px solid #ccc;\n  background: white;\n  padding: 4px 8px;\n  text-decoration: none;\n  font-size: 90%;\n  color: #777;\n  border-radius: 0px; }\n\n.btn:hover {\n  cursor: pointer;\n  background: rgba(0, 0, 0, 0.05);\n  color: black; }\n\n.btn:active {\n  border-color: #ccc;\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.btn--black {\n  background: black;\n  border-color: black;\n  color: white; }\n\n.btn-group .btn {\n  margin-right: 2px; }\n\n.btn-group .btn:last-child {\n  margin-right: 0px; }\n\n.btn-wide {\n  padding: 4px 16px; }\n\n.btn-tall {\n  padding: 8px 8px; }\n\n.btn-large {\n  padding: 8px 16px; }\n\n.icon--active {\n  font-weight: bold;\n  color: black; }\n\n.tag {\n  display: inline-block;\n  border: 1px solid #ccc;\n  font-size: 70%;\n  padding: 2px 6px;\n  border-radius: 4px;\n  margin: 4px 5px 4px 0px;\n  background: #f8f8f8;\n  color: #777;\n  text-decoration: none;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075); }\n  .tag:hover {\n    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.075);\n    color: black; }\n  .tag .tag-remove {\n    margin-left: 6px;\n    text-decoration: none; }\n\n.loading {\n  position: absolute;\n  top: 45%;\n  left: 10%;\n  display: block;\n  padding: 20px 60px;\n  font-weight: bold; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n/* vendor */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  box-sizing: content-box;\n  /* 2 */ }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/*!\n  Ionicons, v2.0.0\n  Created by Ben Sperry for the Ionic Framework, http://ionicons.com/\n  https://twitter.com/benjsperry  https://twitter.com/ionicframework\n  MIT License: https://github.com/driftyco/ionicons\n\n  Android-style icons originally built by Google’s\n  Material Design Icons: https://github.com/google/material-design-icons\n  used under CC BY http://creativecommons.org/licenses/by/4.0/\n  Modified icons to fit ionicon’s grid from original.\n*/\n@font-face {\n  font-family: \"Ionicons\";\n  src: url(\"/static/fonts/ionicons.eot\");\n  src: url(\"/static/fonts/ionicons.eot?v=2.0.0#iefix\") format(\"embedded-opentype\"), url(\"/static/fonts/ionicons.ttf\") format(\"truetype\"), url(\"/static/fonts/ionicons.woff\") format(\"woff\"), url(\"/static/fonts/ionicons.svg\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n.ion, .ionicons, .ion-alert:before, .ion-alert-circled:before, .ion-android-add:before, .ion-android-add-circle:before, .ion-android-alarm-clock:before, .ion-android-alert:before, .ion-android-apps:before, .ion-android-archive:before, .ion-android-arrow-back:before, .ion-android-arrow-down:before, .ion-android-arrow-dropdown:before, .ion-android-arrow-dropdown-circle:before, .ion-android-arrow-dropleft:before, .ion-android-arrow-dropleft-circle:before, .ion-android-arrow-dropright:before, .ion-android-arrow-dropright-circle:before, .ion-android-arrow-dropup:before, .ion-android-arrow-dropup-circle:before, .ion-android-arrow-forward:before, .ion-android-arrow-up:before, .ion-android-attach:before, .ion-android-bar:before, .ion-android-bicycle:before, .ion-android-boat:before, .ion-android-bookmark:before, .ion-android-bulb:before, .ion-android-bus:before, .ion-android-calendar:before, .ion-android-call:before, .ion-android-camera:before, .ion-android-cancel:before, .ion-android-car:before, .ion-android-cart:before, .ion-android-chat:before, .ion-android-checkbox:before, .ion-android-checkbox-blank:before, .ion-android-checkbox-outline:before, .ion-android-checkbox-outline-blank:before, .ion-android-checkmark-circle:before, .ion-android-clipboard:before, .ion-android-close:before, .ion-android-cloud:before, .ion-android-cloud-circle:before, .ion-android-cloud-done:before, .ion-android-cloud-outline:before, .ion-android-color-palette:before, .ion-android-compass:before, .ion-android-contact:before, .ion-android-contacts:before, .ion-android-contract:before, .ion-android-create:before, .ion-android-delete:before, .ion-android-desktop:before, .ion-android-document:before, .ion-android-done:before, .ion-android-done-all:before, .ion-android-download:before, .ion-android-drafts:before, .ion-android-exit:before, .ion-android-expand:before, .ion-android-favorite:before, .ion-android-favorite-outline:before, .ion-android-film:before, .ion-android-folder:before, .ion-android-folder-open:before, .ion-android-funnel:before, .ion-android-globe:before, .ion-android-hand:before, .ion-android-hangout:before, .ion-android-happy:before, .ion-android-home:before, .ion-android-image:before, .ion-android-laptop:before, .ion-android-list:before, .ion-android-locate:before, .ion-android-lock:before, .ion-android-mail:before, .ion-android-map:before, .ion-android-menu:before, .ion-android-microphone:before, .ion-android-microphone-off:before, .ion-android-more-horizontal:before, .ion-android-more-vertical:before, .ion-android-navigate:before, .ion-android-notifications:before, .ion-android-notifications-none:before, .ion-android-notifications-off:before, .ion-android-open:before, .ion-android-options:before, .ion-android-people:before, .ion-android-person:before, .ion-android-person-add:before, .ion-android-phone-landscape:before, .ion-android-phone-portrait:before, .ion-android-pin:before, .ion-android-plane:before, .ion-android-playstore:before, .ion-android-print:before, .ion-android-radio-button-off:before, .ion-android-radio-button-on:before, .ion-android-refresh:before, .ion-android-remove:before, .ion-android-remove-circle:before, .ion-android-restaurant:before, .ion-android-sad:before, .ion-android-search:before, .ion-android-send:before, .ion-android-settings:before, .ion-android-share:before, .ion-android-share-alt:before, .ion-android-star:before, .ion-android-star-half:before, .ion-android-star-outline:before, .ion-android-stopwatch:before, .ion-android-subway:before, .ion-android-sunny:before, .ion-android-sync:before, .ion-android-textsms:before, .ion-android-time:before, .ion-android-train:before, .ion-android-unlock:before, .ion-android-upload:before, .ion-android-volume-down:before, .ion-android-volume-mute:before, .ion-android-volume-off:before, .ion-android-volume-up:before, .ion-android-walk:before, .ion-android-warning:before, .ion-android-watch:before, .ion-android-wifi:before, .ion-aperture:before, .ion-archive:before, .ion-arrow-down-a:before, .ion-arrow-down-b:before, .ion-arrow-down-c:before, .ion-arrow-expand:before, .ion-arrow-graph-down-left:before, .ion-arrow-graph-down-right:before, .ion-arrow-graph-up-left:before, .ion-arrow-graph-up-right:before, .ion-arrow-left-a:before, .ion-arrow-left-b:before, .ion-arrow-left-c:before, .ion-arrow-move:before, .ion-arrow-resize:before, .ion-arrow-return-left:before, .ion-arrow-return-right:before, .ion-arrow-right-a:before, .ion-arrow-right-b:before, .ion-arrow-right-c:before, .ion-arrow-shrink:before, .ion-arrow-swap:before, .ion-arrow-up-a:before, .ion-arrow-up-b:before, .ion-arrow-up-c:before, .ion-asterisk:before, .ion-at:before, .ion-backspace:before, .ion-backspace-outline:before, .ion-bag:before, .ion-battery-charging:before, .ion-battery-empty:before, .ion-battery-full:before, .ion-battery-half:before, .ion-battery-low:before, .ion-beaker:before, .ion-beer:before, .ion-bluetooth:before, .ion-bonfire:before, .ion-bookmark:before, .ion-bowtie:before, .ion-briefcase:before, .ion-bug:before, .ion-calculator:before, .ion-calendar:before, .ion-camera:before, .ion-card:before, .ion-cash:before, .ion-chatbox:before, .ion-chatbox-working:before, .ion-chatboxes:before, .ion-chatbubble:before, .ion-chatbubble-working:before, .ion-chatbubbles:before, .ion-checkmark:before, .ion-checkmark-circled:before, .ion-checkmark-round:before, .ion-chevron-down:before, .ion-chevron-left:before, .ion-chevron-right:before, .ion-chevron-up:before, .ion-clipboard:before, .ion-clock:before, .ion-close:before, .ion-close-circled:before, .ion-close-round:before, .ion-closed-captioning:before, .ion-cloud:before, .ion-code:before, .ion-code-download:before, .ion-code-working:before, .ion-coffee:before, .ion-compass:before, .ion-compose:before, .ion-connection-bars:before, .ion-contrast:before, .ion-crop:before, .ion-cube:before, .ion-disc:before, .ion-document:before, .ion-document-text:before, .ion-drag:before, .ion-earth:before, .ion-easel:before, .ion-edit:before, .ion-egg:before, .ion-eject:before, .ion-email:before, .ion-email-unread:before, .ion-erlenmeyer-flask:before, .ion-erlenmeyer-flask-bubbles:before, .ion-eye:before, .ion-eye-disabled:before, .ion-female:before, .ion-filing:before, .ion-film-marker:before, .ion-fireball:before, .ion-flag:before, .ion-flame:before, .ion-flash:before, .ion-flash-off:before, .ion-folder:before, .ion-fork:before, .ion-fork-repo:before, .ion-forward:before, .ion-funnel:before, .ion-gear-a:before, .ion-gear-b:before, .ion-grid:before, .ion-hammer:before, .ion-happy:before, .ion-happy-outline:before, .ion-headphone:before, .ion-heart:before, .ion-heart-broken:before, .ion-help:before, .ion-help-buoy:before, .ion-help-circled:before, .ion-home:before, .ion-icecream:before, .ion-image:before, .ion-images:before, .ion-information:before, .ion-information-circled:before, .ion-ionic:before, .ion-ios-alarm:before, .ion-ios-alarm-outline:before, .ion-ios-albums:before, .ion-ios-albums-outline:before, .ion-ios-americanfootball:before, .ion-ios-americanfootball-outline:before, .ion-ios-analytics:before, .ion-ios-analytics-outline:before, .ion-ios-arrow-back:before, .ion-ios-arrow-down:before, .ion-ios-arrow-forward:before, .ion-ios-arrow-left:before, .ion-ios-arrow-right:before, .ion-ios-arrow-thin-down:before, .ion-ios-arrow-thin-left:before, .ion-ios-arrow-thin-right:before, .ion-ios-arrow-thin-up:before, .ion-ios-arrow-up:before, .ion-ios-at:before, .ion-ios-at-outline:before, .ion-ios-barcode:before, .ion-ios-barcode-outline:before, .ion-ios-baseball:before, .ion-ios-baseball-outline:before, .ion-ios-basketball:before, .ion-ios-basketball-outline:before, .ion-ios-bell:before, .ion-ios-bell-outline:before, .ion-ios-body:before, .ion-ios-body-outline:before, .ion-ios-bolt:before, .ion-ios-bolt-outline:before, .ion-ios-book:before, .ion-ios-book-outline:before, .ion-ios-bookmarks:before, .ion-ios-bookmarks-outline:before, .ion-ios-box:before, .ion-ios-box-outline:before, .ion-ios-briefcase:before, .ion-ios-briefcase-outline:before, .ion-ios-browsers:before, .ion-ios-browsers-outline:before, .ion-ios-calculator:before, .ion-ios-calculator-outline:before, .ion-ios-calendar:before, .ion-ios-calendar-outline:before, .ion-ios-camera:before, .ion-ios-camera-outline:before, .ion-ios-cart:before, .ion-ios-cart-outline:before, .ion-ios-chatboxes:before, .ion-ios-chatboxes-outline:before, .ion-ios-chatbubble:before, .ion-ios-chatbubble-outline:before, .ion-ios-checkmark:before, .ion-ios-checkmark-empty:before, .ion-ios-checkmark-outline:before, .ion-ios-circle-filled:before, .ion-ios-circle-outline:before, .ion-ios-clock:before, .ion-ios-clock-outline:before, .ion-ios-close:before, .ion-ios-close-empty:before, .ion-ios-close-outline:before, .ion-ios-cloud:before, .ion-ios-cloud-download:before, .ion-ios-cloud-download-outline:before, .ion-ios-cloud-outline:before, .ion-ios-cloud-upload:before, .ion-ios-cloud-upload-outline:before, .ion-ios-cloudy:before, .ion-ios-cloudy-night:before, .ion-ios-cloudy-night-outline:before, .ion-ios-cloudy-outline:before, .ion-ios-cog:before, .ion-ios-cog-outline:before, .ion-ios-color-filter:before, .ion-ios-color-filter-outline:before, .ion-ios-color-wand:before, .ion-ios-color-wand-outline:before, .ion-ios-compose:before, .ion-ios-compose-outline:before, .ion-ios-contact:before, .ion-ios-contact-outline:before, .ion-ios-copy:before, .ion-ios-copy-outline:before, .ion-ios-crop:before, .ion-ios-crop-strong:before, .ion-ios-download:before, .ion-ios-download-outline:before, .ion-ios-drag:before, .ion-ios-email:before, .ion-ios-email-outline:before, .ion-ios-eye:before, .ion-ios-eye-outline:before, .ion-ios-fastforward:before, .ion-ios-fastforward-outline:before, .ion-ios-filing:before, .ion-ios-filing-outline:before, .ion-ios-film:before, .ion-ios-film-outline:before, .ion-ios-flag:before, .ion-ios-flag-outline:before, .ion-ios-flame:before, .ion-ios-flame-outline:before, .ion-ios-flask:before, .ion-ios-flask-outline:before, .ion-ios-flower:before, .ion-ios-flower-outline:before, .ion-ios-folder:before, .ion-ios-folder-outline:before, .ion-ios-football:before, .ion-ios-football-outline:before, .ion-ios-game-controller-a:before, .ion-ios-game-controller-a-outline:before, .ion-ios-game-controller-b:before, .ion-ios-game-controller-b-outline:before, .ion-ios-gear:before, .ion-ios-gear-outline:before, .ion-ios-glasses:before, .ion-ios-glasses-outline:before, .ion-ios-grid-view:before, .ion-ios-grid-view-outline:before, .ion-ios-heart:before, .ion-ios-heart-outline:before, .ion-ios-help:before, .ion-ios-help-empty:before, .ion-ios-help-outline:before, .ion-ios-home:before, .ion-ios-home-outline:before, .ion-ios-infinite:before, .ion-ios-infinite-outline:before, .ion-ios-information:before, .ion-ios-information-empty:before, .ion-ios-information-outline:before, .ion-ios-ionic-outline:before, .ion-ios-keypad:before, .ion-ios-keypad-outline:before, .ion-ios-lightbulb:before, .ion-ios-lightbulb-outline:before, .ion-ios-list:before, .ion-ios-list-outline:before, .ion-ios-location:before, .ion-ios-location-outline:before, .ion-ios-locked:before, .ion-ios-locked-outline:before, .ion-ios-loop:before, .ion-ios-loop-strong:before, .ion-ios-medical:before, .ion-ios-medical-outline:before, .ion-ios-medkit:before, .ion-ios-medkit-outline:before, .ion-ios-mic:before, .ion-ios-mic-off:before, .ion-ios-mic-outline:before, .ion-ios-minus:before, .ion-ios-minus-empty:before, .ion-ios-minus-outline:before, .ion-ios-monitor:before, .ion-ios-monitor-outline:before, .ion-ios-moon:before, .ion-ios-moon-outline:before, .ion-ios-more:before, .ion-ios-more-outline:before, .ion-ios-musical-note:before, .ion-ios-musical-notes:before, .ion-ios-navigate:before, .ion-ios-navigate-outline:before, .ion-ios-nutrition:before, .ion-ios-nutrition-outline:before, .ion-ios-paper:before, .ion-ios-paper-outline:before, .ion-ios-paperplane:before, .ion-ios-paperplane-outline:before, .ion-ios-partlysunny:before, .ion-ios-partlysunny-outline:before, .ion-ios-pause:before, .ion-ios-pause-outline:before, .ion-ios-paw:before, .ion-ios-paw-outline:before, .ion-ios-people:before, .ion-ios-people-outline:before, .ion-ios-person:before, .ion-ios-person-outline:before, .ion-ios-personadd:before, .ion-ios-personadd-outline:before, .ion-ios-photos:before, .ion-ios-photos-outline:before, .ion-ios-pie:before, .ion-ios-pie-outline:before, .ion-ios-pint:before, .ion-ios-pint-outline:before, .ion-ios-play:before, .ion-ios-play-outline:before, .ion-ios-plus:before, .ion-ios-plus-empty:before, .ion-ios-plus-outline:before, .ion-ios-pricetag:before, .ion-ios-pricetag-outline:before, .ion-ios-pricetags:before, .ion-ios-pricetags-outline:before, .ion-ios-printer:before, .ion-ios-printer-outline:before, .ion-ios-pulse:before, .ion-ios-pulse-strong:before, .ion-ios-rainy:before, .ion-ios-rainy-outline:before, .ion-ios-recording:before, .ion-ios-recording-outline:before, .ion-ios-redo:before, .ion-ios-redo-outline:before, .ion-ios-refresh:before, .ion-ios-refresh-empty:before, .ion-ios-refresh-outline:before, .ion-ios-reload:before, .ion-ios-reverse-camera:before, .ion-ios-reverse-camera-outline:before, .ion-ios-rewind:before, .ion-ios-rewind-outline:before, .ion-ios-rose:before, .ion-ios-rose-outline:before, .ion-ios-search:before, .ion-ios-search-strong:before, .ion-ios-settings:before, .ion-ios-settings-strong:before, .ion-ios-shuffle:before, .ion-ios-shuffle-strong:before, .ion-ios-skipbackward:before, .ion-ios-skipbackward-outline:before, .ion-ios-skipforward:before, .ion-ios-skipforward-outline:before, .ion-ios-snowy:before, .ion-ios-speedometer:before, .ion-ios-speedometer-outline:before, .ion-ios-star:before, .ion-ios-star-half:before, .ion-ios-star-outline:before, .ion-ios-stopwatch:before, .ion-ios-stopwatch-outline:before, .ion-ios-sunny:before, .ion-ios-sunny-outline:before, .ion-ios-telephone:before, .ion-ios-telephone-outline:before, .ion-ios-tennisball:before, .ion-ios-tennisball-outline:before, .ion-ios-thunderstorm:before, .ion-ios-thunderstorm-outline:before, .ion-ios-time:before, .ion-ios-time-outline:before, .ion-ios-timer:before, .ion-ios-timer-outline:before, .ion-ios-toggle:before, .ion-ios-toggle-outline:before, .ion-ios-trash:before, .ion-ios-trash-outline:before, .ion-ios-undo:before, .ion-ios-undo-outline:before, .ion-ios-unlocked:before, .ion-ios-unlocked-outline:before, .ion-ios-upload:before, .ion-ios-upload-outline:before, .ion-ios-videocam:before, .ion-ios-videocam-outline:before, .ion-ios-volume-high:before, .ion-ios-volume-low:before, .ion-ios-wineglass:before, .ion-ios-wineglass-outline:before, .ion-ios-world:before, .ion-ios-world-outline:before, .ion-ipad:before, .ion-iphone:before, .ion-ipod:before, .ion-jet:before, .ion-key:before, .ion-knife:before, .ion-laptop:before, .ion-leaf:before, .ion-levels:before, .ion-lightbulb:before, .ion-link:before, .ion-load-a:before, .ion-load-b:before, .ion-load-c:before, .ion-load-d:before, .ion-location:before, .ion-lock-combination:before, .ion-locked:before, .ion-log-in:before, .ion-log-out:before, .ion-loop:before, .ion-magnet:before, .ion-male:before, .ion-man:before, .ion-map:before, .ion-medkit:before, .ion-merge:before, .ion-mic-a:before, .ion-mic-b:before, .ion-mic-c:before, .ion-minus:before, .ion-minus-circled:before, .ion-minus-round:before, .ion-model-s:before, .ion-monitor:before, .ion-more:before, .ion-mouse:before, .ion-music-note:before, .ion-navicon:before, .ion-navicon-round:before, .ion-navigate:before, .ion-network:before, .ion-no-smoking:before, .ion-nuclear:before, .ion-outlet:before, .ion-paintbrush:before, .ion-paintbucket:before, .ion-paper-airplane:before, .ion-paperclip:before, .ion-pause:before, .ion-person:before, .ion-person-add:before, .ion-person-stalker:before, .ion-pie-graph:before, .ion-pin:before, .ion-pinpoint:before, .ion-pizza:before, .ion-plane:before, .ion-planet:before, .ion-play:before, .ion-playstation:before, .ion-plus:before, .ion-plus-circled:before, .ion-plus-round:before, .ion-podium:before, .ion-pound:before, .ion-power:before, .ion-pricetag:before, .ion-pricetags:before, .ion-printer:before, .ion-pull-request:before, .ion-qr-scanner:before, .ion-quote:before, .ion-radio-waves:before, .ion-record:before, .ion-refresh:before, .ion-reply:before, .ion-reply-all:before, .ion-ribbon-a:before, .ion-ribbon-b:before, .ion-sad:before, .ion-sad-outline:before, .ion-scissors:before, .ion-search:before, .ion-settings:before, .ion-share:before, .ion-shuffle:before, .ion-skip-backward:before, .ion-skip-forward:before, .ion-social-android:before, .ion-social-android-outline:before, .ion-social-angular:before, .ion-social-angular-outline:before, .ion-social-apple:before, .ion-social-apple-outline:before, .ion-social-bitcoin:before, .ion-social-bitcoin-outline:before, .ion-social-buffer:before, .ion-social-buffer-outline:before, .ion-social-chrome:before, .ion-social-chrome-outline:before, .ion-social-codepen:before, .ion-social-codepen-outline:before, .ion-social-css3:before, .ion-social-css3-outline:before, .ion-social-designernews:before, .ion-social-designernews-outline:before, .ion-social-dribbble:before, .ion-social-dribbble-outline:before, .ion-social-dropbox:before, .ion-social-dropbox-outline:before, .ion-social-euro:before, .ion-social-euro-outline:before, .ion-social-facebook:before, .ion-social-facebook-outline:before, .ion-social-foursquare:before, .ion-social-foursquare-outline:before, .ion-social-freebsd-devil:before, .ion-social-github:before, .ion-social-github-outline:before, .ion-social-google:before, .ion-social-google-outline:before, .ion-social-googleplus:before, .ion-social-googleplus-outline:before, .ion-social-hackernews:before, .ion-social-hackernews-outline:before, .ion-social-html5:before, .ion-social-html5-outline:before, .ion-social-instagram:before, .ion-social-instagram-outline:before, .ion-social-javascript:before, .ion-social-javascript-outline:before, .ion-social-linkedin:before, .ion-social-linkedin-outline:before, .ion-social-markdown:before, .ion-social-nodejs:before, .ion-social-octocat:before, .ion-social-pinterest:before, .ion-social-pinterest-outline:before, .ion-social-python:before, .ion-social-reddit:before, .ion-social-reddit-outline:before, .ion-social-rss:before, .ion-social-rss-outline:before, .ion-social-sass:before, .ion-social-skype:before, .ion-social-skype-outline:before, .ion-social-snapchat:before, .ion-social-snapchat-outline:before, .ion-social-tumblr:before, .ion-social-tumblr-outline:before, .ion-social-tux:before, .ion-social-twitch:before, .ion-social-twitch-outline:before, .ion-social-twitter:before, .ion-social-twitter-outline:before, .ion-social-usd:before, .ion-social-usd-outline:before, .ion-social-vimeo:before, .ion-social-vimeo-outline:before, .ion-social-whatsapp:before, .ion-social-whatsapp-outline:before, .ion-social-windows:before, .ion-social-windows-outline:before, .ion-social-wordpress:before, .ion-social-wordpress-outline:before, .ion-social-yahoo:before, .ion-social-yahoo-outline:before, .ion-social-yen:before, .ion-social-yen-outline:before, .ion-social-youtube:before, .ion-social-youtube-outline:before, .ion-soup-can:before, .ion-soup-can-outline:before, .ion-speakerphone:before, .ion-speedometer:before, .ion-spoon:before, .ion-star:before, .ion-stats-bars:before, .ion-steam:before, .ion-stop:before, .ion-thermometer:before, .ion-thumbsdown:before, .ion-thumbsup:before, .ion-toggle:before, .ion-toggle-filled:before, .ion-transgender:before, .ion-trash-a:before, .ion-trash-b:before, .ion-trophy:before, .ion-tshirt:before, .ion-tshirt-outline:before, .ion-umbrella:before, .ion-university:before, .ion-unlocked:before, .ion-upload:before, .ion-usb:before, .ion-videocamera:before, .ion-volume-high:before, .ion-volume-low:before, .ion-volume-medium:before, .ion-volume-mute:before, .ion-wand:before, .ion-waterdrop:before, .ion-wifi:before, .ion-wineglass:before, .ion-woman:before, .ion-wrench:before, .ion-xbox:before {\n  display: inline-block;\n  font-family: \"Ionicons\";\n  speak: none;\n  font-style: normal;\n  font-weight: normal;\n  font-variant: normal;\n  text-transform: none;\n  text-rendering: auto;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.ion-alert:before {\n  content: \"\\F101\"; }\n\n.ion-alert-circled:before {\n  content: \"\\F100\"; }\n\n.ion-android-add:before {\n  content: \"\\F2C7\"; }\n\n.ion-android-add-circle:before {\n  content: \"\\F359\"; }\n\n.ion-android-alarm-clock:before {\n  content: \"\\F35A\"; }\n\n.ion-android-alert:before {\n  content: \"\\F35B\"; }\n\n.ion-android-apps:before {\n  content: \"\\F35C\"; }\n\n.ion-android-archive:before {\n  content: \"\\F2C9\"; }\n\n.ion-android-arrow-back:before {\n  content: \"\\F2CA\"; }\n\n.ion-android-arrow-down:before {\n  content: \"\\F35D\"; }\n\n.ion-android-arrow-dropdown:before {\n  content: \"\\F35F\"; }\n\n.ion-android-arrow-dropdown-circle:before {\n  content: \"\\F35E\"; }\n\n.ion-android-arrow-dropleft:before {\n  content: \"\\F361\"; }\n\n.ion-android-arrow-dropleft-circle:before {\n  content: \"\\F360\"; }\n\n.ion-android-arrow-dropright:before {\n  content: \"\\F363\"; }\n\n.ion-android-arrow-dropright-circle:before {\n  content: \"\\F362\"; }\n\n.ion-android-arrow-dropup:before {\n  content: \"\\F365\"; }\n\n.ion-android-arrow-dropup-circle:before {\n  content: \"\\F364\"; }\n\n.ion-android-arrow-forward:before {\n  content: \"\\F30F\"; }\n\n.ion-android-arrow-up:before {\n  content: \"\\F366\"; }\n\n.ion-android-attach:before {\n  content: \"\\F367\"; }\n\n.ion-android-bar:before {\n  content: \"\\F368\"; }\n\n.ion-android-bicycle:before {\n  content: \"\\F369\"; }\n\n.ion-android-boat:before {\n  content: \"\\F36A\"; }\n\n.ion-android-bookmark:before {\n  content: \"\\F36B\"; }\n\n.ion-android-bulb:before {\n  content: \"\\F36C\"; }\n\n.ion-android-bus:before {\n  content: \"\\F36D\"; }\n\n.ion-android-calendar:before {\n  content: \"\\F2D1\"; }\n\n.ion-android-call:before {\n  content: \"\\F2D2\"; }\n\n.ion-android-camera:before {\n  content: \"\\F2D3\"; }\n\n.ion-android-cancel:before {\n  content: \"\\F36E\"; }\n\n.ion-android-car:before {\n  content: \"\\F36F\"; }\n\n.ion-android-cart:before {\n  content: \"\\F370\"; }\n\n.ion-android-chat:before {\n  content: \"\\F2D4\"; }\n\n.ion-android-checkbox:before {\n  content: \"\\F374\"; }\n\n.ion-android-checkbox-blank:before {\n  content: \"\\F371\"; }\n\n.ion-android-checkbox-outline:before {\n  content: \"\\F373\"; }\n\n.ion-android-checkbox-outline-blank:before {\n  content: \"\\F372\"; }\n\n.ion-android-checkmark-circle:before {\n  content: \"\\F375\"; }\n\n.ion-android-clipboard:before {\n  content: \"\\F376\"; }\n\n.ion-android-close:before {\n  content: \"\\F2D7\"; }\n\n.ion-android-cloud:before {\n  content: \"\\F37A\"; }\n\n.ion-android-cloud-circle:before {\n  content: \"\\F377\"; }\n\n.ion-android-cloud-done:before {\n  content: \"\\F378\"; }\n\n.ion-android-cloud-outline:before {\n  content: \"\\F379\"; }\n\n.ion-android-color-palette:before {\n  content: \"\\F37B\"; }\n\n.ion-android-compass:before {\n  content: \"\\F37C\"; }\n\n.ion-android-contact:before {\n  content: \"\\F2D8\"; }\n\n.ion-android-contacts:before {\n  content: \"\\F2D9\"; }\n\n.ion-android-contract:before {\n  content: \"\\F37D\"; }\n\n.ion-android-create:before {\n  content: \"\\F37E\"; }\n\n.ion-android-delete:before {\n  content: \"\\F37F\"; }\n\n.ion-android-desktop:before {\n  content: \"\\F380\"; }\n\n.ion-android-document:before {\n  content: \"\\F381\"; }\n\n.ion-android-done:before {\n  content: \"\\F383\"; }\n\n.ion-android-done-all:before {\n  content: \"\\F382\"; }\n\n.ion-android-download:before {\n  content: \"\\F2DD\"; }\n\n.ion-android-drafts:before {\n  content: \"\\F384\"; }\n\n.ion-android-exit:before {\n  content: \"\\F385\"; }\n\n.ion-android-expand:before {\n  content: \"\\F386\"; }\n\n.ion-android-favorite:before {\n  content: \"\\F388\"; }\n\n.ion-android-favorite-outline:before {\n  content: \"\\F387\"; }\n\n.ion-android-film:before {\n  content: \"\\F389\"; }\n\n.ion-android-folder:before {\n  content: \"\\F2E0\"; }\n\n.ion-android-folder-open:before {\n  content: \"\\F38A\"; }\n\n.ion-android-funnel:before {\n  content: \"\\F38B\"; }\n\n.ion-android-globe:before {\n  content: \"\\F38C\"; }\n\n.ion-android-hand:before {\n  content: \"\\F2E3\"; }\n\n.ion-android-hangout:before {\n  content: \"\\F38D\"; }\n\n.ion-android-happy:before {\n  content: \"\\F38E\"; }\n\n.ion-android-home:before {\n  content: \"\\F38F\"; }\n\n.ion-android-image:before {\n  content: \"\\F2E4\"; }\n\n.ion-android-laptop:before {\n  content: \"\\F390\"; }\n\n.ion-android-list:before {\n  content: \"\\F391\"; }\n\n.ion-android-locate:before {\n  content: \"\\F2E9\"; }\n\n.ion-android-lock:before {\n  content: \"\\F392\"; }\n\n.ion-android-mail:before {\n  content: \"\\F2EB\"; }\n\n.ion-android-map:before {\n  content: \"\\F393\"; }\n\n.ion-android-menu:before {\n  content: \"\\F394\"; }\n\n.ion-android-microphone:before {\n  content: \"\\F2EC\"; }\n\n.ion-android-microphone-off:before {\n  content: \"\\F395\"; }\n\n.ion-android-more-horizontal:before {\n  content: \"\\F396\"; }\n\n.ion-android-more-vertical:before {\n  content: \"\\F397\"; }\n\n.ion-android-navigate:before {\n  content: \"\\F398\"; }\n\n.ion-android-notifications:before {\n  content: \"\\F39B\"; }\n\n.ion-android-notifications-none:before {\n  content: \"\\F399\"; }\n\n.ion-android-notifications-off:before {\n  content: \"\\F39A\"; }\n\n.ion-android-open:before {\n  content: \"\\F39C\"; }\n\n.ion-android-options:before {\n  content: \"\\F39D\"; }\n\n.ion-android-people:before {\n  content: \"\\F39E\"; }\n\n.ion-android-person:before {\n  content: \"\\F3A0\"; }\n\n.ion-android-person-add:before {\n  content: \"\\F39F\"; }\n\n.ion-android-phone-landscape:before {\n  content: \"\\F3A1\"; }\n\n.ion-android-phone-portrait:before {\n  content: \"\\F3A2\"; }\n\n.ion-android-pin:before {\n  content: \"\\F3A3\"; }\n\n.ion-android-plane:before {\n  content: \"\\F3A4\"; }\n\n.ion-android-playstore:before {\n  content: \"\\F2F0\"; }\n\n.ion-android-print:before {\n  content: \"\\F3A5\"; }\n\n.ion-android-radio-button-off:before {\n  content: \"\\F3A6\"; }\n\n.ion-android-radio-button-on:before {\n  content: \"\\F3A7\"; }\n\n.ion-android-refresh:before {\n  content: \"\\F3A8\"; }\n\n.ion-android-remove:before {\n  content: \"\\F2F4\"; }\n\n.ion-android-remove-circle:before {\n  content: \"\\F3A9\"; }\n\n.ion-android-restaurant:before {\n  content: \"\\F3AA\"; }\n\n.ion-android-sad:before {\n  content: \"\\F3AB\"; }\n\n.ion-android-search:before {\n  content: \"\\F2F5\"; }\n\n.ion-android-send:before {\n  content: \"\\F2F6\"; }\n\n.ion-android-settings:before {\n  content: \"\\F2F7\"; }\n\n.ion-android-share:before {\n  content: \"\\F2F8\"; }\n\n.ion-android-share-alt:before {\n  content: \"\\F3AC\"; }\n\n.ion-android-star:before {\n  content: \"\\F2FC\"; }\n\n.ion-android-star-half:before {\n  content: \"\\F3AD\"; }\n\n.ion-android-star-outline:before {\n  content: \"\\F3AE\"; }\n\n.ion-android-stopwatch:before {\n  content: \"\\F2FD\"; }\n\n.ion-android-subway:before {\n  content: \"\\F3AF\"; }\n\n.ion-android-sunny:before {\n  content: \"\\F3B0\"; }\n\n.ion-android-sync:before {\n  content: \"\\F3B1\"; }\n\n.ion-android-textsms:before {\n  content: \"\\F3B2\"; }\n\n.ion-android-time:before {\n  content: \"\\F3B3\"; }\n\n.ion-android-train:before {\n  content: \"\\F3B4\"; }\n\n.ion-android-unlock:before {\n  content: \"\\F3B5\"; }\n\n.ion-android-upload:before {\n  content: \"\\F3B6\"; }\n\n.ion-android-volume-down:before {\n  content: \"\\F3B7\"; }\n\n.ion-android-volume-mute:before {\n  content: \"\\F3B8\"; }\n\n.ion-android-volume-off:before {\n  content: \"\\F3B9\"; }\n\n.ion-android-volume-up:before {\n  content: \"\\F3BA\"; }\n\n.ion-android-walk:before {\n  content: \"\\F3BB\"; }\n\n.ion-android-warning:before {\n  content: \"\\F3BC\"; }\n\n.ion-android-watch:before {\n  content: \"\\F3BD\"; }\n\n.ion-android-wifi:before {\n  content: \"\\F305\"; }\n\n.ion-aperture:before {\n  content: \"\\F313\"; }\n\n.ion-archive:before {\n  content: \"\\F102\"; }\n\n.ion-arrow-down-a:before {\n  content: \"\\F103\"; }\n\n.ion-arrow-down-b:before {\n  content: \"\\F104\"; }\n\n.ion-arrow-down-c:before {\n  content: \"\\F105\"; }\n\n.ion-arrow-expand:before {\n  content: \"\\F25E\"; }\n\n.ion-arrow-graph-down-left:before {\n  content: \"\\F25F\"; }\n\n.ion-arrow-graph-down-right:before {\n  content: \"\\F260\"; }\n\n.ion-arrow-graph-up-left:before {\n  content: \"\\F261\"; }\n\n.ion-arrow-graph-up-right:before {\n  content: \"\\F262\"; }\n\n.ion-arrow-left-a:before {\n  content: \"\\F106\"; }\n\n.ion-arrow-left-b:before {\n  content: \"\\F107\"; }\n\n.ion-arrow-left-c:before {\n  content: \"\\F108\"; }\n\n.ion-arrow-move:before {\n  content: \"\\F263\"; }\n\n.ion-arrow-resize:before {\n  content: \"\\F264\"; }\n\n.ion-arrow-return-left:before {\n  content: \"\\F265\"; }\n\n.ion-arrow-return-right:before {\n  content: \"\\F266\"; }\n\n.ion-arrow-right-a:before {\n  content: \"\\F109\"; }\n\n.ion-arrow-right-b:before {\n  content: \"\\F10A\"; }\n\n.ion-arrow-right-c:before {\n  content: \"\\F10B\"; }\n\n.ion-arrow-shrink:before {\n  content: \"\\F267\"; }\n\n.ion-arrow-swap:before {\n  content: \"\\F268\"; }\n\n.ion-arrow-up-a:before {\n  content: \"\\F10C\"; }\n\n.ion-arrow-up-b:before {\n  content: \"\\F10D\"; }\n\n.ion-arrow-up-c:before {\n  content: \"\\F10E\"; }\n\n.ion-asterisk:before {\n  content: \"\\F314\"; }\n\n.ion-at:before {\n  content: \"\\F10F\"; }\n\n.ion-backspace:before {\n  content: \"\\F3BF\"; }\n\n.ion-backspace-outline:before {\n  content: \"\\F3BE\"; }\n\n.ion-bag:before {\n  content: \"\\F110\"; }\n\n.ion-battery-charging:before {\n  content: \"\\F111\"; }\n\n.ion-battery-empty:before {\n  content: \"\\F112\"; }\n\n.ion-battery-full:before {\n  content: \"\\F113\"; }\n\n.ion-battery-half:before {\n  content: \"\\F114\"; }\n\n.ion-battery-low:before {\n  content: \"\\F115\"; }\n\n.ion-beaker:before {\n  content: \"\\F269\"; }\n\n.ion-beer:before {\n  content: \"\\F26A\"; }\n\n.ion-bluetooth:before {\n  content: \"\\F116\"; }\n\n.ion-bonfire:before {\n  content: \"\\F315\"; }\n\n.ion-bookmark:before {\n  content: \"\\F26B\"; }\n\n.ion-bowtie:before {\n  content: \"\\F3C0\"; }\n\n.ion-briefcase:before {\n  content: \"\\F26C\"; }\n\n.ion-bug:before {\n  content: \"\\F2BE\"; }\n\n.ion-calculator:before {\n  content: \"\\F26D\"; }\n\n.ion-calendar:before {\n  content: \"\\F117\"; }\n\n.ion-camera:before {\n  content: \"\\F118\"; }\n\n.ion-card:before {\n  content: \"\\F119\"; }\n\n.ion-cash:before {\n  content: \"\\F316\"; }\n\n.ion-chatbox:before {\n  content: \"\\F11B\"; }\n\n.ion-chatbox-working:before {\n  content: \"\\F11A\"; }\n\n.ion-chatboxes:before {\n  content: \"\\F11C\"; }\n\n.ion-chatbubble:before {\n  content: \"\\F11E\"; }\n\n.ion-chatbubble-working:before {\n  content: \"\\F11D\"; }\n\n.ion-chatbubbles:before {\n  content: \"\\F11F\"; }\n\n.ion-checkmark:before {\n  content: \"\\F122\"; }\n\n.ion-checkmark-circled:before {\n  content: \"\\F120\"; }\n\n.ion-checkmark-round:before {\n  content: \"\\F121\"; }\n\n.ion-chevron-down:before {\n  content: \"\\F123\"; }\n\n.ion-chevron-left:before {\n  content: \"\\F124\"; }\n\n.ion-chevron-right:before {\n  content: \"\\F125\"; }\n\n.ion-chevron-up:before {\n  content: \"\\F126\"; }\n\n.ion-clipboard:before {\n  content: \"\\F127\"; }\n\n.ion-clock:before {\n  content: \"\\F26E\"; }\n\n.ion-close:before {\n  content: \"\\F12A\"; }\n\n.ion-close-circled:before {\n  content: \"\\F128\"; }\n\n.ion-close-round:before {\n  content: \"\\F129\"; }\n\n.ion-closed-captioning:before {\n  content: \"\\F317\"; }\n\n.ion-cloud:before {\n  content: \"\\F12B\"; }\n\n.ion-code:before {\n  content: \"\\F271\"; }\n\n.ion-code-download:before {\n  content: \"\\F26F\"; }\n\n.ion-code-working:before {\n  content: \"\\F270\"; }\n\n.ion-coffee:before {\n  content: \"\\F272\"; }\n\n.ion-compass:before {\n  content: \"\\F273\"; }\n\n.ion-compose:before {\n  content: \"\\F12C\"; }\n\n.ion-connection-bars:before {\n  content: \"\\F274\"; }\n\n.ion-contrast:before {\n  content: \"\\F275\"; }\n\n.ion-crop:before {\n  content: \"\\F3C1\"; }\n\n.ion-cube:before {\n  content: \"\\F318\"; }\n\n.ion-disc:before {\n  content: \"\\F12D\"; }\n\n.ion-document:before {\n  content: \"\\F12F\"; }\n\n.ion-document-text:before {\n  content: \"\\F12E\"; }\n\n.ion-drag:before {\n  content: \"\\F130\"; }\n\n.ion-earth:before {\n  content: \"\\F276\"; }\n\n.ion-easel:before {\n  content: \"\\F3C2\"; }\n\n.ion-edit:before {\n  content: \"\\F2BF\"; }\n\n.ion-egg:before {\n  content: \"\\F277\"; }\n\n.ion-eject:before {\n  content: \"\\F131\"; }\n\n.ion-email:before {\n  content: \"\\F132\"; }\n\n.ion-email-unread:before {\n  content: \"\\F3C3\"; }\n\n.ion-erlenmeyer-flask:before {\n  content: \"\\F3C5\"; }\n\n.ion-erlenmeyer-flask-bubbles:before {\n  content: \"\\F3C4\"; }\n\n.ion-eye:before {\n  content: \"\\F133\"; }\n\n.ion-eye-disabled:before {\n  content: \"\\F306\"; }\n\n.ion-female:before {\n  content: \"\\F278\"; }\n\n.ion-filing:before {\n  content: \"\\F134\"; }\n\n.ion-film-marker:before {\n  content: \"\\F135\"; }\n\n.ion-fireball:before {\n  content: \"\\F319\"; }\n\n.ion-flag:before {\n  content: \"\\F279\"; }\n\n.ion-flame:before {\n  content: \"\\F31A\"; }\n\n.ion-flash:before {\n  content: \"\\F137\"; }\n\n.ion-flash-off:before {\n  content: \"\\F136\"; }\n\n.ion-folder:before {\n  content: \"\\F139\"; }\n\n.ion-fork:before {\n  content: \"\\F27A\"; }\n\n.ion-fork-repo:before {\n  content: \"\\F2C0\"; }\n\n.ion-forward:before {\n  content: \"\\F13A\"; }\n\n.ion-funnel:before {\n  content: \"\\F31B\"; }\n\n.ion-gear-a:before {\n  content: \"\\F13D\"; }\n\n.ion-gear-b:before {\n  content: \"\\F13E\"; }\n\n.ion-grid:before {\n  content: \"\\F13F\"; }\n\n.ion-hammer:before {\n  content: \"\\F27B\"; }\n\n.ion-happy:before {\n  content: \"\\F31C\"; }\n\n.ion-happy-outline:before {\n  content: \"\\F3C6\"; }\n\n.ion-headphone:before {\n  content: \"\\F140\"; }\n\n.ion-heart:before {\n  content: \"\\F141\"; }\n\n.ion-heart-broken:before {\n  content: \"\\F31D\"; }\n\n.ion-help:before {\n  content: \"\\F143\"; }\n\n.ion-help-buoy:before {\n  content: \"\\F27C\"; }\n\n.ion-help-circled:before {\n  content: \"\\F142\"; }\n\n.ion-home:before {\n  content: \"\\F144\"; }\n\n.ion-icecream:before {\n  content: \"\\F27D\"; }\n\n.ion-image:before {\n  content: \"\\F147\"; }\n\n.ion-images:before {\n  content: \"\\F148\"; }\n\n.ion-information:before {\n  content: \"\\F14A\"; }\n\n.ion-information-circled:before {\n  content: \"\\F149\"; }\n\n.ion-ionic:before {\n  content: \"\\F14B\"; }\n\n.ion-ios-alarm:before {\n  content: \"\\F3C8\"; }\n\n.ion-ios-alarm-outline:before {\n  content: \"\\F3C7\"; }\n\n.ion-ios-albums:before {\n  content: \"\\F3CA\"; }\n\n.ion-ios-albums-outline:before {\n  content: \"\\F3C9\"; }\n\n.ion-ios-americanfootball:before {\n  content: \"\\F3CC\"; }\n\n.ion-ios-americanfootball-outline:before {\n  content: \"\\F3CB\"; }\n\n.ion-ios-analytics:before {\n  content: \"\\F3CE\"; }\n\n.ion-ios-analytics-outline:before {\n  content: \"\\F3CD\"; }\n\n.ion-ios-arrow-back:before {\n  content: \"\\F3CF\"; }\n\n.ion-ios-arrow-down:before {\n  content: \"\\F3D0\"; }\n\n.ion-ios-arrow-forward:before {\n  content: \"\\F3D1\"; }\n\n.ion-ios-arrow-left:before {\n  content: \"\\F3D2\"; }\n\n.ion-ios-arrow-right:before {\n  content: \"\\F3D3\"; }\n\n.ion-ios-arrow-thin-down:before {\n  content: \"\\F3D4\"; }\n\n.ion-ios-arrow-thin-left:before {\n  content: \"\\F3D5\"; }\n\n.ion-ios-arrow-thin-right:before {\n  content: \"\\F3D6\"; }\n\n.ion-ios-arrow-thin-up:before {\n  content: \"\\F3D7\"; }\n\n.ion-ios-arrow-up:before {\n  content: \"\\F3D8\"; }\n\n.ion-ios-at:before {\n  content: \"\\F3DA\"; }\n\n.ion-ios-at-outline:before {\n  content: \"\\F3D9\"; }\n\n.ion-ios-barcode:before {\n  content: \"\\F3DC\"; }\n\n.ion-ios-barcode-outline:before {\n  content: \"\\F3DB\"; }\n\n.ion-ios-baseball:before {\n  content: \"\\F3DE\"; }\n\n.ion-ios-baseball-outline:before {\n  content: \"\\F3DD\"; }\n\n.ion-ios-basketball:before {\n  content: \"\\F3E0\"; }\n\n.ion-ios-basketball-outline:before {\n  content: \"\\F3DF\"; }\n\n.ion-ios-bell:before {\n  content: \"\\F3E2\"; }\n\n.ion-ios-bell-outline:before {\n  content: \"\\F3E1\"; }\n\n.ion-ios-body:before {\n  content: \"\\F3E4\"; }\n\n.ion-ios-body-outline:before {\n  content: \"\\F3E3\"; }\n\n.ion-ios-bolt:before {\n  content: \"\\F3E6\"; }\n\n.ion-ios-bolt-outline:before {\n  content: \"\\F3E5\"; }\n\n.ion-ios-book:before {\n  content: \"\\F3E8\"; }\n\n.ion-ios-book-outline:before {\n  content: \"\\F3E7\"; }\n\n.ion-ios-bookmarks:before {\n  content: \"\\F3EA\"; }\n\n.ion-ios-bookmarks-outline:before {\n  content: \"\\F3E9\"; }\n\n.ion-ios-box:before {\n  content: \"\\F3EC\"; }\n\n.ion-ios-box-outline:before {\n  content: \"\\F3EB\"; }\n\n.ion-ios-briefcase:before {\n  content: \"\\F3EE\"; }\n\n.ion-ios-briefcase-outline:before {\n  content: \"\\F3ED\"; }\n\n.ion-ios-browsers:before {\n  content: \"\\F3F0\"; }\n\n.ion-ios-browsers-outline:before {\n  content: \"\\F3EF\"; }\n\n.ion-ios-calculator:before {\n  content: \"\\F3F2\"; }\n\n.ion-ios-calculator-outline:before {\n  content: \"\\F3F1\"; }\n\n.ion-ios-calendar:before {\n  content: \"\\F3F4\"; }\n\n.ion-ios-calendar-outline:before {\n  content: \"\\F3F3\"; }\n\n.ion-ios-camera:before {\n  content: \"\\F3F6\"; }\n\n.ion-ios-camera-outline:before {\n  content: \"\\F3F5\"; }\n\n.ion-ios-cart:before {\n  content: \"\\F3F8\"; }\n\n.ion-ios-cart-outline:before {\n  content: \"\\F3F7\"; }\n\n.ion-ios-chatboxes:before {\n  content: \"\\F3FA\"; }\n\n.ion-ios-chatboxes-outline:before {\n  content: \"\\F3F9\"; }\n\n.ion-ios-chatbubble:before {\n  content: \"\\F3FC\"; }\n\n.ion-ios-chatbubble-outline:before {\n  content: \"\\F3FB\"; }\n\n.ion-ios-checkmark:before {\n  content: \"\\F3FF\"; }\n\n.ion-ios-checkmark-empty:before {\n  content: \"\\F3FD\"; }\n\n.ion-ios-checkmark-outline:before {\n  content: \"\\F3FE\"; }\n\n.ion-ios-circle-filled:before {\n  content: \"\\F400\"; }\n\n.ion-ios-circle-outline:before {\n  content: \"\\F401\"; }\n\n.ion-ios-clock:before {\n  content: \"\\F403\"; }\n\n.ion-ios-clock-outline:before {\n  content: \"\\F402\"; }\n\n.ion-ios-close:before {\n  content: \"\\F406\"; }\n\n.ion-ios-close-empty:before {\n  content: \"\\F404\"; }\n\n.ion-ios-close-outline:before {\n  content: \"\\F405\"; }\n\n.ion-ios-cloud:before {\n  content: \"\\F40C\"; }\n\n.ion-ios-cloud-download:before {\n  content: \"\\F408\"; }\n\n.ion-ios-cloud-download-outline:before {\n  content: \"\\F407\"; }\n\n.ion-ios-cloud-outline:before {\n  content: \"\\F409\"; }\n\n.ion-ios-cloud-upload:before {\n  content: \"\\F40B\"; }\n\n.ion-ios-cloud-upload-outline:before {\n  content: \"\\F40A\"; }\n\n.ion-ios-cloudy:before {\n  content: \"\\F410\"; }\n\n.ion-ios-cloudy-night:before {\n  content: \"\\F40E\"; }\n\n.ion-ios-cloudy-night-outline:before {\n  content: \"\\F40D\"; }\n\n.ion-ios-cloudy-outline:before {\n  content: \"\\F40F\"; }\n\n.ion-ios-cog:before {\n  content: \"\\F412\"; }\n\n.ion-ios-cog-outline:before {\n  content: \"\\F411\"; }\n\n.ion-ios-color-filter:before {\n  content: \"\\F414\"; }\n\n.ion-ios-color-filter-outline:before {\n  content: \"\\F413\"; }\n\n.ion-ios-color-wand:before {\n  content: \"\\F416\"; }\n\n.ion-ios-color-wand-outline:before {\n  content: \"\\F415\"; }\n\n.ion-ios-compose:before {\n  content: \"\\F418\"; }\n\n.ion-ios-compose-outline:before {\n  content: \"\\F417\"; }\n\n.ion-ios-contact:before {\n  content: \"\\F41A\"; }\n\n.ion-ios-contact-outline:before {\n  content: \"\\F419\"; }\n\n.ion-ios-copy:before {\n  content: \"\\F41C\"; }\n\n.ion-ios-copy-outline:before {\n  content: \"\\F41B\"; }\n\n.ion-ios-crop:before {\n  content: \"\\F41E\"; }\n\n.ion-ios-crop-strong:before {\n  content: \"\\F41D\"; }\n\n.ion-ios-download:before {\n  content: \"\\F420\"; }\n\n.ion-ios-download-outline:before {\n  content: \"\\F41F\"; }\n\n.ion-ios-drag:before {\n  content: \"\\F421\"; }\n\n.ion-ios-email:before {\n  content: \"\\F423\"; }\n\n.ion-ios-email-outline:before {\n  content: \"\\F422\"; }\n\n.ion-ios-eye:before {\n  content: \"\\F425\"; }\n\n.ion-ios-eye-outline:before {\n  content: \"\\F424\"; }\n\n.ion-ios-fastforward:before {\n  content: \"\\F427\"; }\n\n.ion-ios-fastforward-outline:before {\n  content: \"\\F426\"; }\n\n.ion-ios-filing:before {\n  content: \"\\F429\"; }\n\n.ion-ios-filing-outline:before {\n  content: \"\\F428\"; }\n\n.ion-ios-film:before {\n  content: \"\\F42B\"; }\n\n.ion-ios-film-outline:before {\n  content: \"\\F42A\"; }\n\n.ion-ios-flag:before {\n  content: \"\\F42D\"; }\n\n.ion-ios-flag-outline:before {\n  content: \"\\F42C\"; }\n\n.ion-ios-flame:before {\n  content: \"\\F42F\"; }\n\n.ion-ios-flame-outline:before {\n  content: \"\\F42E\"; }\n\n.ion-ios-flask:before {\n  content: \"\\F431\"; }\n\n.ion-ios-flask-outline:before {\n  content: \"\\F430\"; }\n\n.ion-ios-flower:before {\n  content: \"\\F433\"; }\n\n.ion-ios-flower-outline:before {\n  content: \"\\F432\"; }\n\n.ion-ios-folder:before {\n  content: \"\\F435\"; }\n\n.ion-ios-folder-outline:before {\n  content: \"\\F434\"; }\n\n.ion-ios-football:before {\n  content: \"\\F437\"; }\n\n.ion-ios-football-outline:before {\n  content: \"\\F436\"; }\n\n.ion-ios-game-controller-a:before {\n  content: \"\\F439\"; }\n\n.ion-ios-game-controller-a-outline:before {\n  content: \"\\F438\"; }\n\n.ion-ios-game-controller-b:before {\n  content: \"\\F43B\"; }\n\n.ion-ios-game-controller-b-outline:before {\n  content: \"\\F43A\"; }\n\n.ion-ios-gear:before {\n  content: \"\\F43D\"; }\n\n.ion-ios-gear-outline:before {\n  content: \"\\F43C\"; }\n\n.ion-ios-glasses:before {\n  content: \"\\F43F\"; }\n\n.ion-ios-glasses-outline:before {\n  content: \"\\F43E\"; }\n\n.ion-ios-grid-view:before {\n  content: \"\\F441\"; }\n\n.ion-ios-grid-view-outline:before {\n  content: \"\\F440\"; }\n\n.ion-ios-heart:before {\n  content: \"\\F443\"; }\n\n.ion-ios-heart-outline:before {\n  content: \"\\F442\"; }\n\n.ion-ios-help:before {\n  content: \"\\F446\"; }\n\n.ion-ios-help-empty:before {\n  content: \"\\F444\"; }\n\n.ion-ios-help-outline:before {\n  content: \"\\F445\"; }\n\n.ion-ios-home:before {\n  content: \"\\F448\"; }\n\n.ion-ios-home-outline:before {\n  content: \"\\F447\"; }\n\n.ion-ios-infinite:before {\n  content: \"\\F44A\"; }\n\n.ion-ios-infinite-outline:before {\n  content: \"\\F449\"; }\n\n.ion-ios-information:before {\n  content: \"\\F44D\"; }\n\n.ion-ios-information-empty:before {\n  content: \"\\F44B\"; }\n\n.ion-ios-information-outline:before {\n  content: \"\\F44C\"; }\n\n.ion-ios-ionic-outline:before {\n  content: \"\\F44E\"; }\n\n.ion-ios-keypad:before {\n  content: \"\\F450\"; }\n\n.ion-ios-keypad-outline:before {\n  content: \"\\F44F\"; }\n\n.ion-ios-lightbulb:before {\n  content: \"\\F452\"; }\n\n.ion-ios-lightbulb-outline:before {\n  content: \"\\F451\"; }\n\n.ion-ios-list:before {\n  content: \"\\F454\"; }\n\n.ion-ios-list-outline:before {\n  content: \"\\F453\"; }\n\n.ion-ios-location:before {\n  content: \"\\F456\"; }\n\n.ion-ios-location-outline:before {\n  content: \"\\F455\"; }\n\n.ion-ios-locked:before {\n  content: \"\\F458\"; }\n\n.ion-ios-locked-outline:before {\n  content: \"\\F457\"; }\n\n.ion-ios-loop:before {\n  content: \"\\F45A\"; }\n\n.ion-ios-loop-strong:before {\n  content: \"\\F459\"; }\n\n.ion-ios-medical:before {\n  content: \"\\F45C\"; }\n\n.ion-ios-medical-outline:before {\n  content: \"\\F45B\"; }\n\n.ion-ios-medkit:before {\n  content: \"\\F45E\"; }\n\n.ion-ios-medkit-outline:before {\n  content: \"\\F45D\"; }\n\n.ion-ios-mic:before {\n  content: \"\\F461\"; }\n\n.ion-ios-mic-off:before {\n  content: \"\\F45F\"; }\n\n.ion-ios-mic-outline:before {\n  content: \"\\F460\"; }\n\n.ion-ios-minus:before {\n  content: \"\\F464\"; }\n\n.ion-ios-minus-empty:before {\n  content: \"\\F462\"; }\n\n.ion-ios-minus-outline:before {\n  content: \"\\F463\"; }\n\n.ion-ios-monitor:before {\n  content: \"\\F466\"; }\n\n.ion-ios-monitor-outline:before {\n  content: \"\\F465\"; }\n\n.ion-ios-moon:before {\n  content: \"\\F468\"; }\n\n.ion-ios-moon-outline:before {\n  content: \"\\F467\"; }\n\n.ion-ios-more:before {\n  content: \"\\F46A\"; }\n\n.ion-ios-more-outline:before {\n  content: \"\\F469\"; }\n\n.ion-ios-musical-note:before {\n  content: \"\\F46B\"; }\n\n.ion-ios-musical-notes:before {\n  content: \"\\F46C\"; }\n\n.ion-ios-navigate:before {\n  content: \"\\F46E\"; }\n\n.ion-ios-navigate-outline:before {\n  content: \"\\F46D\"; }\n\n.ion-ios-nutrition:before {\n  content: \"\\F470\"; }\n\n.ion-ios-nutrition-outline:before {\n  content: \"\\F46F\"; }\n\n.ion-ios-paper:before {\n  content: \"\\F472\"; }\n\n.ion-ios-paper-outline:before {\n  content: \"\\F471\"; }\n\n.ion-ios-paperplane:before {\n  content: \"\\F474\"; }\n\n.ion-ios-paperplane-outline:before {\n  content: \"\\F473\"; }\n\n.ion-ios-partlysunny:before {\n  content: \"\\F476\"; }\n\n.ion-ios-partlysunny-outline:before {\n  content: \"\\F475\"; }\n\n.ion-ios-pause:before {\n  content: \"\\F478\"; }\n\n.ion-ios-pause-outline:before {\n  content: \"\\F477\"; }\n\n.ion-ios-paw:before {\n  content: \"\\F47A\"; }\n\n.ion-ios-paw-outline:before {\n  content: \"\\F479\"; }\n\n.ion-ios-people:before {\n  content: \"\\F47C\"; }\n\n.ion-ios-people-outline:before {\n  content: \"\\F47B\"; }\n\n.ion-ios-person:before {\n  content: \"\\F47E\"; }\n\n.ion-ios-person-outline:before {\n  content: \"\\F47D\"; }\n\n.ion-ios-personadd:before {\n  content: \"\\F480\"; }\n\n.ion-ios-personadd-outline:before {\n  content: \"\\F47F\"; }\n\n.ion-ios-photos:before {\n  content: \"\\F482\"; }\n\n.ion-ios-photos-outline:before {\n  content: \"\\F481\"; }\n\n.ion-ios-pie:before {\n  content: \"\\F484\"; }\n\n.ion-ios-pie-outline:before {\n  content: \"\\F483\"; }\n\n.ion-ios-pint:before {\n  content: \"\\F486\"; }\n\n.ion-ios-pint-outline:before {\n  content: \"\\F485\"; }\n\n.ion-ios-play:before {\n  content: \"\\F488\"; }\n\n.ion-ios-play-outline:before {\n  content: \"\\F487\"; }\n\n.ion-ios-plus:before {\n  content: \"\\F48B\"; }\n\n.ion-ios-plus-empty:before {\n  content: \"\\F489\"; }\n\n.ion-ios-plus-outline:before {\n  content: \"\\F48A\"; }\n\n.ion-ios-pricetag:before {\n  content: \"\\F48D\"; }\n\n.ion-ios-pricetag-outline:before {\n  content: \"\\F48C\"; }\n\n.ion-ios-pricetags:before {\n  content: \"\\F48F\"; }\n\n.ion-ios-pricetags-outline:before {\n  content: \"\\F48E\"; }\n\n.ion-ios-printer:before {\n  content: \"\\F491\"; }\n\n.ion-ios-printer-outline:before {\n  content: \"\\F490\"; }\n\n.ion-ios-pulse:before {\n  content: \"\\F493\"; }\n\n.ion-ios-pulse-strong:before {\n  content: \"\\F492\"; }\n\n.ion-ios-rainy:before {\n  content: \"\\F495\"; }\n\n.ion-ios-rainy-outline:before {\n  content: \"\\F494\"; }\n\n.ion-ios-recording:before {\n  content: \"\\F497\"; }\n\n.ion-ios-recording-outline:before {\n  content: \"\\F496\"; }\n\n.ion-ios-redo:before {\n  content: \"\\F499\"; }\n\n.ion-ios-redo-outline:before {\n  content: \"\\F498\"; }\n\n.ion-ios-refresh:before {\n  content: \"\\F49C\"; }\n\n.ion-ios-refresh-empty:before {\n  content: \"\\F49A\"; }\n\n.ion-ios-refresh-outline:before {\n  content: \"\\F49B\"; }\n\n.ion-ios-reload:before {\n  content: \"\\F49D\"; }\n\n.ion-ios-reverse-camera:before {\n  content: \"\\F49F\"; }\n\n.ion-ios-reverse-camera-outline:before {\n  content: \"\\F49E\"; }\n\n.ion-ios-rewind:before {\n  content: \"\\F4A1\"; }\n\n.ion-ios-rewind-outline:before {\n  content: \"\\F4A0\"; }\n\n.ion-ios-rose:before {\n  content: \"\\F4A3\"; }\n\n.ion-ios-rose-outline:before {\n  content: \"\\F4A2\"; }\n\n.ion-ios-search:before {\n  content: \"\\F4A5\"; }\n\n.ion-ios-search-strong:before {\n  content: \"\\F4A4\"; }\n\n.ion-ios-settings:before {\n  content: \"\\F4A7\"; }\n\n.ion-ios-settings-strong:before {\n  content: \"\\F4A6\"; }\n\n.ion-ios-shuffle:before {\n  content: \"\\F4A9\"; }\n\n.ion-ios-shuffle-strong:before {\n  content: \"\\F4A8\"; }\n\n.ion-ios-skipbackward:before {\n  content: \"\\F4AB\"; }\n\n.ion-ios-skipbackward-outline:before {\n  content: \"\\F4AA\"; }\n\n.ion-ios-skipforward:before {\n  content: \"\\F4AD\"; }\n\n.ion-ios-skipforward-outline:before {\n  content: \"\\F4AC\"; }\n\n.ion-ios-snowy:before {\n  content: \"\\F4AE\"; }\n\n.ion-ios-speedometer:before {\n  content: \"\\F4B0\"; }\n\n.ion-ios-speedometer-outline:before {\n  content: \"\\F4AF\"; }\n\n.ion-ios-star:before {\n  content: \"\\F4B3\"; }\n\n.ion-ios-star-half:before {\n  content: \"\\F4B1\"; }\n\n.ion-ios-star-outline:before {\n  content: \"\\F4B2\"; }\n\n.ion-ios-stopwatch:before {\n  content: \"\\F4B5\"; }\n\n.ion-ios-stopwatch-outline:before {\n  content: \"\\F4B4\"; }\n\n.ion-ios-sunny:before {\n  content: \"\\F4B7\"; }\n\n.ion-ios-sunny-outline:before {\n  content: \"\\F4B6\"; }\n\n.ion-ios-telephone:before {\n  content: \"\\F4B9\"; }\n\n.ion-ios-telephone-outline:before {\n  content: \"\\F4B8\"; }\n\n.ion-ios-tennisball:before {\n  content: \"\\F4BB\"; }\n\n.ion-ios-tennisball-outline:before {\n  content: \"\\F4BA\"; }\n\n.ion-ios-thunderstorm:before {\n  content: \"\\F4BD\"; }\n\n.ion-ios-thunderstorm-outline:before {\n  content: \"\\F4BC\"; }\n\n.ion-ios-time:before {\n  content: \"\\F4BF\"; }\n\n.ion-ios-time-outline:before {\n  content: \"\\F4BE\"; }\n\n.ion-ios-timer:before {\n  content: \"\\F4C1\"; }\n\n.ion-ios-timer-outline:before {\n  content: \"\\F4C0\"; }\n\n.ion-ios-toggle:before {\n  content: \"\\F4C3\"; }\n\n.ion-ios-toggle-outline:before {\n  content: \"\\F4C2\"; }\n\n.ion-ios-trash:before {\n  content: \"\\F4C5\"; }\n\n.ion-ios-trash-outline:before {\n  content: \"\\F4C4\"; }\n\n.ion-ios-undo:before {\n  content: \"\\F4C7\"; }\n\n.ion-ios-undo-outline:before {\n  content: \"\\F4C6\"; }\n\n.ion-ios-unlocked:before {\n  content: \"\\F4C9\"; }\n\n.ion-ios-unlocked-outline:before {\n  content: \"\\F4C8\"; }\n\n.ion-ios-upload:before {\n  content: \"\\F4CB\"; }\n\n.ion-ios-upload-outline:before {\n  content: \"\\F4CA\"; }\n\n.ion-ios-videocam:before {\n  content: \"\\F4CD\"; }\n\n.ion-ios-videocam-outline:before {\n  content: \"\\F4CC\"; }\n\n.ion-ios-volume-high:before {\n  content: \"\\F4CE\"; }\n\n.ion-ios-volume-low:before {\n  content: \"\\F4CF\"; }\n\n.ion-ios-wineglass:before {\n  content: \"\\F4D1\"; }\n\n.ion-ios-wineglass-outline:before {\n  content: \"\\F4D0\"; }\n\n.ion-ios-world:before {\n  content: \"\\F4D3\"; }\n\n.ion-ios-world-outline:before {\n  content: \"\\F4D2\"; }\n\n.ion-ipad:before {\n  content: \"\\F1F9\"; }\n\n.ion-iphone:before {\n  content: \"\\F1FA\"; }\n\n.ion-ipod:before {\n  content: \"\\F1FB\"; }\n\n.ion-jet:before {\n  content: \"\\F295\"; }\n\n.ion-key:before {\n  content: \"\\F296\"; }\n\n.ion-knife:before {\n  content: \"\\F297\"; }\n\n.ion-laptop:before {\n  content: \"\\F1FC\"; }\n\n.ion-leaf:before {\n  content: \"\\F1FD\"; }\n\n.ion-levels:before {\n  content: \"\\F298\"; }\n\n.ion-lightbulb:before {\n  content: \"\\F299\"; }\n\n.ion-link:before {\n  content: \"\\F1FE\"; }\n\n.ion-load-a:before {\n  content: \"\\F29A\"; }\n\n.ion-load-b:before {\n  content: \"\\F29B\"; }\n\n.ion-load-c:before {\n  content: \"\\F29C\"; }\n\n.ion-load-d:before {\n  content: \"\\F29D\"; }\n\n.ion-location:before {\n  content: \"\\F1FF\"; }\n\n.ion-lock-combination:before {\n  content: \"\\F4D4\"; }\n\n.ion-locked:before {\n  content: \"\\F200\"; }\n\n.ion-log-in:before {\n  content: \"\\F29E\"; }\n\n.ion-log-out:before {\n  content: \"\\F29F\"; }\n\n.ion-loop:before {\n  content: \"\\F201\"; }\n\n.ion-magnet:before {\n  content: \"\\F2A0\"; }\n\n.ion-male:before {\n  content: \"\\F2A1\"; }\n\n.ion-man:before {\n  content: \"\\F202\"; }\n\n.ion-map:before {\n  content: \"\\F203\"; }\n\n.ion-medkit:before {\n  content: \"\\F2A2\"; }\n\n.ion-merge:before {\n  content: \"\\F33F\"; }\n\n.ion-mic-a:before {\n  content: \"\\F204\"; }\n\n.ion-mic-b:before {\n  content: \"\\F205\"; }\n\n.ion-mic-c:before {\n  content: \"\\F206\"; }\n\n.ion-minus:before {\n  content: \"\\F209\"; }\n\n.ion-minus-circled:before {\n  content: \"\\F207\"; }\n\n.ion-minus-round:before {\n  content: \"\\F208\"; }\n\n.ion-model-s:before {\n  content: \"\\F2C1\"; }\n\n.ion-monitor:before {\n  content: \"\\F20A\"; }\n\n.ion-more:before {\n  content: \"\\F20B\"; }\n\n.ion-mouse:before {\n  content: \"\\F340\"; }\n\n.ion-music-note:before {\n  content: \"\\F20C\"; }\n\n.ion-navicon:before {\n  content: \"\\F20E\"; }\n\n.ion-navicon-round:before {\n  content: \"\\F20D\"; }\n\n.ion-navigate:before {\n  content: \"\\F2A3\"; }\n\n.ion-network:before {\n  content: \"\\F341\"; }\n\n.ion-no-smoking:before {\n  content: \"\\F2C2\"; }\n\n.ion-nuclear:before {\n  content: \"\\F2A4\"; }\n\n.ion-outlet:before {\n  content: \"\\F342\"; }\n\n.ion-paintbrush:before {\n  content: \"\\F4D5\"; }\n\n.ion-paintbucket:before {\n  content: \"\\F4D6\"; }\n\n.ion-paper-airplane:before {\n  content: \"\\F2C3\"; }\n\n.ion-paperclip:before {\n  content: \"\\F20F\"; }\n\n.ion-pause:before {\n  content: \"\\F210\"; }\n\n.ion-person:before {\n  content: \"\\F213\"; }\n\n.ion-person-add:before {\n  content: \"\\F211\"; }\n\n.ion-person-stalker:before {\n  content: \"\\F212\"; }\n\n.ion-pie-graph:before {\n  content: \"\\F2A5\"; }\n\n.ion-pin:before {\n  content: \"\\F2A6\"; }\n\n.ion-pinpoint:before {\n  content: \"\\F2A7\"; }\n\n.ion-pizza:before {\n  content: \"\\F2A8\"; }\n\n.ion-plane:before {\n  content: \"\\F214\"; }\n\n.ion-planet:before {\n  content: \"\\F343\"; }\n\n.ion-play:before {\n  content: \"\\F215\"; }\n\n.ion-playstation:before {\n  content: \"\\F30A\"; }\n\n.ion-plus:before {\n  content: \"\\F218\"; }\n\n.ion-plus-circled:before {\n  content: \"\\F216\"; }\n\n.ion-plus-round:before {\n  content: \"\\F217\"; }\n\n.ion-podium:before {\n  content: \"\\F344\"; }\n\n.ion-pound:before {\n  content: \"\\F219\"; }\n\n.ion-power:before {\n  content: \"\\F2A9\"; }\n\n.ion-pricetag:before {\n  content: \"\\F2AA\"; }\n\n.ion-pricetags:before {\n  content: \"\\F2AB\"; }\n\n.ion-printer:before {\n  content: \"\\F21A\"; }\n\n.ion-pull-request:before {\n  content: \"\\F345\"; }\n\n.ion-qr-scanner:before {\n  content: \"\\F346\"; }\n\n.ion-quote:before {\n  content: \"\\F347\"; }\n\n.ion-radio-waves:before {\n  content: \"\\F2AC\"; }\n\n.ion-record:before {\n  content: \"\\F21B\"; }\n\n.ion-refresh:before {\n  content: \"\\F21C\"; }\n\n.ion-reply:before {\n  content: \"\\F21E\"; }\n\n.ion-reply-all:before {\n  content: \"\\F21D\"; }\n\n.ion-ribbon-a:before {\n  content: \"\\F348\"; }\n\n.ion-ribbon-b:before {\n  content: \"\\F349\"; }\n\n.ion-sad:before {\n  content: \"\\F34A\"; }\n\n.ion-sad-outline:before {\n  content: \"\\F4D7\"; }\n\n.ion-scissors:before {\n  content: \"\\F34B\"; }\n\n.ion-search:before {\n  content: \"\\F21F\"; }\n\n.ion-settings:before {\n  content: \"\\F2AD\"; }\n\n.ion-share:before {\n  content: \"\\F220\"; }\n\n.ion-shuffle:before {\n  content: \"\\F221\"; }\n\n.ion-skip-backward:before {\n  content: \"\\F222\"; }\n\n.ion-skip-forward:before {\n  content: \"\\F223\"; }\n\n.ion-social-android:before {\n  content: \"\\F225\"; }\n\n.ion-social-android-outline:before {\n  content: \"\\F224\"; }\n\n.ion-social-angular:before {\n  content: \"\\F4D9\"; }\n\n.ion-social-angular-outline:before {\n  content: \"\\F4D8\"; }\n\n.ion-social-apple:before {\n  content: \"\\F227\"; }\n\n.ion-social-apple-outline:before {\n  content: \"\\F226\"; }\n\n.ion-social-bitcoin:before {\n  content: \"\\F2AF\"; }\n\n.ion-social-bitcoin-outline:before {\n  content: \"\\F2AE\"; }\n\n.ion-social-buffer:before {\n  content: \"\\F229\"; }\n\n.ion-social-buffer-outline:before {\n  content: \"\\F228\"; }\n\n.ion-social-chrome:before {\n  content: \"\\F4DB\"; }\n\n.ion-social-chrome-outline:before {\n  content: \"\\F4DA\"; }\n\n.ion-social-codepen:before {\n  content: \"\\F4DD\"; }\n\n.ion-social-codepen-outline:before {\n  content: \"\\F4DC\"; }\n\n.ion-social-css3:before {\n  content: \"\\F4DF\"; }\n\n.ion-social-css3-outline:before {\n  content: \"\\F4DE\"; }\n\n.ion-social-designernews:before {\n  content: \"\\F22B\"; }\n\n.ion-social-designernews-outline:before {\n  content: \"\\F22A\"; }\n\n.ion-social-dribbble:before {\n  content: \"\\F22D\"; }\n\n.ion-social-dribbble-outline:before {\n  content: \"\\F22C\"; }\n\n.ion-social-dropbox:before {\n  content: \"\\F22F\"; }\n\n.ion-social-dropbox-outline:before {\n  content: \"\\F22E\"; }\n\n.ion-social-euro:before {\n  content: \"\\F4E1\"; }\n\n.ion-social-euro-outline:before {\n  content: \"\\F4E0\"; }\n\n.ion-social-facebook:before {\n  content: \"\\F231\"; }\n\n.ion-social-facebook-outline:before {\n  content: \"\\F230\"; }\n\n.ion-social-foursquare:before {\n  content: \"\\F34D\"; }\n\n.ion-social-foursquare-outline:before {\n  content: \"\\F34C\"; }\n\n.ion-social-freebsd-devil:before {\n  content: \"\\F2C4\"; }\n\n.ion-social-github:before {\n  content: \"\\F233\"; }\n\n.ion-social-github-outline:before {\n  content: \"\\F232\"; }\n\n.ion-social-google:before {\n  content: \"\\F34F\"; }\n\n.ion-social-google-outline:before {\n  content: \"\\F34E\"; }\n\n.ion-social-googleplus:before {\n  content: \"\\F235\"; }\n\n.ion-social-googleplus-outline:before {\n  content: \"\\F234\"; }\n\n.ion-social-hackernews:before {\n  content: \"\\F237\"; }\n\n.ion-social-hackernews-outline:before {\n  content: \"\\F236\"; }\n\n.ion-social-html5:before {\n  content: \"\\F4E3\"; }\n\n.ion-social-html5-outline:before {\n  content: \"\\F4E2\"; }\n\n.ion-social-instagram:before {\n  content: \"\\F351\"; }\n\n.ion-social-instagram-outline:before {\n  content: \"\\F350\"; }\n\n.ion-social-javascript:before {\n  content: \"\\F4E5\"; }\n\n.ion-social-javascript-outline:before {\n  content: \"\\F4E4\"; }\n\n.ion-social-linkedin:before {\n  content: \"\\F239\"; }\n\n.ion-social-linkedin-outline:before {\n  content: \"\\F238\"; }\n\n.ion-social-markdown:before {\n  content: \"\\F4E6\"; }\n\n.ion-social-nodejs:before {\n  content: \"\\F4E7\"; }\n\n.ion-social-octocat:before {\n  content: \"\\F4E8\"; }\n\n.ion-social-pinterest:before {\n  content: \"\\F2B1\"; }\n\n.ion-social-pinterest-outline:before {\n  content: \"\\F2B0\"; }\n\n.ion-social-python:before {\n  content: \"\\F4E9\"; }\n\n.ion-social-reddit:before {\n  content: \"\\F23B\"; }\n\n.ion-social-reddit-outline:before {\n  content: \"\\F23A\"; }\n\n.ion-social-rss:before {\n  content: \"\\F23D\"; }\n\n.ion-social-rss-outline:before {\n  content: \"\\F23C\"; }\n\n.ion-social-sass:before {\n  content: \"\\F4EA\"; }\n\n.ion-social-skype:before {\n  content: \"\\F23F\"; }\n\n.ion-social-skype-outline:before {\n  content: \"\\F23E\"; }\n\n.ion-social-snapchat:before {\n  content: \"\\F4EC\"; }\n\n.ion-social-snapchat-outline:before {\n  content: \"\\F4EB\"; }\n\n.ion-social-tumblr:before {\n  content: \"\\F241\"; }\n\n.ion-social-tumblr-outline:before {\n  content: \"\\F240\"; }\n\n.ion-social-tux:before {\n  content: \"\\F2C5\"; }\n\n.ion-social-twitch:before {\n  content: \"\\F4EE\"; }\n\n.ion-social-twitch-outline:before {\n  content: \"\\F4ED\"; }\n\n.ion-social-twitter:before {\n  content: \"\\F243\"; }\n\n.ion-social-twitter-outline:before {\n  content: \"\\F242\"; }\n\n.ion-social-usd:before {\n  content: \"\\F353\"; }\n\n.ion-social-usd-outline:before {\n  content: \"\\F352\"; }\n\n.ion-social-vimeo:before {\n  content: \"\\F245\"; }\n\n.ion-social-vimeo-outline:before {\n  content: \"\\F244\"; }\n\n.ion-social-whatsapp:before {\n  content: \"\\F4F0\"; }\n\n.ion-social-whatsapp-outline:before {\n  content: \"\\F4EF\"; }\n\n.ion-social-windows:before {\n  content: \"\\F247\"; }\n\n.ion-social-windows-outline:before {\n  content: \"\\F246\"; }\n\n.ion-social-wordpress:before {\n  content: \"\\F249\"; }\n\n.ion-social-wordpress-outline:before {\n  content: \"\\F248\"; }\n\n.ion-social-yahoo:before {\n  content: \"\\F24B\"; }\n\n.ion-social-yahoo-outline:before {\n  content: \"\\F24A\"; }\n\n.ion-social-yen:before {\n  content: \"\\F4F2\"; }\n\n.ion-social-yen-outline:before {\n  content: \"\\F4F1\"; }\n\n.ion-social-youtube:before {\n  content: \"\\F24D\"; }\n\n.ion-social-youtube-outline:before {\n  content: \"\\F24C\"; }\n\n.ion-soup-can:before {\n  content: \"\\F4F4\"; }\n\n.ion-soup-can-outline:before {\n  content: \"\\F4F3\"; }\n\n.ion-speakerphone:before {\n  content: \"\\F2B2\"; }\n\n.ion-speedometer:before {\n  content: \"\\F2B3\"; }\n\n.ion-spoon:before {\n  content: \"\\F2B4\"; }\n\n.ion-star:before {\n  content: \"\\F24E\"; }\n\n.ion-stats-bars:before {\n  content: \"\\F2B5\"; }\n\n.ion-steam:before {\n  content: \"\\F30B\"; }\n\n.ion-stop:before {\n  content: \"\\F24F\"; }\n\n.ion-thermometer:before {\n  content: \"\\F2B6\"; }\n\n.ion-thumbsdown:before {\n  content: \"\\F250\"; }\n\n.ion-thumbsup:before {\n  content: \"\\F251\"; }\n\n.ion-toggle:before {\n  content: \"\\F355\"; }\n\n.ion-toggle-filled:before {\n  content: \"\\F354\"; }\n\n.ion-transgender:before {\n  content: \"\\F4F5\"; }\n\n.ion-trash-a:before {\n  content: \"\\F252\"; }\n\n.ion-trash-b:before {\n  content: \"\\F253\"; }\n\n.ion-trophy:before {\n  content: \"\\F356\"; }\n\n.ion-tshirt:before {\n  content: \"\\F4F7\"; }\n\n.ion-tshirt-outline:before {\n  content: \"\\F4F6\"; }\n\n.ion-umbrella:before {\n  content: \"\\F2B7\"; }\n\n.ion-university:before {\n  content: \"\\F357\"; }\n\n.ion-unlocked:before {\n  content: \"\\F254\"; }\n\n.ion-upload:before {\n  content: \"\\F255\"; }\n\n.ion-usb:before {\n  content: \"\\F2B8\"; }\n\n.ion-videocamera:before {\n  content: \"\\F256\"; }\n\n.ion-volume-high:before {\n  content: \"\\F257\"; }\n\n.ion-volume-low:before {\n  content: \"\\F258\"; }\n\n.ion-volume-medium:before {\n  content: \"\\F259\"; }\n\n.ion-volume-mute:before {\n  content: \"\\F25A\"; }\n\n.ion-wand:before {\n  content: \"\\F358\"; }\n\n.ion-waterdrop:before {\n  content: \"\\F25B\"; }\n\n.ion-wifi:before {\n  content: \"\\F25C\"; }\n\n.ion-wineglass:before {\n  content: \"\\F2B9\"; }\n\n.ion-woman:before {\n  content: \"\\F25D\"; }\n\n.ion-wrench:before {\n  content: \"\\F2BA\"; }\n\n.ion-xbox:before {\n  content: \"\\F30C\"; }\n\n/* base */\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background: #FCFCFC;\n  font-family: \"Open Sans\", \"Lucida Grande\", sans-serif;\n  padding: 10px; }\n  @media screen and (min-width: 376px) {\n    body {\n      padding: 20px; } }\n\na {\n  color: #777; }\n\na:hover {\n  color: black; }\n\nlabel {\n  display: block;\n  color: #777;\n  margin-bottom: 6px; }\n\n.form--inline .form__group {\n  display: inline-block;\n  vertical-align: middle; }\n\n.field {\n  display: block;\n  width: 100%;\n  max-width: 100%;\n  padding: 6px 8px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: 1px solid #ccc;\n  border-radius: 2px;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  margin-bottom: 10px; }\n\n.field:focus {\n  outline: none; }\n\n.inline-field {\n  display: inline-block;\n  padding: 0 5px; }\n\n.inline-field:first-child {\n  padding-left: 0px; }\n\n.form-error, .field-error {\n  margin-bottom: 10px;\n  display: block;\n  color: black; }\n\n.field-error {\n  border: 1px solid #ccc;\n  border-top: 0px;\n  padding: 6px 10px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px;\n  margin-top: -10px;\n  font-size: 70%;\n  display: block;\n  margin-bottom: 10px;\n  background: #f8f8f8; }\n\n/* grid */\n.container {\n  max-width: 1200px;\n  margin: 0 auto; }\n\n/* helpers */\n.border-top {\n  border-top: 1px solid #ccc; }\n\n.border-right {\n  border-right: 1px solid #ccc; }\n\n.border-bottom {\n  border-bottom: 1px solid #ccc; }\n\n.border-left {\n  border-left: 1px solid #ccc; }\n\n.border-vertical {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc; }\n\n.border-horizontal {\n  border-left: 1px solid #ccc;\n  border-right: 1px solid #ccc; }\n\n/**\n * For modern browsers\n * 1. The space content is one way to avoid an Opera bug when the\n *    contenteditable attribute is included anywhere else in the document.\n *    Otherwise it causes space to appear at the top and bottom of elements\n *    that are clearfixed.\n * 2. The use of `table` rather than `block` is only necessary if using\n *    `:before` to contain the top-margins of child elements.\n */\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  /* 1 */\n  display: table;\n  /* 2 */ }\n\n.clearfix:after {\n  clear: both; }\n\n/**\n * For IE 6/7 only\n * Include this rule to trigger hasLayout and contain floats.\n */\n.clearfix {\n  *zoom: 1; }\n\n.margin {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin.margin-left-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin.margin-bottom-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-left {\n  margin-left: 20px; }\n\n.margin-bottom {\n  margin-bottom: 20px; }\n\n.margin-right {\n  margin-right: 20px; }\n\n.margin-top {\n  margin-top: 20px; }\n\n.margin-left-sm {\n  margin-left: 10px; }\n\n.margin-bottom-sm {\n  margin-bottom: 10px; }\n\n.margin-right-sm {\n  margin-right: 10px; }\n\n.margin-top-sm {\n  margin-top: 10px; }\n\n.margin-vertical {\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-left {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-vertical-sm.margin-left {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-vertical.margin-left-sm {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-vertical-sm.margin-left-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-right {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal {\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm {\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom {\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom-sm {\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom-sm {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-horizontal-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-vertical-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-except-top {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-right {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-bottom {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-except-left {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-sm-except-top {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-right {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-bottom {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-left {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.padding {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding.padding-left-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding.padding-bottom-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-left {\n  padding-left: 20px; }\n\n.padding-bottom {\n  padding-bottom: 20px; }\n\n.padding-right {\n  padding-right: 20px; }\n\n.padding-top {\n  padding-top: 20px; }\n\n.padding-left-sm {\n  padding-left: 10px; }\n\n.padding-bottom-sm {\n  padding-bottom: 10px; }\n\n.padding-right-sm {\n  padding-right: 10px; }\n\n.padding-top-sm {\n  padding-top: 10px; }\n\n.padding-vertical {\n  padding-top: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-left {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-vertical-sm.padding-left {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-vertical.padding-left-sm {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-vertical-sm.padding-left-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-right {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal {\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm {\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom {\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom-sm {\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom-sm {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-horizontal-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-vertical-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-except-top {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-right {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-bottom {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-except-left {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-sm-except-top {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-right {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-bottom {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-left {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px; }\n\n.margin-right--sm {\n  margin-right: 5px; }\n\n.opaque {\n  opacity: 1; }\n\n.black {\n  color: black; }\n\n.hidden {\n  display: none; }\n\n.seethrough {\n  opacity: 0; }\n\n.invisible {\n  visibility: hidden; }\n\n.muted {\n  color: #777; }\n\n.muted {\n  color: #777; }\n\n.pull-right {\n  float: right; }\n\n.full-height {\n  min-height: 100vh; }\n\n.centred {\n  margin: 0 auto; }\n\n.centred.margin-top {\n  margin: 20px auto 0px; }\n\n.centred.margin-bottom {\n  margin: 0px auto 20px; }\n\n.hover-cursor--pointer:hover {\n  cursor: pointer; }\n\n.hover-cursor--default {\n  cursor: default; }\n\n.box-shadow {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.box-shadow-inset {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n/* objects */\n.box {\n  background: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  border-radius: 2px; }\n\n.btn {\n  display: inline-block;\n  border: 1px solid #ccc;\n  background: white;\n  padding: 4px 8px;\n  text-decoration: none;\n  font-size: 90%;\n  color: #777;\n  border-radius: 0px; }\n\n.btn:hover {\n  cursor: pointer;\n  background: rgba(0, 0, 0, 0.05);\n  color: black; }\n\n.btn:active {\n  border-color: #ccc;\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.btn--black {\n  background: black;\n  border-color: black;\n  color: white; }\n\n.btn-group .btn {\n  margin-right: 2px; }\n\n.btn-group .btn:last-child {\n  margin-right: 0px; }\n\n.btn-wide {\n  padding: 4px 16px; }\n\n.btn-tall {\n  padding: 8px 8px; }\n\n.btn-large {\n  padding: 8px 16px; }\n\n.icon--active {\n  font-weight: bold;\n  color: black; }\n\n.tag {\n  display: inline-block;\n  border: 1px solid #ccc;\n  font-size: 70%;\n  padding: 2px 6px;\n  border-radius: 4px;\n  margin: 4px 5px 4px 0px;\n  background: #f8f8f8;\n  color: #777;\n  text-decoration: none;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075); }\n  .tag:hover {\n    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.075);\n    color: black; }\n  .tag .tag-remove {\n    margin-left: 6px;\n    text-decoration: none; }\n\n.loading {\n  position: absolute;\n  top: 45%;\n  left: 10%;\n  display: block;\n  padding: 20px 60px;\n  font-weight: bold; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 268 */,
-/* 269 */,
-/* 270 */
+/* 277 */
 /*!*****************************************!*\
-  !*** ./app/lib/collections/bookmark.js ***!
+  !*** ./app/components/create/index.jsx ***!
   \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _model = __webpack_require__(/*! ./base/model.js */ 276);
-	
-	var _model2 = _interopRequireDefault(_model);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Bookmark = function (_Model) {
-		_inherits(Bookmark, _Model);
-	
-		function Bookmark() {
-			_classCallCheck(this, Bookmark);
-	
-			return _possibleConstructorReturn(this, (Bookmark.__proto__ || Object.getPrototypeOf(Bookmark)).apply(this, arguments));
-		}
-	
-		_createClass(Bookmark, [{
-			key: 'getDetailUrl',
-			value: function getDetailUrl() {
-				return "/bookmark/" + this.id + '/' + this.slug;
-			}
-		}, {
-			key: 'getEditUrl',
-			value: function getEditUrl() {
-				return "/bookmark/" + this.id + '/' + this.slug + "/edit";
-			}
-		}]);
-	
-		return Bookmark;
-	}(_model2.default);
-	
-	exports.default = Bookmark;
-
-/***/ },
-/* 271 */
-/*!****************************!*\
-  !*** ./app/pages/home.jsx ***!
-  \****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _index = __webpack_require__(/*! ../components/list/index.jsx */ 241);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var HomePage = function (_React$Component) {
-		_inherits(HomePage, _React$Component);
-	
-		function HomePage(props, context) {
-			_classCallCheck(this, HomePage);
-	
-			var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props, context));
-	
-			var bookmarks = _this.context.bookmarks;
-	
-	
-			_this.state = {
-				bookmarks: [],
-				isMounted: false
-			};
-	
-			_this.addBookmarks = _this.addModels.bind(_this);
-			return _this;
-		}
-	
-		_createClass(HomePage, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var _this2 = this;
-	
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-				var query = router.location.query;
-	
-				var term = query.search;
-				bookmarks.onSearch(this.addBookmarks);
-				this.setState({
-					isMounted: true
-				}, function () {
-					if (term) {
-						_this2.search(term);
-					} else {
-						_this2.addModels(bookmarks.all());
-					}
-				});
-			}
-		}, {
-			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {
-				var bookmarks = this.context.bookmarks;
-	
-				bookmarks.removeSearch(this.addBookmarks);
-				this.setState({
-					isMounted: false
-				});
-			}
-		}, {
-			key: 'componentWillReceiveProps',
-			value: function componentWillReceiveProps(nextState, nextContext) {
-				var bookmarks = this.context.bookmarks;
-				var router = nextContext.router;
-				var query = router.location.query;
-	
-				var term = query.search;
-				if (term) {
-					this.search(term);
-				} else {
-					this.addModels(bookmarks.all());
-				}
-			}
-		}, {
-			key: 'search',
-			value: function search(term) {
-				var bookmarks = this.context.bookmarks;
-	
-				bookmarks.search(term);
-			}
-		}, {
-			key: 'addModels',
-			value: function addModels(models) {
-				// https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
-				if (this.state.isMounted) {
-					this.setState({
-						bookmarks: models
-					});
-				}
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var bookmarks = this.state.bookmarks;
-	
-				return _react2.default.createElement(_index2.default, { bookmarks: bookmarks });
-			}
-		}]);
-	
-		return HomePage;
-	}(_react2.default.Component);
-	
-	HomePage.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = HomePage;
-
-/***/ },
-/* 272 */
-/*!******************************!*\
-  !*** ./app/pages/create.jsx ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _index = __webpack_require__(/*! ../components/form/index.jsx */ 247);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var CreatePage = function CreatePage() {
-	  return _react2.default.createElement(_index2.default, null);
-	};
-	
-	exports.default = CreatePage;
-
-/***/ },
-/* 273 */
-/*!******************************!*\
-  !*** ./app/pages/detail.jsx ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _index = __webpack_require__(/*! ../components/detail/index.jsx */ 252);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var DetailPage = function (_React$Component) {
-		_inherits(DetailPage, _React$Component);
-	
-		function DetailPage(props, context) {
-			_classCallCheck(this, DetailPage);
-	
-			var _this = _possibleConstructorReturn(this, (DetailPage.__proto__ || Object.getPrototypeOf(DetailPage)).call(this, props, context));
-	
-			_this.state = { bookmark: false };
-			return _this;
-		}
-	
-		_createClass(DetailPage, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-				var id = this.props.params.id;
-	
-				var bookmark = bookmarks.get(id);
-	
-				this.setState({ bookmark: bookmark });
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var bookmark = this.state.bookmark;
-	
-				if (bookmark) {
-					return _react2.default.createElement(_index2.default, { bookmark: bookmark });
-				} else {
-					return _react2.default.createElement(_errors.NotFoundComponent, null);
-				}
-			}
-		}]);
-	
-		return DetailPage;
-	}(_react2.default.Component);
-	
-	DetailPage.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = DetailPage;
-
-/***/ },
-/* 274 */
-/*!******************************************!*\
-  !*** ./app/components/options/index.jsx ***!
-  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39734,70 +39967,232 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/options.scss */ 279);
+	__webpack_require__(/*! style!css!sass!./css/create.scss */ 278);
 	
-	var OptionsComponent = function (_React$Component) {
-		_inherits(OptionsComponent, _React$Component);
+	var CreateComponent = function (_React$Component) {
+		_inherits(CreateComponent, _React$Component);
 	
-		function OptionsComponent() {
-			_classCallCheck(this, OptionsComponent);
+		function CreateComponent() {
+			_classCallCheck(this, CreateComponent);
 	
-			return _possibleConstructorReturn(this, (OptionsComponent.__proto__ || Object.getPrototypeOf(OptionsComponent)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (CreateComponent.__proto__ || Object.getPrototypeOf(CreateComponent)).apply(this, arguments));
 		}
 	
-		_createClass(OptionsComponent, [{
-			key: 'remove',
-			value: function remove(event) {
-				event.preventDefault();
-				var bookmark = this.props.bookmark;
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-	
-				bookmarks.remove(bookmark.id);
-				router.push('/');
-			}
-		}, {
+		_createClass(CreateComponent, [{
 			key: 'render',
 			value: function render() {
-				var bookmark = this.props.bookmark;
-	
 				return _react2.default.createElement(
-					'div',
-					{ className: 'bookmark-options box margin-bottom-sm' },
+					'section',
+					{ className: 'create-choices__container box' },
 					_react2.default.createElement(
-						'a',
-						{ className: 'btn', href: bookmark.url },
-						'visit'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: bookmark.getEditUrl(), className: 'btn' },
-						'edit'
-					),
-					_react2.default.createElement(
-						'a',
-						{ className: 'btn', href: '#', onClick: this.remove.bind(this) },
-						'delete'
+						'div',
+						{ className: 'create-choices' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/create-bookmark', className: 'create-choice create-choice--bookmark' },
+							_react2.default.createElement('i', { className: 'ion-link' }),
+							_react2.default.createElement('br', null),
+							'bookmark'
+						),
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/create-list', className: 'create-choice create-choice--list' },
+							_react2.default.createElement('i', { className: 'ion-ios-list' }),
+							_react2.default.createElement('br', null),
+							'list'
+						)
 					)
 				);
 			}
 		}]);
 	
-		return OptionsComponent;
+		return CreateComponent;
 	}(_react2.default.Component);
 	
-	OptionsComponent.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = OptionsComponent;
+	exports.default = CreateComponent;
 
 /***/ },
-/* 275 */
+/* 278 */
+/*!***********************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/create/css/create.scss ***!
+  \***********************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./create.scss */ 279);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./create.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./create.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 279 */
+/*!******************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/create/css/create.scss ***!
+  \******************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".create-choices__container {\n  max-width: 500px;\n  margin: 0 auto;\n  position: relative; }\n\n.create-choices {\n  display: table;\n  min-width: 100%; }\n\n.create-choice {\n  display: table-cell;\n  vertical-align: middle;\n  text-align: center;\n  height: 10rem;\n  text-decoration: none;\n  width: 50%; }\n  .create-choice i {\n    font-size: 2rem; }\n  .create-choice:first-child {\n    border-right: 1px solid #ccc; }\n  .create-choice:hover {\n    box-shadow: 0 1px 30px rgba(0, 0, 0, 0.055) inset; }\n  .create-choice:active {\n    box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1) inset; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 280 */
 /*!***************************************!*\
-  !*** ./app/components/item/index.jsx ***!
+  !*** ./app/pages/create-bookmark.jsx ***!
   \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../components/bookmarks/form/index.jsx */ 291);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var CreateBookmarkPage = function CreateBookmarkPage() {
+	  return _react2.default.createElement(_index2.default, null);
+	};
+	
+	exports.default = CreateBookmarkPage;
+
+/***/ },
+/* 281 */
+/*!***********************************!*\
+  !*** ./app/pages/create-list.jsx ***!
+  \***********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../components/lists/form/index.jsx */ 294);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var CreateBookmarkPage = function CreateBookmarkPage() {
+	  return _react2.default.createElement(_index2.default, null);
+	};
+	
+	exports.default = CreateBookmarkPage;
+
+/***/ },
+/* 282 */
+/*!***************************************************!*\
+  !*** ./app/components/bookmarks/detail/index.jsx ***!
+  \***************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _errors = __webpack_require__(/*! ../../errors.jsx */ 253);
+	
+	var _index = __webpack_require__(/*! ../item/index.jsx */ 283);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _index3 = __webpack_require__(/*! ../options/index.jsx */ 286);
+	
+	var _index4 = _interopRequireDefault(_index3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/detail.scss */ 289);
+	
+	var DetailComponent = function (_React$Component) {
+		_inherits(DetailComponent, _React$Component);
+	
+		function DetailComponent() {
+			_classCallCheck(this, DetailComponent);
+	
+			return _possibleConstructorReturn(this, (DetailComponent.__proto__ || Object.getPrototypeOf(DetailComponent)).apply(this, arguments));
+		}
+	
+		_createClass(DetailComponent, [{
+			key: 'render',
+			value: function render() {
+				var bookmark = this.props.bookmark;
+	
+	
+				if (bookmark) {
+					return _react2.default.createElement(
+						'div',
+						{ className: 'bookmark-detail' },
+						_react2.default.createElement(_index4.default, { bookmark: bookmark }),
+						_react2.default.createElement(_index2.default, { shouldShowTags: true, shouldShowImage: true, shouldShowText: true, bookmark: bookmark })
+					);
+				} else {
+					return _react2.default.createElement(_errors.NotFoundComponent, null);
+				}
+			}
+		}]);
+	
+		return DetailComponent;
+	}(_react2.default.Component);
+	
+	exports.default = DetailComponent;
+
+/***/ },
+/* 283 */
+/*!*************************************************!*\
+  !*** ./app/components/bookmarks/item/index.jsx ***!
+  \*************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39814,7 +40209,7 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 172);
 	
-	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 231);
+	var _tools = __webpack_require__(/*! ../../../lib/tools.js */ 228);
 	
 	var _ = _interopRequireWildcard(_tools);
 	
@@ -39829,7 +40224,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/item.scss */ 243);
+	__webpack_require__(/*! style!css!sass!./css/item.scss */ 284);
 	
 	var BookmarkItemComponent = function (_React$Component) {
 		_inherits(BookmarkItemComponent, _React$Component);
@@ -40012,528 +40407,26 @@
 	exports.default = BookmarkItemComponent;
 
 /***/ },
-/* 276 */
-/*!*******************************************!*\
-  !*** ./app/lib/collections/base/model.js ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _tools = __webpack_require__(/*! ../../tools.js */ 231);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var Model = function () {
-		function Model(properties, collection) {
-			_classCallCheck(this, Model);
-	
-			_.extend(this, properties);
-			this._collection = collection;
-		}
-	
-		_createClass(Model, [{
-			key: 'update',
-			value: function update(attrs) {
-				this._collection.update(_.extend(this, attrs));
-				return this;
-			}
-		}]);
-	
-		return Model;
-	}();
-	
-	exports.default = Model;
-
-/***/ },
-/* 277 */
-/*!**************************************************!*\
-  !*** ./app/lib/collections/base/localstorage.js ***!
-  \**************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _tools = __webpack_require__(/*! ../../tools.js */ 231);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	var _base = __webpack_require__(/*! ./base.js */ 278);
-	
-	var _base2 = _interopRequireDefault(_base);
-	
-	var _localstorage = __webpack_require__(/*! ../../behaviour/localstorage.js */ 262);
-	
-	var _localstorage2 = _interopRequireDefault(_localstorage);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var LocalStorageCollection = function (_Collection) {
-		_inherits(LocalStorageCollection, _Collection);
-	
-		function LocalStorageCollection() {
-			_classCallCheck(this, LocalStorageCollection);
-	
-			var _this = _possibleConstructorReturn(this, (LocalStorageCollection.__proto__ || Object.getPrototypeOf(LocalStorageCollection)).call(this));
-	
-			if (window && window.localStorage) {
-				// always add bevhaiour in the constructor
-				_this.storeName = 'bookmarks:collection:' + _this.name;
-				_this.store = new _localstorage2.default(_this.storeName);
-				_this.setUpLocalStorage();
-			} else {
-				_this.usingLocalStorage = false;
-				_this.addDefaults();
-			}
-			return _this;
-		}
-	
-		_createClass(LocalStorageCollection, [{
-			key: 'setUpLocalStorage',
-			value: function setUpLocalStorage() {
-				this.usingLocalStorage = true;
-				this.hasLocallyStoredModels = this.store.hasContents();
-				this.initialiseLocalStorageEvents();
-	
-				if (this.hasLocallyStoredModels) {
-					var storeList = this.getListFromLocalStorage();
-					this.addMany(storeList);
-				} else {
-					this.addDefaults();
-				}
-			}
-		}, {
-			key: 'initialiseLocalStorageEvents',
-			value: function initialiseLocalStorageEvents() {
-				var _this2 = this;
-	
-				this.onCreate(function (model) {
-					if (model) {
-						var models = _.isArray(model) ? model : [model];
-						models.forEach(function (created) {
-							if (created && created.id) {
-								_this2.addOrUpdateModelToLocalStorage(created);
-							}
-						});
-					}
-				});
-	
-				this.onUpdate(function (model) {
-					if (model) {
-						var models = _.isArray(model) ? model : [model];
-						models.forEach(function (updated) {
-							if (updated && updated.id) {
-								_this2.addOrUpdateModelToLocalStorage(updated);
-							}
-						});
-					}
-				});
-	
-				this.onRemove(function (model) {
-					if (model) {
-						var models = _.isArray(model) ? model : [model];
-						models.forEach(function (removed) {
-							if (removed && removed.id) {
-								_this2.removeModelFromLocalStorage(removed);
-							}
-						});
-					}
-				});
-			}
-		}, {
-			key: 'addDefaults',
-			value: function addDefaults() {
-				if (this.defaultModels) {
-					var defaults = this.defaultModels();
-					this.createMany(defaults);
-				}
-			}
-		}, {
-			key: 'addOrUpdateModelToLocalStorage',
-			value: function addOrUpdateModelToLocalStorage(model) {
-				var attrs = {};
-				for (var prop in model) {
-					// assume it shouldn't be stored if it starts with an underscore
-					if (prop.charAt(0) != '_') {
-						attrs[prop] = model[prop];
-					}
-				}
-				this.store.update(function (store) {
-					store[attrs.id] = attrs;
-					return store;
-				});
-			}
-		}, {
-			key: 'removeModelFromLocalStorageById',
-			value: function removeModelFromLocalStorageById(id) {
-				this.store.update(function (store) {
-					delete store[id];
-					return store;
-				});
-			}
-		}, {
-			key: 'removeModelFromLocalStorage',
-			value: function removeModelFromLocalStorage(model) {
-				this.removeModelFromLocalStorageById(model.id);
-			}
-		}, {
-			key: 'getListFromLocalStorage',
-			value: function getListFromLocalStorage() {
-				var store = this.store.get();
-				return _.keys(store).map(function (id) {
-					return store[id];
-				});
-			}
-		}]);
-	
-		return LocalStorageCollection;
-	}(_base2.default);
-	
-	exports.default = LocalStorageCollection;
-
-/***/ },
-/* 278 */
-/*!******************************************!*\
-  !*** ./app/lib/collections/base/base.js ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _tools = __webpack_require__(/*! ../../tools.js */ 231);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	var _dispatcher = __webpack_require__(/*! ../../behaviour/dispatcher.js */ 261);
-	
-	var _dispatcher2 = _interopRequireDefault(_dispatcher);
-	
-	var _model = __webpack_require__(/*! ./model.js */ 276);
-	
-	var _model2 = _interopRequireDefault(_model);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var Collection = function () {
-		function Collection() {
-			_classCallCheck(this, Collection);
-	
-			this.models = {};
-			this.hooks = [];
-			this.validator = {};
-			this.name = this.constructor.name;
-			this.dispatcher = new _dispatcher2.default();
-		}
-	
-		_createClass(Collection, [{
-			key: 'preCreate',
-	
-	
-			// hooks
-	
-			value: function preCreate(fn) {
-				this.hooks.push(fn);
-			}
-		}, {
-			key: 'callHooks',
-			value: function callHooks(model) {
-				for (var i = 0, l = this.hooks.length; i < l; i++) {
-					var hookFn = this.hooks[i];
-					model = hookFn(model);
-					if (!model) throw new Error('You must return a model from collection hook callbacks');
-				}
-				return model;
-			}
-	
-			// query models
-	
-		}, {
-			key: 'all',
-			value: function all() {
-				var _this = this;
-	
-				return Object.keys(this.models).map(function (key) {
-					return _this.models[key];
-				});
-			}
-		}, {
-			key: 'make',
-			value: function make(attrs) {
-				return new this.model(attrs, this);
-			}
-	
-			// get model from single id or array of ids
-	
-		}, {
-			key: 'get',
-			value: function get(id) {
-				var _this2 = this;
-	
-				if (_.isString(id)) {
-					var attrs = this.models[id];
-					return this.make(attrs);
-				}
-				if (_.isArray(id)) {
-					var _ret = function () {
-						var ids = id,
-						    models = _this2.all();
-						return {
-							v: models.filter(function (attrs) {
-								return ids.indexOf(attrs.id) >= 0;
-							}).map(function (attrs) {
-								return _this2.make(attrs);
-							})
-						};
-					}();
-	
-					if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
-				}
-				return false;
-			}
-	
-			// events
-	
-			// change fires for all events
-	
-		}, {
-			key: 'onChange',
-			value: function onChange(callback) {
-				this.dispatcher.register('change', callback);
-			}
-	
-			// add models when you don't want to give them a new id
-	
-		}, {
-			key: 'onAdd',
-			value: function onAdd(callback) {
-				this.dispatcher.register('add', callback);
-			}
-		}, {
-			key: 'removeAdd',
-			value: function removeAdd(callback) {
-				this.dispatcher.remove('add', callback);
-			}
-	
-			// creating a model genereates a new id
-	
-		}, {
-			key: 'onCreate',
-			value: function onCreate(callback) {
-				this.dispatcher.register('create', callback);
-			}
-		}, {
-			key: 'onUpdate',
-			value: function onUpdate(callback) {
-				this.dispatcher.register('update', callback);
-			}
-		}, {
-			key: 'onRemove',
-			value: function onRemove(callback) {
-				this.dispatcher.register('remove', callback);
-			}
-		}, {
-			key: 'triggerChange',
-			value: function triggerChange() {
-				this.dispatcher.broadcast('change');
-			}
-		}, {
-			key: 'triggerAdd',
-			value: function triggerAdd(model) {
-				this.dispatcher.broadcast('add', model);
-				this.triggerChange();
-			}
-		}, {
-			key: 'triggerCreate',
-			value: function triggerCreate(model) {
-				this.dispatcher.broadcast('create', model);
-				this.triggerChange();
-			}
-		}, {
-			key: 'triggerUpdate',
-			value: function triggerUpdate(model) {
-				this.dispatcher.broadcast('update', model);
-				this.triggerChange();
-			}
-		}, {
-			key: 'triggerRemove',
-			value: function triggerRemove(model) {
-				this.dispatcher.broadcast('remove', model);
-				this.triggerChange();
-			}
-		}, {
-			key: 'validateField',
-			value: function validateField(field, value) {
-				var validator = this.validator[field];
-				if (validator) {
-					var result = validator(value);
-					if (result) {
-						return result;
-					}
-				}
-			}
-		}, {
-			key: 'validate',
-			value: function validate(obj) {
-				var errors = {};
-				var validated = true;
-				for (var field in obj) {
-					var result = this.validateField(field, obj[field]);
-					if (result) {
-						errors[field] = result;
-						validated = false;
-					}
-				}
-				return { errors: errors, validated: validated };
-			}
-	
-			// change models
-	
-		}, {
-			key: 'create',
-			value: function create(attrs) {
-				var model = this.make(attrs);
-				model.id = _.generateID();
-				model = this.callHooks(model);
-				this.models[model.id] = model;
-				this.triggerCreate(model);
-				return model;
-			}
-		}, {
-			key: 'createMany',
-			value: function createMany(models) {
-				var _this3 = this;
-	
-				var created = models.map(function (attrs) {
-					var model = _this3.make(attrs);
-					model.id = _.generateID();
-					model = _this3.callHooks(model);
-					_this3.models[model.id] = model;
-					return model;
-				});
-				this.triggerCreate(created);
-				return created;
-			}
-		}, {
-			key: 'add',
-			value: function add(model) {
-				model = this.make(model);
-				this.models[model.id] = model;
-				this.triggerAdd(model);
-				return model;
-			}
-		}, {
-			key: 'addMany',
-			value: function addMany(models) {
-				var _this4 = this;
-	
-				var result = models.forEach(function (model) {
-					model = _this4.make(model);
-					_this4.models[model.id] = model;
-					return model;
-				});
-				this.triggerAdd(result);
-				return result;
-			}
-		}, {
-			key: 'update',
-			value: function update(attrs) {
-				var id = attrs.id;
-				if (id) {
-					var model = this.get(id);
-					if (model) {
-						model = _.extend(model, attrs);
-						model = this.callHooks(model);
-						this.models[id] = model;
-						this.triggerUpdate(model);
-						return model;
-					} else {
-						throw new Error('Could not update the provided model. Does it have an ID property?');
-					}
-				}
-			}
-		}, {
-			key: 'remove',
-			value: function remove(model) {
-				var id = void 0;
-				if (_.isObject(model)) {
-					id = model.id;
-				} else {
-					// model is a string id
-					model = this.get(model);
-					id = model.id;
-				}
-				delete this.models[id];
-				this.triggerRemove(model);
-			}
-		}, {
-			key: 'model',
-			get: function get() {
-				return _model2.default;
-			}
-		}]);
-	
-		return Collection;
-	}();
-	
-	exports.default = Collection;
-
-/***/ },
-/* 279 */
-/*!*************************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/options/css/options.scss ***!
-  \*************************************************************************************************/
+/* 284 */
+/*!*****************************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/bookmarks/item/css/item.scss ***!
+  \*****************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./options.scss */ 280);
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./item.scss */ 285);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./options.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./options.scss");
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./item.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./item.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -40543,27 +40436,27 @@
 	}
 
 /***/ },
-/* 280 */
-/*!********************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/options/css/options.scss ***!
-  \********************************************************************************/
+/* 285 */
+/*!************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/bookmarks/item/css/item.scss ***!
+  \************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "div.bookmark-options {\n  font-size: 80%;\n  background: #FCFAF9; }\n  div.bookmark-options a {\n    line-height: 1.6rem;\n    display: inline-block;\n    text-decoration: none;\n    padding: 0 20px;\n    border: 0px;\n    border-right: 1px solid #ccc; }\n    div.bookmark-options a:hover {\n      background: rgba(0, 0, 0, 0.05);\n      color: black; }\n", ""]);
+	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 2px 15px;\n  -webkit-animation: fadeIn 200ms;\n  -o-animation: fadeIn 200ms;\n  animation: fadeIn 200ms;\n  border-top: 1px solid #ccc;\n  background: #FCFAF9;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__options {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__options-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__options-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__options-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__text {\n  border-top: 1px solid #ccc;\n  padding: 10px 20px;\n  font-size: 80%;\n  color: #777; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 281 */
-/*!****************************!*\
-  !*** ./app/pages/edit.jsx ***!
-  \****************************/
+/* 286 */
+/*!****************************************************!*\
+  !*** ./app/components/bookmarks/options/index.jsx ***!
+  \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40578,11 +40471,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _index = __webpack_require__(/*! ../components/form/index.jsx */ 247);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
+	var _reactRouter = __webpack_require__(/*! react-router */ 172);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -40592,57 +40481,730 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var EditPage = function (_React$Component) {
-		_inherits(EditPage, _React$Component);
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/options.scss */ 287);
 	
-		function EditPage(props, context) {
-			_classCallCheck(this, EditPage);
+	var OptionsComponent = function (_React$Component) {
+		_inherits(OptionsComponent, _React$Component);
 	
-			var _this = _possibleConstructorReturn(this, (EditPage.__proto__ || Object.getPrototypeOf(EditPage)).call(this, props, context));
+		function OptionsComponent() {
+			_classCallCheck(this, OptionsComponent);
 	
-			_this.state = { bookmark: false };
-			return _this;
+			return _possibleConstructorReturn(this, (OptionsComponent.__proto__ || Object.getPrototypeOf(OptionsComponent)).apply(this, arguments));
 		}
 	
-		_createClass(EditPage, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
+		_createClass(OptionsComponent, [{
+			key: 'remove',
+			value: function remove(event) {
+				event.preventDefault();
+				var bookmark = this.props.bookmark;
 				var _context = this.context,
 				    bookmarks = _context.bookmarks,
 				    router = _context.router;
-				var id = this.props.params.id;
 	
-				var bookmark = bookmarks.get(id);
-	
-				this.setState({ bookmark: bookmark });
+				bookmarks.remove(bookmark.id);
+				router.push('/');
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var bookmark = this.state.bookmark;
+				var bookmark = this.props.bookmark;
 	
-				if (bookmark) {
-					return _react2.default.createElement(_index2.default, { bookmark: bookmark });
-				} else {
-					return _react2.default.createElement(_errors.NotFoundComponent, null);
-				}
+				return _react2.default.createElement(
+					'div',
+					{ className: 'bookmark-options box margin-bottom-sm' },
+					_react2.default.createElement(
+						'a',
+						{ className: 'btn', href: bookmark.url },
+						'visit'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: bookmark.getEditUrl(), className: 'btn' },
+						'edit'
+					),
+					_react2.default.createElement(
+						'a',
+						{ className: 'btn', href: '#', onClick: this.remove.bind(this) },
+						'delete'
+					)
+				);
 			}
 		}]);
 	
-		return EditPage;
+		return OptionsComponent;
 	}(_react2.default.Component);
 	
-	EditPage.contextTypes = {
+	OptionsComponent.contextTypes = {
 		bookmarks: _react2.default.PropTypes.object,
 		router: _react2.default.PropTypes.object
 	};
-	exports.default = EditPage;
+	exports.default = OptionsComponent;
 
 /***/ },
-/* 282 */
-/*!*****************************************!*\
-  !*** ./app/lib/collections/defaults.js ***!
-  \*****************************************/
+/* 287 */
+/*!***********************************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/bookmarks/options/css/options.scss ***!
+  \***********************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./options.scss */ 288);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./options.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./options.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 288 */
+/*!******************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/bookmarks/options/css/options.scss ***!
+  \******************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "div.bookmark-options {\n  font-size: 80%;\n  background: #FCFAF9; }\n  div.bookmark-options a {\n    line-height: 1.6rem;\n    display: inline-block;\n    text-decoration: none;\n    padding: 0 20px;\n    border: 0px;\n    border-right: 1px solid #ccc; }\n    div.bookmark-options a:hover {\n      background: rgba(0, 0, 0, 0.05);\n      color: black; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 289 */
+/*!*********************************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/bookmarks/detail/css/detail.scss ***!
+  \*********************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./detail.scss */ 290);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./detail.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./detail.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 290 */
+/*!****************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/bookmarks/detail/css/detail.scss ***!
+  \****************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".bookmark-detail__options i {\n  font-size: 1.1rem;\n  margin-right: 20px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 291 */
+/*!*************************************************!*\
+  !*** ./app/components/bookmarks/form/index.jsx ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tools = __webpack_require__(/*! ../../../lib/tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/form.scss */ 292);
+	
+	var BookmarkFormComponent = function (_React$Component) {
+		_inherits(BookmarkFormComponent, _React$Component);
+	
+		function BookmarkFormComponent(props, context) {
+			_classCallCheck(this, BookmarkFormComponent);
+	
+			var _this = _possibleConstructorReturn(this, (BookmarkFormComponent.__proto__ || Object.getPrototypeOf(BookmarkFormComponent)).call(this, props, context));
+	
+			var bookmark = _this.props.bookmark;
+	
+	
+			_this.state = {
+				errors: {},
+				tags: bookmark ? bookmark.tags : []
+			};
+			return _this;
+		}
+	
+		_createClass(BookmarkFormComponent, [{
+			key: 'renderError',
+			value: function renderError(field) {
+				var errors = this.state.errors;
+	
+				var error = errors[field];
+				if (error) {
+					return _react2.default.createElement(
+						'span',
+						{ className: 'field-error' },
+						error
+					);
+				}
+			}
+		}, {
+			key: 'submitHandler',
+			value: function submitHandler(event) {
+				event.preventDefault();
+				var bookmark = this.props.bookmark;
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+				var _refs = this.refs,
+				    title = _refs.title,
+				    url = _refs.url,
+				    tags = _refs.tags,
+				    text = _refs.text;
+	
+				var titleValue = title.value.trim();
+				var urlValue = url.value.trim();
+				var textValue = text.value.trim();
+	
+				var properties = {
+					title: titleValue,
+					url: urlValue,
+					tags: this.state.tags,
+					text: textValue
+				};
+	
+				var _bookmarks$validate = bookmarks.validate(properties),
+				    errors = _bookmarks$validate.errors,
+				    validated = _bookmarks$validate.validated;
+	
+				if (validated) {
+					var saved = bookmark ? bookmark.update(properties) : bookmarks.create(properties);
+					router.push(saved.getDetailUrl());
+				} else {
+					this.setState({ errors: errors });
+				}
+			}
+		}, {
+			key: 'removeTag',
+			value: function removeTag(tag, event) {
+				event.preventDefault();
+				var tags = this.state.tags;
+	
+				var index = tags.indexOf(tag.trim());
+				if (index >= 0) {
+					tags.splice(index, 1);
+				}
+				this.setState({ tags: tags });
+			}
+		}, {
+			key: 'renderTags',
+			value: function renderTags() {
+				var _this2 = this;
+	
+				var tags = this.state.tags;
+	
+				return _react2.default.createElement(
+					'ul',
+					{ className: 'tags-input__tags' },
+					tags.map(function (tag, index) {
+						return _react2.default.createElement(
+							'li',
+							{ key: index, className: 'tags-input__tag tag' },
+							tag,
+							_react2.default.createElement(
+								'a',
+								{ onClick: _this2.removeTag.bind(_this2, tag), href: '#', className: 'tag-remove' },
+								'\xD7'
+							)
+						);
+					})
+				);
+			}
+		}, {
+			key: 'tagsFieldKeyDownHandler',
+			value: function tagsFieldKeyDownHandler(event) {
+				if (event.keyCode == 13 || event.charCode == 13) {
+					event.preventDefault();
+					var tag = this.refs.tags.value;
+					if (tag.trim()) {
+						var tags = this.state.tags;
+	
+						if (tags.indexOf(tag.trim()) == -1) {
+							tags.push(tag);
+							this.refs.tags.value = '';
+							this.setState({ tags: tags });
+						}
+					}
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var bookmark = this.props.bookmark;
+	
+	
+				return _react2.default.createElement(
+					'form',
+					{ onSubmit: this.submitHandler.bind(this), className: 'bookmark-form box' },
+					_react2.default.createElement('input', { ref: 'title', defaultValue: bookmark ? bookmark.title : '', placeholder: 'title', type: 'text', className: 'field' }),
+					this.renderError('title'),
+					_react2.default.createElement('input', { ref: 'url', defaultValue: bookmark ? bookmark.url : '', placeholder: 'url', type: 'text', className: 'field', autoCapitalize: 'none' }),
+					this.renderError('url'),
+					_react2.default.createElement('textarea', { ref: 'text', defaultValue: bookmark ? bookmark.text : '', placeholder: 'text', type: 'text', className: 'field' }),
+					this.renderError('text'),
+					_react2.default.createElement('input', { onKeyDown: this.tagsFieldKeyDownHandler.bind(this), ref: 'tags', placeholder: 'tags (enter to add)', type: 'text', className: 'field field--tags' }),
+					this.renderError('tags'),
+					this.renderTags(),
+					_react2.default.createElement(
+						'div',
+						{ className: 'controls' },
+						_react2.default.createElement(
+							'button',
+							{ type: 'submit', className: 'btn' },
+							bookmark ? 'update' : 'create'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return BookmarkFormComponent;
+	}(_react2.default.Component);
+	
+	BookmarkFormComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = BookmarkFormComponent;
+
+/***/ },
+/* 292 */
+/*!*****************************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/bookmarks/form/css/form.scss ***!
+  \*****************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./form.scss */ 293);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./form.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./form.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 293 */
+/*!************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/bookmarks/form/css/form.scss ***!
+  \************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".bookmark-form {\n  padding: 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n  .bookmark-form .field--tags {\n    margin-bottom: 0px; }\n  .bookmark-form .tags-input__tags {\n    margin: 10px 0;\n    padding: 0; }\n  .bookmark-form .tags-input__tag {\n    margin-top: 0px; }\n    .bookmark-form .tags-input__tag:first-child {\n      margin-left: 0px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 294 */
+/*!*********************************************!*\
+  !*** ./app/components/lists/form/index.jsx ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tools = __webpack_require__(/*! ../../../lib/tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/form.scss */ 295);
+	
+	var ListFormComponent = function (_React$Component) {
+		_inherits(ListFormComponent, _React$Component);
+	
+		function ListFormComponent(props) {
+			_classCallCheck(this, ListFormComponent);
+	
+			var _this = _possibleConstructorReturn(this, (ListFormComponent.__proto__ || Object.getPrototypeOf(ListFormComponent)).call(this, props));
+	
+			var list = _this.props.list;
+	
+	
+			_this.state = {
+				errors: false,
+				tags: list ? list.tags : []
+			};
+			return _this;
+		}
+	
+		_createClass(ListFormComponent, [{
+			key: 'submitHandler',
+			value: function submitHandler(event) {
+				event.preventDefault();
+				var list = this.props.list;
+				var _context = this.context,
+				    lists = _context.lists,
+				    router = _context.router;
+				var title = this.refs.title;
+	
+				var titleValue = title.value.trim();
+	
+				console.log(lists.all());
+	
+				var properties = {
+					title: titleValue
+				};
+	
+				var _lists$validate = lists.validate(properties),
+				    errors = _lists$validate.errors,
+				    validated = _lists$validate.validated;
+	
+				if (validated) {
+					var saved = list ? list.update(properties) : lists.create(properties);
+					router.push(saved.getDetailUrl());
+				} else {
+					this.setState({ errors: errors });
+				}
+			}
+		}, {
+			key: 'renderError',
+			value: function renderError(field) {
+				var errors = this.state.errors;
+	
+				var error = errors[field];
+				if (error) {
+					return _react2.default.createElement(
+						'span',
+						{ className: 'field-error' },
+						error
+					);
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var list = this.props.list;
+	
+				return _react2.default.createElement(
+					'form',
+					{ onSubmit: this.submitHandler.bind(this), className: 'list-form box' },
+					_react2.default.createElement('input', { ref: 'title', defaultValue: list ? list.title : '', placeholder: 'title', type: 'text', className: 'field' }),
+					this.renderError('title'),
+					_react2.default.createElement(
+						'div',
+						{ className: 'controls' },
+						_react2.default.createElement(
+							'button',
+							{ type: 'submit', className: 'btn' },
+							list ? 'update' : 'create'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return ListFormComponent;
+	}(_react2.default.Component);
+	
+	ListFormComponent.contextTypes = {
+		lists: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = ListFormComponent;
+
+/***/ },
+/* 295 */
+/*!*************************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/lists/form/css/form.scss ***!
+  \*************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./form.scss */ 296);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./form.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./form.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 296 */
+/*!********************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/lists/form/css/form.scss ***!
+  \********************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".list-form {\n  padding: 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 297 */
+/*!************************************************!*\
+  !*** ./app/lib/collections/bookmarks/index.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _jsSearch = __webpack_require__(/*! js-search */ 263);
+	
+	var _jsSearch2 = _interopRequireDefault(_jsSearch);
+	
+	var _localstorage = __webpack_require__(/*! ../base/localstorage.js */ 264);
+	
+	var _localstorage2 = _interopRequireDefault(_localstorage);
+	
+	var _tools = __webpack_require__(/*! ../../tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	var _model = __webpack_require__(/*! ./model.js */ 302);
+	
+	var _model2 = _interopRequireDefault(_model);
+	
+	var _defaults = __webpack_require__(/*! ./defaults.js */ 299);
+	
+	var _defaults2 = _interopRequireDefault(_defaults);
+	
+	var _validators = __webpack_require__(/*! ./validators.js */ 300);
+	
+	var _validators2 = _interopRequireDefault(_validators);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Bookmarks = function (_LocalStorageCollecti) {
+		_inherits(Bookmarks, _LocalStorageCollecti);
+	
+		function Bookmarks() {
+			_classCallCheck(this, Bookmarks);
+	
+			var _this = _possibleConstructorReturn(this, (Bookmarks.__proto__ || Object.getPrototypeOf(Bookmarks)).call(this));
+	
+			_this.setUpSearchDispatcherEvents();
+			_this.setUpModelHooks();
+			return _this;
+		}
+	
+		_createClass(Bookmarks, [{
+			key: 'defaultModels',
+			value: function defaultModels() {
+				return _defaults2.default;
+			}
+		}, {
+			key: 'setUpSearchDispatcherEvents',
+			value: function setUpSearchDispatcherEvents() {
+				var _this2 = this;
+	
+				this.onSearch = function (callback) {
+					_this2.dispatcher.register('search', callback);
+				};
+				this.removeSearch = function (callback) {
+					_this2.dispatcher.remove('search', callback);
+				};
+				this.triggerSearch = function (results) {
+					_this2.dispatcher.broadcast('search', results);
+				};
+			}
+		}, {
+			key: 'setUpModelHooks',
+			value: function setUpModelHooks() {
+				this.preCreate(function (model) {
+					model.date = new Date();
+	
+					// prepend 'http://' to model.url if it isn't already at beginning of string
+					model.url = _.prependHttp(model.url);
+	
+					// add url properties to model;
+					var details = _.getUrlDetails(model.url);
+					model.domain = details.hostname;
+	
+					// turn model tags into an array if it is passed as a string
+					if (_.isString(model.tags)) {
+						model.tags = model.tags.split(',').map(function (tag) {
+							return tag.trim();
+						}).filter(Boolean);
+					}
+	
+					// ensure there are no duplicate tags
+					model.tags = model.tags.filter(function (item, pos, arr) {
+						return arr.indexOf(item) == pos;
+					});
+	
+					// set slug
+					model.slug = _.slugify(model.title);
+					return model;
+				});
+			}
+		}, {
+			key: 'findByTag',
+			value: function findByTag(tag) {
+				return this.all().filter(function (bookmark) {
+					return bookmark.tags.indexOf(tag) >= 0;
+				});
+			}
+		}, {
+			key: 'search',
+			value: function search(query) {
+				var search = new _jsSearch2.default.Search('id');
+				search.addIndex('title');
+				search.addIndex('url');
+				search.addIndex('tags');
+	
+				search.addDocuments(this.all());
+				var results = search.search(query);
+				this.triggerSearch(results);
+			}
+		}, {
+			key: 'model',
+			get: function get() {
+				return _model2.default;
+			}
+		}, {
+			key: 'validator',
+			get: function get() {
+				return _validators2.default;
+			}
+		}]);
+	
+		return Bookmarks;
+	}(_localstorage2.default);
+	
+	exports.default = Bookmarks;
+
+/***/ },
+/* 298 */,
+/* 299 */
+/*!***************************************************!*\
+  !*** ./app/lib/collections/bookmarks/defaults.js ***!
+  \***************************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40677,6 +41239,245 @@
 	}];
 	
 	exports.default = defaultBookmarks;
+
+/***/ },
+/* 300 */
+/*!*****************************************************!*\
+  !*** ./app/lib/collections/bookmarks/validators.js ***!
+  \*****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _tools = __webpack_require__(/*! ../../tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var bookmarkValidator = {
+		title: function title(_title) {
+			if (!_title.trim()) return 'Please enter a title';
+		},
+		url: function url(_url) {
+			if (!_url.trim()) return 'Please enter a URL';
+			if (!_.validateUrl(_url)) return 'Please enter a valid URL';
+		}
+	};
+	
+	exports.default = bookmarkValidator;
+
+/***/ },
+/* 301 */
+/*!********************************************!*\
+  !*** ./app/lib/collections/lists/index.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _localstorage = __webpack_require__(/*! ../base/localstorage.js */ 264);
+	
+	var _localstorage2 = _interopRequireDefault(_localstorage);
+	
+	var _tools = __webpack_require__(/*! ../../tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	var _model = __webpack_require__(/*! ./model.js */ 303);
+	
+	var _model2 = _interopRequireDefault(_model);
+	
+	var _validators = __webpack_require__(/*! ./validators.js */ 304);
+	
+	var _validators2 = _interopRequireDefault(_validators);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Lists = function (_LocalStorageCollecti) {
+		_inherits(Lists, _LocalStorageCollecti);
+	
+		function Lists() {
+			_classCallCheck(this, Lists);
+	
+			return _possibleConstructorReturn(this, (Lists.__proto__ || Object.getPrototypeOf(Lists)).apply(this, arguments));
+		}
+	
+		_createClass(Lists, [{
+			key: 'model',
+			get: function get() {
+				return _model2.default;
+			}
+		}, {
+			key: 'validator',
+			get: function get() {
+				return _validators2.default;
+			}
+		}]);
+	
+		return Lists;
+	}(_localstorage2.default);
+	
+	exports.default = Lists;
+
+/***/ },
+/* 302 */
+/*!************************************************!*\
+  !*** ./app/lib/collections/bookmarks/model.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _model = __webpack_require__(/*! ../base/model.js */ 267);
+	
+	var _model2 = _interopRequireDefault(_model);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var BookmarkModel = function (_Model) {
+		_inherits(BookmarkModel, _Model);
+	
+		function BookmarkModel() {
+			_classCallCheck(this, BookmarkModel);
+	
+			return _possibleConstructorReturn(this, (BookmarkModel.__proto__ || Object.getPrototypeOf(BookmarkModel)).apply(this, arguments));
+		}
+	
+		_createClass(BookmarkModel, [{
+			key: 'getDetailUrl',
+			value: function getDetailUrl() {
+				return "/bookmark/" + this.id + '/' + this.slug;
+			}
+		}, {
+			key: 'getEditUrl',
+			value: function getEditUrl() {
+				return "/bookmark/" + this.id + '/' + this.slug + "/edit";
+			}
+		}]);
+	
+		return BookmarkModel;
+	}(_model2.default);
+	
+	exports.default = BookmarkModel;
+
+/***/ },
+/* 303 */
+/*!********************************************!*\
+  !*** ./app/lib/collections/lists/model.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _model = __webpack_require__(/*! ../base/model.js */ 267);
+	
+	var _model2 = _interopRequireDefault(_model);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ListModel = function (_Model) {
+		_inherits(ListModel, _Model);
+	
+		function ListModel() {
+			_classCallCheck(this, ListModel);
+	
+			return _possibleConstructorReturn(this, (ListModel.__proto__ || Object.getPrototypeOf(ListModel)).apply(this, arguments));
+		}
+	
+		_createClass(ListModel, [{
+			key: 'getDetailUrl',
+			value: function getDetailUrl() {
+				return "/bookmark/" + this.id + '/' + this.slug;
+			}
+		}, {
+			key: 'getEditUrl',
+			value: function getEditUrl() {
+				return "/bookmark/" + this.id + '/' + this.slug + "/edit";
+			}
+		}, {
+			key: 'fields',
+			get: function get() {
+				return {
+					title: String,
+					bookmarks: Array
+				};
+			}
+		}]);
+	
+		return ListModel;
+	}(_model2.default);
+	
+	exports.default = ListModel;
+
+/***/ },
+/* 304 */
+/*!*************************************************!*\
+  !*** ./app/lib/collections/lists/validators.js ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _tools = __webpack_require__(/*! ../../tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var listValidator = {
+		title: function title(_title) {
+			if (!_title.trim()) return 'Please enter a title';
+		}
+	};
+	
+	exports.default = listValidator;
 
 /***/ }
 /******/ ]);

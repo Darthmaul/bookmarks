@@ -31,6 +31,7 @@ label {
 	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+	margin-bottom: 10px;
 }
 
 .field:focus {
@@ -59,4 +60,8 @@ label {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	margin-top: -10px;
+	font-size: 70%;
+	display: block;
+	margin-bottom: 10px;
+	background: #f8f8f8;
 }

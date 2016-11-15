@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router';
-import * as _ from '../../lib/tools.js';
+import * as _ from '../../../lib/tools.js';
 
 // import styles for this component
 require('!style!css!sass!./css/item.scss');

@@ -1,5 +1,5 @@
 import React from 'react';
-import FormComponent from '../components/form/index.jsx';
+import BookmarkFormComponent from '../components/bookmarks/form/index.jsx';
 import { NotFoundComponent } from '../components/errors.jsx';
 
 export default class EditPage extends React.Component {
@@ -25,7 +25,7 @@ export default class EditPage extends React.Component {
 	render() {
 		const { bookmark } = this.state;
 		if (bookmark) {
-			return <FormComponent bookmark={bookmark} />
+			return <BookmarkFormComponent bookmark={bookmark} />
 		} else {
 			return <NotFoundComponent />
 		}

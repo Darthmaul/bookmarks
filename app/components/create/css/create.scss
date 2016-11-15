@@ -1,0 +1,35 @@
+.create-choices__container {
+	max-width: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.create-choices {
+	display: table;
+	min-width: 100%;
+}
+
+.create-choice {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	height: 10rem;
+	text-decoration: none;
+	width: 50%;
+		
+	i {
+		font-size: 2rem;
+	}
+
+	&:first-child {
+		border-right: 1px solid #ccc;
+	}
+
+	&:hover {
+		box-shadow: 0 1px 30px rgba(0, 0, 0, 0.055) inset;
+	}
+
+	&:active {
+		box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1) inset;
+	}
+}

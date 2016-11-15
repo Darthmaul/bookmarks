@@ -7,7 +7,6 @@ export default class Collection {
 	constructor() {
 		this.models = {};
 		this.hooks = [];
-		this.validator = {};
 		this.name = this.constructor.name;
 		this.dispatcher = new Dispatcher();
 	}
