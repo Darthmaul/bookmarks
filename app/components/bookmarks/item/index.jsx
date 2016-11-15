@@ -133,6 +133,7 @@ export default class BookmarkItemComponent extends React.Component {
 				</footer>
 				{tagsHtml}
 				{textHtml}
+				{optionsHtml}
 			</div>
 		);
 	}

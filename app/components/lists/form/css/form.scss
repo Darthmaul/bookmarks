@@ -1,4 +1,10 @@
 .list-form {
 	max-width: 500px;
 	margin: 0 auto;
+
+	.field-wrap {
+		&:last-child {
+			margin-bottom: 10px;
+		}
+	}
 }
