@@ -28,8 +28,6 @@ export default class ListFormComponent extends React.Component {
 		const { title } = this.refs;
 		const titleValue = title.value.trim();
 
-		console.log(lists.all())
-
 		const properties = {
 			title: titleValue
 		};
@@ -56,6 +54,7 @@ export default class ListFormComponent extends React.Component {
 		const { list } = this.props;
 		return (
 			<form onSubmit={this.submitHandler.bind(this)} className="list-form box">
+				<h2 className="form-title">list</h2>
 				<input ref="title" defaultValue={list ? list.title : ''} placeholder="title" type="text" className="field" />
 				{this.renderError('title')}
 				<div className="controls">

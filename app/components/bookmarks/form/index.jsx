@@ -99,6 +99,7 @@ export default class BookmarkFormComponent extends React.Component {
 		
 		return (
 			<form onSubmit={this.submitHandler.bind(this)} className="bookmark-form box">
+				<h2 className="form-title">bookmark</h2>
 				<input ref="title" defaultValue={bookmark ? bookmark.title : ''} placeholder="title" type="text" className="field" />
 				{this.renderError('title')}
 				<input ref="url" defaultValue={bookmark ? bookmark.url : ''} placeholder="url" type="text" className="field" autoCapitalize="none" />
