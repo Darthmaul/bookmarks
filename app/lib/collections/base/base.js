@@ -44,7 +44,7 @@ export default class Collection {
 	get(id) {
 		if (_.isString(id)) {
 			const attrs = this.models[id];
-			return this.make(attrs);
+			return attrs ? this.make(attrs) : false;
 		}
 		if (_.isArray(id)) {
 			const ids = id, models = this.all();
