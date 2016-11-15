@@ -3,4 +3,16 @@
 	border: 1px solid #ccc;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 	border-radius: 2px;
+
+	&__header {
+		padding: 10px 20px;
+		color: #777;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
+		border-bottom: 1px solid #ccc;
+		background: #FCFAF9;
+
+		h3 {
+			font-size: 1rem;
+		}
+	}
 }

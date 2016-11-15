@@ -39932,7 +39932,7 @@
 	
 	
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n/* vendor */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  box-sizing: content-box;\n  /* 2 */ }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/*!\n  Ionicons, v2.0.0\n  Created by Ben Sperry for the Ionic Framework, http://ionicons.com/\n  https://twitter.com/benjsperry  https://twitter.com/ionicframework\n  MIT License: https://github.com/driftyco/ionicons\n\n  Android-style icons originally built by Google’s\n  Material Design Icons: https://github.com/google/material-design-icons\n  used under CC BY http://creativecommons.org/licenses/by/4.0/\n  Modified icons to fit ionicon’s grid from original.\n*/\n@font-face {\n  font-family: \"Ionicons\";\n  src: url(\"/static/fonts/ionicons.eot\");\n  src: url(\"/static/fonts/ionicons.eot?v=2.0.0#iefix\") format(\"embedded-opentype\"), url(\"/static/fonts/ionicons.ttf\") format(\"truetype\"), url(\"/static/fonts/ionicons.woff\") format(\"woff\"), url(\"/static/fonts/ionicons.svg\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n.ion, .ionicons, .ion-alert:before, .ion-alert-circled:before, .ion-android-add:before, .ion-android-add-circle:before, .ion-android-alarm-clock:before, .ion-android-alert:before, .ion-android-apps:before, .ion-android-archive:before, .ion-android-arrow-back:before, .ion-android-arrow-down:before, .ion-android-arrow-dropdown:before, .ion-android-arrow-dropdown-circle:before, .ion-android-arrow-dropleft:before, .ion-android-arrow-dropleft-circle:before, .ion-android-arrow-dropright:before, .ion-android-arrow-dropright-circle:before, .ion-android-arrow-dropup:before, .ion-android-arrow-dropup-circle:before, .ion-android-arrow-forward:before, .ion-android-arrow-up:before, .ion-android-attach:before, .ion-android-bar:before, .ion-android-bicycle:before, .ion-android-boat:before, .ion-android-bookmark:before, .ion-android-bulb:before, .ion-android-bus:before, .ion-android-calendar:before, .ion-android-call:before, .ion-android-camera:before, .ion-android-cancel:before, .ion-android-car:before, .ion-android-cart:before, .ion-android-chat:before, .ion-android-checkbox:before, .ion-android-checkbox-blank:before, .ion-android-checkbox-outline:before, .ion-android-checkbox-outline-blank:before, .ion-android-checkmark-circle:before, .ion-android-clipboard:before, .ion-android-close:before, .ion-android-cloud:before, .ion-android-cloud-circle:before, .ion-android-cloud-done:before, .ion-android-cloud-outline:before, .ion-android-color-palette:before, .ion-android-compass:before, .ion-android-contact:before, .ion-android-contacts:before, .ion-android-contract:before, .ion-android-create:before, .ion-android-delete:before, .ion-android-desktop:before, .ion-android-document:before, .ion-android-done:before, .ion-android-done-all:before, .ion-android-download:before, .ion-android-drafts:before, .ion-android-exit:before, .ion-android-expand:before, .ion-android-favorite:before, .ion-android-favorite-outline:before, .ion-android-film:before, .ion-android-folder:before, .ion-android-folder-open:before, .ion-android-funnel:before, .ion-android-globe:before, .ion-android-hand:before, .ion-android-hangout:before, .ion-android-happy:before, .ion-android-home:before, .ion-android-image:before, .ion-android-laptop:before, .ion-android-list:before, .ion-android-locate:before, .ion-android-lock:before, .ion-android-mail:before, .ion-android-map:before, .ion-android-menu:before, .ion-android-microphone:before, .ion-android-microphone-off:before, .ion-android-more-horizontal:before, .ion-android-more-vertical:before, .ion-android-navigate:before, .ion-android-notifications:before, .ion-android-notifications-none:before, .ion-android-notifications-off:before, .ion-android-open:before, .ion-android-options:before, .ion-android-people:before, .ion-android-person:before, .ion-android-person-add:before, .ion-android-phone-landscape:before, .ion-android-phone-portrait:before, .ion-android-pin:before, .ion-android-plane:before, .ion-android-playstore:before, .ion-android-print:before, .ion-android-radio-button-off:before, .ion-android-radio-button-on:before, .ion-android-refresh:before, .ion-android-remove:before, .ion-android-remove-circle:before, .ion-android-restaurant:before, .ion-android-sad:before, .ion-android-search:before, .ion-android-send:before, .ion-android-settings:before, .ion-android-share:before, .ion-android-share-alt:before, .ion-android-star:before, .ion-android-star-half:before, .ion-android-star-outline:before, .ion-android-stopwatch:before, .ion-android-subway:before, .ion-android-sunny:before, .ion-android-sync:before, .ion-android-textsms:before, .ion-android-time:before, .ion-android-train:before, .ion-android-unlock:before, .ion-android-upload:before, .ion-android-volume-down:before, .ion-android-volume-mute:before, .ion-android-volume-off:before, .ion-android-volume-up:before, .ion-android-walk:before, .ion-android-warning:before, .ion-android-watch:before, .ion-android-wifi:before, .ion-aperture:before, .ion-archive:before, .ion-arrow-down-a:before, .ion-arrow-down-b:before, .ion-arrow-down-c:before, .ion-arrow-expand:before, .ion-arrow-graph-down-left:before, .ion-arrow-graph-down-right:before, .ion-arrow-graph-up-left:before, .ion-arrow-graph-up-right:before, .ion-arrow-left-a:before, .ion-arrow-left-b:before, .ion-arrow-left-c:before, .ion-arrow-move:before, .ion-arrow-resize:before, .ion-arrow-return-left:before, .ion-arrow-return-right:before, .ion-arrow-right-a:before, .ion-arrow-right-b:before, .ion-arrow-right-c:before, .ion-arrow-shrink:before, .ion-arrow-swap:before, .ion-arrow-up-a:before, .ion-arrow-up-b:before, .ion-arrow-up-c:before, .ion-asterisk:before, .ion-at:before, .ion-backspace:before, .ion-backspace-outline:before, .ion-bag:before, .ion-battery-charging:before, .ion-battery-empty:before, .ion-battery-full:before, .ion-battery-half:before, .ion-battery-low:before, .ion-beaker:before, .ion-beer:before, .ion-bluetooth:before, .ion-bonfire:before, .ion-bookmark:before, .ion-bowtie:before, .ion-briefcase:before, .ion-bug:before, .ion-calculator:before, .ion-calendar:before, .ion-camera:before, .ion-card:before, .ion-cash:before, .ion-chatbox:before, .ion-chatbox-working:before, .ion-chatboxes:before, .ion-chatbubble:before, .ion-chatbubble-working:before, .ion-chatbubbles:before, .ion-checkmark:before, .ion-checkmark-circled:before, .ion-checkmark-round:before, .ion-chevron-down:before, .ion-chevron-left:before, .ion-chevron-right:before, .ion-chevron-up:before, .ion-clipboard:before, .ion-clock:before, .ion-close:before, .ion-close-circled:before, .ion-close-round:before, .ion-closed-captioning:before, .ion-cloud:before, .ion-code:before, .ion-code-download:before, .ion-code-working:before, .ion-coffee:before, .ion-compass:before, .ion-compose:before, .ion-connection-bars:before, .ion-contrast:before, .ion-crop:before, .ion-cube:before, .ion-disc:before, .ion-document:before, .ion-document-text:before, .ion-drag:before, .ion-earth:before, .ion-easel:before, .ion-edit:before, .ion-egg:before, .ion-eject:before, .ion-email:before, .ion-email-unread:before, .ion-erlenmeyer-flask:before, .ion-erlenmeyer-flask-bubbles:before, .ion-eye:before, .ion-eye-disabled:before, .ion-female:before, .ion-filing:before, .ion-film-marker:before, .ion-fireball:before, .ion-flag:before, .ion-flame:before, .ion-flash:before, .ion-flash-off:before, .ion-folder:before, .ion-fork:before, .ion-fork-repo:before, .ion-forward:before, .ion-funnel:before, .ion-gear-a:before, .ion-gear-b:before, .ion-grid:before, .ion-hammer:before, .ion-happy:before, .ion-happy-outline:before, .ion-headphone:before, .ion-heart:before, .ion-heart-broken:before, .ion-help:before, .ion-help-buoy:before, .ion-help-circled:before, .ion-home:before, .ion-icecream:before, .ion-image:before, .ion-images:before, .ion-information:before, .ion-information-circled:before, .ion-ionic:before, .ion-ios-alarm:before, .ion-ios-alarm-outline:before, .ion-ios-albums:before, .ion-ios-albums-outline:before, .ion-ios-americanfootball:before, .ion-ios-americanfootball-outline:before, .ion-ios-analytics:before, .ion-ios-analytics-outline:before, .ion-ios-arrow-back:before, .ion-ios-arrow-down:before, .ion-ios-arrow-forward:before, .ion-ios-arrow-left:before, .ion-ios-arrow-right:before, .ion-ios-arrow-thin-down:before, .ion-ios-arrow-thin-left:before, .ion-ios-arrow-thin-right:before, .ion-ios-arrow-thin-up:before, .ion-ios-arrow-up:before, .ion-ios-at:before, .ion-ios-at-outline:before, .ion-ios-barcode:before, .ion-ios-barcode-outline:before, .ion-ios-baseball:before, .ion-ios-baseball-outline:before, .ion-ios-basketball:before, .ion-ios-basketball-outline:before, .ion-ios-bell:before, .ion-ios-bell-outline:before, .ion-ios-body:before, .ion-ios-body-outline:before, .ion-ios-bolt:before, .ion-ios-bolt-outline:before, .ion-ios-book:before, .ion-ios-book-outline:before, .ion-ios-bookmarks:before, .ion-ios-bookmarks-outline:before, .ion-ios-box:before, .ion-ios-box-outline:before, .ion-ios-briefcase:before, .ion-ios-briefcase-outline:before, .ion-ios-browsers:before, .ion-ios-browsers-outline:before, .ion-ios-calculator:before, .ion-ios-calculator-outline:before, .ion-ios-calendar:before, .ion-ios-calendar-outline:before, .ion-ios-camera:before, .ion-ios-camera-outline:before, .ion-ios-cart:before, .ion-ios-cart-outline:before, .ion-ios-chatboxes:before, .ion-ios-chatboxes-outline:before, .ion-ios-chatbubble:before, .ion-ios-chatbubble-outline:before, .ion-ios-checkmark:before, .ion-ios-checkmark-empty:before, .ion-ios-checkmark-outline:before, .ion-ios-circle-filled:before, .ion-ios-circle-outline:before, .ion-ios-clock:before, .ion-ios-clock-outline:before, .ion-ios-close:before, .ion-ios-close-empty:before, .ion-ios-close-outline:before, .ion-ios-cloud:before, .ion-ios-cloud-download:before, .ion-ios-cloud-download-outline:before, .ion-ios-cloud-outline:before, .ion-ios-cloud-upload:before, .ion-ios-cloud-upload-outline:before, .ion-ios-cloudy:before, .ion-ios-cloudy-night:before, .ion-ios-cloudy-night-outline:before, .ion-ios-cloudy-outline:before, .ion-ios-cog:before, .ion-ios-cog-outline:before, .ion-ios-color-filter:before, .ion-ios-color-filter-outline:before, .ion-ios-color-wand:before, .ion-ios-color-wand-outline:before, .ion-ios-compose:before, .ion-ios-compose-outline:before, .ion-ios-contact:before, .ion-ios-contact-outline:before, .ion-ios-copy:before, .ion-ios-copy-outline:before, .ion-ios-crop:before, .ion-ios-crop-strong:before, .ion-ios-download:before, .ion-ios-download-outline:before, .ion-ios-drag:before, .ion-ios-email:before, .ion-ios-email-outline:before, .ion-ios-eye:before, .ion-ios-eye-outline:before, .ion-ios-fastforward:before, .ion-ios-fastforward-outline:before, .ion-ios-filing:before, .ion-ios-filing-outline:before, .ion-ios-film:before, .ion-ios-film-outline:before, .ion-ios-flag:before, .ion-ios-flag-outline:before, .ion-ios-flame:before, .ion-ios-flame-outline:before, .ion-ios-flask:before, .ion-ios-flask-outline:before, .ion-ios-flower:before, .ion-ios-flower-outline:before, .ion-ios-folder:before, .ion-ios-folder-outline:before, .ion-ios-football:before, .ion-ios-football-outline:before, .ion-ios-game-controller-a:before, .ion-ios-game-controller-a-outline:before, .ion-ios-game-controller-b:before, .ion-ios-game-controller-b-outline:before, .ion-ios-gear:before, .ion-ios-gear-outline:before, .ion-ios-glasses:before, .ion-ios-glasses-outline:before, .ion-ios-grid-view:before, .ion-ios-grid-view-outline:before, .ion-ios-heart:before, .ion-ios-heart-outline:before, .ion-ios-help:before, .ion-ios-help-empty:before, .ion-ios-help-outline:before, .ion-ios-home:before, .ion-ios-home-outline:before, .ion-ios-infinite:before, .ion-ios-infinite-outline:before, .ion-ios-information:before, .ion-ios-information-empty:before, .ion-ios-information-outline:before, .ion-ios-ionic-outline:before, .ion-ios-keypad:before, .ion-ios-keypad-outline:before, .ion-ios-lightbulb:before, .ion-ios-lightbulb-outline:before, .ion-ios-list:before, .ion-ios-list-outline:before, .ion-ios-location:before, .ion-ios-location-outline:before, .ion-ios-locked:before, .ion-ios-locked-outline:before, .ion-ios-loop:before, .ion-ios-loop-strong:before, .ion-ios-medical:before, .ion-ios-medical-outline:before, .ion-ios-medkit:before, .ion-ios-medkit-outline:before, .ion-ios-mic:before, .ion-ios-mic-off:before, .ion-ios-mic-outline:before, .ion-ios-minus:before, .ion-ios-minus-empty:before, .ion-ios-minus-outline:before, .ion-ios-monitor:before, .ion-ios-monitor-outline:before, .ion-ios-moon:before, .ion-ios-moon-outline:before, .ion-ios-more:before, .ion-ios-more-outline:before, .ion-ios-musical-note:before, .ion-ios-musical-notes:before, .ion-ios-navigate:before, .ion-ios-navigate-outline:before, .ion-ios-nutrition:before, .ion-ios-nutrition-outline:before, .ion-ios-paper:before, .ion-ios-paper-outline:before, .ion-ios-paperplane:before, .ion-ios-paperplane-outline:before, .ion-ios-partlysunny:before, .ion-ios-partlysunny-outline:before, .ion-ios-pause:before, .ion-ios-pause-outline:before, .ion-ios-paw:before, .ion-ios-paw-outline:before, .ion-ios-people:before, .ion-ios-people-outline:before, .ion-ios-person:before, .ion-ios-person-outline:before, .ion-ios-personadd:before, .ion-ios-personadd-outline:before, .ion-ios-photos:before, .ion-ios-photos-outline:before, .ion-ios-pie:before, .ion-ios-pie-outline:before, .ion-ios-pint:before, .ion-ios-pint-outline:before, .ion-ios-play:before, .ion-ios-play-outline:before, .ion-ios-plus:before, .ion-ios-plus-empty:before, .ion-ios-plus-outline:before, .ion-ios-pricetag:before, .ion-ios-pricetag-outline:before, .ion-ios-pricetags:before, .ion-ios-pricetags-outline:before, .ion-ios-printer:before, .ion-ios-printer-outline:before, .ion-ios-pulse:before, .ion-ios-pulse-strong:before, .ion-ios-rainy:before, .ion-ios-rainy-outline:before, .ion-ios-recording:before, .ion-ios-recording-outline:before, .ion-ios-redo:before, .ion-ios-redo-outline:before, .ion-ios-refresh:before, .ion-ios-refresh-empty:before, .ion-ios-refresh-outline:before, .ion-ios-reload:before, .ion-ios-reverse-camera:before, .ion-ios-reverse-camera-outline:before, .ion-ios-rewind:before, .ion-ios-rewind-outline:before, .ion-ios-rose:before, .ion-ios-rose-outline:before, .ion-ios-search:before, .ion-ios-search-strong:before, .ion-ios-settings:before, .ion-ios-settings-strong:before, .ion-ios-shuffle:before, .ion-ios-shuffle-strong:before, .ion-ios-skipbackward:before, .ion-ios-skipbackward-outline:before, .ion-ios-skipforward:before, .ion-ios-skipforward-outline:before, .ion-ios-snowy:before, .ion-ios-speedometer:before, .ion-ios-speedometer-outline:before, .ion-ios-star:before, .ion-ios-star-half:before, .ion-ios-star-outline:before, .ion-ios-stopwatch:before, .ion-ios-stopwatch-outline:before, .ion-ios-sunny:before, .ion-ios-sunny-outline:before, .ion-ios-telephone:before, .ion-ios-telephone-outline:before, .ion-ios-tennisball:before, .ion-ios-tennisball-outline:before, .ion-ios-thunderstorm:before, .ion-ios-thunderstorm-outline:before, .ion-ios-time:before, .ion-ios-time-outline:before, .ion-ios-timer:before, .ion-ios-timer-outline:before, .ion-ios-toggle:before, .ion-ios-toggle-outline:before, .ion-ios-trash:before, .ion-ios-trash-outline:before, .ion-ios-undo:before, .ion-ios-undo-outline:before, .ion-ios-unlocked:before, .ion-ios-unlocked-outline:before, .ion-ios-upload:before, .ion-ios-upload-outline:before, .ion-ios-videocam:before, .ion-ios-videocam-outline:before, .ion-ios-volume-high:before, .ion-ios-volume-low:before, .ion-ios-wineglass:before, .ion-ios-wineglass-outline:before, .ion-ios-world:before, .ion-ios-world-outline:before, .ion-ipad:before, .ion-iphone:before, .ion-ipod:before, .ion-jet:before, .ion-key:before, .ion-knife:before, .ion-laptop:before, .ion-leaf:before, .ion-levels:before, .ion-lightbulb:before, .ion-link:before, .ion-load-a:before, .ion-load-b:before, .ion-load-c:before, .ion-load-d:before, .ion-location:before, .ion-lock-combination:before, .ion-locked:before, .ion-log-in:before, .ion-log-out:before, .ion-loop:before, .ion-magnet:before, .ion-male:before, .ion-man:before, .ion-map:before, .ion-medkit:before, .ion-merge:before, .ion-mic-a:before, .ion-mic-b:before, .ion-mic-c:before, .ion-minus:before, .ion-minus-circled:before, .ion-minus-round:before, .ion-model-s:before, .ion-monitor:before, .ion-more:before, .ion-mouse:before, .ion-music-note:before, .ion-navicon:before, .ion-navicon-round:before, .ion-navigate:before, .ion-network:before, .ion-no-smoking:before, .ion-nuclear:before, .ion-outlet:before, .ion-paintbrush:before, .ion-paintbucket:before, .ion-paper-airplane:before, .ion-paperclip:before, .ion-pause:before, .ion-person:before, .ion-person-add:before, .ion-person-stalker:before, .ion-pie-graph:before, .ion-pin:before, .ion-pinpoint:before, .ion-pizza:before, .ion-plane:before, .ion-planet:before, .ion-play:before, .ion-playstation:before, .ion-plus:before, .ion-plus-circled:before, .ion-plus-round:before, .ion-podium:before, .ion-pound:before, .ion-power:before, .ion-pricetag:before, .ion-pricetags:before, .ion-printer:before, .ion-pull-request:before, .ion-qr-scanner:before, .ion-quote:before, .ion-radio-waves:before, .ion-record:before, .ion-refresh:before, .ion-reply:before, .ion-reply-all:before, .ion-ribbon-a:before, .ion-ribbon-b:before, .ion-sad:before, .ion-sad-outline:before, .ion-scissors:before, .ion-search:before, .ion-settings:before, .ion-share:before, .ion-shuffle:before, .ion-skip-backward:before, .ion-skip-forward:before, .ion-social-android:before, .ion-social-android-outline:before, .ion-social-angular:before, .ion-social-angular-outline:before, .ion-social-apple:before, .ion-social-apple-outline:before, .ion-social-bitcoin:before, .ion-social-bitcoin-outline:before, .ion-social-buffer:before, .ion-social-buffer-outline:before, .ion-social-chrome:before, .ion-social-chrome-outline:before, .ion-social-codepen:before, .ion-social-codepen-outline:before, .ion-social-css3:before, .ion-social-css3-outline:before, .ion-social-designernews:before, .ion-social-designernews-outline:before, .ion-social-dribbble:before, .ion-social-dribbble-outline:before, .ion-social-dropbox:before, .ion-social-dropbox-outline:before, .ion-social-euro:before, .ion-social-euro-outline:before, .ion-social-facebook:before, .ion-social-facebook-outline:before, .ion-social-foursquare:before, .ion-social-foursquare-outline:before, .ion-social-freebsd-devil:before, .ion-social-github:before, .ion-social-github-outline:before, .ion-social-google:before, .ion-social-google-outline:before, .ion-social-googleplus:before, .ion-social-googleplus-outline:before, .ion-social-hackernews:before, .ion-social-hackernews-outline:before, .ion-social-html5:before, .ion-social-html5-outline:before, .ion-social-instagram:before, .ion-social-instagram-outline:before, .ion-social-javascript:before, .ion-social-javascript-outline:before, .ion-social-linkedin:before, .ion-social-linkedin-outline:before, .ion-social-markdown:before, .ion-social-nodejs:before, .ion-social-octocat:before, .ion-social-pinterest:before, .ion-social-pinterest-outline:before, .ion-social-python:before, .ion-social-reddit:before, .ion-social-reddit-outline:before, .ion-social-rss:before, .ion-social-rss-outline:before, .ion-social-sass:before, .ion-social-skype:before, .ion-social-skype-outline:before, .ion-social-snapchat:before, .ion-social-snapchat-outline:before, .ion-social-tumblr:before, .ion-social-tumblr-outline:before, .ion-social-tux:before, .ion-social-twitch:before, .ion-social-twitch-outline:before, .ion-social-twitter:before, .ion-social-twitter-outline:before, .ion-social-usd:before, .ion-social-usd-outline:before, .ion-social-vimeo:before, .ion-social-vimeo-outline:before, .ion-social-whatsapp:before, .ion-social-whatsapp-outline:before, .ion-social-windows:before, .ion-social-windows-outline:before, .ion-social-wordpress:before, .ion-social-wordpress-outline:before, .ion-social-yahoo:before, .ion-social-yahoo-outline:before, .ion-social-yen:before, .ion-social-yen-outline:before, .ion-social-youtube:before, .ion-social-youtube-outline:before, .ion-soup-can:before, .ion-soup-can-outline:before, .ion-speakerphone:before, .ion-speedometer:before, .ion-spoon:before, .ion-star:before, .ion-stats-bars:before, .ion-steam:before, .ion-stop:before, .ion-thermometer:before, .ion-thumbsdown:before, .ion-thumbsup:before, .ion-toggle:before, .ion-toggle-filled:before, .ion-transgender:before, .ion-trash-a:before, .ion-trash-b:before, .ion-trophy:before, .ion-tshirt:before, .ion-tshirt-outline:before, .ion-umbrella:before, .ion-university:before, .ion-unlocked:before, .ion-upload:before, .ion-usb:before, .ion-videocamera:before, .ion-volume-high:before, .ion-volume-low:before, .ion-volume-medium:before, .ion-volume-mute:before, .ion-wand:before, .ion-waterdrop:before, .ion-wifi:before, .ion-wineglass:before, .ion-woman:before, .ion-wrench:before, .ion-xbox:before {\n  display: inline-block;\n  font-family: \"Ionicons\";\n  speak: none;\n  font-style: normal;\n  font-weight: normal;\n  font-variant: normal;\n  text-transform: none;\n  text-rendering: auto;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.ion-alert:before {\n  content: \"\\F101\"; }\n\n.ion-alert-circled:before {\n  content: \"\\F100\"; }\n\n.ion-android-add:before {\n  content: \"\\F2C7\"; }\n\n.ion-android-add-circle:before {\n  content: \"\\F359\"; }\n\n.ion-android-alarm-clock:before {\n  content: \"\\F35A\"; }\n\n.ion-android-alert:before {\n  content: \"\\F35B\"; }\n\n.ion-android-apps:before {\n  content: \"\\F35C\"; }\n\n.ion-android-archive:before {\n  content: \"\\F2C9\"; }\n\n.ion-android-arrow-back:before {\n  content: \"\\F2CA\"; }\n\n.ion-android-arrow-down:before {\n  content: \"\\F35D\"; }\n\n.ion-android-arrow-dropdown:before {\n  content: \"\\F35F\"; }\n\n.ion-android-arrow-dropdown-circle:before {\n  content: \"\\F35E\"; }\n\n.ion-android-arrow-dropleft:before {\n  content: \"\\F361\"; }\n\n.ion-android-arrow-dropleft-circle:before {\n  content: \"\\F360\"; }\n\n.ion-android-arrow-dropright:before {\n  content: \"\\F363\"; }\n\n.ion-android-arrow-dropright-circle:before {\n  content: \"\\F362\"; }\n\n.ion-android-arrow-dropup:before {\n  content: \"\\F365\"; }\n\n.ion-android-arrow-dropup-circle:before {\n  content: \"\\F364\"; }\n\n.ion-android-arrow-forward:before {\n  content: \"\\F30F\"; }\n\n.ion-android-arrow-up:before {\n  content: \"\\F366\"; }\n\n.ion-android-attach:before {\n  content: \"\\F367\"; }\n\n.ion-android-bar:before {\n  content: \"\\F368\"; }\n\n.ion-android-bicycle:before {\n  content: \"\\F369\"; }\n\n.ion-android-boat:before {\n  content: \"\\F36A\"; }\n\n.ion-android-bookmark:before {\n  content: \"\\F36B\"; }\n\n.ion-android-bulb:before {\n  content: \"\\F36C\"; }\n\n.ion-android-bus:before {\n  content: \"\\F36D\"; }\n\n.ion-android-calendar:before {\n  content: \"\\F2D1\"; }\n\n.ion-android-call:before {\n  content: \"\\F2D2\"; }\n\n.ion-android-camera:before {\n  content: \"\\F2D3\"; }\n\n.ion-android-cancel:before {\n  content: \"\\F36E\"; }\n\n.ion-android-car:before {\n  content: \"\\F36F\"; }\n\n.ion-android-cart:before {\n  content: \"\\F370\"; }\n\n.ion-android-chat:before {\n  content: \"\\F2D4\"; }\n\n.ion-android-checkbox:before {\n  content: \"\\F374\"; }\n\n.ion-android-checkbox-blank:before {\n  content: \"\\F371\"; }\n\n.ion-android-checkbox-outline:before {\n  content: \"\\F373\"; }\n\n.ion-android-checkbox-outline-blank:before {\n  content: \"\\F372\"; }\n\n.ion-android-checkmark-circle:before {\n  content: \"\\F375\"; }\n\n.ion-android-clipboard:before {\n  content: \"\\F376\"; }\n\n.ion-android-close:before {\n  content: \"\\F2D7\"; }\n\n.ion-android-cloud:before {\n  content: \"\\F37A\"; }\n\n.ion-android-cloud-circle:before {\n  content: \"\\F377\"; }\n\n.ion-android-cloud-done:before {\n  content: \"\\F378\"; }\n\n.ion-android-cloud-outline:before {\n  content: \"\\F379\"; }\n\n.ion-android-color-palette:before {\n  content: \"\\F37B\"; }\n\n.ion-android-compass:before {\n  content: \"\\F37C\"; }\n\n.ion-android-contact:before {\n  content: \"\\F2D8\"; }\n\n.ion-android-contacts:before {\n  content: \"\\F2D9\"; }\n\n.ion-android-contract:before {\n  content: \"\\F37D\"; }\n\n.ion-android-create:before {\n  content: \"\\F37E\"; }\n\n.ion-android-delete:before {\n  content: \"\\F37F\"; }\n\n.ion-android-desktop:before {\n  content: \"\\F380\"; }\n\n.ion-android-document:before {\n  content: \"\\F381\"; }\n\n.ion-android-done:before {\n  content: \"\\F383\"; }\n\n.ion-android-done-all:before {\n  content: \"\\F382\"; }\n\n.ion-android-download:before {\n  content: \"\\F2DD\"; }\n\n.ion-android-drafts:before {\n  content: \"\\F384\"; }\n\n.ion-android-exit:before {\n  content: \"\\F385\"; }\n\n.ion-android-expand:before {\n  content: \"\\F386\"; }\n\n.ion-android-favorite:before {\n  content: \"\\F388\"; }\n\n.ion-android-favorite-outline:before {\n  content: \"\\F387\"; }\n\n.ion-android-film:before {\n  content: \"\\F389\"; }\n\n.ion-android-folder:before {\n  content: \"\\F2E0\"; }\n\n.ion-android-folder-open:before {\n  content: \"\\F38A\"; }\n\n.ion-android-funnel:before {\n  content: \"\\F38B\"; }\n\n.ion-android-globe:before {\n  content: \"\\F38C\"; }\n\n.ion-android-hand:before {\n  content: \"\\F2E3\"; }\n\n.ion-android-hangout:before {\n  content: \"\\F38D\"; }\n\n.ion-android-happy:before {\n  content: \"\\F38E\"; }\n\n.ion-android-home:before {\n  content: \"\\F38F\"; }\n\n.ion-android-image:before {\n  content: \"\\F2E4\"; }\n\n.ion-android-laptop:before {\n  content: \"\\F390\"; }\n\n.ion-android-list:before {\n  content: \"\\F391\"; }\n\n.ion-android-locate:before {\n  content: \"\\F2E9\"; }\n\n.ion-android-lock:before {\n  content: \"\\F392\"; }\n\n.ion-android-mail:before {\n  content: \"\\F2EB\"; }\n\n.ion-android-map:before {\n  content: \"\\F393\"; }\n\n.ion-android-menu:before {\n  content: \"\\F394\"; }\n\n.ion-android-microphone:before {\n  content: \"\\F2EC\"; }\n\n.ion-android-microphone-off:before {\n  content: \"\\F395\"; }\n\n.ion-android-more-horizontal:before {\n  content: \"\\F396\"; }\n\n.ion-android-more-vertical:before {\n  content: \"\\F397\"; }\n\n.ion-android-navigate:before {\n  content: \"\\F398\"; }\n\n.ion-android-notifications:before {\n  content: \"\\F39B\"; }\n\n.ion-android-notifications-none:before {\n  content: \"\\F399\"; }\n\n.ion-android-notifications-off:before {\n  content: \"\\F39A\"; }\n\n.ion-android-open:before {\n  content: \"\\F39C\"; }\n\n.ion-android-options:before {\n  content: \"\\F39D\"; }\n\n.ion-android-people:before {\n  content: \"\\F39E\"; }\n\n.ion-android-person:before {\n  content: \"\\F3A0\"; }\n\n.ion-android-person-add:before {\n  content: \"\\F39F\"; }\n\n.ion-android-phone-landscape:before {\n  content: \"\\F3A1\"; }\n\n.ion-android-phone-portrait:before {\n  content: \"\\F3A2\"; }\n\n.ion-android-pin:before {\n  content: \"\\F3A3\"; }\n\n.ion-android-plane:before {\n  content: \"\\F3A4\"; }\n\n.ion-android-playstore:before {\n  content: \"\\F2F0\"; }\n\n.ion-android-print:before {\n  content: \"\\F3A5\"; }\n\n.ion-android-radio-button-off:before {\n  content: \"\\F3A6\"; }\n\n.ion-android-radio-button-on:before {\n  content: \"\\F3A7\"; }\n\n.ion-android-refresh:before {\n  content: \"\\F3A8\"; }\n\n.ion-android-remove:before {\n  content: \"\\F2F4\"; }\n\n.ion-android-remove-circle:before {\n  content: \"\\F3A9\"; }\n\n.ion-android-restaurant:before {\n  content: \"\\F3AA\"; }\n\n.ion-android-sad:before {\n  content: \"\\F3AB\"; }\n\n.ion-android-search:before {\n  content: \"\\F2F5\"; }\n\n.ion-android-send:before {\n  content: \"\\F2F6\"; }\n\n.ion-android-settings:before {\n  content: \"\\F2F7\"; }\n\n.ion-android-share:before {\n  content: \"\\F2F8\"; }\n\n.ion-android-share-alt:before {\n  content: \"\\F3AC\"; }\n\n.ion-android-star:before {\n  content: \"\\F2FC\"; }\n\n.ion-android-star-half:before {\n  content: \"\\F3AD\"; }\n\n.ion-android-star-outline:before {\n  content: \"\\F3AE\"; }\n\n.ion-android-stopwatch:before {\n  content: \"\\F2FD\"; }\n\n.ion-android-subway:before {\n  content: \"\\F3AF\"; }\n\n.ion-android-sunny:before {\n  content: \"\\F3B0\"; }\n\n.ion-android-sync:before {\n  content: \"\\F3B1\"; }\n\n.ion-android-textsms:before {\n  content: \"\\F3B2\"; }\n\n.ion-android-time:before {\n  content: \"\\F3B3\"; }\n\n.ion-android-train:before {\n  content: \"\\F3B4\"; }\n\n.ion-android-unlock:before {\n  content: \"\\F3B5\"; }\n\n.ion-android-upload:before {\n  content: \"\\F3B6\"; }\n\n.ion-android-volume-down:before {\n  content: \"\\F3B7\"; }\n\n.ion-android-volume-mute:before {\n  content: \"\\F3B8\"; }\n\n.ion-android-volume-off:before {\n  content: \"\\F3B9\"; }\n\n.ion-android-volume-up:before {\n  content: \"\\F3BA\"; }\n\n.ion-android-walk:before {\n  content: \"\\F3BB\"; }\n\n.ion-android-warning:before {\n  content: \"\\F3BC\"; }\n\n.ion-android-watch:before {\n  content: \"\\F3BD\"; }\n\n.ion-android-wifi:before {\n  content: \"\\F305\"; }\n\n.ion-aperture:before {\n  content: \"\\F313\"; }\n\n.ion-archive:before {\n  content: \"\\F102\"; }\n\n.ion-arrow-down-a:before {\n  content: \"\\F103\"; }\n\n.ion-arrow-down-b:before {\n  content: \"\\F104\"; }\n\n.ion-arrow-down-c:before {\n  content: \"\\F105\"; }\n\n.ion-arrow-expand:before {\n  content: \"\\F25E\"; }\n\n.ion-arrow-graph-down-left:before {\n  content: \"\\F25F\"; }\n\n.ion-arrow-graph-down-right:before {\n  content: \"\\F260\"; }\n\n.ion-arrow-graph-up-left:before {\n  content: \"\\F261\"; }\n\n.ion-arrow-graph-up-right:before {\n  content: \"\\F262\"; }\n\n.ion-arrow-left-a:before {\n  content: \"\\F106\"; }\n\n.ion-arrow-left-b:before {\n  content: \"\\F107\"; }\n\n.ion-arrow-left-c:before {\n  content: \"\\F108\"; }\n\n.ion-arrow-move:before {\n  content: \"\\F263\"; }\n\n.ion-arrow-resize:before {\n  content: \"\\F264\"; }\n\n.ion-arrow-return-left:before {\n  content: \"\\F265\"; }\n\n.ion-arrow-return-right:before {\n  content: \"\\F266\"; }\n\n.ion-arrow-right-a:before {\n  content: \"\\F109\"; }\n\n.ion-arrow-right-b:before {\n  content: \"\\F10A\"; }\n\n.ion-arrow-right-c:before {\n  content: \"\\F10B\"; }\n\n.ion-arrow-shrink:before {\n  content: \"\\F267\"; }\n\n.ion-arrow-swap:before {\n  content: \"\\F268\"; }\n\n.ion-arrow-up-a:before {\n  content: \"\\F10C\"; }\n\n.ion-arrow-up-b:before {\n  content: \"\\F10D\"; }\n\n.ion-arrow-up-c:before {\n  content: \"\\F10E\"; }\n\n.ion-asterisk:before {\n  content: \"\\F314\"; }\n\n.ion-at:before {\n  content: \"\\F10F\"; }\n\n.ion-backspace:before {\n  content: \"\\F3BF\"; }\n\n.ion-backspace-outline:before {\n  content: \"\\F3BE\"; }\n\n.ion-bag:before {\n  content: \"\\F110\"; }\n\n.ion-battery-charging:before {\n  content: \"\\F111\"; }\n\n.ion-battery-empty:before {\n  content: \"\\F112\"; }\n\n.ion-battery-full:before {\n  content: \"\\F113\"; }\n\n.ion-battery-half:before {\n  content: \"\\F114\"; }\n\n.ion-battery-low:before {\n  content: \"\\F115\"; }\n\n.ion-beaker:before {\n  content: \"\\F269\"; }\n\n.ion-beer:before {\n  content: \"\\F26A\"; }\n\n.ion-bluetooth:before {\n  content: \"\\F116\"; }\n\n.ion-bonfire:before {\n  content: \"\\F315\"; }\n\n.ion-bookmark:before {\n  content: \"\\F26B\"; }\n\n.ion-bowtie:before {\n  content: \"\\F3C0\"; }\n\n.ion-briefcase:before {\n  content: \"\\F26C\"; }\n\n.ion-bug:before {\n  content: \"\\F2BE\"; }\n\n.ion-calculator:before {\n  content: \"\\F26D\"; }\n\n.ion-calendar:before {\n  content: \"\\F117\"; }\n\n.ion-camera:before {\n  content: \"\\F118\"; }\n\n.ion-card:before {\n  content: \"\\F119\"; }\n\n.ion-cash:before {\n  content: \"\\F316\"; }\n\n.ion-chatbox:before {\n  content: \"\\F11B\"; }\n\n.ion-chatbox-working:before {\n  content: \"\\F11A\"; }\n\n.ion-chatboxes:before {\n  content: \"\\F11C\"; }\n\n.ion-chatbubble:before {\n  content: \"\\F11E\"; }\n\n.ion-chatbubble-working:before {\n  content: \"\\F11D\"; }\n\n.ion-chatbubbles:before {\n  content: \"\\F11F\"; }\n\n.ion-checkmark:before {\n  content: \"\\F122\"; }\n\n.ion-checkmark-circled:before {\n  content: \"\\F120\"; }\n\n.ion-checkmark-round:before {\n  content: \"\\F121\"; }\n\n.ion-chevron-down:before {\n  content: \"\\F123\"; }\n\n.ion-chevron-left:before {\n  content: \"\\F124\"; }\n\n.ion-chevron-right:before {\n  content: \"\\F125\"; }\n\n.ion-chevron-up:before {\n  content: \"\\F126\"; }\n\n.ion-clipboard:before {\n  content: \"\\F127\"; }\n\n.ion-clock:before {\n  content: \"\\F26E\"; }\n\n.ion-close:before {\n  content: \"\\F12A\"; }\n\n.ion-close-circled:before {\n  content: \"\\F128\"; }\n\n.ion-close-round:before {\n  content: \"\\F129\"; }\n\n.ion-closed-captioning:before {\n  content: \"\\F317\"; }\n\n.ion-cloud:before {\n  content: \"\\F12B\"; }\n\n.ion-code:before {\n  content: \"\\F271\"; }\n\n.ion-code-download:before {\n  content: \"\\F26F\"; }\n\n.ion-code-working:before {\n  content: \"\\F270\"; }\n\n.ion-coffee:before {\n  content: \"\\F272\"; }\n\n.ion-compass:before {\n  content: \"\\F273\"; }\n\n.ion-compose:before {\n  content: \"\\F12C\"; }\n\n.ion-connection-bars:before {\n  content: \"\\F274\"; }\n\n.ion-contrast:before {\n  content: \"\\F275\"; }\n\n.ion-crop:before {\n  content: \"\\F3C1\"; }\n\n.ion-cube:before {\n  content: \"\\F318\"; }\n\n.ion-disc:before {\n  content: \"\\F12D\"; }\n\n.ion-document:before {\n  content: \"\\F12F\"; }\n\n.ion-document-text:before {\n  content: \"\\F12E\"; }\n\n.ion-drag:before {\n  content: \"\\F130\"; }\n\n.ion-earth:before {\n  content: \"\\F276\"; }\n\n.ion-easel:before {\n  content: \"\\F3C2\"; }\n\n.ion-edit:before {\n  content: \"\\F2BF\"; }\n\n.ion-egg:before {\n  content: \"\\F277\"; }\n\n.ion-eject:before {\n  content: \"\\F131\"; }\n\n.ion-email:before {\n  content: \"\\F132\"; }\n\n.ion-email-unread:before {\n  content: \"\\F3C3\"; }\n\n.ion-erlenmeyer-flask:before {\n  content: \"\\F3C5\"; }\n\n.ion-erlenmeyer-flask-bubbles:before {\n  content: \"\\F3C4\"; }\n\n.ion-eye:before {\n  content: \"\\F133\"; }\n\n.ion-eye-disabled:before {\n  content: \"\\F306\"; }\n\n.ion-female:before {\n  content: \"\\F278\"; }\n\n.ion-filing:before {\n  content: \"\\F134\"; }\n\n.ion-film-marker:before {\n  content: \"\\F135\"; }\n\n.ion-fireball:before {\n  content: \"\\F319\"; }\n\n.ion-flag:before {\n  content: \"\\F279\"; }\n\n.ion-flame:before {\n  content: \"\\F31A\"; }\n\n.ion-flash:before {\n  content: \"\\F137\"; }\n\n.ion-flash-off:before {\n  content: \"\\F136\"; }\n\n.ion-folder:before {\n  content: \"\\F139\"; }\n\n.ion-fork:before {\n  content: \"\\F27A\"; }\n\n.ion-fork-repo:before {\n  content: \"\\F2C0\"; }\n\n.ion-forward:before {\n  content: \"\\F13A\"; }\n\n.ion-funnel:before {\n  content: \"\\F31B\"; }\n\n.ion-gear-a:before {\n  content: \"\\F13D\"; }\n\n.ion-gear-b:before {\n  content: \"\\F13E\"; }\n\n.ion-grid:before {\n  content: \"\\F13F\"; }\n\n.ion-hammer:before {\n  content: \"\\F27B\"; }\n\n.ion-happy:before {\n  content: \"\\F31C\"; }\n\n.ion-happy-outline:before {\n  content: \"\\F3C6\"; }\n\n.ion-headphone:before {\n  content: \"\\F140\"; }\n\n.ion-heart:before {\n  content: \"\\F141\"; }\n\n.ion-heart-broken:before {\n  content: \"\\F31D\"; }\n\n.ion-help:before {\n  content: \"\\F143\"; }\n\n.ion-help-buoy:before {\n  content: \"\\F27C\"; }\n\n.ion-help-circled:before {\n  content: \"\\F142\"; }\n\n.ion-home:before {\n  content: \"\\F144\"; }\n\n.ion-icecream:before {\n  content: \"\\F27D\"; }\n\n.ion-image:before {\n  content: \"\\F147\"; }\n\n.ion-images:before {\n  content: \"\\F148\"; }\n\n.ion-information:before {\n  content: \"\\F14A\"; }\n\n.ion-information-circled:before {\n  content: \"\\F149\"; }\n\n.ion-ionic:before {\n  content: \"\\F14B\"; }\n\n.ion-ios-alarm:before {\n  content: \"\\F3C8\"; }\n\n.ion-ios-alarm-outline:before {\n  content: \"\\F3C7\"; }\n\n.ion-ios-albums:before {\n  content: \"\\F3CA\"; }\n\n.ion-ios-albums-outline:before {\n  content: \"\\F3C9\"; }\n\n.ion-ios-americanfootball:before {\n  content: \"\\F3CC\"; }\n\n.ion-ios-americanfootball-outline:before {\n  content: \"\\F3CB\"; }\n\n.ion-ios-analytics:before {\n  content: \"\\F3CE\"; }\n\n.ion-ios-analytics-outline:before {\n  content: \"\\F3CD\"; }\n\n.ion-ios-arrow-back:before {\n  content: \"\\F3CF\"; }\n\n.ion-ios-arrow-down:before {\n  content: \"\\F3D0\"; }\n\n.ion-ios-arrow-forward:before {\n  content: \"\\F3D1\"; }\n\n.ion-ios-arrow-left:before {\n  content: \"\\F3D2\"; }\n\n.ion-ios-arrow-right:before {\n  content: \"\\F3D3\"; }\n\n.ion-ios-arrow-thin-down:before {\n  content: \"\\F3D4\"; }\n\n.ion-ios-arrow-thin-left:before {\n  content: \"\\F3D5\"; }\n\n.ion-ios-arrow-thin-right:before {\n  content: \"\\F3D6\"; }\n\n.ion-ios-arrow-thin-up:before {\n  content: \"\\F3D7\"; }\n\n.ion-ios-arrow-up:before {\n  content: \"\\F3D8\"; }\n\n.ion-ios-at:before {\n  content: \"\\F3DA\"; }\n\n.ion-ios-at-outline:before {\n  content: \"\\F3D9\"; }\n\n.ion-ios-barcode:before {\n  content: \"\\F3DC\"; }\n\n.ion-ios-barcode-outline:before {\n  content: \"\\F3DB\"; }\n\n.ion-ios-baseball:before {\n  content: \"\\F3DE\"; }\n\n.ion-ios-baseball-outline:before {\n  content: \"\\F3DD\"; }\n\n.ion-ios-basketball:before {\n  content: \"\\F3E0\"; }\n\n.ion-ios-basketball-outline:before {\n  content: \"\\F3DF\"; }\n\n.ion-ios-bell:before {\n  content: \"\\F3E2\"; }\n\n.ion-ios-bell-outline:before {\n  content: \"\\F3E1\"; }\n\n.ion-ios-body:before {\n  content: \"\\F3E4\"; }\n\n.ion-ios-body-outline:before {\n  content: \"\\F3E3\"; }\n\n.ion-ios-bolt:before {\n  content: \"\\F3E6\"; }\n\n.ion-ios-bolt-outline:before {\n  content: \"\\F3E5\"; }\n\n.ion-ios-book:before {\n  content: \"\\F3E8\"; }\n\n.ion-ios-book-outline:before {\n  content: \"\\F3E7\"; }\n\n.ion-ios-bookmarks:before {\n  content: \"\\F3EA\"; }\n\n.ion-ios-bookmarks-outline:before {\n  content: \"\\F3E9\"; }\n\n.ion-ios-box:before {\n  content: \"\\F3EC\"; }\n\n.ion-ios-box-outline:before {\n  content: \"\\F3EB\"; }\n\n.ion-ios-briefcase:before {\n  content: \"\\F3EE\"; }\n\n.ion-ios-briefcase-outline:before {\n  content: \"\\F3ED\"; }\n\n.ion-ios-browsers:before {\n  content: \"\\F3F0\"; }\n\n.ion-ios-browsers-outline:before {\n  content: \"\\F3EF\"; }\n\n.ion-ios-calculator:before {\n  content: \"\\F3F2\"; }\n\n.ion-ios-calculator-outline:before {\n  content: \"\\F3F1\"; }\n\n.ion-ios-calendar:before {\n  content: \"\\F3F4\"; }\n\n.ion-ios-calendar-outline:before {\n  content: \"\\F3F3\"; }\n\n.ion-ios-camera:before {\n  content: \"\\F3F6\"; }\n\n.ion-ios-camera-outline:before {\n  content: \"\\F3F5\"; }\n\n.ion-ios-cart:before {\n  content: \"\\F3F8\"; }\n\n.ion-ios-cart-outline:before {\n  content: \"\\F3F7\"; }\n\n.ion-ios-chatboxes:before {\n  content: \"\\F3FA\"; }\n\n.ion-ios-chatboxes-outline:before {\n  content: \"\\F3F9\"; }\n\n.ion-ios-chatbubble:before {\n  content: \"\\F3FC\"; }\n\n.ion-ios-chatbubble-outline:before {\n  content: \"\\F3FB\"; }\n\n.ion-ios-checkmark:before {\n  content: \"\\F3FF\"; }\n\n.ion-ios-checkmark-empty:before {\n  content: \"\\F3FD\"; }\n\n.ion-ios-checkmark-outline:before {\n  content: \"\\F3FE\"; }\n\n.ion-ios-circle-filled:before {\n  content: \"\\F400\"; }\n\n.ion-ios-circle-outline:before {\n  content: \"\\F401\"; }\n\n.ion-ios-clock:before {\n  content: \"\\F403\"; }\n\n.ion-ios-clock-outline:before {\n  content: \"\\F402\"; }\n\n.ion-ios-close:before {\n  content: \"\\F406\"; }\n\n.ion-ios-close-empty:before {\n  content: \"\\F404\"; }\n\n.ion-ios-close-outline:before {\n  content: \"\\F405\"; }\n\n.ion-ios-cloud:before {\n  content: \"\\F40C\"; }\n\n.ion-ios-cloud-download:before {\n  content: \"\\F408\"; }\n\n.ion-ios-cloud-download-outline:before {\n  content: \"\\F407\"; }\n\n.ion-ios-cloud-outline:before {\n  content: \"\\F409\"; }\n\n.ion-ios-cloud-upload:before {\n  content: \"\\F40B\"; }\n\n.ion-ios-cloud-upload-outline:before {\n  content: \"\\F40A\"; }\n\n.ion-ios-cloudy:before {\n  content: \"\\F410\"; }\n\n.ion-ios-cloudy-night:before {\n  content: \"\\F40E\"; }\n\n.ion-ios-cloudy-night-outline:before {\n  content: \"\\F40D\"; }\n\n.ion-ios-cloudy-outline:before {\n  content: \"\\F40F\"; }\n\n.ion-ios-cog:before {\n  content: \"\\F412\"; }\n\n.ion-ios-cog-outline:before {\n  content: \"\\F411\"; }\n\n.ion-ios-color-filter:before {\n  content: \"\\F414\"; }\n\n.ion-ios-color-filter-outline:before {\n  content: \"\\F413\"; }\n\n.ion-ios-color-wand:before {\n  content: \"\\F416\"; }\n\n.ion-ios-color-wand-outline:before {\n  content: \"\\F415\"; }\n\n.ion-ios-compose:before {\n  content: \"\\F418\"; }\n\n.ion-ios-compose-outline:before {\n  content: \"\\F417\"; }\n\n.ion-ios-contact:before {\n  content: \"\\F41A\"; }\n\n.ion-ios-contact-outline:before {\n  content: \"\\F419\"; }\n\n.ion-ios-copy:before {\n  content: \"\\F41C\"; }\n\n.ion-ios-copy-outline:before {\n  content: \"\\F41B\"; }\n\n.ion-ios-crop:before {\n  content: \"\\F41E\"; }\n\n.ion-ios-crop-strong:before {\n  content: \"\\F41D\"; }\n\n.ion-ios-download:before {\n  content: \"\\F420\"; }\n\n.ion-ios-download-outline:before {\n  content: \"\\F41F\"; }\n\n.ion-ios-drag:before {\n  content: \"\\F421\"; }\n\n.ion-ios-email:before {\n  content: \"\\F423\"; }\n\n.ion-ios-email-outline:before {\n  content: \"\\F422\"; }\n\n.ion-ios-eye:before {\n  content: \"\\F425\"; }\n\n.ion-ios-eye-outline:before {\n  content: \"\\F424\"; }\n\n.ion-ios-fastforward:before {\n  content: \"\\F427\"; }\n\n.ion-ios-fastforward-outline:before {\n  content: \"\\F426\"; }\n\n.ion-ios-filing:before {\n  content: \"\\F429\"; }\n\n.ion-ios-filing-outline:before {\n  content: \"\\F428\"; }\n\n.ion-ios-film:before {\n  content: \"\\F42B\"; }\n\n.ion-ios-film-outline:before {\n  content: \"\\F42A\"; }\n\n.ion-ios-flag:before {\n  content: \"\\F42D\"; }\n\n.ion-ios-flag-outline:before {\n  content: \"\\F42C\"; }\n\n.ion-ios-flame:before {\n  content: \"\\F42F\"; }\n\n.ion-ios-flame-outline:before {\n  content: \"\\F42E\"; }\n\n.ion-ios-flask:before {\n  content: \"\\F431\"; }\n\n.ion-ios-flask-outline:before {\n  content: \"\\F430\"; }\n\n.ion-ios-flower:before {\n  content: \"\\F433\"; }\n\n.ion-ios-flower-outline:before {\n  content: \"\\F432\"; }\n\n.ion-ios-folder:before {\n  content: \"\\F435\"; }\n\n.ion-ios-folder-outline:before {\n  content: \"\\F434\"; }\n\n.ion-ios-football:before {\n  content: \"\\F437\"; }\n\n.ion-ios-football-outline:before {\n  content: \"\\F436\"; }\n\n.ion-ios-game-controller-a:before {\n  content: \"\\F439\"; }\n\n.ion-ios-game-controller-a-outline:before {\n  content: \"\\F438\"; }\n\n.ion-ios-game-controller-b:before {\n  content: \"\\F43B\"; }\n\n.ion-ios-game-controller-b-outline:before {\n  content: \"\\F43A\"; }\n\n.ion-ios-gear:before {\n  content: \"\\F43D\"; }\n\n.ion-ios-gear-outline:before {\n  content: \"\\F43C\"; }\n\n.ion-ios-glasses:before {\n  content: \"\\F43F\"; }\n\n.ion-ios-glasses-outline:before {\n  content: \"\\F43E\"; }\n\n.ion-ios-grid-view:before {\n  content: \"\\F441\"; }\n\n.ion-ios-grid-view-outline:before {\n  content: \"\\F440\"; }\n\n.ion-ios-heart:before {\n  content: \"\\F443\"; }\n\n.ion-ios-heart-outline:before {\n  content: \"\\F442\"; }\n\n.ion-ios-help:before {\n  content: \"\\F446\"; }\n\n.ion-ios-help-empty:before {\n  content: \"\\F444\"; }\n\n.ion-ios-help-outline:before {\n  content: \"\\F445\"; }\n\n.ion-ios-home:before {\n  content: \"\\F448\"; }\n\n.ion-ios-home-outline:before {\n  content: \"\\F447\"; }\n\n.ion-ios-infinite:before {\n  content: \"\\F44A\"; }\n\n.ion-ios-infinite-outline:before {\n  content: \"\\F449\"; }\n\n.ion-ios-information:before {\n  content: \"\\F44D\"; }\n\n.ion-ios-information-empty:before {\n  content: \"\\F44B\"; }\n\n.ion-ios-information-outline:before {\n  content: \"\\F44C\"; }\n\n.ion-ios-ionic-outline:before {\n  content: \"\\F44E\"; }\n\n.ion-ios-keypad:before {\n  content: \"\\F450\"; }\n\n.ion-ios-keypad-outline:before {\n  content: \"\\F44F\"; }\n\n.ion-ios-lightbulb:before {\n  content: \"\\F452\"; }\n\n.ion-ios-lightbulb-outline:before {\n  content: \"\\F451\"; }\n\n.ion-ios-list:before {\n  content: \"\\F454\"; }\n\n.ion-ios-list-outline:before {\n  content: \"\\F453\"; }\n\n.ion-ios-location:before {\n  content: \"\\F456\"; }\n\n.ion-ios-location-outline:before {\n  content: \"\\F455\"; }\n\n.ion-ios-locked:before {\n  content: \"\\F458\"; }\n\n.ion-ios-locked-outline:before {\n  content: \"\\F457\"; }\n\n.ion-ios-loop:before {\n  content: \"\\F45A\"; }\n\n.ion-ios-loop-strong:before {\n  content: \"\\F459\"; }\n\n.ion-ios-medical:before {\n  content: \"\\F45C\"; }\n\n.ion-ios-medical-outline:before {\n  content: \"\\F45B\"; }\n\n.ion-ios-medkit:before {\n  content: \"\\F45E\"; }\n\n.ion-ios-medkit-outline:before {\n  content: \"\\F45D\"; }\n\n.ion-ios-mic:before {\n  content: \"\\F461\"; }\n\n.ion-ios-mic-off:before {\n  content: \"\\F45F\"; }\n\n.ion-ios-mic-outline:before {\n  content: \"\\F460\"; }\n\n.ion-ios-minus:before {\n  content: \"\\F464\"; }\n\n.ion-ios-minus-empty:before {\n  content: \"\\F462\"; }\n\n.ion-ios-minus-outline:before {\n  content: \"\\F463\"; }\n\n.ion-ios-monitor:before {\n  content: \"\\F466\"; }\n\n.ion-ios-monitor-outline:before {\n  content: \"\\F465\"; }\n\n.ion-ios-moon:before {\n  content: \"\\F468\"; }\n\n.ion-ios-moon-outline:before {\n  content: \"\\F467\"; }\n\n.ion-ios-more:before {\n  content: \"\\F46A\"; }\n\n.ion-ios-more-outline:before {\n  content: \"\\F469\"; }\n\n.ion-ios-musical-note:before {\n  content: \"\\F46B\"; }\n\n.ion-ios-musical-notes:before {\n  content: \"\\F46C\"; }\n\n.ion-ios-navigate:before {\n  content: \"\\F46E\"; }\n\n.ion-ios-navigate-outline:before {\n  content: \"\\F46D\"; }\n\n.ion-ios-nutrition:before {\n  content: \"\\F470\"; }\n\n.ion-ios-nutrition-outline:before {\n  content: \"\\F46F\"; }\n\n.ion-ios-paper:before {\n  content: \"\\F472\"; }\n\n.ion-ios-paper-outline:before {\n  content: \"\\F471\"; }\n\n.ion-ios-paperplane:before {\n  content: \"\\F474\"; }\n\n.ion-ios-paperplane-outline:before {\n  content: \"\\F473\"; }\n\n.ion-ios-partlysunny:before {\n  content: \"\\F476\"; }\n\n.ion-ios-partlysunny-outline:before {\n  content: \"\\F475\"; }\n\n.ion-ios-pause:before {\n  content: \"\\F478\"; }\n\n.ion-ios-pause-outline:before {\n  content: \"\\F477\"; }\n\n.ion-ios-paw:before {\n  content: \"\\F47A\"; }\n\n.ion-ios-paw-outline:before {\n  content: \"\\F479\"; }\n\n.ion-ios-people:before {\n  content: \"\\F47C\"; }\n\n.ion-ios-people-outline:before {\n  content: \"\\F47B\"; }\n\n.ion-ios-person:before {\n  content: \"\\F47E\"; }\n\n.ion-ios-person-outline:before {\n  content: \"\\F47D\"; }\n\n.ion-ios-personadd:before {\n  content: \"\\F480\"; }\n\n.ion-ios-personadd-outline:before {\n  content: \"\\F47F\"; }\n\n.ion-ios-photos:before {\n  content: \"\\F482\"; }\n\n.ion-ios-photos-outline:before {\n  content: \"\\F481\"; }\n\n.ion-ios-pie:before {\n  content: \"\\F484\"; }\n\n.ion-ios-pie-outline:before {\n  content: \"\\F483\"; }\n\n.ion-ios-pint:before {\n  content: \"\\F486\"; }\n\n.ion-ios-pint-outline:before {\n  content: \"\\F485\"; }\n\n.ion-ios-play:before {\n  content: \"\\F488\"; }\n\n.ion-ios-play-outline:before {\n  content: \"\\F487\"; }\n\n.ion-ios-plus:before {\n  content: \"\\F48B\"; }\n\n.ion-ios-plus-empty:before {\n  content: \"\\F489\"; }\n\n.ion-ios-plus-outline:before {\n  content: \"\\F48A\"; }\n\n.ion-ios-pricetag:before {\n  content: \"\\F48D\"; }\n\n.ion-ios-pricetag-outline:before {\n  content: \"\\F48C\"; }\n\n.ion-ios-pricetags:before {\n  content: \"\\F48F\"; }\n\n.ion-ios-pricetags-outline:before {\n  content: \"\\F48E\"; }\n\n.ion-ios-printer:before {\n  content: \"\\F491\"; }\n\n.ion-ios-printer-outline:before {\n  content: \"\\F490\"; }\n\n.ion-ios-pulse:before {\n  content: \"\\F493\"; }\n\n.ion-ios-pulse-strong:before {\n  content: \"\\F492\"; }\n\n.ion-ios-rainy:before {\n  content: \"\\F495\"; }\n\n.ion-ios-rainy-outline:before {\n  content: \"\\F494\"; }\n\n.ion-ios-recording:before {\n  content: \"\\F497\"; }\n\n.ion-ios-recording-outline:before {\n  content: \"\\F496\"; }\n\n.ion-ios-redo:before {\n  content: \"\\F499\"; }\n\n.ion-ios-redo-outline:before {\n  content: \"\\F498\"; }\n\n.ion-ios-refresh:before {\n  content: \"\\F49C\"; }\n\n.ion-ios-refresh-empty:before {\n  content: \"\\F49A\"; }\n\n.ion-ios-refresh-outline:before {\n  content: \"\\F49B\"; }\n\n.ion-ios-reload:before {\n  content: \"\\F49D\"; }\n\n.ion-ios-reverse-camera:before {\n  content: \"\\F49F\"; }\n\n.ion-ios-reverse-camera-outline:before {\n  content: \"\\F49E\"; }\n\n.ion-ios-rewind:before {\n  content: \"\\F4A1\"; }\n\n.ion-ios-rewind-outline:before {\n  content: \"\\F4A0\"; }\n\n.ion-ios-rose:before {\n  content: \"\\F4A3\"; }\n\n.ion-ios-rose-outline:before {\n  content: \"\\F4A2\"; }\n\n.ion-ios-search:before {\n  content: \"\\F4A5\"; }\n\n.ion-ios-search-strong:before {\n  content: \"\\F4A4\"; }\n\n.ion-ios-settings:before {\n  content: \"\\F4A7\"; }\n\n.ion-ios-settings-strong:before {\n  content: \"\\F4A6\"; }\n\n.ion-ios-shuffle:before {\n  content: \"\\F4A9\"; }\n\n.ion-ios-shuffle-strong:before {\n  content: \"\\F4A8\"; }\n\n.ion-ios-skipbackward:before {\n  content: \"\\F4AB\"; }\n\n.ion-ios-skipbackward-outline:before {\n  content: \"\\F4AA\"; }\n\n.ion-ios-skipforward:before {\n  content: \"\\F4AD\"; }\n\n.ion-ios-skipforward-outline:before {\n  content: \"\\F4AC\"; }\n\n.ion-ios-snowy:before {\n  content: \"\\F4AE\"; }\n\n.ion-ios-speedometer:before {\n  content: \"\\F4B0\"; }\n\n.ion-ios-speedometer-outline:before {\n  content: \"\\F4AF\"; }\n\n.ion-ios-star:before {\n  content: \"\\F4B3\"; }\n\n.ion-ios-star-half:before {\n  content: \"\\F4B1\"; }\n\n.ion-ios-star-outline:before {\n  content: \"\\F4B2\"; }\n\n.ion-ios-stopwatch:before {\n  content: \"\\F4B5\"; }\n\n.ion-ios-stopwatch-outline:before {\n  content: \"\\F4B4\"; }\n\n.ion-ios-sunny:before {\n  content: \"\\F4B7\"; }\n\n.ion-ios-sunny-outline:before {\n  content: \"\\F4B6\"; }\n\n.ion-ios-telephone:before {\n  content: \"\\F4B9\"; }\n\n.ion-ios-telephone-outline:before {\n  content: \"\\F4B8\"; }\n\n.ion-ios-tennisball:before {\n  content: \"\\F4BB\"; }\n\n.ion-ios-tennisball-outline:before {\n  content: \"\\F4BA\"; }\n\n.ion-ios-thunderstorm:before {\n  content: \"\\F4BD\"; }\n\n.ion-ios-thunderstorm-outline:before {\n  content: \"\\F4BC\"; }\n\n.ion-ios-time:before {\n  content: \"\\F4BF\"; }\n\n.ion-ios-time-outline:before {\n  content: \"\\F4BE\"; }\n\n.ion-ios-timer:before {\n  content: \"\\F4C1\"; }\n\n.ion-ios-timer-outline:before {\n  content: \"\\F4C0\"; }\n\n.ion-ios-toggle:before {\n  content: \"\\F4C3\"; }\n\n.ion-ios-toggle-outline:before {\n  content: \"\\F4C2\"; }\n\n.ion-ios-trash:before {\n  content: \"\\F4C5\"; }\n\n.ion-ios-trash-outline:before {\n  content: \"\\F4C4\"; }\n\n.ion-ios-undo:before {\n  content: \"\\F4C7\"; }\n\n.ion-ios-undo-outline:before {\n  content: \"\\F4C6\"; }\n\n.ion-ios-unlocked:before {\n  content: \"\\F4C9\"; }\n\n.ion-ios-unlocked-outline:before {\n  content: \"\\F4C8\"; }\n\n.ion-ios-upload:before {\n  content: \"\\F4CB\"; }\n\n.ion-ios-upload-outline:before {\n  content: \"\\F4CA\"; }\n\n.ion-ios-videocam:before {\n  content: \"\\F4CD\"; }\n\n.ion-ios-videocam-outline:before {\n  content: \"\\F4CC\"; }\n\n.ion-ios-volume-high:before {\n  content: \"\\F4CE\"; }\n\n.ion-ios-volume-low:before {\n  content: \"\\F4CF\"; }\n\n.ion-ios-wineglass:before {\n  content: \"\\F4D1\"; }\n\n.ion-ios-wineglass-outline:before {\n  content: \"\\F4D0\"; }\n\n.ion-ios-world:before {\n  content: \"\\F4D3\"; }\n\n.ion-ios-world-outline:before {\n  content: \"\\F4D2\"; }\n\n.ion-ipad:before {\n  content: \"\\F1F9\"; }\n\n.ion-iphone:before {\n  content: \"\\F1FA\"; }\n\n.ion-ipod:before {\n  content: \"\\F1FB\"; }\n\n.ion-jet:before {\n  content: \"\\F295\"; }\n\n.ion-key:before {\n  content: \"\\F296\"; }\n\n.ion-knife:before {\n  content: \"\\F297\"; }\n\n.ion-laptop:before {\n  content: \"\\F1FC\"; }\n\n.ion-leaf:before {\n  content: \"\\F1FD\"; }\n\n.ion-levels:before {\n  content: \"\\F298\"; }\n\n.ion-lightbulb:before {\n  content: \"\\F299\"; }\n\n.ion-link:before {\n  content: \"\\F1FE\"; }\n\n.ion-load-a:before {\n  content: \"\\F29A\"; }\n\n.ion-load-b:before {\n  content: \"\\F29B\"; }\n\n.ion-load-c:before {\n  content: \"\\F29C\"; }\n\n.ion-load-d:before {\n  content: \"\\F29D\"; }\n\n.ion-location:before {\n  content: \"\\F1FF\"; }\n\n.ion-lock-combination:before {\n  content: \"\\F4D4\"; }\n\n.ion-locked:before {\n  content: \"\\F200\"; }\n\n.ion-log-in:before {\n  content: \"\\F29E\"; }\n\n.ion-log-out:before {\n  content: \"\\F29F\"; }\n\n.ion-loop:before {\n  content: \"\\F201\"; }\n\n.ion-magnet:before {\n  content: \"\\F2A0\"; }\n\n.ion-male:before {\n  content: \"\\F2A1\"; }\n\n.ion-man:before {\n  content: \"\\F202\"; }\n\n.ion-map:before {\n  content: \"\\F203\"; }\n\n.ion-medkit:before {\n  content: \"\\F2A2\"; }\n\n.ion-merge:before {\n  content: \"\\F33F\"; }\n\n.ion-mic-a:before {\n  content: \"\\F204\"; }\n\n.ion-mic-b:before {\n  content: \"\\F205\"; }\n\n.ion-mic-c:before {\n  content: \"\\F206\"; }\n\n.ion-minus:before {\n  content: \"\\F209\"; }\n\n.ion-minus-circled:before {\n  content: \"\\F207\"; }\n\n.ion-minus-round:before {\n  content: \"\\F208\"; }\n\n.ion-model-s:before {\n  content: \"\\F2C1\"; }\n\n.ion-monitor:before {\n  content: \"\\F20A\"; }\n\n.ion-more:before {\n  content: \"\\F20B\"; }\n\n.ion-mouse:before {\n  content: \"\\F340\"; }\n\n.ion-music-note:before {\n  content: \"\\F20C\"; }\n\n.ion-navicon:before {\n  content: \"\\F20E\"; }\n\n.ion-navicon-round:before {\n  content: \"\\F20D\"; }\n\n.ion-navigate:before {\n  content: \"\\F2A3\"; }\n\n.ion-network:before {\n  content: \"\\F341\"; }\n\n.ion-no-smoking:before {\n  content: \"\\F2C2\"; }\n\n.ion-nuclear:before {\n  content: \"\\F2A4\"; }\n\n.ion-outlet:before {\n  content: \"\\F342\"; }\n\n.ion-paintbrush:before {\n  content: \"\\F4D5\"; }\n\n.ion-paintbucket:before {\n  content: \"\\F4D6\"; }\n\n.ion-paper-airplane:before {\n  content: \"\\F2C3\"; }\n\n.ion-paperclip:before {\n  content: \"\\F20F\"; }\n\n.ion-pause:before {\n  content: \"\\F210\"; }\n\n.ion-person:before {\n  content: \"\\F213\"; }\n\n.ion-person-add:before {\n  content: \"\\F211\"; }\n\n.ion-person-stalker:before {\n  content: \"\\F212\"; }\n\n.ion-pie-graph:before {\n  content: \"\\F2A5\"; }\n\n.ion-pin:before {\n  content: \"\\F2A6\"; }\n\n.ion-pinpoint:before {\n  content: \"\\F2A7\"; }\n\n.ion-pizza:before {\n  content: \"\\F2A8\"; }\n\n.ion-plane:before {\n  content: \"\\F214\"; }\n\n.ion-planet:before {\n  content: \"\\F343\"; }\n\n.ion-play:before {\n  content: \"\\F215\"; }\n\n.ion-playstation:before {\n  content: \"\\F30A\"; }\n\n.ion-plus:before {\n  content: \"\\F218\"; }\n\n.ion-plus-circled:before {\n  content: \"\\F216\"; }\n\n.ion-plus-round:before {\n  content: \"\\F217\"; }\n\n.ion-podium:before {\n  content: \"\\F344\"; }\n\n.ion-pound:before {\n  content: \"\\F219\"; }\n\n.ion-power:before {\n  content: \"\\F2A9\"; }\n\n.ion-pricetag:before {\n  content: \"\\F2AA\"; }\n\n.ion-pricetags:before {\n  content: \"\\F2AB\"; }\n\n.ion-printer:before {\n  content: \"\\F21A\"; }\n\n.ion-pull-request:before {\n  content: \"\\F345\"; }\n\n.ion-qr-scanner:before {\n  content: \"\\F346\"; }\n\n.ion-quote:before {\n  content: \"\\F347\"; }\n\n.ion-radio-waves:before {\n  content: \"\\F2AC\"; }\n\n.ion-record:before {\n  content: \"\\F21B\"; }\n\n.ion-refresh:before {\n  content: \"\\F21C\"; }\n\n.ion-reply:before {\n  content: \"\\F21E\"; }\n\n.ion-reply-all:before {\n  content: \"\\F21D\"; }\n\n.ion-ribbon-a:before {\n  content: \"\\F348\"; }\n\n.ion-ribbon-b:before {\n  content: \"\\F349\"; }\n\n.ion-sad:before {\n  content: \"\\F34A\"; }\n\n.ion-sad-outline:before {\n  content: \"\\F4D7\"; }\n\n.ion-scissors:before {\n  content: \"\\F34B\"; }\n\n.ion-search:before {\n  content: \"\\F21F\"; }\n\n.ion-settings:before {\n  content: \"\\F2AD\"; }\n\n.ion-share:before {\n  content: \"\\F220\"; }\n\n.ion-shuffle:before {\n  content: \"\\F221\"; }\n\n.ion-skip-backward:before {\n  content: \"\\F222\"; }\n\n.ion-skip-forward:before {\n  content: \"\\F223\"; }\n\n.ion-social-android:before {\n  content: \"\\F225\"; }\n\n.ion-social-android-outline:before {\n  content: \"\\F224\"; }\n\n.ion-social-angular:before {\n  content: \"\\F4D9\"; }\n\n.ion-social-angular-outline:before {\n  content: \"\\F4D8\"; }\n\n.ion-social-apple:before {\n  content: \"\\F227\"; }\n\n.ion-social-apple-outline:before {\n  content: \"\\F226\"; }\n\n.ion-social-bitcoin:before {\n  content: \"\\F2AF\"; }\n\n.ion-social-bitcoin-outline:before {\n  content: \"\\F2AE\"; }\n\n.ion-social-buffer:before {\n  content: \"\\F229\"; }\n\n.ion-social-buffer-outline:before {\n  content: \"\\F228\"; }\n\n.ion-social-chrome:before {\n  content: \"\\F4DB\"; }\n\n.ion-social-chrome-outline:before {\n  content: \"\\F4DA\"; }\n\n.ion-social-codepen:before {\n  content: \"\\F4DD\"; }\n\n.ion-social-codepen-outline:before {\n  content: \"\\F4DC\"; }\n\n.ion-social-css3:before {\n  content: \"\\F4DF\"; }\n\n.ion-social-css3-outline:before {\n  content: \"\\F4DE\"; }\n\n.ion-social-designernews:before {\n  content: \"\\F22B\"; }\n\n.ion-social-designernews-outline:before {\n  content: \"\\F22A\"; }\n\n.ion-social-dribbble:before {\n  content: \"\\F22D\"; }\n\n.ion-social-dribbble-outline:before {\n  content: \"\\F22C\"; }\n\n.ion-social-dropbox:before {\n  content: \"\\F22F\"; }\n\n.ion-social-dropbox-outline:before {\n  content: \"\\F22E\"; }\n\n.ion-social-euro:before {\n  content: \"\\F4E1\"; }\n\n.ion-social-euro-outline:before {\n  content: \"\\F4E0\"; }\n\n.ion-social-facebook:before {\n  content: \"\\F231\"; }\n\n.ion-social-facebook-outline:before {\n  content: \"\\F230\"; }\n\n.ion-social-foursquare:before {\n  content: \"\\F34D\"; }\n\n.ion-social-foursquare-outline:before {\n  content: \"\\F34C\"; }\n\n.ion-social-freebsd-devil:before {\n  content: \"\\F2C4\"; }\n\n.ion-social-github:before {\n  content: \"\\F233\"; }\n\n.ion-social-github-outline:before {\n  content: \"\\F232\"; }\n\n.ion-social-google:before {\n  content: \"\\F34F\"; }\n\n.ion-social-google-outline:before {\n  content: \"\\F34E\"; }\n\n.ion-social-googleplus:before {\n  content: \"\\F235\"; }\n\n.ion-social-googleplus-outline:before {\n  content: \"\\F234\"; }\n\n.ion-social-hackernews:before {\n  content: \"\\F237\"; }\n\n.ion-social-hackernews-outline:before {\n  content: \"\\F236\"; }\n\n.ion-social-html5:before {\n  content: \"\\F4E3\"; }\n\n.ion-social-html5-outline:before {\n  content: \"\\F4E2\"; }\n\n.ion-social-instagram:before {\n  content: \"\\F351\"; }\n\n.ion-social-instagram-outline:before {\n  content: \"\\F350\"; }\n\n.ion-social-javascript:before {\n  content: \"\\F4E5\"; }\n\n.ion-social-javascript-outline:before {\n  content: \"\\F4E4\"; }\n\n.ion-social-linkedin:before {\n  content: \"\\F239\"; }\n\n.ion-social-linkedin-outline:before {\n  content: \"\\F238\"; }\n\n.ion-social-markdown:before {\n  content: \"\\F4E6\"; }\n\n.ion-social-nodejs:before {\n  content: \"\\F4E7\"; }\n\n.ion-social-octocat:before {\n  content: \"\\F4E8\"; }\n\n.ion-social-pinterest:before {\n  content: \"\\F2B1\"; }\n\n.ion-social-pinterest-outline:before {\n  content: \"\\F2B0\"; }\n\n.ion-social-python:before {\n  content: \"\\F4E9\"; }\n\n.ion-social-reddit:before {\n  content: \"\\F23B\"; }\n\n.ion-social-reddit-outline:before {\n  content: \"\\F23A\"; }\n\n.ion-social-rss:before {\n  content: \"\\F23D\"; }\n\n.ion-social-rss-outline:before {\n  content: \"\\F23C\"; }\n\n.ion-social-sass:before {\n  content: \"\\F4EA\"; }\n\n.ion-social-skype:before {\n  content: \"\\F23F\"; }\n\n.ion-social-skype-outline:before {\n  content: \"\\F23E\"; }\n\n.ion-social-snapchat:before {\n  content: \"\\F4EC\"; }\n\n.ion-social-snapchat-outline:before {\n  content: \"\\F4EB\"; }\n\n.ion-social-tumblr:before {\n  content: \"\\F241\"; }\n\n.ion-social-tumblr-outline:before {\n  content: \"\\F240\"; }\n\n.ion-social-tux:before {\n  content: \"\\F2C5\"; }\n\n.ion-social-twitch:before {\n  content: \"\\F4EE\"; }\n\n.ion-social-twitch-outline:before {\n  content: \"\\F4ED\"; }\n\n.ion-social-twitter:before {\n  content: \"\\F243\"; }\n\n.ion-social-twitter-outline:before {\n  content: \"\\F242\"; }\n\n.ion-social-usd:before {\n  content: \"\\F353\"; }\n\n.ion-social-usd-outline:before {\n  content: \"\\F352\"; }\n\n.ion-social-vimeo:before {\n  content: \"\\F245\"; }\n\n.ion-social-vimeo-outline:before {\n  content: \"\\F244\"; }\n\n.ion-social-whatsapp:before {\n  content: \"\\F4F0\"; }\n\n.ion-social-whatsapp-outline:before {\n  content: \"\\F4EF\"; }\n\n.ion-social-windows:before {\n  content: \"\\F247\"; }\n\n.ion-social-windows-outline:before {\n  content: \"\\F246\"; }\n\n.ion-social-wordpress:before {\n  content: \"\\F249\"; }\n\n.ion-social-wordpress-outline:before {\n  content: \"\\F248\"; }\n\n.ion-social-yahoo:before {\n  content: \"\\F24B\"; }\n\n.ion-social-yahoo-outline:before {\n  content: \"\\F24A\"; }\n\n.ion-social-yen:before {\n  content: \"\\F4F2\"; }\n\n.ion-social-yen-outline:before {\n  content: \"\\F4F1\"; }\n\n.ion-social-youtube:before {\n  content: \"\\F24D\"; }\n\n.ion-social-youtube-outline:before {\n  content: \"\\F24C\"; }\n\n.ion-soup-can:before {\n  content: \"\\F4F4\"; }\n\n.ion-soup-can-outline:before {\n  content: \"\\F4F3\"; }\n\n.ion-speakerphone:before {\n  content: \"\\F2B2\"; }\n\n.ion-speedometer:before {\n  content: \"\\F2B3\"; }\n\n.ion-spoon:before {\n  content: \"\\F2B4\"; }\n\n.ion-star:before {\n  content: \"\\F24E\"; }\n\n.ion-stats-bars:before {\n  content: \"\\F2B5\"; }\n\n.ion-steam:before {\n  content: \"\\F30B\"; }\n\n.ion-stop:before {\n  content: \"\\F24F\"; }\n\n.ion-thermometer:before {\n  content: \"\\F2B6\"; }\n\n.ion-thumbsdown:before {\n  content: \"\\F250\"; }\n\n.ion-thumbsup:before {\n  content: \"\\F251\"; }\n\n.ion-toggle:before {\n  content: \"\\F355\"; }\n\n.ion-toggle-filled:before {\n  content: \"\\F354\"; }\n\n.ion-transgender:before {\n  content: \"\\F4F5\"; }\n\n.ion-trash-a:before {\n  content: \"\\F252\"; }\n\n.ion-trash-b:before {\n  content: \"\\F253\"; }\n\n.ion-trophy:before {\n  content: \"\\F356\"; }\n\n.ion-tshirt:before {\n  content: \"\\F4F7\"; }\n\n.ion-tshirt-outline:before {\n  content: \"\\F4F6\"; }\n\n.ion-umbrella:before {\n  content: \"\\F2B7\"; }\n\n.ion-university:before {\n  content: \"\\F357\"; }\n\n.ion-unlocked:before {\n  content: \"\\F254\"; }\n\n.ion-upload:before {\n  content: \"\\F255\"; }\n\n.ion-usb:before {\n  content: \"\\F2B8\"; }\n\n.ion-videocamera:before {\n  content: \"\\F256\"; }\n\n.ion-volume-high:before {\n  content: \"\\F257\"; }\n\n.ion-volume-low:before {\n  content: \"\\F258\"; }\n\n.ion-volume-medium:before {\n  content: \"\\F259\"; }\n\n.ion-volume-mute:before {\n  content: \"\\F25A\"; }\n\n.ion-wand:before {\n  content: \"\\F358\"; }\n\n.ion-waterdrop:before {\n  content: \"\\F25B\"; }\n\n.ion-wifi:before {\n  content: \"\\F25C\"; }\n\n.ion-wineglass:before {\n  content: \"\\F2B9\"; }\n\n.ion-woman:before {\n  content: \"\\F25D\"; }\n\n.ion-wrench:before {\n  content: \"\\F2BA\"; }\n\n.ion-xbox:before {\n  content: \"\\F30C\"; }\n\n/* base */\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background: #FCFCFC;\n  font-family: \"Open Sans\", \"Lucida Grande\", sans-serif;\n  padding: 10px; }\n  @media screen and (min-width: 376px) {\n    body {\n      padding: 20px; } }\n\na {\n  color: #777; }\n\na:hover {\n  color: black; }\n\nlabel {\n  display: block;\n  color: #777;\n  margin-bottom: 6px; }\n\n.form-title {\n  margin: 0;\n  margin-bottom: 10px;\n  color: #777;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-size: 1.1rem; }\n\n.form--inline .form__group {\n  display: inline-block;\n  vertical-align: middle; }\n\n.field {\n  display: block;\n  width: 100%;\n  max-width: 100%;\n  padding: 6px 8px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: 1px solid #ddd;\n  border-radius: 2px;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  margin-bottom: 10px; }\n\n.field:focus {\n  outline: none; }\n\n.inline-field {\n  display: inline-block;\n  padding: 0 5px; }\n\n.inline-field:first-child {\n  padding-left: 0px; }\n\n.form-error, .field-error {\n  margin-bottom: 10px;\n  display: block;\n  color: black; }\n\n.field-error {\n  border: 1px solid #ccc;\n  border-top: 0px;\n  padding: 6px 10px;\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px;\n  margin-top: -10px;\n  font-size: 70%;\n  display: block;\n  margin-bottom: 10px;\n  background: #f8f8f8; }\n\n/* grid */\n.container {\n  max-width: 1200px;\n  margin: 0 auto; }\n\n/* helpers */\n.border-top {\n  border-top: 1px solid #ccc; }\n\n.border-right {\n  border-right: 1px solid #ccc; }\n\n.border-bottom {\n  border-bottom: 1px solid #ccc; }\n\n.border-left {\n  border-left: 1px solid #ccc; }\n\n.border-vertical {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc; }\n\n.border-horizontal {\n  border-left: 1px solid #ccc;\n  border-right: 1px solid #ccc; }\n\n/**\n * For modern browsers\n * 1. The space content is one way to avoid an Opera bug when the\n *    contenteditable attribute is included anywhere else in the document.\n *    Otherwise it causes space to appear at the top and bottom of elements\n *    that are clearfixed.\n * 2. The use of `table` rather than `block` is only necessary if using\n *    `:before` to contain the top-margins of child elements.\n */\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  /* 1 */\n  display: table;\n  /* 2 */ }\n\n.clearfix:after {\n  clear: both; }\n\n/**\n * For IE 6/7 only\n * Include this rule to trigger hasLayout and contain floats.\n */\n.clearfix {\n  *zoom: 1; }\n\n.margin {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin.margin-left-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin.margin-bottom-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-left {\n  margin-left: 20px; }\n\n.margin-bottom {\n  margin-bottom: 20px; }\n\n.margin-right {\n  margin-right: 20px; }\n\n.margin-top {\n  margin-top: 20px; }\n\n.margin-left-sm {\n  margin-left: 10px; }\n\n.margin-bottom-sm {\n  margin-bottom: 10px; }\n\n.margin-right-sm {\n  margin-right: 10px; }\n\n.margin-top-sm {\n  margin-top: 10px; }\n\n.margin-vertical {\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-left {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-vertical-sm.margin-left {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-vertical.margin-left-sm {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-vertical-sm.margin-left-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-right {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal {\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm {\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom {\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom-sm {\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom-sm {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-horizontal-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-vertical-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-except-top {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-right {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-bottom {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-except-left {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-sm-except-top {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-right {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-bottom {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-left {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.padding {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding.padding-left-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding.padding-bottom-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-left {\n  padding-left: 20px; }\n\n.padding-bottom {\n  padding-bottom: 20px; }\n\n.padding-right {\n  padding-right: 20px; }\n\n.padding-top {\n  padding-top: 20px; }\n\n.padding-left-sm {\n  padding-left: 10px; }\n\n.padding-bottom-sm {\n  padding-bottom: 10px; }\n\n.padding-right-sm {\n  padding-right: 10px; }\n\n.padding-top-sm {\n  padding-top: 10px; }\n\n.padding-vertical {\n  padding-top: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-left {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-vertical-sm.padding-left {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-vertical.padding-left-sm {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-vertical-sm.padding-left-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-right {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal {\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm {\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom {\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom-sm {\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom-sm {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-horizontal-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-vertical-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-except-top {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-right {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-bottom {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-except-left {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-sm-except-top {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-right {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-bottom {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-left {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px; }\n\n.margin-right--sm {\n  margin-right: 5px; }\n\n.opaque {\n  opacity: 1; }\n\n.black {\n  color: black; }\n\n.hidden {\n  display: none; }\n\n.seethrough {\n  opacity: 0; }\n\n.invisible {\n  visibility: hidden; }\n\n.muted {\n  color: #777; }\n\n.muted {\n  color: #777; }\n\n.pull-right {\n  float: right; }\n\n.full-height {\n  min-height: 100vh; }\n\n.centred {\n  margin: 0 auto; }\n\n.centred.margin-top {\n  margin: 20px auto 0px; }\n\n.centred.margin-bottom {\n  margin: 0px auto 20px; }\n\n.hover-cursor--pointer:hover {\n  cursor: pointer; }\n\n.hover-cursor--default {\n  cursor: default; }\n\n.box-shadow {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.box-shadow-inset {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n/* objects */\n.box {\n  background: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  border-radius: 2px; }\n\n.btn {\n  display: inline-block;\n  border: 1px solid #ccc;\n  background: white;\n  padding: 4px 8px;\n  text-decoration: none;\n  font-size: 90%;\n  color: #777;\n  border-radius: 0px; }\n\n.btn:hover {\n  cursor: pointer;\n  background: rgba(0, 0, 0, 0.05);\n  color: black; }\n\n.btn:active {\n  border-color: #ccc;\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.btn--black {\n  background: black;\n  border-color: black;\n  color: white; }\n\n.btn-group .btn {\n  margin-right: 2px; }\n\n.btn-group .btn:last-child {\n  margin-right: 0px; }\n\n.btn-wide {\n  padding: 4px 16px; }\n\n.btn-tall {\n  padding: 8px 8px; }\n\n.btn-large {\n  padding: 8px 16px; }\n\n.icon--active {\n  font-weight: bold;\n  color: black; }\n\n.tag {\n  display: inline-block;\n  border: 1px solid #ccc;\n  font-size: 70%;\n  padding: 2px 6px;\n  border-radius: 4px;\n  margin: 4px 5px 4px 0px;\n  background: #f8f8f8;\n  color: #777;\n  text-decoration: none;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075); }\n  .tag:hover {\n    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.075);\n    color: black; }\n  .tag .tag-remove {\n    margin-left: 6px;\n    text-decoration: none; }\n\n.loading {\n  position: absolute;\n  top: 45%;\n  left: 10%;\n  display: block;\n  padding: 20px 60px;\n  font-weight: bold; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n/* vendor */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  box-sizing: content-box;\n  /* 2 */ }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/*!\n  Ionicons, v2.0.0\n  Created by Ben Sperry for the Ionic Framework, http://ionicons.com/\n  https://twitter.com/benjsperry  https://twitter.com/ionicframework\n  MIT License: https://github.com/driftyco/ionicons\n\n  Android-style icons originally built by Google’s\n  Material Design Icons: https://github.com/google/material-design-icons\n  used under CC BY http://creativecommons.org/licenses/by/4.0/\n  Modified icons to fit ionicon’s grid from original.\n*/\n@font-face {\n  font-family: \"Ionicons\";\n  src: url(\"/static/fonts/ionicons.eot\");\n  src: url(\"/static/fonts/ionicons.eot?v=2.0.0#iefix\") format(\"embedded-opentype\"), url(\"/static/fonts/ionicons.ttf\") format(\"truetype\"), url(\"/static/fonts/ionicons.woff\") format(\"woff\"), url(\"/static/fonts/ionicons.svg\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n.ion, .ionicons, .ion-alert:before, .ion-alert-circled:before, .ion-android-add:before, .ion-android-add-circle:before, .ion-android-alarm-clock:before, .ion-android-alert:before, .ion-android-apps:before, .ion-android-archive:before, .ion-android-arrow-back:before, .ion-android-arrow-down:before, .ion-android-arrow-dropdown:before, .ion-android-arrow-dropdown-circle:before, .ion-android-arrow-dropleft:before, .ion-android-arrow-dropleft-circle:before, .ion-android-arrow-dropright:before, .ion-android-arrow-dropright-circle:before, .ion-android-arrow-dropup:before, .ion-android-arrow-dropup-circle:before, .ion-android-arrow-forward:before, .ion-android-arrow-up:before, .ion-android-attach:before, .ion-android-bar:before, .ion-android-bicycle:before, .ion-android-boat:before, .ion-android-bookmark:before, .ion-android-bulb:before, .ion-android-bus:before, .ion-android-calendar:before, .ion-android-call:before, .ion-android-camera:before, .ion-android-cancel:before, .ion-android-car:before, .ion-android-cart:before, .ion-android-chat:before, .ion-android-checkbox:before, .ion-android-checkbox-blank:before, .ion-android-checkbox-outline:before, .ion-android-checkbox-outline-blank:before, .ion-android-checkmark-circle:before, .ion-android-clipboard:before, .ion-android-close:before, .ion-android-cloud:before, .ion-android-cloud-circle:before, .ion-android-cloud-done:before, .ion-android-cloud-outline:before, .ion-android-color-palette:before, .ion-android-compass:before, .ion-android-contact:before, .ion-android-contacts:before, .ion-android-contract:before, .ion-android-create:before, .ion-android-delete:before, .ion-android-desktop:before, .ion-android-document:before, .ion-android-done:before, .ion-android-done-all:before, .ion-android-download:before, .ion-android-drafts:before, .ion-android-exit:before, .ion-android-expand:before, .ion-android-favorite:before, .ion-android-favorite-outline:before, .ion-android-film:before, .ion-android-folder:before, .ion-android-folder-open:before, .ion-android-funnel:before, .ion-android-globe:before, .ion-android-hand:before, .ion-android-hangout:before, .ion-android-happy:before, .ion-android-home:before, .ion-android-image:before, .ion-android-laptop:before, .ion-android-list:before, .ion-android-locate:before, .ion-android-lock:before, .ion-android-mail:before, .ion-android-map:before, .ion-android-menu:before, .ion-android-microphone:before, .ion-android-microphone-off:before, .ion-android-more-horizontal:before, .ion-android-more-vertical:before, .ion-android-navigate:before, .ion-android-notifications:before, .ion-android-notifications-none:before, .ion-android-notifications-off:before, .ion-android-open:before, .ion-android-options:before, .ion-android-people:before, .ion-android-person:before, .ion-android-person-add:before, .ion-android-phone-landscape:before, .ion-android-phone-portrait:before, .ion-android-pin:before, .ion-android-plane:before, .ion-android-playstore:before, .ion-android-print:before, .ion-android-radio-button-off:before, .ion-android-radio-button-on:before, .ion-android-refresh:before, .ion-android-remove:before, .ion-android-remove-circle:before, .ion-android-restaurant:before, .ion-android-sad:before, .ion-android-search:before, .ion-android-send:before, .ion-android-settings:before, .ion-android-share:before, .ion-android-share-alt:before, .ion-android-star:before, .ion-android-star-half:before, .ion-android-star-outline:before, .ion-android-stopwatch:before, .ion-android-subway:before, .ion-android-sunny:before, .ion-android-sync:before, .ion-android-textsms:before, .ion-android-time:before, .ion-android-train:before, .ion-android-unlock:before, .ion-android-upload:before, .ion-android-volume-down:before, .ion-android-volume-mute:before, .ion-android-volume-off:before, .ion-android-volume-up:before, .ion-android-walk:before, .ion-android-warning:before, .ion-android-watch:before, .ion-android-wifi:before, .ion-aperture:before, .ion-archive:before, .ion-arrow-down-a:before, .ion-arrow-down-b:before, .ion-arrow-down-c:before, .ion-arrow-expand:before, .ion-arrow-graph-down-left:before, .ion-arrow-graph-down-right:before, .ion-arrow-graph-up-left:before, .ion-arrow-graph-up-right:before, .ion-arrow-left-a:before, .ion-arrow-left-b:before, .ion-arrow-left-c:before, .ion-arrow-move:before, .ion-arrow-resize:before, .ion-arrow-return-left:before, .ion-arrow-return-right:before, .ion-arrow-right-a:before, .ion-arrow-right-b:before, .ion-arrow-right-c:before, .ion-arrow-shrink:before, .ion-arrow-swap:before, .ion-arrow-up-a:before, .ion-arrow-up-b:before, .ion-arrow-up-c:before, .ion-asterisk:before, .ion-at:before, .ion-backspace:before, .ion-backspace-outline:before, .ion-bag:before, .ion-battery-charging:before, .ion-battery-empty:before, .ion-battery-full:before, .ion-battery-half:before, .ion-battery-low:before, .ion-beaker:before, .ion-beer:before, .ion-bluetooth:before, .ion-bonfire:before, .ion-bookmark:before, .ion-bowtie:before, .ion-briefcase:before, .ion-bug:before, .ion-calculator:before, .ion-calendar:before, .ion-camera:before, .ion-card:before, .ion-cash:before, .ion-chatbox:before, .ion-chatbox-working:before, .ion-chatboxes:before, .ion-chatbubble:before, .ion-chatbubble-working:before, .ion-chatbubbles:before, .ion-checkmark:before, .ion-checkmark-circled:before, .ion-checkmark-round:before, .ion-chevron-down:before, .ion-chevron-left:before, .ion-chevron-right:before, .ion-chevron-up:before, .ion-clipboard:before, .ion-clock:before, .ion-close:before, .ion-close-circled:before, .ion-close-round:before, .ion-closed-captioning:before, .ion-cloud:before, .ion-code:before, .ion-code-download:before, .ion-code-working:before, .ion-coffee:before, .ion-compass:before, .ion-compose:before, .ion-connection-bars:before, .ion-contrast:before, .ion-crop:before, .ion-cube:before, .ion-disc:before, .ion-document:before, .ion-document-text:before, .ion-drag:before, .ion-earth:before, .ion-easel:before, .ion-edit:before, .ion-egg:before, .ion-eject:before, .ion-email:before, .ion-email-unread:before, .ion-erlenmeyer-flask:before, .ion-erlenmeyer-flask-bubbles:before, .ion-eye:before, .ion-eye-disabled:before, .ion-female:before, .ion-filing:before, .ion-film-marker:before, .ion-fireball:before, .ion-flag:before, .ion-flame:before, .ion-flash:before, .ion-flash-off:before, .ion-folder:before, .ion-fork:before, .ion-fork-repo:before, .ion-forward:before, .ion-funnel:before, .ion-gear-a:before, .ion-gear-b:before, .ion-grid:before, .ion-hammer:before, .ion-happy:before, .ion-happy-outline:before, .ion-headphone:before, .ion-heart:before, .ion-heart-broken:before, .ion-help:before, .ion-help-buoy:before, .ion-help-circled:before, .ion-home:before, .ion-icecream:before, .ion-image:before, .ion-images:before, .ion-information:before, .ion-information-circled:before, .ion-ionic:before, .ion-ios-alarm:before, .ion-ios-alarm-outline:before, .ion-ios-albums:before, .ion-ios-albums-outline:before, .ion-ios-americanfootball:before, .ion-ios-americanfootball-outline:before, .ion-ios-analytics:before, .ion-ios-analytics-outline:before, .ion-ios-arrow-back:before, .ion-ios-arrow-down:before, .ion-ios-arrow-forward:before, .ion-ios-arrow-left:before, .ion-ios-arrow-right:before, .ion-ios-arrow-thin-down:before, .ion-ios-arrow-thin-left:before, .ion-ios-arrow-thin-right:before, .ion-ios-arrow-thin-up:before, .ion-ios-arrow-up:before, .ion-ios-at:before, .ion-ios-at-outline:before, .ion-ios-barcode:before, .ion-ios-barcode-outline:before, .ion-ios-baseball:before, .ion-ios-baseball-outline:before, .ion-ios-basketball:before, .ion-ios-basketball-outline:before, .ion-ios-bell:before, .ion-ios-bell-outline:before, .ion-ios-body:before, .ion-ios-body-outline:before, .ion-ios-bolt:before, .ion-ios-bolt-outline:before, .ion-ios-book:before, .ion-ios-book-outline:before, .ion-ios-bookmarks:before, .ion-ios-bookmarks-outline:before, .ion-ios-box:before, .ion-ios-box-outline:before, .ion-ios-briefcase:before, .ion-ios-briefcase-outline:before, .ion-ios-browsers:before, .ion-ios-browsers-outline:before, .ion-ios-calculator:before, .ion-ios-calculator-outline:before, .ion-ios-calendar:before, .ion-ios-calendar-outline:before, .ion-ios-camera:before, .ion-ios-camera-outline:before, .ion-ios-cart:before, .ion-ios-cart-outline:before, .ion-ios-chatboxes:before, .ion-ios-chatboxes-outline:before, .ion-ios-chatbubble:before, .ion-ios-chatbubble-outline:before, .ion-ios-checkmark:before, .ion-ios-checkmark-empty:before, .ion-ios-checkmark-outline:before, .ion-ios-circle-filled:before, .ion-ios-circle-outline:before, .ion-ios-clock:before, .ion-ios-clock-outline:before, .ion-ios-close:before, .ion-ios-close-empty:before, .ion-ios-close-outline:before, .ion-ios-cloud:before, .ion-ios-cloud-download:before, .ion-ios-cloud-download-outline:before, .ion-ios-cloud-outline:before, .ion-ios-cloud-upload:before, .ion-ios-cloud-upload-outline:before, .ion-ios-cloudy:before, .ion-ios-cloudy-night:before, .ion-ios-cloudy-night-outline:before, .ion-ios-cloudy-outline:before, .ion-ios-cog:before, .ion-ios-cog-outline:before, .ion-ios-color-filter:before, .ion-ios-color-filter-outline:before, .ion-ios-color-wand:before, .ion-ios-color-wand-outline:before, .ion-ios-compose:before, .ion-ios-compose-outline:before, .ion-ios-contact:before, .ion-ios-contact-outline:before, .ion-ios-copy:before, .ion-ios-copy-outline:before, .ion-ios-crop:before, .ion-ios-crop-strong:before, .ion-ios-download:before, .ion-ios-download-outline:before, .ion-ios-drag:before, .ion-ios-email:before, .ion-ios-email-outline:before, .ion-ios-eye:before, .ion-ios-eye-outline:before, .ion-ios-fastforward:before, .ion-ios-fastforward-outline:before, .ion-ios-filing:before, .ion-ios-filing-outline:before, .ion-ios-film:before, .ion-ios-film-outline:before, .ion-ios-flag:before, .ion-ios-flag-outline:before, .ion-ios-flame:before, .ion-ios-flame-outline:before, .ion-ios-flask:before, .ion-ios-flask-outline:before, .ion-ios-flower:before, .ion-ios-flower-outline:before, .ion-ios-folder:before, .ion-ios-folder-outline:before, .ion-ios-football:before, .ion-ios-football-outline:before, .ion-ios-game-controller-a:before, .ion-ios-game-controller-a-outline:before, .ion-ios-game-controller-b:before, .ion-ios-game-controller-b-outline:before, .ion-ios-gear:before, .ion-ios-gear-outline:before, .ion-ios-glasses:before, .ion-ios-glasses-outline:before, .ion-ios-grid-view:before, .ion-ios-grid-view-outline:before, .ion-ios-heart:before, .ion-ios-heart-outline:before, .ion-ios-help:before, .ion-ios-help-empty:before, .ion-ios-help-outline:before, .ion-ios-home:before, .ion-ios-home-outline:before, .ion-ios-infinite:before, .ion-ios-infinite-outline:before, .ion-ios-information:before, .ion-ios-information-empty:before, .ion-ios-information-outline:before, .ion-ios-ionic-outline:before, .ion-ios-keypad:before, .ion-ios-keypad-outline:before, .ion-ios-lightbulb:before, .ion-ios-lightbulb-outline:before, .ion-ios-list:before, .ion-ios-list-outline:before, .ion-ios-location:before, .ion-ios-location-outline:before, .ion-ios-locked:before, .ion-ios-locked-outline:before, .ion-ios-loop:before, .ion-ios-loop-strong:before, .ion-ios-medical:before, .ion-ios-medical-outline:before, .ion-ios-medkit:before, .ion-ios-medkit-outline:before, .ion-ios-mic:before, .ion-ios-mic-off:before, .ion-ios-mic-outline:before, .ion-ios-minus:before, .ion-ios-minus-empty:before, .ion-ios-minus-outline:before, .ion-ios-monitor:before, .ion-ios-monitor-outline:before, .ion-ios-moon:before, .ion-ios-moon-outline:before, .ion-ios-more:before, .ion-ios-more-outline:before, .ion-ios-musical-note:before, .ion-ios-musical-notes:before, .ion-ios-navigate:before, .ion-ios-navigate-outline:before, .ion-ios-nutrition:before, .ion-ios-nutrition-outline:before, .ion-ios-paper:before, .ion-ios-paper-outline:before, .ion-ios-paperplane:before, .ion-ios-paperplane-outline:before, .ion-ios-partlysunny:before, .ion-ios-partlysunny-outline:before, .ion-ios-pause:before, .ion-ios-pause-outline:before, .ion-ios-paw:before, .ion-ios-paw-outline:before, .ion-ios-people:before, .ion-ios-people-outline:before, .ion-ios-person:before, .ion-ios-person-outline:before, .ion-ios-personadd:before, .ion-ios-personadd-outline:before, .ion-ios-photos:before, .ion-ios-photos-outline:before, .ion-ios-pie:before, .ion-ios-pie-outline:before, .ion-ios-pint:before, .ion-ios-pint-outline:before, .ion-ios-play:before, .ion-ios-play-outline:before, .ion-ios-plus:before, .ion-ios-plus-empty:before, .ion-ios-plus-outline:before, .ion-ios-pricetag:before, .ion-ios-pricetag-outline:before, .ion-ios-pricetags:before, .ion-ios-pricetags-outline:before, .ion-ios-printer:before, .ion-ios-printer-outline:before, .ion-ios-pulse:before, .ion-ios-pulse-strong:before, .ion-ios-rainy:before, .ion-ios-rainy-outline:before, .ion-ios-recording:before, .ion-ios-recording-outline:before, .ion-ios-redo:before, .ion-ios-redo-outline:before, .ion-ios-refresh:before, .ion-ios-refresh-empty:before, .ion-ios-refresh-outline:before, .ion-ios-reload:before, .ion-ios-reverse-camera:before, .ion-ios-reverse-camera-outline:before, .ion-ios-rewind:before, .ion-ios-rewind-outline:before, .ion-ios-rose:before, .ion-ios-rose-outline:before, .ion-ios-search:before, .ion-ios-search-strong:before, .ion-ios-settings:before, .ion-ios-settings-strong:before, .ion-ios-shuffle:before, .ion-ios-shuffle-strong:before, .ion-ios-skipbackward:before, .ion-ios-skipbackward-outline:before, .ion-ios-skipforward:before, .ion-ios-skipforward-outline:before, .ion-ios-snowy:before, .ion-ios-speedometer:before, .ion-ios-speedometer-outline:before, .ion-ios-star:before, .ion-ios-star-half:before, .ion-ios-star-outline:before, .ion-ios-stopwatch:before, .ion-ios-stopwatch-outline:before, .ion-ios-sunny:before, .ion-ios-sunny-outline:before, .ion-ios-telephone:before, .ion-ios-telephone-outline:before, .ion-ios-tennisball:before, .ion-ios-tennisball-outline:before, .ion-ios-thunderstorm:before, .ion-ios-thunderstorm-outline:before, .ion-ios-time:before, .ion-ios-time-outline:before, .ion-ios-timer:before, .ion-ios-timer-outline:before, .ion-ios-toggle:before, .ion-ios-toggle-outline:before, .ion-ios-trash:before, .ion-ios-trash-outline:before, .ion-ios-undo:before, .ion-ios-undo-outline:before, .ion-ios-unlocked:before, .ion-ios-unlocked-outline:before, .ion-ios-upload:before, .ion-ios-upload-outline:before, .ion-ios-videocam:before, .ion-ios-videocam-outline:before, .ion-ios-volume-high:before, .ion-ios-volume-low:before, .ion-ios-wineglass:before, .ion-ios-wineglass-outline:before, .ion-ios-world:before, .ion-ios-world-outline:before, .ion-ipad:before, .ion-iphone:before, .ion-ipod:before, .ion-jet:before, .ion-key:before, .ion-knife:before, .ion-laptop:before, .ion-leaf:before, .ion-levels:before, .ion-lightbulb:before, .ion-link:before, .ion-load-a:before, .ion-load-b:before, .ion-load-c:before, .ion-load-d:before, .ion-location:before, .ion-lock-combination:before, .ion-locked:before, .ion-log-in:before, .ion-log-out:before, .ion-loop:before, .ion-magnet:before, .ion-male:before, .ion-man:before, .ion-map:before, .ion-medkit:before, .ion-merge:before, .ion-mic-a:before, .ion-mic-b:before, .ion-mic-c:before, .ion-minus:before, .ion-minus-circled:before, .ion-minus-round:before, .ion-model-s:before, .ion-monitor:before, .ion-more:before, .ion-mouse:before, .ion-music-note:before, .ion-navicon:before, .ion-navicon-round:before, .ion-navigate:before, .ion-network:before, .ion-no-smoking:before, .ion-nuclear:before, .ion-outlet:before, .ion-paintbrush:before, .ion-paintbucket:before, .ion-paper-airplane:before, .ion-paperclip:before, .ion-pause:before, .ion-person:before, .ion-person-add:before, .ion-person-stalker:before, .ion-pie-graph:before, .ion-pin:before, .ion-pinpoint:before, .ion-pizza:before, .ion-plane:before, .ion-planet:before, .ion-play:before, .ion-playstation:before, .ion-plus:before, .ion-plus-circled:before, .ion-plus-round:before, .ion-podium:before, .ion-pound:before, .ion-power:before, .ion-pricetag:before, .ion-pricetags:before, .ion-printer:before, .ion-pull-request:before, .ion-qr-scanner:before, .ion-quote:before, .ion-radio-waves:before, .ion-record:before, .ion-refresh:before, .ion-reply:before, .ion-reply-all:before, .ion-ribbon-a:before, .ion-ribbon-b:before, .ion-sad:before, .ion-sad-outline:before, .ion-scissors:before, .ion-search:before, .ion-settings:before, .ion-share:before, .ion-shuffle:before, .ion-skip-backward:before, .ion-skip-forward:before, .ion-social-android:before, .ion-social-android-outline:before, .ion-social-angular:before, .ion-social-angular-outline:before, .ion-social-apple:before, .ion-social-apple-outline:before, .ion-social-bitcoin:before, .ion-social-bitcoin-outline:before, .ion-social-buffer:before, .ion-social-buffer-outline:before, .ion-social-chrome:before, .ion-social-chrome-outline:before, .ion-social-codepen:before, .ion-social-codepen-outline:before, .ion-social-css3:before, .ion-social-css3-outline:before, .ion-social-designernews:before, .ion-social-designernews-outline:before, .ion-social-dribbble:before, .ion-social-dribbble-outline:before, .ion-social-dropbox:before, .ion-social-dropbox-outline:before, .ion-social-euro:before, .ion-social-euro-outline:before, .ion-social-facebook:before, .ion-social-facebook-outline:before, .ion-social-foursquare:before, .ion-social-foursquare-outline:before, .ion-social-freebsd-devil:before, .ion-social-github:before, .ion-social-github-outline:before, .ion-social-google:before, .ion-social-google-outline:before, .ion-social-googleplus:before, .ion-social-googleplus-outline:before, .ion-social-hackernews:before, .ion-social-hackernews-outline:before, .ion-social-html5:before, .ion-social-html5-outline:before, .ion-social-instagram:before, .ion-social-instagram-outline:before, .ion-social-javascript:before, .ion-social-javascript-outline:before, .ion-social-linkedin:before, .ion-social-linkedin-outline:before, .ion-social-markdown:before, .ion-social-nodejs:before, .ion-social-octocat:before, .ion-social-pinterest:before, .ion-social-pinterest-outline:before, .ion-social-python:before, .ion-social-reddit:before, .ion-social-reddit-outline:before, .ion-social-rss:before, .ion-social-rss-outline:before, .ion-social-sass:before, .ion-social-skype:before, .ion-social-skype-outline:before, .ion-social-snapchat:before, .ion-social-snapchat-outline:before, .ion-social-tumblr:before, .ion-social-tumblr-outline:before, .ion-social-tux:before, .ion-social-twitch:before, .ion-social-twitch-outline:before, .ion-social-twitter:before, .ion-social-twitter-outline:before, .ion-social-usd:before, .ion-social-usd-outline:before, .ion-social-vimeo:before, .ion-social-vimeo-outline:before, .ion-social-whatsapp:before, .ion-social-whatsapp-outline:before, .ion-social-windows:before, .ion-social-windows-outline:before, .ion-social-wordpress:before, .ion-social-wordpress-outline:before, .ion-social-yahoo:before, .ion-social-yahoo-outline:before, .ion-social-yen:before, .ion-social-yen-outline:before, .ion-social-youtube:before, .ion-social-youtube-outline:before, .ion-soup-can:before, .ion-soup-can-outline:before, .ion-speakerphone:before, .ion-speedometer:before, .ion-spoon:before, .ion-star:before, .ion-stats-bars:before, .ion-steam:before, .ion-stop:before, .ion-thermometer:before, .ion-thumbsdown:before, .ion-thumbsup:before, .ion-toggle:before, .ion-toggle-filled:before, .ion-transgender:before, .ion-trash-a:before, .ion-trash-b:before, .ion-trophy:before, .ion-tshirt:before, .ion-tshirt-outline:before, .ion-umbrella:before, .ion-university:before, .ion-unlocked:before, .ion-upload:before, .ion-usb:before, .ion-videocamera:before, .ion-volume-high:before, .ion-volume-low:before, .ion-volume-medium:before, .ion-volume-mute:before, .ion-wand:before, .ion-waterdrop:before, .ion-wifi:before, .ion-wineglass:before, .ion-woman:before, .ion-wrench:before, .ion-xbox:before {\n  display: inline-block;\n  font-family: \"Ionicons\";\n  speak: none;\n  font-style: normal;\n  font-weight: normal;\n  font-variant: normal;\n  text-transform: none;\n  text-rendering: auto;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\n.ion-alert:before {\n  content: \"\\F101\"; }\n\n.ion-alert-circled:before {\n  content: \"\\F100\"; }\n\n.ion-android-add:before {\n  content: \"\\F2C7\"; }\n\n.ion-android-add-circle:before {\n  content: \"\\F359\"; }\n\n.ion-android-alarm-clock:before {\n  content: \"\\F35A\"; }\n\n.ion-android-alert:before {\n  content: \"\\F35B\"; }\n\n.ion-android-apps:before {\n  content: \"\\F35C\"; }\n\n.ion-android-archive:before {\n  content: \"\\F2C9\"; }\n\n.ion-android-arrow-back:before {\n  content: \"\\F2CA\"; }\n\n.ion-android-arrow-down:before {\n  content: \"\\F35D\"; }\n\n.ion-android-arrow-dropdown:before {\n  content: \"\\F35F\"; }\n\n.ion-android-arrow-dropdown-circle:before {\n  content: \"\\F35E\"; }\n\n.ion-android-arrow-dropleft:before {\n  content: \"\\F361\"; }\n\n.ion-android-arrow-dropleft-circle:before {\n  content: \"\\F360\"; }\n\n.ion-android-arrow-dropright:before {\n  content: \"\\F363\"; }\n\n.ion-android-arrow-dropright-circle:before {\n  content: \"\\F362\"; }\n\n.ion-android-arrow-dropup:before {\n  content: \"\\F365\"; }\n\n.ion-android-arrow-dropup-circle:before {\n  content: \"\\F364\"; }\n\n.ion-android-arrow-forward:before {\n  content: \"\\F30F\"; }\n\n.ion-android-arrow-up:before {\n  content: \"\\F366\"; }\n\n.ion-android-attach:before {\n  content: \"\\F367\"; }\n\n.ion-android-bar:before {\n  content: \"\\F368\"; }\n\n.ion-android-bicycle:before {\n  content: \"\\F369\"; }\n\n.ion-android-boat:before {\n  content: \"\\F36A\"; }\n\n.ion-android-bookmark:before {\n  content: \"\\F36B\"; }\n\n.ion-android-bulb:before {\n  content: \"\\F36C\"; }\n\n.ion-android-bus:before {\n  content: \"\\F36D\"; }\n\n.ion-android-calendar:before {\n  content: \"\\F2D1\"; }\n\n.ion-android-call:before {\n  content: \"\\F2D2\"; }\n\n.ion-android-camera:before {\n  content: \"\\F2D3\"; }\n\n.ion-android-cancel:before {\n  content: \"\\F36E\"; }\n\n.ion-android-car:before {\n  content: \"\\F36F\"; }\n\n.ion-android-cart:before {\n  content: \"\\F370\"; }\n\n.ion-android-chat:before {\n  content: \"\\F2D4\"; }\n\n.ion-android-checkbox:before {\n  content: \"\\F374\"; }\n\n.ion-android-checkbox-blank:before {\n  content: \"\\F371\"; }\n\n.ion-android-checkbox-outline:before {\n  content: \"\\F373\"; }\n\n.ion-android-checkbox-outline-blank:before {\n  content: \"\\F372\"; }\n\n.ion-android-checkmark-circle:before {\n  content: \"\\F375\"; }\n\n.ion-android-clipboard:before {\n  content: \"\\F376\"; }\n\n.ion-android-close:before {\n  content: \"\\F2D7\"; }\n\n.ion-android-cloud:before {\n  content: \"\\F37A\"; }\n\n.ion-android-cloud-circle:before {\n  content: \"\\F377\"; }\n\n.ion-android-cloud-done:before {\n  content: \"\\F378\"; }\n\n.ion-android-cloud-outline:before {\n  content: \"\\F379\"; }\n\n.ion-android-color-palette:before {\n  content: \"\\F37B\"; }\n\n.ion-android-compass:before {\n  content: \"\\F37C\"; }\n\n.ion-android-contact:before {\n  content: \"\\F2D8\"; }\n\n.ion-android-contacts:before {\n  content: \"\\F2D9\"; }\n\n.ion-android-contract:before {\n  content: \"\\F37D\"; }\n\n.ion-android-create:before {\n  content: \"\\F37E\"; }\n\n.ion-android-delete:before {\n  content: \"\\F37F\"; }\n\n.ion-android-desktop:before {\n  content: \"\\F380\"; }\n\n.ion-android-document:before {\n  content: \"\\F381\"; }\n\n.ion-android-done:before {\n  content: \"\\F383\"; }\n\n.ion-android-done-all:before {\n  content: \"\\F382\"; }\n\n.ion-android-download:before {\n  content: \"\\F2DD\"; }\n\n.ion-android-drafts:before {\n  content: \"\\F384\"; }\n\n.ion-android-exit:before {\n  content: \"\\F385\"; }\n\n.ion-android-expand:before {\n  content: \"\\F386\"; }\n\n.ion-android-favorite:before {\n  content: \"\\F388\"; }\n\n.ion-android-favorite-outline:before {\n  content: \"\\F387\"; }\n\n.ion-android-film:before {\n  content: \"\\F389\"; }\n\n.ion-android-folder:before {\n  content: \"\\F2E0\"; }\n\n.ion-android-folder-open:before {\n  content: \"\\F38A\"; }\n\n.ion-android-funnel:before {\n  content: \"\\F38B\"; }\n\n.ion-android-globe:before {\n  content: \"\\F38C\"; }\n\n.ion-android-hand:before {\n  content: \"\\F2E3\"; }\n\n.ion-android-hangout:before {\n  content: \"\\F38D\"; }\n\n.ion-android-happy:before {\n  content: \"\\F38E\"; }\n\n.ion-android-home:before {\n  content: \"\\F38F\"; }\n\n.ion-android-image:before {\n  content: \"\\F2E4\"; }\n\n.ion-android-laptop:before {\n  content: \"\\F390\"; }\n\n.ion-android-list:before {\n  content: \"\\F391\"; }\n\n.ion-android-locate:before {\n  content: \"\\F2E9\"; }\n\n.ion-android-lock:before {\n  content: \"\\F392\"; }\n\n.ion-android-mail:before {\n  content: \"\\F2EB\"; }\n\n.ion-android-map:before {\n  content: \"\\F393\"; }\n\n.ion-android-menu:before {\n  content: \"\\F394\"; }\n\n.ion-android-microphone:before {\n  content: \"\\F2EC\"; }\n\n.ion-android-microphone-off:before {\n  content: \"\\F395\"; }\n\n.ion-android-more-horizontal:before {\n  content: \"\\F396\"; }\n\n.ion-android-more-vertical:before {\n  content: \"\\F397\"; }\n\n.ion-android-navigate:before {\n  content: \"\\F398\"; }\n\n.ion-android-notifications:before {\n  content: \"\\F39B\"; }\n\n.ion-android-notifications-none:before {\n  content: \"\\F399\"; }\n\n.ion-android-notifications-off:before {\n  content: \"\\F39A\"; }\n\n.ion-android-open:before {\n  content: \"\\F39C\"; }\n\n.ion-android-options:before {\n  content: \"\\F39D\"; }\n\n.ion-android-people:before {\n  content: \"\\F39E\"; }\n\n.ion-android-person:before {\n  content: \"\\F3A0\"; }\n\n.ion-android-person-add:before {\n  content: \"\\F39F\"; }\n\n.ion-android-phone-landscape:before {\n  content: \"\\F3A1\"; }\n\n.ion-android-phone-portrait:before {\n  content: \"\\F3A2\"; }\n\n.ion-android-pin:before {\n  content: \"\\F3A3\"; }\n\n.ion-android-plane:before {\n  content: \"\\F3A4\"; }\n\n.ion-android-playstore:before {\n  content: \"\\F2F0\"; }\n\n.ion-android-print:before {\n  content: \"\\F3A5\"; }\n\n.ion-android-radio-button-off:before {\n  content: \"\\F3A6\"; }\n\n.ion-android-radio-button-on:before {\n  content: \"\\F3A7\"; }\n\n.ion-android-refresh:before {\n  content: \"\\F3A8\"; }\n\n.ion-android-remove:before {\n  content: \"\\F2F4\"; }\n\n.ion-android-remove-circle:before {\n  content: \"\\F3A9\"; }\n\n.ion-android-restaurant:before {\n  content: \"\\F3AA\"; }\n\n.ion-android-sad:before {\n  content: \"\\F3AB\"; }\n\n.ion-android-search:before {\n  content: \"\\F2F5\"; }\n\n.ion-android-send:before {\n  content: \"\\F2F6\"; }\n\n.ion-android-settings:before {\n  content: \"\\F2F7\"; }\n\n.ion-android-share:before {\n  content: \"\\F2F8\"; }\n\n.ion-android-share-alt:before {\n  content: \"\\F3AC\"; }\n\n.ion-android-star:before {\n  content: \"\\F2FC\"; }\n\n.ion-android-star-half:before {\n  content: \"\\F3AD\"; }\n\n.ion-android-star-outline:before {\n  content: \"\\F3AE\"; }\n\n.ion-android-stopwatch:before {\n  content: \"\\F2FD\"; }\n\n.ion-android-subway:before {\n  content: \"\\F3AF\"; }\n\n.ion-android-sunny:before {\n  content: \"\\F3B0\"; }\n\n.ion-android-sync:before {\n  content: \"\\F3B1\"; }\n\n.ion-android-textsms:before {\n  content: \"\\F3B2\"; }\n\n.ion-android-time:before {\n  content: \"\\F3B3\"; }\n\n.ion-android-train:before {\n  content: \"\\F3B4\"; }\n\n.ion-android-unlock:before {\n  content: \"\\F3B5\"; }\n\n.ion-android-upload:before {\n  content: \"\\F3B6\"; }\n\n.ion-android-volume-down:before {\n  content: \"\\F3B7\"; }\n\n.ion-android-volume-mute:before {\n  content: \"\\F3B8\"; }\n\n.ion-android-volume-off:before {\n  content: \"\\F3B9\"; }\n\n.ion-android-volume-up:before {\n  content: \"\\F3BA\"; }\n\n.ion-android-walk:before {\n  content: \"\\F3BB\"; }\n\n.ion-android-warning:before {\n  content: \"\\F3BC\"; }\n\n.ion-android-watch:before {\n  content: \"\\F3BD\"; }\n\n.ion-android-wifi:before {\n  content: \"\\F305\"; }\n\n.ion-aperture:before {\n  content: \"\\F313\"; }\n\n.ion-archive:before {\n  content: \"\\F102\"; }\n\n.ion-arrow-down-a:before {\n  content: \"\\F103\"; }\n\n.ion-arrow-down-b:before {\n  content: \"\\F104\"; }\n\n.ion-arrow-down-c:before {\n  content: \"\\F105\"; }\n\n.ion-arrow-expand:before {\n  content: \"\\F25E\"; }\n\n.ion-arrow-graph-down-left:before {\n  content: \"\\F25F\"; }\n\n.ion-arrow-graph-down-right:before {\n  content: \"\\F260\"; }\n\n.ion-arrow-graph-up-left:before {\n  content: \"\\F261\"; }\n\n.ion-arrow-graph-up-right:before {\n  content: \"\\F262\"; }\n\n.ion-arrow-left-a:before {\n  content: \"\\F106\"; }\n\n.ion-arrow-left-b:before {\n  content: \"\\F107\"; }\n\n.ion-arrow-left-c:before {\n  content: \"\\F108\"; }\n\n.ion-arrow-move:before {\n  content: \"\\F263\"; }\n\n.ion-arrow-resize:before {\n  content: \"\\F264\"; }\n\n.ion-arrow-return-left:before {\n  content: \"\\F265\"; }\n\n.ion-arrow-return-right:before {\n  content: \"\\F266\"; }\n\n.ion-arrow-right-a:before {\n  content: \"\\F109\"; }\n\n.ion-arrow-right-b:before {\n  content: \"\\F10A\"; }\n\n.ion-arrow-right-c:before {\n  content: \"\\F10B\"; }\n\n.ion-arrow-shrink:before {\n  content: \"\\F267\"; }\n\n.ion-arrow-swap:before {\n  content: \"\\F268\"; }\n\n.ion-arrow-up-a:before {\n  content: \"\\F10C\"; }\n\n.ion-arrow-up-b:before {\n  content: \"\\F10D\"; }\n\n.ion-arrow-up-c:before {\n  content: \"\\F10E\"; }\n\n.ion-asterisk:before {\n  content: \"\\F314\"; }\n\n.ion-at:before {\n  content: \"\\F10F\"; }\n\n.ion-backspace:before {\n  content: \"\\F3BF\"; }\n\n.ion-backspace-outline:before {\n  content: \"\\F3BE\"; }\n\n.ion-bag:before {\n  content: \"\\F110\"; }\n\n.ion-battery-charging:before {\n  content: \"\\F111\"; }\n\n.ion-battery-empty:before {\n  content: \"\\F112\"; }\n\n.ion-battery-full:before {\n  content: \"\\F113\"; }\n\n.ion-battery-half:before {\n  content: \"\\F114\"; }\n\n.ion-battery-low:before {\n  content: \"\\F115\"; }\n\n.ion-beaker:before {\n  content: \"\\F269\"; }\n\n.ion-beer:before {\n  content: \"\\F26A\"; }\n\n.ion-bluetooth:before {\n  content: \"\\F116\"; }\n\n.ion-bonfire:before {\n  content: \"\\F315\"; }\n\n.ion-bookmark:before {\n  content: \"\\F26B\"; }\n\n.ion-bowtie:before {\n  content: \"\\F3C0\"; }\n\n.ion-briefcase:before {\n  content: \"\\F26C\"; }\n\n.ion-bug:before {\n  content: \"\\F2BE\"; }\n\n.ion-calculator:before {\n  content: \"\\F26D\"; }\n\n.ion-calendar:before {\n  content: \"\\F117\"; }\n\n.ion-camera:before {\n  content: \"\\F118\"; }\n\n.ion-card:before {\n  content: \"\\F119\"; }\n\n.ion-cash:before {\n  content: \"\\F316\"; }\n\n.ion-chatbox:before {\n  content: \"\\F11B\"; }\n\n.ion-chatbox-working:before {\n  content: \"\\F11A\"; }\n\n.ion-chatboxes:before {\n  content: \"\\F11C\"; }\n\n.ion-chatbubble:before {\n  content: \"\\F11E\"; }\n\n.ion-chatbubble-working:before {\n  content: \"\\F11D\"; }\n\n.ion-chatbubbles:before {\n  content: \"\\F11F\"; }\n\n.ion-checkmark:before {\n  content: \"\\F122\"; }\n\n.ion-checkmark-circled:before {\n  content: \"\\F120\"; }\n\n.ion-checkmark-round:before {\n  content: \"\\F121\"; }\n\n.ion-chevron-down:before {\n  content: \"\\F123\"; }\n\n.ion-chevron-left:before {\n  content: \"\\F124\"; }\n\n.ion-chevron-right:before {\n  content: \"\\F125\"; }\n\n.ion-chevron-up:before {\n  content: \"\\F126\"; }\n\n.ion-clipboard:before {\n  content: \"\\F127\"; }\n\n.ion-clock:before {\n  content: \"\\F26E\"; }\n\n.ion-close:before {\n  content: \"\\F12A\"; }\n\n.ion-close-circled:before {\n  content: \"\\F128\"; }\n\n.ion-close-round:before {\n  content: \"\\F129\"; }\n\n.ion-closed-captioning:before {\n  content: \"\\F317\"; }\n\n.ion-cloud:before {\n  content: \"\\F12B\"; }\n\n.ion-code:before {\n  content: \"\\F271\"; }\n\n.ion-code-download:before {\n  content: \"\\F26F\"; }\n\n.ion-code-working:before {\n  content: \"\\F270\"; }\n\n.ion-coffee:before {\n  content: \"\\F272\"; }\n\n.ion-compass:before {\n  content: \"\\F273\"; }\n\n.ion-compose:before {\n  content: \"\\F12C\"; }\n\n.ion-connection-bars:before {\n  content: \"\\F274\"; }\n\n.ion-contrast:before {\n  content: \"\\F275\"; }\n\n.ion-crop:before {\n  content: \"\\F3C1\"; }\n\n.ion-cube:before {\n  content: \"\\F318\"; }\n\n.ion-disc:before {\n  content: \"\\F12D\"; }\n\n.ion-document:before {\n  content: \"\\F12F\"; }\n\n.ion-document-text:before {\n  content: \"\\F12E\"; }\n\n.ion-drag:before {\n  content: \"\\F130\"; }\n\n.ion-earth:before {\n  content: \"\\F276\"; }\n\n.ion-easel:before {\n  content: \"\\F3C2\"; }\n\n.ion-edit:before {\n  content: \"\\F2BF\"; }\n\n.ion-egg:before {\n  content: \"\\F277\"; }\n\n.ion-eject:before {\n  content: \"\\F131\"; }\n\n.ion-email:before {\n  content: \"\\F132\"; }\n\n.ion-email-unread:before {\n  content: \"\\F3C3\"; }\n\n.ion-erlenmeyer-flask:before {\n  content: \"\\F3C5\"; }\n\n.ion-erlenmeyer-flask-bubbles:before {\n  content: \"\\F3C4\"; }\n\n.ion-eye:before {\n  content: \"\\F133\"; }\n\n.ion-eye-disabled:before {\n  content: \"\\F306\"; }\n\n.ion-female:before {\n  content: \"\\F278\"; }\n\n.ion-filing:before {\n  content: \"\\F134\"; }\n\n.ion-film-marker:before {\n  content: \"\\F135\"; }\n\n.ion-fireball:before {\n  content: \"\\F319\"; }\n\n.ion-flag:before {\n  content: \"\\F279\"; }\n\n.ion-flame:before {\n  content: \"\\F31A\"; }\n\n.ion-flash:before {\n  content: \"\\F137\"; }\n\n.ion-flash-off:before {\n  content: \"\\F136\"; }\n\n.ion-folder:before {\n  content: \"\\F139\"; }\n\n.ion-fork:before {\n  content: \"\\F27A\"; }\n\n.ion-fork-repo:before {\n  content: \"\\F2C0\"; }\n\n.ion-forward:before {\n  content: \"\\F13A\"; }\n\n.ion-funnel:before {\n  content: \"\\F31B\"; }\n\n.ion-gear-a:before {\n  content: \"\\F13D\"; }\n\n.ion-gear-b:before {\n  content: \"\\F13E\"; }\n\n.ion-grid:before {\n  content: \"\\F13F\"; }\n\n.ion-hammer:before {\n  content: \"\\F27B\"; }\n\n.ion-happy:before {\n  content: \"\\F31C\"; }\n\n.ion-happy-outline:before {\n  content: \"\\F3C6\"; }\n\n.ion-headphone:before {\n  content: \"\\F140\"; }\n\n.ion-heart:before {\n  content: \"\\F141\"; }\n\n.ion-heart-broken:before {\n  content: \"\\F31D\"; }\n\n.ion-help:before {\n  content: \"\\F143\"; }\n\n.ion-help-buoy:before {\n  content: \"\\F27C\"; }\n\n.ion-help-circled:before {\n  content: \"\\F142\"; }\n\n.ion-home:before {\n  content: \"\\F144\"; }\n\n.ion-icecream:before {\n  content: \"\\F27D\"; }\n\n.ion-image:before {\n  content: \"\\F147\"; }\n\n.ion-images:before {\n  content: \"\\F148\"; }\n\n.ion-information:before {\n  content: \"\\F14A\"; }\n\n.ion-information-circled:before {\n  content: \"\\F149\"; }\n\n.ion-ionic:before {\n  content: \"\\F14B\"; }\n\n.ion-ios-alarm:before {\n  content: \"\\F3C8\"; }\n\n.ion-ios-alarm-outline:before {\n  content: \"\\F3C7\"; }\n\n.ion-ios-albums:before {\n  content: \"\\F3CA\"; }\n\n.ion-ios-albums-outline:before {\n  content: \"\\F3C9\"; }\n\n.ion-ios-americanfootball:before {\n  content: \"\\F3CC\"; }\n\n.ion-ios-americanfootball-outline:before {\n  content: \"\\F3CB\"; }\n\n.ion-ios-analytics:before {\n  content: \"\\F3CE\"; }\n\n.ion-ios-analytics-outline:before {\n  content: \"\\F3CD\"; }\n\n.ion-ios-arrow-back:before {\n  content: \"\\F3CF\"; }\n\n.ion-ios-arrow-down:before {\n  content: \"\\F3D0\"; }\n\n.ion-ios-arrow-forward:before {\n  content: \"\\F3D1\"; }\n\n.ion-ios-arrow-left:before {\n  content: \"\\F3D2\"; }\n\n.ion-ios-arrow-right:before {\n  content: \"\\F3D3\"; }\n\n.ion-ios-arrow-thin-down:before {\n  content: \"\\F3D4\"; }\n\n.ion-ios-arrow-thin-left:before {\n  content: \"\\F3D5\"; }\n\n.ion-ios-arrow-thin-right:before {\n  content: \"\\F3D6\"; }\n\n.ion-ios-arrow-thin-up:before {\n  content: \"\\F3D7\"; }\n\n.ion-ios-arrow-up:before {\n  content: \"\\F3D8\"; }\n\n.ion-ios-at:before {\n  content: \"\\F3DA\"; }\n\n.ion-ios-at-outline:before {\n  content: \"\\F3D9\"; }\n\n.ion-ios-barcode:before {\n  content: \"\\F3DC\"; }\n\n.ion-ios-barcode-outline:before {\n  content: \"\\F3DB\"; }\n\n.ion-ios-baseball:before {\n  content: \"\\F3DE\"; }\n\n.ion-ios-baseball-outline:before {\n  content: \"\\F3DD\"; }\n\n.ion-ios-basketball:before {\n  content: \"\\F3E0\"; }\n\n.ion-ios-basketball-outline:before {\n  content: \"\\F3DF\"; }\n\n.ion-ios-bell:before {\n  content: \"\\F3E2\"; }\n\n.ion-ios-bell-outline:before {\n  content: \"\\F3E1\"; }\n\n.ion-ios-body:before {\n  content: \"\\F3E4\"; }\n\n.ion-ios-body-outline:before {\n  content: \"\\F3E3\"; }\n\n.ion-ios-bolt:before {\n  content: \"\\F3E6\"; }\n\n.ion-ios-bolt-outline:before {\n  content: \"\\F3E5\"; }\n\n.ion-ios-book:before {\n  content: \"\\F3E8\"; }\n\n.ion-ios-book-outline:before {\n  content: \"\\F3E7\"; }\n\n.ion-ios-bookmarks:before {\n  content: \"\\F3EA\"; }\n\n.ion-ios-bookmarks-outline:before {\n  content: \"\\F3E9\"; }\n\n.ion-ios-box:before {\n  content: \"\\F3EC\"; }\n\n.ion-ios-box-outline:before {\n  content: \"\\F3EB\"; }\n\n.ion-ios-briefcase:before {\n  content: \"\\F3EE\"; }\n\n.ion-ios-briefcase-outline:before {\n  content: \"\\F3ED\"; }\n\n.ion-ios-browsers:before {\n  content: \"\\F3F0\"; }\n\n.ion-ios-browsers-outline:before {\n  content: \"\\F3EF\"; }\n\n.ion-ios-calculator:before {\n  content: \"\\F3F2\"; }\n\n.ion-ios-calculator-outline:before {\n  content: \"\\F3F1\"; }\n\n.ion-ios-calendar:before {\n  content: \"\\F3F4\"; }\n\n.ion-ios-calendar-outline:before {\n  content: \"\\F3F3\"; }\n\n.ion-ios-camera:before {\n  content: \"\\F3F6\"; }\n\n.ion-ios-camera-outline:before {\n  content: \"\\F3F5\"; }\n\n.ion-ios-cart:before {\n  content: \"\\F3F8\"; }\n\n.ion-ios-cart-outline:before {\n  content: \"\\F3F7\"; }\n\n.ion-ios-chatboxes:before {\n  content: \"\\F3FA\"; }\n\n.ion-ios-chatboxes-outline:before {\n  content: \"\\F3F9\"; }\n\n.ion-ios-chatbubble:before {\n  content: \"\\F3FC\"; }\n\n.ion-ios-chatbubble-outline:before {\n  content: \"\\F3FB\"; }\n\n.ion-ios-checkmark:before {\n  content: \"\\F3FF\"; }\n\n.ion-ios-checkmark-empty:before {\n  content: \"\\F3FD\"; }\n\n.ion-ios-checkmark-outline:before {\n  content: \"\\F3FE\"; }\n\n.ion-ios-circle-filled:before {\n  content: \"\\F400\"; }\n\n.ion-ios-circle-outline:before {\n  content: \"\\F401\"; }\n\n.ion-ios-clock:before {\n  content: \"\\F403\"; }\n\n.ion-ios-clock-outline:before {\n  content: \"\\F402\"; }\n\n.ion-ios-close:before {\n  content: \"\\F406\"; }\n\n.ion-ios-close-empty:before {\n  content: \"\\F404\"; }\n\n.ion-ios-close-outline:before {\n  content: \"\\F405\"; }\n\n.ion-ios-cloud:before {\n  content: \"\\F40C\"; }\n\n.ion-ios-cloud-download:before {\n  content: \"\\F408\"; }\n\n.ion-ios-cloud-download-outline:before {\n  content: \"\\F407\"; }\n\n.ion-ios-cloud-outline:before {\n  content: \"\\F409\"; }\n\n.ion-ios-cloud-upload:before {\n  content: \"\\F40B\"; }\n\n.ion-ios-cloud-upload-outline:before {\n  content: \"\\F40A\"; }\n\n.ion-ios-cloudy:before {\n  content: \"\\F410\"; }\n\n.ion-ios-cloudy-night:before {\n  content: \"\\F40E\"; }\n\n.ion-ios-cloudy-night-outline:before {\n  content: \"\\F40D\"; }\n\n.ion-ios-cloudy-outline:before {\n  content: \"\\F40F\"; }\n\n.ion-ios-cog:before {\n  content: \"\\F412\"; }\n\n.ion-ios-cog-outline:before {\n  content: \"\\F411\"; }\n\n.ion-ios-color-filter:before {\n  content: \"\\F414\"; }\n\n.ion-ios-color-filter-outline:before {\n  content: \"\\F413\"; }\n\n.ion-ios-color-wand:before {\n  content: \"\\F416\"; }\n\n.ion-ios-color-wand-outline:before {\n  content: \"\\F415\"; }\n\n.ion-ios-compose:before {\n  content: \"\\F418\"; }\n\n.ion-ios-compose-outline:before {\n  content: \"\\F417\"; }\n\n.ion-ios-contact:before {\n  content: \"\\F41A\"; }\n\n.ion-ios-contact-outline:before {\n  content: \"\\F419\"; }\n\n.ion-ios-copy:before {\n  content: \"\\F41C\"; }\n\n.ion-ios-copy-outline:before {\n  content: \"\\F41B\"; }\n\n.ion-ios-crop:before {\n  content: \"\\F41E\"; }\n\n.ion-ios-crop-strong:before {\n  content: \"\\F41D\"; }\n\n.ion-ios-download:before {\n  content: \"\\F420\"; }\n\n.ion-ios-download-outline:before {\n  content: \"\\F41F\"; }\n\n.ion-ios-drag:before {\n  content: \"\\F421\"; }\n\n.ion-ios-email:before {\n  content: \"\\F423\"; }\n\n.ion-ios-email-outline:before {\n  content: \"\\F422\"; }\n\n.ion-ios-eye:before {\n  content: \"\\F425\"; }\n\n.ion-ios-eye-outline:before {\n  content: \"\\F424\"; }\n\n.ion-ios-fastforward:before {\n  content: \"\\F427\"; }\n\n.ion-ios-fastforward-outline:before {\n  content: \"\\F426\"; }\n\n.ion-ios-filing:before {\n  content: \"\\F429\"; }\n\n.ion-ios-filing-outline:before {\n  content: \"\\F428\"; }\n\n.ion-ios-film:before {\n  content: \"\\F42B\"; }\n\n.ion-ios-film-outline:before {\n  content: \"\\F42A\"; }\n\n.ion-ios-flag:before {\n  content: \"\\F42D\"; }\n\n.ion-ios-flag-outline:before {\n  content: \"\\F42C\"; }\n\n.ion-ios-flame:before {\n  content: \"\\F42F\"; }\n\n.ion-ios-flame-outline:before {\n  content: \"\\F42E\"; }\n\n.ion-ios-flask:before {\n  content: \"\\F431\"; }\n\n.ion-ios-flask-outline:before {\n  content: \"\\F430\"; }\n\n.ion-ios-flower:before {\n  content: \"\\F433\"; }\n\n.ion-ios-flower-outline:before {\n  content: \"\\F432\"; }\n\n.ion-ios-folder:before {\n  content: \"\\F435\"; }\n\n.ion-ios-folder-outline:before {\n  content: \"\\F434\"; }\n\n.ion-ios-football:before {\n  content: \"\\F437\"; }\n\n.ion-ios-football-outline:before {\n  content: \"\\F436\"; }\n\n.ion-ios-game-controller-a:before {\n  content: \"\\F439\"; }\n\n.ion-ios-game-controller-a-outline:before {\n  content: \"\\F438\"; }\n\n.ion-ios-game-controller-b:before {\n  content: \"\\F43B\"; }\n\n.ion-ios-game-controller-b-outline:before {\n  content: \"\\F43A\"; }\n\n.ion-ios-gear:before {\n  content: \"\\F43D\"; }\n\n.ion-ios-gear-outline:before {\n  content: \"\\F43C\"; }\n\n.ion-ios-glasses:before {\n  content: \"\\F43F\"; }\n\n.ion-ios-glasses-outline:before {\n  content: \"\\F43E\"; }\n\n.ion-ios-grid-view:before {\n  content: \"\\F441\"; }\n\n.ion-ios-grid-view-outline:before {\n  content: \"\\F440\"; }\n\n.ion-ios-heart:before {\n  content: \"\\F443\"; }\n\n.ion-ios-heart-outline:before {\n  content: \"\\F442\"; }\n\n.ion-ios-help:before {\n  content: \"\\F446\"; }\n\n.ion-ios-help-empty:before {\n  content: \"\\F444\"; }\n\n.ion-ios-help-outline:before {\n  content: \"\\F445\"; }\n\n.ion-ios-home:before {\n  content: \"\\F448\"; }\n\n.ion-ios-home-outline:before {\n  content: \"\\F447\"; }\n\n.ion-ios-infinite:before {\n  content: \"\\F44A\"; }\n\n.ion-ios-infinite-outline:before {\n  content: \"\\F449\"; }\n\n.ion-ios-information:before {\n  content: \"\\F44D\"; }\n\n.ion-ios-information-empty:before {\n  content: \"\\F44B\"; }\n\n.ion-ios-information-outline:before {\n  content: \"\\F44C\"; }\n\n.ion-ios-ionic-outline:before {\n  content: \"\\F44E\"; }\n\n.ion-ios-keypad:before {\n  content: \"\\F450\"; }\n\n.ion-ios-keypad-outline:before {\n  content: \"\\F44F\"; }\n\n.ion-ios-lightbulb:before {\n  content: \"\\F452\"; }\n\n.ion-ios-lightbulb-outline:before {\n  content: \"\\F451\"; }\n\n.ion-ios-list:before {\n  content: \"\\F454\"; }\n\n.ion-ios-list-outline:before {\n  content: \"\\F453\"; }\n\n.ion-ios-location:before {\n  content: \"\\F456\"; }\n\n.ion-ios-location-outline:before {\n  content: \"\\F455\"; }\n\n.ion-ios-locked:before {\n  content: \"\\F458\"; }\n\n.ion-ios-locked-outline:before {\n  content: \"\\F457\"; }\n\n.ion-ios-loop:before {\n  content: \"\\F45A\"; }\n\n.ion-ios-loop-strong:before {\n  content: \"\\F459\"; }\n\n.ion-ios-medical:before {\n  content: \"\\F45C\"; }\n\n.ion-ios-medical-outline:before {\n  content: \"\\F45B\"; }\n\n.ion-ios-medkit:before {\n  content: \"\\F45E\"; }\n\n.ion-ios-medkit-outline:before {\n  content: \"\\F45D\"; }\n\n.ion-ios-mic:before {\n  content: \"\\F461\"; }\n\n.ion-ios-mic-off:before {\n  content: \"\\F45F\"; }\n\n.ion-ios-mic-outline:before {\n  content: \"\\F460\"; }\n\n.ion-ios-minus:before {\n  content: \"\\F464\"; }\n\n.ion-ios-minus-empty:before {\n  content: \"\\F462\"; }\n\n.ion-ios-minus-outline:before {\n  content: \"\\F463\"; }\n\n.ion-ios-monitor:before {\n  content: \"\\F466\"; }\n\n.ion-ios-monitor-outline:before {\n  content: \"\\F465\"; }\n\n.ion-ios-moon:before {\n  content: \"\\F468\"; }\n\n.ion-ios-moon-outline:before {\n  content: \"\\F467\"; }\n\n.ion-ios-more:before {\n  content: \"\\F46A\"; }\n\n.ion-ios-more-outline:before {\n  content: \"\\F469\"; }\n\n.ion-ios-musical-note:before {\n  content: \"\\F46B\"; }\n\n.ion-ios-musical-notes:before {\n  content: \"\\F46C\"; }\n\n.ion-ios-navigate:before {\n  content: \"\\F46E\"; }\n\n.ion-ios-navigate-outline:before {\n  content: \"\\F46D\"; }\n\n.ion-ios-nutrition:before {\n  content: \"\\F470\"; }\n\n.ion-ios-nutrition-outline:before {\n  content: \"\\F46F\"; }\n\n.ion-ios-paper:before {\n  content: \"\\F472\"; }\n\n.ion-ios-paper-outline:before {\n  content: \"\\F471\"; }\n\n.ion-ios-paperplane:before {\n  content: \"\\F474\"; }\n\n.ion-ios-paperplane-outline:before {\n  content: \"\\F473\"; }\n\n.ion-ios-partlysunny:before {\n  content: \"\\F476\"; }\n\n.ion-ios-partlysunny-outline:before {\n  content: \"\\F475\"; }\n\n.ion-ios-pause:before {\n  content: \"\\F478\"; }\n\n.ion-ios-pause-outline:before {\n  content: \"\\F477\"; }\n\n.ion-ios-paw:before {\n  content: \"\\F47A\"; }\n\n.ion-ios-paw-outline:before {\n  content: \"\\F479\"; }\n\n.ion-ios-people:before {\n  content: \"\\F47C\"; }\n\n.ion-ios-people-outline:before {\n  content: \"\\F47B\"; }\n\n.ion-ios-person:before {\n  content: \"\\F47E\"; }\n\n.ion-ios-person-outline:before {\n  content: \"\\F47D\"; }\n\n.ion-ios-personadd:before {\n  content: \"\\F480\"; }\n\n.ion-ios-personadd-outline:before {\n  content: \"\\F47F\"; }\n\n.ion-ios-photos:before {\n  content: \"\\F482\"; }\n\n.ion-ios-photos-outline:before {\n  content: \"\\F481\"; }\n\n.ion-ios-pie:before {\n  content: \"\\F484\"; }\n\n.ion-ios-pie-outline:before {\n  content: \"\\F483\"; }\n\n.ion-ios-pint:before {\n  content: \"\\F486\"; }\n\n.ion-ios-pint-outline:before {\n  content: \"\\F485\"; }\n\n.ion-ios-play:before {\n  content: \"\\F488\"; }\n\n.ion-ios-play-outline:before {\n  content: \"\\F487\"; }\n\n.ion-ios-plus:before {\n  content: \"\\F48B\"; }\n\n.ion-ios-plus-empty:before {\n  content: \"\\F489\"; }\n\n.ion-ios-plus-outline:before {\n  content: \"\\F48A\"; }\n\n.ion-ios-pricetag:before {\n  content: \"\\F48D\"; }\n\n.ion-ios-pricetag-outline:before {\n  content: \"\\F48C\"; }\n\n.ion-ios-pricetags:before {\n  content: \"\\F48F\"; }\n\n.ion-ios-pricetags-outline:before {\n  content: \"\\F48E\"; }\n\n.ion-ios-printer:before {\n  content: \"\\F491\"; }\n\n.ion-ios-printer-outline:before {\n  content: \"\\F490\"; }\n\n.ion-ios-pulse:before {\n  content: \"\\F493\"; }\n\n.ion-ios-pulse-strong:before {\n  content: \"\\F492\"; }\n\n.ion-ios-rainy:before {\n  content: \"\\F495\"; }\n\n.ion-ios-rainy-outline:before {\n  content: \"\\F494\"; }\n\n.ion-ios-recording:before {\n  content: \"\\F497\"; }\n\n.ion-ios-recording-outline:before {\n  content: \"\\F496\"; }\n\n.ion-ios-redo:before {\n  content: \"\\F499\"; }\n\n.ion-ios-redo-outline:before {\n  content: \"\\F498\"; }\n\n.ion-ios-refresh:before {\n  content: \"\\F49C\"; }\n\n.ion-ios-refresh-empty:before {\n  content: \"\\F49A\"; }\n\n.ion-ios-refresh-outline:before {\n  content: \"\\F49B\"; }\n\n.ion-ios-reload:before {\n  content: \"\\F49D\"; }\n\n.ion-ios-reverse-camera:before {\n  content: \"\\F49F\"; }\n\n.ion-ios-reverse-camera-outline:before {\n  content: \"\\F49E\"; }\n\n.ion-ios-rewind:before {\n  content: \"\\F4A1\"; }\n\n.ion-ios-rewind-outline:before {\n  content: \"\\F4A0\"; }\n\n.ion-ios-rose:before {\n  content: \"\\F4A3\"; }\n\n.ion-ios-rose-outline:before {\n  content: \"\\F4A2\"; }\n\n.ion-ios-search:before {\n  content: \"\\F4A5\"; }\n\n.ion-ios-search-strong:before {\n  content: \"\\F4A4\"; }\n\n.ion-ios-settings:before {\n  content: \"\\F4A7\"; }\n\n.ion-ios-settings-strong:before {\n  content: \"\\F4A6\"; }\n\n.ion-ios-shuffle:before {\n  content: \"\\F4A9\"; }\n\n.ion-ios-shuffle-strong:before {\n  content: \"\\F4A8\"; }\n\n.ion-ios-skipbackward:before {\n  content: \"\\F4AB\"; }\n\n.ion-ios-skipbackward-outline:before {\n  content: \"\\F4AA\"; }\n\n.ion-ios-skipforward:before {\n  content: \"\\F4AD\"; }\n\n.ion-ios-skipforward-outline:before {\n  content: \"\\F4AC\"; }\n\n.ion-ios-snowy:before {\n  content: \"\\F4AE\"; }\n\n.ion-ios-speedometer:before {\n  content: \"\\F4B0\"; }\n\n.ion-ios-speedometer-outline:before {\n  content: \"\\F4AF\"; }\n\n.ion-ios-star:before {\n  content: \"\\F4B3\"; }\n\n.ion-ios-star-half:before {\n  content: \"\\F4B1\"; }\n\n.ion-ios-star-outline:before {\n  content: \"\\F4B2\"; }\n\n.ion-ios-stopwatch:before {\n  content: \"\\F4B5\"; }\n\n.ion-ios-stopwatch-outline:before {\n  content: \"\\F4B4\"; }\n\n.ion-ios-sunny:before {\n  content: \"\\F4B7\"; }\n\n.ion-ios-sunny-outline:before {\n  content: \"\\F4B6\"; }\n\n.ion-ios-telephone:before {\n  content: \"\\F4B9\"; }\n\n.ion-ios-telephone-outline:before {\n  content: \"\\F4B8\"; }\n\n.ion-ios-tennisball:before {\n  content: \"\\F4BB\"; }\n\n.ion-ios-tennisball-outline:before {\n  content: \"\\F4BA\"; }\n\n.ion-ios-thunderstorm:before {\n  content: \"\\F4BD\"; }\n\n.ion-ios-thunderstorm-outline:before {\n  content: \"\\F4BC\"; }\n\n.ion-ios-time:before {\n  content: \"\\F4BF\"; }\n\n.ion-ios-time-outline:before {\n  content: \"\\F4BE\"; }\n\n.ion-ios-timer:before {\n  content: \"\\F4C1\"; }\n\n.ion-ios-timer-outline:before {\n  content: \"\\F4C0\"; }\n\n.ion-ios-toggle:before {\n  content: \"\\F4C3\"; }\n\n.ion-ios-toggle-outline:before {\n  content: \"\\F4C2\"; }\n\n.ion-ios-trash:before {\n  content: \"\\F4C5\"; }\n\n.ion-ios-trash-outline:before {\n  content: \"\\F4C4\"; }\n\n.ion-ios-undo:before {\n  content: \"\\F4C7\"; }\n\n.ion-ios-undo-outline:before {\n  content: \"\\F4C6\"; }\n\n.ion-ios-unlocked:before {\n  content: \"\\F4C9\"; }\n\n.ion-ios-unlocked-outline:before {\n  content: \"\\F4C8\"; }\n\n.ion-ios-upload:before {\n  content: \"\\F4CB\"; }\n\n.ion-ios-upload-outline:before {\n  content: \"\\F4CA\"; }\n\n.ion-ios-videocam:before {\n  content: \"\\F4CD\"; }\n\n.ion-ios-videocam-outline:before {\n  content: \"\\F4CC\"; }\n\n.ion-ios-volume-high:before {\n  content: \"\\F4CE\"; }\n\n.ion-ios-volume-low:before {\n  content: \"\\F4CF\"; }\n\n.ion-ios-wineglass:before {\n  content: \"\\F4D1\"; }\n\n.ion-ios-wineglass-outline:before {\n  content: \"\\F4D0\"; }\n\n.ion-ios-world:before {\n  content: \"\\F4D3\"; }\n\n.ion-ios-world-outline:before {\n  content: \"\\F4D2\"; }\n\n.ion-ipad:before {\n  content: \"\\F1F9\"; }\n\n.ion-iphone:before {\n  content: \"\\F1FA\"; }\n\n.ion-ipod:before {\n  content: \"\\F1FB\"; }\n\n.ion-jet:before {\n  content: \"\\F295\"; }\n\n.ion-key:before {\n  content: \"\\F296\"; }\n\n.ion-knife:before {\n  content: \"\\F297\"; }\n\n.ion-laptop:before {\n  content: \"\\F1FC\"; }\n\n.ion-leaf:before {\n  content: \"\\F1FD\"; }\n\n.ion-levels:before {\n  content: \"\\F298\"; }\n\n.ion-lightbulb:before {\n  content: \"\\F299\"; }\n\n.ion-link:before {\n  content: \"\\F1FE\"; }\n\n.ion-load-a:before {\n  content: \"\\F29A\"; }\n\n.ion-load-b:before {\n  content: \"\\F29B\"; }\n\n.ion-load-c:before {\n  content: \"\\F29C\"; }\n\n.ion-load-d:before {\n  content: \"\\F29D\"; }\n\n.ion-location:before {\n  content: \"\\F1FF\"; }\n\n.ion-lock-combination:before {\n  content: \"\\F4D4\"; }\n\n.ion-locked:before {\n  content: \"\\F200\"; }\n\n.ion-log-in:before {\n  content: \"\\F29E\"; }\n\n.ion-log-out:before {\n  content: \"\\F29F\"; }\n\n.ion-loop:before {\n  content: \"\\F201\"; }\n\n.ion-magnet:before {\n  content: \"\\F2A0\"; }\n\n.ion-male:before {\n  content: \"\\F2A1\"; }\n\n.ion-man:before {\n  content: \"\\F202\"; }\n\n.ion-map:before {\n  content: \"\\F203\"; }\n\n.ion-medkit:before {\n  content: \"\\F2A2\"; }\n\n.ion-merge:before {\n  content: \"\\F33F\"; }\n\n.ion-mic-a:before {\n  content: \"\\F204\"; }\n\n.ion-mic-b:before {\n  content: \"\\F205\"; }\n\n.ion-mic-c:before {\n  content: \"\\F206\"; }\n\n.ion-minus:before {\n  content: \"\\F209\"; }\n\n.ion-minus-circled:before {\n  content: \"\\F207\"; }\n\n.ion-minus-round:before {\n  content: \"\\F208\"; }\n\n.ion-model-s:before {\n  content: \"\\F2C1\"; }\n\n.ion-monitor:before {\n  content: \"\\F20A\"; }\n\n.ion-more:before {\n  content: \"\\F20B\"; }\n\n.ion-mouse:before {\n  content: \"\\F340\"; }\n\n.ion-music-note:before {\n  content: \"\\F20C\"; }\n\n.ion-navicon:before {\n  content: \"\\F20E\"; }\n\n.ion-navicon-round:before {\n  content: \"\\F20D\"; }\n\n.ion-navigate:before {\n  content: \"\\F2A3\"; }\n\n.ion-network:before {\n  content: \"\\F341\"; }\n\n.ion-no-smoking:before {\n  content: \"\\F2C2\"; }\n\n.ion-nuclear:before {\n  content: \"\\F2A4\"; }\n\n.ion-outlet:before {\n  content: \"\\F342\"; }\n\n.ion-paintbrush:before {\n  content: \"\\F4D5\"; }\n\n.ion-paintbucket:before {\n  content: \"\\F4D6\"; }\n\n.ion-paper-airplane:before {\n  content: \"\\F2C3\"; }\n\n.ion-paperclip:before {\n  content: \"\\F20F\"; }\n\n.ion-pause:before {\n  content: \"\\F210\"; }\n\n.ion-person:before {\n  content: \"\\F213\"; }\n\n.ion-person-add:before {\n  content: \"\\F211\"; }\n\n.ion-person-stalker:before {\n  content: \"\\F212\"; }\n\n.ion-pie-graph:before {\n  content: \"\\F2A5\"; }\n\n.ion-pin:before {\n  content: \"\\F2A6\"; }\n\n.ion-pinpoint:before {\n  content: \"\\F2A7\"; }\n\n.ion-pizza:before {\n  content: \"\\F2A8\"; }\n\n.ion-plane:before {\n  content: \"\\F214\"; }\n\n.ion-planet:before {\n  content: \"\\F343\"; }\n\n.ion-play:before {\n  content: \"\\F215\"; }\n\n.ion-playstation:before {\n  content: \"\\F30A\"; }\n\n.ion-plus:before {\n  content: \"\\F218\"; }\n\n.ion-plus-circled:before {\n  content: \"\\F216\"; }\n\n.ion-plus-round:before {\n  content: \"\\F217\"; }\n\n.ion-podium:before {\n  content: \"\\F344\"; }\n\n.ion-pound:before {\n  content: \"\\F219\"; }\n\n.ion-power:before {\n  content: \"\\F2A9\"; }\n\n.ion-pricetag:before {\n  content: \"\\F2AA\"; }\n\n.ion-pricetags:before {\n  content: \"\\F2AB\"; }\n\n.ion-printer:before {\n  content: \"\\F21A\"; }\n\n.ion-pull-request:before {\n  content: \"\\F345\"; }\n\n.ion-qr-scanner:before {\n  content: \"\\F346\"; }\n\n.ion-quote:before {\n  content: \"\\F347\"; }\n\n.ion-radio-waves:before {\n  content: \"\\F2AC\"; }\n\n.ion-record:before {\n  content: \"\\F21B\"; }\n\n.ion-refresh:before {\n  content: \"\\F21C\"; }\n\n.ion-reply:before {\n  content: \"\\F21E\"; }\n\n.ion-reply-all:before {\n  content: \"\\F21D\"; }\n\n.ion-ribbon-a:before {\n  content: \"\\F348\"; }\n\n.ion-ribbon-b:before {\n  content: \"\\F349\"; }\n\n.ion-sad:before {\n  content: \"\\F34A\"; }\n\n.ion-sad-outline:before {\n  content: \"\\F4D7\"; }\n\n.ion-scissors:before {\n  content: \"\\F34B\"; }\n\n.ion-search:before {\n  content: \"\\F21F\"; }\n\n.ion-settings:before {\n  content: \"\\F2AD\"; }\n\n.ion-share:before {\n  content: \"\\F220\"; }\n\n.ion-shuffle:before {\n  content: \"\\F221\"; }\n\n.ion-skip-backward:before {\n  content: \"\\F222\"; }\n\n.ion-skip-forward:before {\n  content: \"\\F223\"; }\n\n.ion-social-android:before {\n  content: \"\\F225\"; }\n\n.ion-social-android-outline:before {\n  content: \"\\F224\"; }\n\n.ion-social-angular:before {\n  content: \"\\F4D9\"; }\n\n.ion-social-angular-outline:before {\n  content: \"\\F4D8\"; }\n\n.ion-social-apple:before {\n  content: \"\\F227\"; }\n\n.ion-social-apple-outline:before {\n  content: \"\\F226\"; }\n\n.ion-social-bitcoin:before {\n  content: \"\\F2AF\"; }\n\n.ion-social-bitcoin-outline:before {\n  content: \"\\F2AE\"; }\n\n.ion-social-buffer:before {\n  content: \"\\F229\"; }\n\n.ion-social-buffer-outline:before {\n  content: \"\\F228\"; }\n\n.ion-social-chrome:before {\n  content: \"\\F4DB\"; }\n\n.ion-social-chrome-outline:before {\n  content: \"\\F4DA\"; }\n\n.ion-social-codepen:before {\n  content: \"\\F4DD\"; }\n\n.ion-social-codepen-outline:before {\n  content: \"\\F4DC\"; }\n\n.ion-social-css3:before {\n  content: \"\\F4DF\"; }\n\n.ion-social-css3-outline:before {\n  content: \"\\F4DE\"; }\n\n.ion-social-designernews:before {\n  content: \"\\F22B\"; }\n\n.ion-social-designernews-outline:before {\n  content: \"\\F22A\"; }\n\n.ion-social-dribbble:before {\n  content: \"\\F22D\"; }\n\n.ion-social-dribbble-outline:before {\n  content: \"\\F22C\"; }\n\n.ion-social-dropbox:before {\n  content: \"\\F22F\"; }\n\n.ion-social-dropbox-outline:before {\n  content: \"\\F22E\"; }\n\n.ion-social-euro:before {\n  content: \"\\F4E1\"; }\n\n.ion-social-euro-outline:before {\n  content: \"\\F4E0\"; }\n\n.ion-social-facebook:before {\n  content: \"\\F231\"; }\n\n.ion-social-facebook-outline:before {\n  content: \"\\F230\"; }\n\n.ion-social-foursquare:before {\n  content: \"\\F34D\"; }\n\n.ion-social-foursquare-outline:before {\n  content: \"\\F34C\"; }\n\n.ion-social-freebsd-devil:before {\n  content: \"\\F2C4\"; }\n\n.ion-social-github:before {\n  content: \"\\F233\"; }\n\n.ion-social-github-outline:before {\n  content: \"\\F232\"; }\n\n.ion-social-google:before {\n  content: \"\\F34F\"; }\n\n.ion-social-google-outline:before {\n  content: \"\\F34E\"; }\n\n.ion-social-googleplus:before {\n  content: \"\\F235\"; }\n\n.ion-social-googleplus-outline:before {\n  content: \"\\F234\"; }\n\n.ion-social-hackernews:before {\n  content: \"\\F237\"; }\n\n.ion-social-hackernews-outline:before {\n  content: \"\\F236\"; }\n\n.ion-social-html5:before {\n  content: \"\\F4E3\"; }\n\n.ion-social-html5-outline:before {\n  content: \"\\F4E2\"; }\n\n.ion-social-instagram:before {\n  content: \"\\F351\"; }\n\n.ion-social-instagram-outline:before {\n  content: \"\\F350\"; }\n\n.ion-social-javascript:before {\n  content: \"\\F4E5\"; }\n\n.ion-social-javascript-outline:before {\n  content: \"\\F4E4\"; }\n\n.ion-social-linkedin:before {\n  content: \"\\F239\"; }\n\n.ion-social-linkedin-outline:before {\n  content: \"\\F238\"; }\n\n.ion-social-markdown:before {\n  content: \"\\F4E6\"; }\n\n.ion-social-nodejs:before {\n  content: \"\\F4E7\"; }\n\n.ion-social-octocat:before {\n  content: \"\\F4E8\"; }\n\n.ion-social-pinterest:before {\n  content: \"\\F2B1\"; }\n\n.ion-social-pinterest-outline:before {\n  content: \"\\F2B0\"; }\n\n.ion-social-python:before {\n  content: \"\\F4E9\"; }\n\n.ion-social-reddit:before {\n  content: \"\\F23B\"; }\n\n.ion-social-reddit-outline:before {\n  content: \"\\F23A\"; }\n\n.ion-social-rss:before {\n  content: \"\\F23D\"; }\n\n.ion-social-rss-outline:before {\n  content: \"\\F23C\"; }\n\n.ion-social-sass:before {\n  content: \"\\F4EA\"; }\n\n.ion-social-skype:before {\n  content: \"\\F23F\"; }\n\n.ion-social-skype-outline:before {\n  content: \"\\F23E\"; }\n\n.ion-social-snapchat:before {\n  content: \"\\F4EC\"; }\n\n.ion-social-snapchat-outline:before {\n  content: \"\\F4EB\"; }\n\n.ion-social-tumblr:before {\n  content: \"\\F241\"; }\n\n.ion-social-tumblr-outline:before {\n  content: \"\\F240\"; }\n\n.ion-social-tux:before {\n  content: \"\\F2C5\"; }\n\n.ion-social-twitch:before {\n  content: \"\\F4EE\"; }\n\n.ion-social-twitch-outline:before {\n  content: \"\\F4ED\"; }\n\n.ion-social-twitter:before {\n  content: \"\\F243\"; }\n\n.ion-social-twitter-outline:before {\n  content: \"\\F242\"; }\n\n.ion-social-usd:before {\n  content: \"\\F353\"; }\n\n.ion-social-usd-outline:before {\n  content: \"\\F352\"; }\n\n.ion-social-vimeo:before {\n  content: \"\\F245\"; }\n\n.ion-social-vimeo-outline:before {\n  content: \"\\F244\"; }\n\n.ion-social-whatsapp:before {\n  content: \"\\F4F0\"; }\n\n.ion-social-whatsapp-outline:before {\n  content: \"\\F4EF\"; }\n\n.ion-social-windows:before {\n  content: \"\\F247\"; }\n\n.ion-social-windows-outline:before {\n  content: \"\\F246\"; }\n\n.ion-social-wordpress:before {\n  content: \"\\F249\"; }\n\n.ion-social-wordpress-outline:before {\n  content: \"\\F248\"; }\n\n.ion-social-yahoo:before {\n  content: \"\\F24B\"; }\n\n.ion-social-yahoo-outline:before {\n  content: \"\\F24A\"; }\n\n.ion-social-yen:before {\n  content: \"\\F4F2\"; }\n\n.ion-social-yen-outline:before {\n  content: \"\\F4F1\"; }\n\n.ion-social-youtube:before {\n  content: \"\\F24D\"; }\n\n.ion-social-youtube-outline:before {\n  content: \"\\F24C\"; }\n\n.ion-soup-can:before {\n  content: \"\\F4F4\"; }\n\n.ion-soup-can-outline:before {\n  content: \"\\F4F3\"; }\n\n.ion-speakerphone:before {\n  content: \"\\F2B2\"; }\n\n.ion-speedometer:before {\n  content: \"\\F2B3\"; }\n\n.ion-spoon:before {\n  content: \"\\F2B4\"; }\n\n.ion-star:before {\n  content: \"\\F24E\"; }\n\n.ion-stats-bars:before {\n  content: \"\\F2B5\"; }\n\n.ion-steam:before {\n  content: \"\\F30B\"; }\n\n.ion-stop:before {\n  content: \"\\F24F\"; }\n\n.ion-thermometer:before {\n  content: \"\\F2B6\"; }\n\n.ion-thumbsdown:before {\n  content: \"\\F250\"; }\n\n.ion-thumbsup:before {\n  content: \"\\F251\"; }\n\n.ion-toggle:before {\n  content: \"\\F355\"; }\n\n.ion-toggle-filled:before {\n  content: \"\\F354\"; }\n\n.ion-transgender:before {\n  content: \"\\F4F5\"; }\n\n.ion-trash-a:before {\n  content: \"\\F252\"; }\n\n.ion-trash-b:before {\n  content: \"\\F253\"; }\n\n.ion-trophy:before {\n  content: \"\\F356\"; }\n\n.ion-tshirt:before {\n  content: \"\\F4F7\"; }\n\n.ion-tshirt-outline:before {\n  content: \"\\F4F6\"; }\n\n.ion-umbrella:before {\n  content: \"\\F2B7\"; }\n\n.ion-university:before {\n  content: \"\\F357\"; }\n\n.ion-unlocked:before {\n  content: \"\\F254\"; }\n\n.ion-upload:before {\n  content: \"\\F255\"; }\n\n.ion-usb:before {\n  content: \"\\F2B8\"; }\n\n.ion-videocamera:before {\n  content: \"\\F256\"; }\n\n.ion-volume-high:before {\n  content: \"\\F257\"; }\n\n.ion-volume-low:before {\n  content: \"\\F258\"; }\n\n.ion-volume-medium:before {\n  content: \"\\F259\"; }\n\n.ion-volume-mute:before {\n  content: \"\\F25A\"; }\n\n.ion-wand:before {\n  content: \"\\F358\"; }\n\n.ion-waterdrop:before {\n  content: \"\\F25B\"; }\n\n.ion-wifi:before {\n  content: \"\\F25C\"; }\n\n.ion-wineglass:before {\n  content: \"\\F2B9\"; }\n\n.ion-woman:before {\n  content: \"\\F25D\"; }\n\n.ion-wrench:before {\n  content: \"\\F2BA\"; }\n\n.ion-xbox:before {\n  content: \"\\F30C\"; }\n\n/* base */\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background: #FCFCFC;\n  font-family: \"Open Sans\", \"Lucida Grande\", sans-serif;\n  padding: 20px 10px; }\n  @media screen and (min-width: 376px) {\n    body {\n      padding: 20px; } }\n\na {\n  color: #777; }\n\na:hover {\n  color: black; }\n\nform {\n  margin: 0;\n  padding: 0; }\n\nlabel {\n  display: block;\n  color: #777;\n  margin-bottom: 6px; }\n\n.form-title {\n  margin: 0;\n  margin-bottom: 10px;\n  color: #777;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-size: 1rem; }\n\n.form--inline .form__group {\n  display: inline-block;\n  vertical-align: middle; }\n\n.field {\n  display: block;\n  width: 100%;\n  max-width: 100%;\n  padding: 6px 0;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: none;\n  border-radius: 2px;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  margin-bottom: 10px; }\n\n.field:focus {\n  outline: none; }\n\n.inline-field {\n  display: inline-block;\n  padding: 0 5px; }\n\n.inline-field:first-child {\n  padding-left: 0px; }\n\n.form-error, .field-error {\n  margin-bottom: 10px;\n  display: block;\n  color: #777; }\n\n.field-error {\n  padding: 6px 0;\n  margin-top: -10px;\n  font-size: 70%;\n  display: block;\n  margin-bottom: 10px; }\n\n/* grid */\n.container {\n  max-width: 1200px;\n  margin: 0 auto; }\n\n/* helpers */\n.border-top {\n  border-top: 1px solid #ccc; }\n\n.border-right {\n  border-right: 1px solid #ccc; }\n\n.border-bottom {\n  border-bottom: 1px solid #ccc; }\n\n.border-left {\n  border-left: 1px solid #ccc; }\n\n.border-vertical {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc; }\n\n.border-horizontal {\n  border-left: 1px solid #ccc;\n  border-right: 1px solid #ccc; }\n\n/**\n * For modern browsers\n * 1. The space content is one way to avoid an Opera bug when the\n *    contenteditable attribute is included anywhere else in the document.\n *    Otherwise it causes space to appear at the top and bottom of elements\n *    that are clearfixed.\n * 2. The use of `table` rather than `block` is only necessary if using\n *    `:before` to contain the top-margins of child elements.\n */\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  /* 1 */\n  display: table;\n  /* 2 */ }\n\n.clearfix:after {\n  clear: both; }\n\n/**\n * For IE 6/7 only\n * Include this rule to trigger hasLayout and contain floats.\n */\n.clearfix {\n  *zoom: 1; }\n\n.margin {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin.margin-left-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin.margin-bottom-sm {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-left {\n  margin-left: 20px; }\n\n.margin-bottom {\n  margin-bottom: 20px; }\n\n.margin-right {\n  margin-right: 20px; }\n\n.margin-top {\n  margin-top: 20px; }\n\n.margin-left-sm {\n  margin-left: 10px; }\n\n.margin-bottom-sm {\n  margin-bottom: 10px; }\n\n.margin-right-sm {\n  margin-right: 10px; }\n\n.margin-top-sm {\n  margin-top: 10px; }\n\n.margin-vertical {\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-left {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-vertical-sm.margin-left {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-vertical.margin-left-sm {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-vertical-sm.margin-left-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-right {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px; }\n\n.margin-vertical.margin-right-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px; }\n\n.margin-vertical-sm.margin-right-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal {\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm {\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-top-sm {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom {\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-bottom-sm {\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-horizontal-sm.margin-bottom-sm {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-vertical.margin-horizontal-sm {\n  margin-top: 20px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n  margin-left: 10px; }\n\n.margin-horizontal.margin-vertical-sm {\n  margin-top: 10px;\n  margin-right: 20px;\n  margin-bottom: 10px;\n  margin-left: 20px; }\n\n.margin-except-top {\n  margin-right: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-right {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  margin-left: 20px; }\n\n.margin-except-bottom {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.margin-except-left {\n  margin-top: 20px;\n  margin-right: 20px;\n  margin-bottom: 20px; }\n\n.margin-sm-except-top {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-right {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-bottom {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-left: 10px; }\n\n.margin-sm-except-left {\n  margin-top: 10px;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.padding {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding.padding-left-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding.padding-bottom-sm {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-left {\n  padding-left: 20px; }\n\n.padding-bottom {\n  padding-bottom: 20px; }\n\n.padding-right {\n  padding-right: 20px; }\n\n.padding-top {\n  padding-top: 20px; }\n\n.padding-left-sm {\n  padding-left: 10px; }\n\n.padding-bottom-sm {\n  padding-bottom: 10px; }\n\n.padding-right-sm {\n  padding-right: 10px; }\n\n.padding-top-sm {\n  padding-top: 10px; }\n\n.padding-vertical {\n  padding-top: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-left {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-vertical-sm.padding-left {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-vertical.padding-left-sm {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-vertical-sm.padding-left-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-right {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px; }\n\n.padding-vertical.padding-right-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px; }\n\n.padding-vertical-sm.padding-right-sm {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal {\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm {\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-top-sm {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom {\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-bottom-sm {\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-horizontal-sm.padding-bottom-sm {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-vertical.padding-horizontal-sm {\n  padding-top: 20px;\n  padding-right: 10px;\n  padding-bottom: 20px;\n  padding-left: 10px; }\n\n.padding-horizontal.padding-vertical-sm {\n  padding-top: 10px;\n  padding-right: 20px;\n  padding-bottom: 10px;\n  padding-left: 20px; }\n\n.padding-except-top {\n  padding-right: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-right {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  padding-left: 20px; }\n\n.padding-except-bottom {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-left: 20px; }\n\n.padding-except-left {\n  padding-top: 20px;\n  padding-right: 20px;\n  padding-bottom: 20px; }\n\n.padding-sm-except-top {\n  padding-right: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-right {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-bottom {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.padding-sm-except-left {\n  padding-top: 10px;\n  padding-right: 10px;\n  padding-bottom: 10px; }\n\n.margin-right--sm {\n  margin-right: 5px; }\n\n.opaque {\n  opacity: 1; }\n\n.black {\n  color: black; }\n\n.hidden {\n  display: none; }\n\n.seethrough {\n  opacity: 0; }\n\n.invisible {\n  visibility: hidden; }\n\n.muted {\n  color: #777; }\n\n.muted {\n  color: #777; }\n\n.pull-right {\n  float: right; }\n\n.full-height {\n  min-height: 100vh; }\n\n.centred {\n  margin: 0 auto; }\n\n.centred.margin-top {\n  margin: 20px auto 0px; }\n\n.centred.margin-bottom {\n  margin: 0px auto 20px; }\n\n.hover-cursor--pointer:hover {\n  cursor: pointer; }\n\n.hover-cursor--default {\n  cursor: default; }\n\n.box-shadow {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.box-shadow-inset {\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n/* objects */\n.box {\n  background: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  border-radius: 2px; }\n  .box__header {\n    padding: 10px 20px;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    border-bottom: 1px solid #ccc;\n    background: #FCFAF9; }\n    .box__header h3 {\n      font-size: 1rem; }\n\n.btn {\n  display: inline-block;\n  border: 1px solid #ccc;\n  background: white;\n  padding: 4px 8px;\n  text-decoration: none;\n  font-size: 90%;\n  color: #777;\n  border-radius: 0px; }\n\n.btn:hover {\n  cursor: pointer;\n  background: rgba(0, 0, 0, 0.05);\n  color: black; }\n\n.btn:active {\n  border-color: #ccc;\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.075); }\n\n.btn--black {\n  background: black;\n  border-color: black;\n  color: white; }\n\n.btn-group .btn {\n  margin-right: 2px; }\n\n.btn-group .btn:last-child {\n  margin-right: 0px; }\n\n.btn-wide {\n  padding: 4px 16px; }\n\n.btn-tall {\n  padding: 8px 8px; }\n\n.btn-large {\n  padding: 8px 16px; }\n\n.icon--active {\n  font-weight: bold;\n  color: black; }\n\n.tag {\n  display: inline-block;\n  border: 1px solid #ccc;\n  font-size: 70%;\n  padding: 2px 6px;\n  border-radius: 4px;\n  margin: 4px 5px 4px 0px;\n  background: #f8f8f8;\n  color: #777;\n  text-decoration: none;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075); }\n  .tag:hover {\n    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.075);\n    color: black; }\n  .tag .tag-remove {\n    margin-left: 6px;\n    text-decoration: none; }\n\n.loading {\n  position: absolute;\n  top: 45%;\n  left: 10%;\n  display: block;\n  padding: 20px 60px;\n  font-weight: bold; }\n", ""]);
 	
 	// exports
 
@@ -39986,7 +39986,7 @@
 					{ className: 'create-choices box' },
 					_react2.default.createElement(
 						'header',
-						{ className: 'create-choices__header' },
+						{ className: 'box__header' },
 						_react2.default.createElement(
 							'h3',
 							null,
@@ -40061,7 +40061,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".create-choices {\n  max-width: 500px;\n  margin: 0 auto;\n  position: relative; }\n  .create-choices__header {\n    padding: 10px 20px;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    background: #FCFAF9; }\n    .create-choices__header h3 {\n      font-size: 1rem; }\n  .create-choices__choice-wrap {\n    display: table;\n    min-width: 100%; }\n  .create-choices .create-choice {\n    display: table-cell;\n    vertical-align: middle;\n    text-align: center;\n    height: 10rem;\n    text-decoration: none;\n    border-top: 1px solid #ddd;\n    width: 50%; }\n    .create-choices .create-choice i {\n      font-size: 2rem; }\n    .create-choices .create-choice:first-child {\n      border-right: 1px solid #ccc; }\n    .create-choices .create-choice:hover {\n      box-shadow: 0 1px 30px rgba(0, 0, 0, 0.055) inset; }\n    .create-choices .create-choice:active {\n      box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1) inset; }\n", ""]);
+	exports.push([module.id, ".create-choices {\n  max-width: 500px;\n  margin: 0 auto;\n  position: relative; }\n  .create-choices__choice-wrap {\n    display: table;\n    min-width: 100%; }\n  .create-choices .create-choice {\n    display: table-cell;\n    vertical-align: middle;\n    text-align: center;\n    height: 10rem;\n    text-decoration: none;\n    width: 50%; }\n    .create-choices .create-choice i {\n      font-size: 2rem; }\n    .create-choices .create-choice:first-child {\n      border-right: 1px solid #ccc; }\n    .create-choices .create-choice:hover {\n      box-shadow: 0 1px 30px rgba(0, 0, 0, 0.055) inset; }\n    .create-choices .create-choice:active {\n      box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1) inset; }\n", ""]);
 	
 	// exports
 
@@ -40216,6 +40216,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _showdown = __webpack_require__(/*! showdown */ 305);
+	
+	var _showdown2 = _interopRequireDefault(_showdown);
+	
 	var _reactRouter = __webpack_require__(/*! react-router */ 172);
 	
 	var _tools = __webpack_require__(/*! ../../../lib/tools.js */ 228);
@@ -40279,6 +40283,16 @@
 				this.setState({
 					shouldShowText: !this.state.shouldShowText
 				});
+			}
+		}, {
+			key: 'renderText',
+			value: function renderText() {
+				var bookmark = this.props.bookmark;
+	
+				var converter = new _showdown2.default.Converter();
+				var html = converter.makeHtml(bookmark.text);
+	
+				return _react2.default.createElement('div', { className: 'bookmark-item__text', dangerouslySetInnerHTML: { __html: html } });
 			}
 		}, {
 			key: 'renderTags',
@@ -40353,11 +40367,7 @@
 	
 				if (bookmark.text && bookmark.text.length) {
 					if (shouldShowText) {
-						textHtml = _react2.default.createElement(
-							'div',
-							{ className: 'bookmark-item__text' },
-							bookmark.text
-						);
+						textHtml = this.renderText();
 					}
 	
 					textToggle = _react2.default.createElement(
@@ -40456,7 +40466,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 2px 15px;\n  -webkit-animation: fadeIn 200ms;\n  -o-animation: fadeIn 200ms;\n  animation: fadeIn 200ms;\n  border-top: 1px solid #ccc;\n  background: #FCFAF9;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__options {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__options-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__options-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__options-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__text {\n  border-top: 1px solid #ccc;\n  padding: 10px 20px;\n  font-size: 80%;\n  color: #777; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
+	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 4px 15px;\n  -webkit-animation: fadeIn 200ms;\n  -o-animation: fadeIn 200ms;\n  animation: fadeIn 200ms;\n  border-top: 1px solid #ccc;\n  background: #FCFAF9;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__options {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__options-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__options-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__options-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__text {\n  border-top: 1px solid #ccc;\n  padding: 15px 20px;\n  font-size: 80%;\n  color: #777; }\n  .bookmark-item .bookmark-item__text p:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__text p:last-child {\n    margin-bottom: 0px; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 
@@ -40787,21 +40797,42 @@
 			value: function tagsFieldKeyDownHandler(event) {
 				if (event.keyCode == 13 || event.charCode == 13) {
 					event.preventDefault();
-					var tag = this.refs.tags.value;
+					var input = this.refs.tags;
+					var tag = input.value;
 					if (tag.trim()) {
 						var tags = this.state.tags;
 	
 						if (tags.indexOf(tag.trim()) == -1) {
 							tags.push(tag);
-							this.refs.tags.value = '';
+							input.value = '';
 							this.setState({ tags: tags });
+							// setting input value to empty string doesn't show placeholder in webkit for some reason. bluring and focusing fixes it. 
+							input.blur();
+							input.focus();
 						}
 					}
 				}
 			}
 		}, {
+			key: 'setTextInputHeight',
+			value: function setTextInputHeight() {
+				var text = this.refs.text;
+	
+				if (text) {
+					text.style.height = 'auto';
+					text.style.height = text.scrollHeight + 'px';
+				}
+			}
+		}, {
+			key: 'textChangeHandler',
+			value: function textChangeHandler() {
+				this.setTextInputHeight();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
+				var _this3 = this;
+	
 				var bookmark = this.props.bookmark;
 	
 	
@@ -40817,9 +40848,12 @@
 					this.renderError('title'),
 					_react2.default.createElement('input', { ref: 'url', defaultValue: bookmark ? bookmark.url : '', placeholder: 'url', type: 'text', className: 'field', autoCapitalize: 'none' }),
 					this.renderError('url'),
-					_react2.default.createElement('textarea', { ref: 'text', defaultValue: bookmark ? bookmark.text : '', placeholder: 'text', type: 'text', className: 'field' }),
+					_react2.default.createElement('textarea', { ref: function ref(_ref) {
+							_this3.refs.text = _ref;
+							_this3.setTextInputHeight();
+						}, onInput: this.textChangeHandler.bind(this), defaultValue: bookmark ? bookmark.text : '', placeholder: 'text', type: 'text', rows: '1', className: 'field textarea' }),
 					this.renderError('text'),
-					_react2.default.createElement('input', { onKeyDown: this.tagsFieldKeyDownHandler.bind(this), ref: 'tags', placeholder: 'tags (enter to add)', type: 'text', className: 'field field--tags' }),
+					_react2.default.createElement('input', { onKeyDown: this.tagsFieldKeyDownHandler.bind(this), ref: 'tags', placeholder: 'tags', type: 'text', className: 'field field--tags' }),
 					this.renderError('tags'),
 					this.renderTags(),
 					_react2.default.createElement(
@@ -40885,7 +40919,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-form {\n  padding: 12px 20px 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n  .bookmark-form .field--tags {\n    margin-bottom: 0px; }\n  .bookmark-form .tags-input__tags {\n    margin: 10px 0;\n    padding: 0; }\n  .bookmark-form .tags-input__tag {\n    margin-top: 0px; }\n    .bookmark-form .tags-input__tag:first-child {\n      margin-left: 0px; }\n", ""]);
+	exports.push([module.id, ".bookmark-form {\n  padding: 12px 20px 20px;\n  max-width: 500px;\n  margin: 0 auto; }\n  .bookmark-form .textarea {\n    resize: none; }\n  .bookmark-form .field--tags {\n    margin-bottom: 0px; }\n  .bookmark-form .tags-input__tags {\n    margin: 10px 0;\n    padding: 0; }\n  .bookmark-form .tags-input__tag {\n    margin-top: 0px; }\n    .bookmark-form .tags-input__tag:first-child {\n      margin-left: 0px; }\n", ""]);
 	
 	// exports
 
@@ -40994,7 +41028,7 @@
 					'form',
 					{ onSubmit: this.submitHandler.bind(this), className: 'list-form box' },
 					_react2.default.createElement(
-						'h2',
+						'h3',
 						{ className: 'form-title' },
 						'list'
 					),
@@ -41495,6 +41529,2438 @@
 	};
 	
 	exports.default = listValidator;
+
+/***/ },
+/* 305 */
+/*!*************************************!*\
+  !*** ./~/showdown/dist/showdown.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	; /*! showdown 11-11-2016 */
+	(function () {
+	  /**
+	   * Created by Tivie on 13-07-2015.
+	   */
+	
+	  function getDefaultOpts(simple) {
+	    'use strict';
+	
+	    var defaultOptions = {
+	      omitExtraWLInCodeBlocks: {
+	        defaultValue: false,
+	        describe: 'Omit the default extra whiteline added to code blocks',
+	        type: 'boolean'
+	      },
+	      noHeaderId: {
+	        defaultValue: false,
+	        describe: 'Turn on/off generated header id',
+	        type: 'boolean'
+	      },
+	      prefixHeaderId: {
+	        defaultValue: false,
+	        describe: 'Specify a prefix to generated header ids',
+	        type: 'string'
+	      },
+	      headerLevelStart: {
+	        defaultValue: false,
+	        describe: 'The header blocks level start',
+	        type: 'integer'
+	      },
+	      parseImgDimensions: {
+	        defaultValue: false,
+	        describe: 'Turn on/off image dimension parsing',
+	        type: 'boolean'
+	      },
+	      simplifiedAutoLink: {
+	        defaultValue: false,
+	        describe: 'Turn on/off GFM autolink style',
+	        type: 'boolean'
+	      },
+	      literalMidWordUnderscores: {
+	        defaultValue: false,
+	        describe: 'Parse midword underscores as literal underscores',
+	        type: 'boolean'
+	      },
+	      strikethrough: {
+	        defaultValue: false,
+	        describe: 'Turn on/off strikethrough support',
+	        type: 'boolean'
+	      },
+	      tables: {
+	        defaultValue: false,
+	        describe: 'Turn on/off tables support',
+	        type: 'boolean'
+	      },
+	      tablesHeaderId: {
+	        defaultValue: false,
+	        describe: 'Add an id to table headers',
+	        type: 'boolean'
+	      },
+	      ghCodeBlocks: {
+	        defaultValue: true,
+	        describe: 'Turn on/off GFM fenced code blocks support',
+	        type: 'boolean'
+	      },
+	      tasklists: {
+	        defaultValue: false,
+	        describe: 'Turn on/off GFM tasklist support',
+	        type: 'boolean'
+	      },
+	      smoothLivePreview: {
+	        defaultValue: false,
+	        describe: 'Prevents weird effects in live previews due to incomplete input',
+	        type: 'boolean'
+	      },
+	      smartIndentationFix: {
+	        defaultValue: false,
+	        description: 'Tries to smartly fix indentation in es6 strings',
+	        type: 'boolean'
+	      },
+	      disableForced4SpacesIndentedSublists: {
+	        defaultValue: false,
+	        description: 'Disables the requirement of indenting nested sublists by 4 spaces',
+	        type: 'boolean'
+	      }
+	    };
+	    if (simple === false) {
+	      return JSON.parse(JSON.stringify(defaultOptions));
+	    }
+	    var ret = {};
+	    for (var opt in defaultOptions) {
+	      if (defaultOptions.hasOwnProperty(opt)) {
+	        ret[opt] = defaultOptions[opt].defaultValue;
+	      }
+	    }
+	    return ret;
+	  }
+	
+	  /**
+	   * Created by Tivie on 06-01-2015.
+	   */
+	
+	  // Private properties
+	  var showdown = {},
+	      parsers = {},
+	      extensions = {},
+	      globalOptions = getDefaultOpts(true),
+	      flavor = {
+	    github: {
+	      omitExtraWLInCodeBlocks: true,
+	      prefixHeaderId: 'user-content-',
+	      simplifiedAutoLink: true,
+	      literalMidWordUnderscores: true,
+	      strikethrough: true,
+	      tables: true,
+	      tablesHeaderId: true,
+	      ghCodeBlocks: true,
+	      tasklists: true,
+	      disableForced4SpacesIndentedSublists: true
+	    },
+	    vanilla: getDefaultOpts(true)
+	  };
+	
+	  /**
+	   * helper namespace
+	   * @type {{}}
+	   */
+	  showdown.helper = {};
+	
+	  /**
+	   * TODO LEGACY SUPPORT CODE
+	   * @type {{}}
+	   */
+	  showdown.extensions = {};
+	
+	  /**
+	   * Set a global option
+	   * @static
+	   * @param {string} key
+	   * @param {*} value
+	   * @returns {showdown}
+	   */
+	  showdown.setOption = function (key, value) {
+	    'use strict';
+	
+	    globalOptions[key] = value;
+	    return this;
+	  };
+	
+	  /**
+	   * Get a global option
+	   * @static
+	   * @param {string} key
+	   * @returns {*}
+	   */
+	  showdown.getOption = function (key) {
+	    'use strict';
+	
+	    return globalOptions[key];
+	  };
+	
+	  /**
+	   * Get the global options
+	   * @static
+	   * @returns {{}}
+	   */
+	  showdown.getOptions = function () {
+	    'use strict';
+	
+	    return globalOptions;
+	  };
+	
+	  /**
+	   * Reset global options to the default values
+	   * @static
+	   */
+	  showdown.resetOptions = function () {
+	    'use strict';
+	
+	    globalOptions = getDefaultOpts(true);
+	  };
+	
+	  /**
+	   * Set the flavor showdown should use as default
+	   * @param {string} name
+	   */
+	  showdown.setFlavor = function (name) {
+	    'use strict';
+	
+	    if (flavor.hasOwnProperty(name)) {
+	      var preset = flavor[name];
+	      for (var option in preset) {
+	        if (preset.hasOwnProperty(option)) {
+	          globalOptions[option] = preset[option];
+	        }
+	      }
+	    }
+	  };
+	
+	  /**
+	   * Get the default options
+	   * @static
+	   * @param {boolean} [simple=true]
+	   * @returns {{}}
+	   */
+	  showdown.getDefaultOptions = function (simple) {
+	    'use strict';
+	
+	    return getDefaultOpts(simple);
+	  };
+	
+	  /**
+	   * Get or set a subParser
+	   *
+	   * subParser(name)       - Get a registered subParser
+	   * subParser(name, func) - Register a subParser
+	   * @static
+	   * @param {string} name
+	   * @param {function} [func]
+	   * @returns {*}
+	   */
+	  showdown.subParser = function (name, func) {
+	    'use strict';
+	
+	    if (showdown.helper.isString(name)) {
+	      if (typeof func !== 'undefined') {
+	        parsers[name] = func;
+	      } else {
+	        if (parsers.hasOwnProperty(name)) {
+	          return parsers[name];
+	        } else {
+	          throw Error('SubParser named ' + name + ' not registered!');
+	        }
+	      }
+	    }
+	  };
+	
+	  /**
+	   * Gets or registers an extension
+	   * @static
+	   * @param {string} name
+	   * @param {object|function=} ext
+	   * @returns {*}
+	   */
+	  showdown.extension = function (name, ext) {
+	    'use strict';
+	
+	    if (!showdown.helper.isString(name)) {
+	      throw Error('Extension \'name\' must be a string');
+	    }
+	
+	    name = showdown.helper.stdExtName(name);
+	
+	    // Getter
+	    if (showdown.helper.isUndefined(ext)) {
+	      if (!extensions.hasOwnProperty(name)) {
+	        throw Error('Extension named ' + name + ' is not registered!');
+	      }
+	      return extensions[name];
+	
+	      // Setter
+	    } else {
+	      // Expand extension if it's wrapped in a function
+	      if (typeof ext === 'function') {
+	        ext = ext();
+	      }
+	
+	      // Ensure extension is an array
+	      if (!showdown.helper.isArray(ext)) {
+	        ext = [ext];
+	      }
+	
+	      var validExtension = validate(ext, name);
+	
+	      if (validExtension.valid) {
+	        extensions[name] = ext;
+	      } else {
+	        throw Error(validExtension.error);
+	      }
+	    }
+	  };
+	
+	  /**
+	   * Gets all extensions registered
+	   * @returns {{}}
+	   */
+	  showdown.getAllExtensions = function () {
+	    'use strict';
+	
+	    return extensions;
+	  };
+	
+	  /**
+	   * Remove an extension
+	   * @param {string} name
+	   */
+	  showdown.removeExtension = function (name) {
+	    'use strict';
+	
+	    delete extensions[name];
+	  };
+	
+	  /**
+	   * Removes all extensions
+	   */
+	  showdown.resetExtensions = function () {
+	    'use strict';
+	
+	    extensions = {};
+	  };
+	
+	  /**
+	   * Validate extension
+	   * @param {array} extension
+	   * @param {string} name
+	   * @returns {{valid: boolean, error: string}}
+	   */
+	  function validate(extension, name) {
+	    'use strict';
+	
+	    var errMsg = name ? 'Error in ' + name + ' extension->' : 'Error in unnamed extension',
+	        ret = {
+	      valid: true,
+	      error: ''
+	    };
+	
+	    if (!showdown.helper.isArray(extension)) {
+	      extension = [extension];
+	    }
+	
+	    for (var i = 0; i < extension.length; ++i) {
+	      var baseMsg = errMsg + ' sub-extension ' + i + ': ',
+	          ext = extension[i];
+	      if ((typeof ext === 'undefined' ? 'undefined' : _typeof(ext)) !== 'object') {
+	        ret.valid = false;
+	        ret.error = baseMsg + 'must be an object, but ' + (typeof ext === 'undefined' ? 'undefined' : _typeof(ext)) + ' given';
+	        return ret;
+	      }
+	
+	      if (!showdown.helper.isString(ext.type)) {
+	        ret.valid = false;
+	        ret.error = baseMsg + 'property "type" must be a string, but ' + _typeof(ext.type) + ' given';
+	        return ret;
+	      }
+	
+	      var type = ext.type = ext.type.toLowerCase();
+	
+	      // normalize extension type
+	      if (type === 'language') {
+	        type = ext.type = 'lang';
+	      }
+	
+	      if (type === 'html') {
+	        type = ext.type = 'output';
+	      }
+	
+	      if (type !== 'lang' && type !== 'output' && type !== 'listener') {
+	        ret.valid = false;
+	        ret.error = baseMsg + 'type ' + type + ' is not recognized. Valid values: "lang/language", "output/html" or "listener"';
+	        return ret;
+	      }
+	
+	      if (type === 'listener') {
+	        if (showdown.helper.isUndefined(ext.listeners)) {
+	          ret.valid = false;
+	          ret.error = baseMsg + '. Extensions of type "listener" must have a property called "listeners"';
+	          return ret;
+	        }
+	      } else {
+	        if (showdown.helper.isUndefined(ext.filter) && showdown.helper.isUndefined(ext.regex)) {
+	          ret.valid = false;
+	          ret.error = baseMsg + type + ' extensions must define either a "regex" property or a "filter" method';
+	          return ret;
+	        }
+	      }
+	
+	      if (ext.listeners) {
+	        if (_typeof(ext.listeners) !== 'object') {
+	          ret.valid = false;
+	          ret.error = baseMsg + '"listeners" property must be an object but ' + _typeof(ext.listeners) + ' given';
+	          return ret;
+	        }
+	        for (var ln in ext.listeners) {
+	          if (ext.listeners.hasOwnProperty(ln)) {
+	            if (typeof ext.listeners[ln] !== 'function') {
+	              ret.valid = false;
+	              ret.error = baseMsg + '"listeners" property must be an hash of [event name]: [callback]. listeners.' + ln + ' must be a function but ' + _typeof(ext.listeners[ln]) + ' given';
+	              return ret;
+	            }
+	          }
+	        }
+	      }
+	
+	      if (ext.filter) {
+	        if (typeof ext.filter !== 'function') {
+	          ret.valid = false;
+	          ret.error = baseMsg + '"filter" must be a function, but ' + _typeof(ext.filter) + ' given';
+	          return ret;
+	        }
+	      } else if (ext.regex) {
+	        if (showdown.helper.isString(ext.regex)) {
+	          ext.regex = new RegExp(ext.regex, 'g');
+	        }
+	        if (!ext.regex instanceof RegExp) {
+	          ret.valid = false;
+	          ret.error = baseMsg + '"regex" property must either be a string or a RegExp object, but ' + _typeof(ext.regex) + ' given';
+	          return ret;
+	        }
+	        if (showdown.helper.isUndefined(ext.replace)) {
+	          ret.valid = false;
+	          ret.error = baseMsg + '"regex" extensions must implement a replace string or function';
+	          return ret;
+	        }
+	      }
+	    }
+	    return ret;
+	  }
+	
+	  /**
+	   * Validate extension
+	   * @param {object} ext
+	   * @returns {boolean}
+	   */
+	  showdown.validateExtension = function (ext) {
+	    'use strict';
+	
+	    var validateExtension = validate(ext, null);
+	    if (!validateExtension.valid) {
+	      console.warn(validateExtension.error);
+	      return false;
+	    }
+	    return true;
+	  };
+	
+	  /**
+	   * showdownjs helper functions
+	   */
+	
+	  if (!showdown.hasOwnProperty('helper')) {
+	    showdown.helper = {};
+	  }
+	
+	  /**
+	   * Check if var is string
+	   * @static
+	   * @param {string} a
+	   * @returns {boolean}
+	   */
+	  showdown.helper.isString = function isString(a) {
+	    'use strict';
+	
+	    return typeof a === 'string' || a instanceof String;
+	  };
+	
+	  /**
+	   * Check if var is a function
+	   * @static
+	   * @param {string} a
+	   * @returns {boolean}
+	   */
+	  showdown.helper.isFunction = function isFunction(a) {
+	    'use strict';
+	
+	    var getType = {};
+	    return a && getType.toString.call(a) === '[object Function]';
+	  };
+	
+	  /**
+	   * ForEach helper function
+	   * @static
+	   * @param {*} obj
+	   * @param {function} callback
+	   */
+	  showdown.helper.forEach = function forEach(obj, callback) {
+	    'use strict';
+	
+	    if (typeof obj.forEach === 'function') {
+	      obj.forEach(callback);
+	    } else {
+	      for (var i = 0; i < obj.length; i++) {
+	        callback(obj[i], i, obj);
+	      }
+	    }
+	  };
+	
+	  /**
+	   * isArray helper function
+	   * @static
+	   * @param {*} a
+	   * @returns {boolean}
+	   */
+	  showdown.helper.isArray = function isArray(a) {
+	    'use strict';
+	
+	    return a.constructor === Array;
+	  };
+	
+	  /**
+	   * Check if value is undefined
+	   * @static
+	   * @param {*} value The value to check.
+	   * @returns {boolean} Returns `true` if `value` is `undefined`, else `false`.
+	   */
+	  showdown.helper.isUndefined = function isUndefined(value) {
+	    'use strict';
+	
+	    return typeof value === 'undefined';
+	  };
+	
+	  /**
+	   * Standardidize extension name
+	   * @static
+	   * @param {string} s extension name
+	   * @returns {string}
+	   */
+	  showdown.helper.stdExtName = function (s) {
+	    'use strict';
+	
+	    return s.replace(/[_-]||\s/g, '').toLowerCase();
+	  };
+	
+	  function escapeCharactersCallback(wholeMatch, m1) {
+	    'use strict';
+	
+	    var charCodeToEscape = m1.charCodeAt(0);
+	    return '~E' + charCodeToEscape + 'E';
+	  }
+	
+	  /**
+	   * Callback used to escape characters when passing through String.replace
+	   * @static
+	   * @param {string} wholeMatch
+	   * @param {string} m1
+	   * @returns {string}
+	   */
+	  showdown.helper.escapeCharactersCallback = escapeCharactersCallback;
+	
+	  /**
+	   * Escape characters in a string
+	   * @static
+	   * @param {string} text
+	   * @param {string} charsToEscape
+	   * @param {boolean} afterBackslash
+	   * @returns {XML|string|void|*}
+	   */
+	  showdown.helper.escapeCharacters = function escapeCharacters(text, charsToEscape, afterBackslash) {
+	    'use strict';
+	    // First we have to escape the escape characters so that
+	    // we can build a character class out of them
+	
+	    var regexString = '([' + charsToEscape.replace(/([\[\]\\])/g, '\\$1') + '])';
+	
+	    if (afterBackslash) {
+	      regexString = '\\\\' + regexString;
+	    }
+	
+	    var regex = new RegExp(regexString, 'g');
+	    text = text.replace(regex, escapeCharactersCallback);
+	
+	    return text;
+	  };
+	
+	  var rgxFindMatchPos = function rgxFindMatchPos(str, left, right, flags) {
+	    'use strict';
+	
+	    var f = flags || '',
+	        g = f.indexOf('g') > -1,
+	        x = new RegExp(left + '|' + right, 'g' + f.replace(/g/g, '')),
+	        l = new RegExp(left, f.replace(/g/g, '')),
+	        pos = [],
+	        t,
+	        s,
+	        m,
+	        start,
+	        end;
+	
+	    do {
+	      t = 0;
+	      while (m = x.exec(str)) {
+	        if (l.test(m[0])) {
+	          if (!t++) {
+	            s = x.lastIndex;
+	            start = s - m[0].length;
+	          }
+	        } else if (t) {
+	          if (! --t) {
+	            end = m.index + m[0].length;
+	            var obj = {
+	              left: { start: start, end: s },
+	              match: { start: s, end: m.index },
+	              right: { start: m.index, end: end },
+	              wholeMatch: { start: start, end: end }
+	            };
+	            pos.push(obj);
+	            if (!g) {
+	              return pos;
+	            }
+	          }
+	        }
+	      }
+	    } while (t && (x.lastIndex = s));
+	
+	    return pos;
+	  };
+	
+	  /**
+	   * matchRecursiveRegExp
+	   *
+	   * (c) 2007 Steven Levithan <stevenlevithan.com>
+	   * MIT License
+	   *
+	   * Accepts a string to search, a left and right format delimiter
+	   * as regex patterns, and optional regex flags. Returns an array
+	   * of matches, allowing nested instances of left/right delimiters.
+	   * Use the "g" flag to return all matches, otherwise only the
+	   * first is returned. Be careful to ensure that the left and
+	   * right format delimiters produce mutually exclusive matches.
+	   * Backreferences are not supported within the right delimiter
+	   * due to how it is internally combined with the left delimiter.
+	   * When matching strings whose format delimiters are unbalanced
+	   * to the left or right, the output is intentionally as a
+	   * conventional regex library with recursion support would
+	   * produce, e.g. "<<x>" and "<x>>" both produce ["x"] when using
+	   * "<" and ">" as the delimiters (both strings contain a single,
+	   * balanced instance of "<x>").
+	   *
+	   * examples:
+	   * matchRecursiveRegExp("test", "\\(", "\\)")
+	   * returns: []
+	   * matchRecursiveRegExp("<t<<e>><s>>t<>", "<", ">", "g")
+	   * returns: ["t<<e>><s>", ""]
+	   * matchRecursiveRegExp("<div id=\"x\">test</div>", "<div\\b[^>]*>", "</div>", "gi")
+	   * returns: ["test"]
+	   */
+	  showdown.helper.matchRecursiveRegExp = function (str, left, right, flags) {
+	    'use strict';
+	
+	    var matchPos = rgxFindMatchPos(str, left, right, flags),
+	        results = [];
+	
+	    for (var i = 0; i < matchPos.length; ++i) {
+	      results.push([str.slice(matchPos[i].wholeMatch.start, matchPos[i].wholeMatch.end), str.slice(matchPos[i].match.start, matchPos[i].match.end), str.slice(matchPos[i].left.start, matchPos[i].left.end), str.slice(matchPos[i].right.start, matchPos[i].right.end)]);
+	    }
+	    return results;
+	  };
+	
+	  /**
+	   *
+	   * @param {string} str
+	   * @param {string|function} replacement
+	   * @param {string} left
+	   * @param {string} right
+	   * @param {string} flags
+	   * @returns {string}
+	   */
+	  showdown.helper.replaceRecursiveRegExp = function (str, replacement, left, right, flags) {
+	    'use strict';
+	
+	    if (!showdown.helper.isFunction(replacement)) {
+	      var repStr = replacement;
+	      replacement = function replacement() {
+	        return repStr;
+	      };
+	    }
+	
+	    var matchPos = rgxFindMatchPos(str, left, right, flags),
+	        finalStr = str,
+	        lng = matchPos.length;
+	
+	    if (lng > 0) {
+	      var bits = [];
+	      if (matchPos[0].wholeMatch.start !== 0) {
+	        bits.push(str.slice(0, matchPos[0].wholeMatch.start));
+	      }
+	      for (var i = 0; i < lng; ++i) {
+	        bits.push(replacement(str.slice(matchPos[i].wholeMatch.start, matchPos[i].wholeMatch.end), str.slice(matchPos[i].match.start, matchPos[i].match.end), str.slice(matchPos[i].left.start, matchPos[i].left.end), str.slice(matchPos[i].right.start, matchPos[i].right.end)));
+	        if (i < lng - 1) {
+	          bits.push(str.slice(matchPos[i].wholeMatch.end, matchPos[i + 1].wholeMatch.start));
+	        }
+	      }
+	      if (matchPos[lng - 1].wholeMatch.end < str.length) {
+	        bits.push(str.slice(matchPos[lng - 1].wholeMatch.end));
+	      }
+	      finalStr = bits.join('');
+	    }
+	    return finalStr;
+	  };
+	
+	  /**
+	   * POLYFILLS
+	   */
+	  if (showdown.helper.isUndefined(console)) {
+	    console = {
+	      warn: function warn(msg) {
+	        'use strict';
+	
+	        alert(msg);
+	      },
+	      log: function log(msg) {
+	        'use strict';
+	
+	        alert(msg);
+	      },
+	      error: function error(msg) {
+	        'use strict';
+	
+	        throw msg;
+	      }
+	    };
+	  }
+	
+	  /**
+	   * Created by Estevao on 31-05-2015.
+	   */
+	
+	  /**
+	   * Showdown Converter class
+	   * @class
+	   * @param {object} [converterOptions]
+	   * @returns {Converter}
+	   */
+	  showdown.Converter = function (converterOptions) {
+	    'use strict';
+	
+	    var
+	    /**
+	     * Options used by this converter
+	     * @private
+	     * @type {{}}
+	     */
+	    options = {},
+	
+	
+	    /**
+	     * Language extensions used by this converter
+	     * @private
+	     * @type {Array}
+	     */
+	    langExtensions = [],
+	
+	
+	    /**
+	     * Output modifiers extensions used by this converter
+	     * @private
+	     * @type {Array}
+	     */
+	    outputModifiers = [],
+	
+	
+	    /**
+	     * Event listeners
+	     * @private
+	     * @type {{}}
+	     */
+	    listeners = {};
+	
+	    _constructor();
+	
+	    /**
+	     * Converter constructor
+	     * @private
+	     */
+	    function _constructor() {
+	      converterOptions = converterOptions || {};
+	
+	      for (var gOpt in globalOptions) {
+	        if (globalOptions.hasOwnProperty(gOpt)) {
+	          options[gOpt] = globalOptions[gOpt];
+	        }
+	      }
+	
+	      // Merge options
+	      if ((typeof converterOptions === 'undefined' ? 'undefined' : _typeof(converterOptions)) === 'object') {
+	        for (var opt in converterOptions) {
+	          if (converterOptions.hasOwnProperty(opt)) {
+	            options[opt] = converterOptions[opt];
+	          }
+	        }
+	      } else {
+	        throw Error('Converter expects the passed parameter to be an object, but ' + (typeof converterOptions === 'undefined' ? 'undefined' : _typeof(converterOptions)) + ' was passed instead.');
+	      }
+	
+	      if (options.extensions) {
+	        showdown.helper.forEach(options.extensions, _parseExtension);
+	      }
+	    }
+	
+	    /**
+	     * Parse extension
+	     * @param {*} ext
+	     * @param {string} [name='']
+	     * @private
+	     */
+	    function _parseExtension(ext, name) {
+	
+	      name = name || null;
+	      // If it's a string, the extension was previously loaded
+	      if (showdown.helper.isString(ext)) {
+	        ext = showdown.helper.stdExtName(ext);
+	        name = ext;
+	
+	        // LEGACY_SUPPORT CODE
+	        if (showdown.extensions[ext]) {
+	          console.warn('DEPRECATION WARNING: ' + ext + ' is an old extension that uses a deprecated loading method.' + 'Please inform the developer that the extension should be updated!');
+	          legacyExtensionLoading(showdown.extensions[ext], ext);
+	          return;
+	          // END LEGACY SUPPORT CODE
+	        } else if (!showdown.helper.isUndefined(extensions[ext])) {
+	          ext = extensions[ext];
+	        } else {
+	          throw Error('Extension "' + ext + '" could not be loaded. It was either not found or is not a valid extension.');
+	        }
+	      }
+	
+	      if (typeof ext === 'function') {
+	        ext = ext();
+	      }
+	
+	      if (!showdown.helper.isArray(ext)) {
+	        ext = [ext];
+	      }
+	
+	      var validExt = validate(ext, name);
+	      if (!validExt.valid) {
+	        throw Error(validExt.error);
+	      }
+	
+	      for (var i = 0; i < ext.length; ++i) {
+	        switch (ext[i].type) {
+	
+	          case 'lang':
+	            langExtensions.push(ext[i]);
+	            break;
+	
+	          case 'output':
+	            outputModifiers.push(ext[i]);
+	            break;
+	        }
+	        if (ext[i].hasOwnProperty(listeners)) {
+	          for (var ln in ext[i].listeners) {
+	            if (ext[i].listeners.hasOwnProperty(ln)) {
+	              listen(ln, ext[i].listeners[ln]);
+	            }
+	          }
+	        }
+	      }
+	    }
+	
+	    /**
+	     * LEGACY_SUPPORT
+	     * @param {*} ext
+	     * @param {string} name
+	     */
+	    function legacyExtensionLoading(ext, name) {
+	      if (typeof ext === 'function') {
+	        ext = ext(new showdown.Converter());
+	      }
+	      if (!showdown.helper.isArray(ext)) {
+	        ext = [ext];
+	      }
+	      var valid = validate(ext, name);
+	
+	      if (!valid.valid) {
+	        throw Error(valid.error);
+	      }
+	
+	      for (var i = 0; i < ext.length; ++i) {
+	        switch (ext[i].type) {
+	          case 'lang':
+	            langExtensions.push(ext[i]);
+	            break;
+	          case 'output':
+	            outputModifiers.push(ext[i]);
+	            break;
+	          default:
+	            // should never reach here
+	            throw Error('Extension loader error: Type unrecognized!!!');
+	        }
+	      }
+	    }
+	
+	    /**
+	     * Listen to an event
+	     * @param {string} name
+	     * @param {function} callback
+	     */
+	    function listen(name, callback) {
+	      if (!showdown.helper.isString(name)) {
+	        throw Error('Invalid argument in converter.listen() method: name must be a string, but ' + (typeof name === 'undefined' ? 'undefined' : _typeof(name)) + ' given');
+	      }
+	
+	      if (typeof callback !== 'function') {
+	        throw Error('Invalid argument in converter.listen() method: callback must be a function, but ' + (typeof callback === 'undefined' ? 'undefined' : _typeof(callback)) + ' given');
+	      }
+	
+	      if (!listeners.hasOwnProperty(name)) {
+	        listeners[name] = [];
+	      }
+	      listeners[name].push(callback);
+	    }
+	
+	    function rTrimInputText(text) {
+	      var rsp = text.match(/^\s*/)[0].length,
+	          rgx = new RegExp('^\\s{0,' + rsp + '}', 'gm');
+	      return text.replace(rgx, '');
+	    }
+	
+	    /**
+	     * Dispatch an event
+	     * @private
+	     * @param {string} evtName Event name
+	     * @param {string} text Text
+	     * @param {{}} options Converter Options
+	     * @param {{}} globals
+	     * @returns {string}
+	     */
+	    this._dispatch = function dispatch(evtName, text, options, globals) {
+	      if (listeners.hasOwnProperty(evtName)) {
+	        for (var ei = 0; ei < listeners[evtName].length; ++ei) {
+	          var nText = listeners[evtName][ei](evtName, text, this, options, globals);
+	          if (nText && typeof nText !== 'undefined') {
+	            text = nText;
+	          }
+	        }
+	      }
+	      return text;
+	    };
+	
+	    /**
+	     * Listen to an event
+	     * @param {string} name
+	     * @param {function} callback
+	     * @returns {showdown.Converter}
+	     */
+	    this.listen = function (name, callback) {
+	      listen(name, callback);
+	      return this;
+	    };
+	
+	    /**
+	     * Converts a markdown string into HTML
+	     * @param {string} text
+	     * @returns {*}
+	     */
+	    this.makeHtml = function (text) {
+	      //check if text is not falsy
+	      if (!text) {
+	        return text;
+	      }
+	
+	      var globals = {
+	        gHtmlBlocks: [],
+	        gHtmlMdBlocks: [],
+	        gHtmlSpans: [],
+	        gUrls: {},
+	        gTitles: {},
+	        gDimensions: {},
+	        gListLevel: 0,
+	        hashLinkCounts: {},
+	        langExtensions: langExtensions,
+	        outputModifiers: outputModifiers,
+	        converter: this,
+	        ghCodeBlocks: []
+	      };
+	
+	      // attacklab: Replace ~ with ~T
+	      // This lets us use tilde as an escape char to avoid md5 hashes
+	      // The choice of character is arbitrary; anything that isn't
+	      // magic in Markdown will work.
+	      text = text.replace(/~/g, '~T');
+	
+	      // attacklab: Replace $ with ~D
+	      // RegExp interprets $ as a special character
+	      // when it's in a replacement string
+	      text = text.replace(/\$/g, '~D');
+	
+	      // Standardize line endings
+	      text = text.replace(/\r\n/g, '\n'); // DOS to Unix
+	      text = text.replace(/\r/g, '\n'); // Mac to Unix
+	
+	      if (options.smartIndentationFix) {
+	        text = rTrimInputText(text);
+	      }
+	
+	      // Make sure text begins and ends with a couple of newlines:
+	      text = '\n\n' + text + '\n\n';
+	
+	      // detab
+	      text = showdown.subParser('detab')(text, options, globals);
+	
+	      // stripBlankLines
+	      text = showdown.subParser('stripBlankLines')(text, options, globals);
+	
+	      //run languageExtensions
+	      showdown.helper.forEach(langExtensions, function (ext) {
+	        text = showdown.subParser('runExtension')(ext, text, options, globals);
+	      });
+	
+	      // run the sub parsers
+	      text = showdown.subParser('hashPreCodeTags')(text, options, globals);
+	      text = showdown.subParser('githubCodeBlocks')(text, options, globals);
+	      text = showdown.subParser('hashHTMLBlocks')(text, options, globals);
+	      text = showdown.subParser('hashHTMLSpans')(text, options, globals);
+	      text = showdown.subParser('stripLinkDefinitions')(text, options, globals);
+	      text = showdown.subParser('blockGamut')(text, options, globals);
+	      text = showdown.subParser('unhashHTMLSpans')(text, options, globals);
+	      text = showdown.subParser('unescapeSpecialChars')(text, options, globals);
+	
+	      // attacklab: Restore dollar signs
+	      text = text.replace(/~D/g, '$$');
+	
+	      // attacklab: Restore tildes
+	      text = text.replace(/~T/g, '~');
+	
+	      // Run output modifiers
+	      showdown.helper.forEach(outputModifiers, function (ext) {
+	        text = showdown.subParser('runExtension')(ext, text, options, globals);
+	      });
+	
+	      return text;
+	    };
+	
+	    /**
+	     * Set an option of this Converter instance
+	     * @param {string} key
+	     * @param {*} value
+	     */
+	    this.setOption = function (key, value) {
+	      options[key] = value;
+	    };
+	
+	    /**
+	     * Get the option of this Converter instance
+	     * @param {string} key
+	     * @returns {*}
+	     */
+	    this.getOption = function (key) {
+	      return options[key];
+	    };
+	
+	    /**
+	     * Get the options of this Converter instance
+	     * @returns {{}}
+	     */
+	    this.getOptions = function () {
+	      return options;
+	    };
+	
+	    /**
+	     * Add extension to THIS converter
+	     * @param {{}} extension
+	     * @param {string} [name=null]
+	     */
+	    this.addExtension = function (extension, name) {
+	      name = name || null;
+	      _parseExtension(extension, name);
+	    };
+	
+	    /**
+	     * Use a global registered extension with THIS converter
+	     * @param {string} extensionName Name of the previously registered extension
+	     */
+	    this.useExtension = function (extensionName) {
+	      _parseExtension(extensionName);
+	    };
+	
+	    /**
+	     * Set the flavor THIS converter should use
+	     * @param {string} name
+	     */
+	    this.setFlavor = function (name) {
+	      if (flavor.hasOwnProperty(name)) {
+	        var preset = flavor[name];
+	        for (var option in preset) {
+	          if (preset.hasOwnProperty(option)) {
+	            options[option] = preset[option];
+	          }
+	        }
+	      }
+	    };
+	
+	    /**
+	     * Remove an extension from THIS converter.
+	     * Note: This is a costly operation. It's better to initialize a new converter
+	     * and specify the extensions you wish to use
+	     * @param {Array} extension
+	     */
+	    this.removeExtension = function (extension) {
+	      if (!showdown.helper.isArray(extension)) {
+	        extension = [extension];
+	      }
+	      for (var a = 0; a < extension.length; ++a) {
+	        var ext = extension[a];
+	        for (var i = 0; i < langExtensions.length; ++i) {
+	          if (langExtensions[i] === ext) {
+	            langExtensions[i].splice(i, 1);
+	          }
+	        }
+	        for (var ii = 0; ii < outputModifiers.length; ++i) {
+	          if (outputModifiers[ii] === ext) {
+	            outputModifiers[ii].splice(i, 1);
+	          }
+	        }
+	      }
+	    };
+	
+	    /**
+	     * Get all extension of THIS converter
+	     * @returns {{language: Array, output: Array}}
+	     */
+	    this.getAllExtensions = function () {
+	      return {
+	        language: langExtensions,
+	        output: outputModifiers
+	      };
+	    };
+	  };
+	
+	  /**
+	   * Turn Markdown link shortcuts into XHTML <a> tags.
+	   */
+	  showdown.subParser('anchors', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('anchors.before', text, options, globals);
+	
+	    var writeAnchorTag = function writeAnchorTag(wholeMatch, m1, m2, m3, m4, m5, m6, m7) {
+	      if (showdown.helper.isUndefined(m7)) {
+	        m7 = '';
+	      }
+	      wholeMatch = m1;
+	      var linkText = m2,
+	          linkId = m3.toLowerCase(),
+	          url = m4,
+	          title = m7;
+	
+	      if (!url) {
+	        if (!linkId) {
+	          // lower-case and turn embedded newlines into spaces
+	          linkId = linkText.toLowerCase().replace(/ ?\n/g, ' ');
+	        }
+	        url = '#' + linkId;
+	
+	        if (!showdown.helper.isUndefined(globals.gUrls[linkId])) {
+	          url = globals.gUrls[linkId];
+	          if (!showdown.helper.isUndefined(globals.gTitles[linkId])) {
+	            title = globals.gTitles[linkId];
+	          }
+	        } else {
+	          if (wholeMatch.search(/\(\s*\)$/m) > -1) {
+	            // Special case for explicit empty url
+	            url = '';
+	          } else {
+	            return wholeMatch;
+	          }
+	        }
+	      }
+	
+	      url = showdown.helper.escapeCharacters(url, '*_', false);
+	      var result = '<a href="' + url + '"';
+	
+	      if (title !== '' && title !== null) {
+	        title = title.replace(/"/g, '&quot;');
+	        title = showdown.helper.escapeCharacters(title, '*_', false);
+	        result += ' title="' + title + '"';
+	      }
+	
+	      result += '>' + linkText + '</a>';
+	
+	      return result;
+	    };
+	
+	    // First, handle reference-style links: [link text] [id]
+	    text = text.replace(/(\[((?:\[[^\]]*]|[^\[\]])*)][ ]?(?:\n[ ]*)?\[(.*?)])()()()()/g, writeAnchorTag);
+	
+	    // Next, inline-style links: [link text](url "optional title")
+	    text = text.replace(/(\[((?:\[[^\]]*]|[^\[\]])*)]\([ \t]*()<?(.*?(?:\(.*?\).*?)?)>?[ \t]*((['"])(.*?)\6[ \t]*)?\))/g, writeAnchorTag);
+	
+	    // Last, handle reference-style shortcuts: [link text]
+	    // These must come last in case you've also got [link test][1]
+	    // or [link test](/foo)
+	    text = text.replace(/(\[([^\[\]]+)])()()()()()/g, writeAnchorTag);
+	
+	    text = globals.converter._dispatch('anchors.after', text, options, globals);
+	    return text;
+	  });
+	
+	  showdown.subParser('autoLinks', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('autoLinks.before', text, options, globals);
+	
+	    var simpleURLRegex = /\b(((https?|ftp|dict):\/\/|www\.)[^'">\s]+\.[^'">\s]+)(?=\s|$)(?!["<>])/gi,
+	        delimUrlRegex = /<(((https?|ftp|dict):\/\/|www\.)[^'">\s]+)>/gi,
+	        simpleMailRegex = /(?:^|\s)([A-Za-z0-9!#$%&'*+-/=?^_`\{|}~\.]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)(?:$|\s)/gi,
+	        delimMailRegex = /<(?:mailto:)?([-.\w]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)>/gi;
+	
+	    text = text.replace(delimUrlRegex, replaceLink);
+	    text = text.replace(delimMailRegex, replaceMail);
+	    // simpleURLRegex  = /\b(((https?|ftp|dict):\/\/|www\.)[-.+~:?#@!$&'()*,;=[\]\w]+)\b/gi,
+	    // Email addresses: <address@domain.foo>
+	
+	    if (options.simplifiedAutoLink) {
+	      text = text.replace(simpleURLRegex, replaceLink);
+	      text = text.replace(simpleMailRegex, replaceMail);
+	    }
+	
+	    function replaceLink(wm, link) {
+	      var lnkTxt = link;
+	      if (/^www\./i.test(link)) {
+	        link = link.replace(/^www\./i, 'http://www.');
+	      }
+	      return '<a href="' + link + '">' + lnkTxt + '</a>';
+	    }
+	
+	    function replaceMail(wholeMatch, m1) {
+	      var unescapedStr = showdown.subParser('unescapeSpecialChars')(m1);
+	      return showdown.subParser('encodeEmailAddress')(unescapedStr);
+	    }
+	
+	    text = globals.converter._dispatch('autoLinks.after', text, options, globals);
+	
+	    return text;
+	  });
+	
+	  /**
+	   * These are all the transformations that form block-level
+	   * tags like paragraphs, headers, and list items.
+	   */
+	  showdown.subParser('blockGamut', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('blockGamut.before', text, options, globals);
+	
+	    // we parse blockquotes first so that we can have headings and hrs
+	    // inside blockquotes
+	    text = showdown.subParser('blockQuotes')(text, options, globals);
+	    text = showdown.subParser('headers')(text, options, globals);
+	
+	    // Do Horizontal Rules:
+	    var key = showdown.subParser('hashBlock')('<hr />', options, globals);
+	    text = text.replace(/^[ ]{0,2}([ ]?\*[ ]?){3,}[ \t]*$/gm, key);
+	    text = text.replace(/^[ ]{0,2}([ ]?\-[ ]?){3,}[ \t]*$/gm, key);
+	    text = text.replace(/^[ ]{0,2}([ ]?_[ ]?){3,}[ \t]*$/gm, key);
+	
+	    text = showdown.subParser('lists')(text, options, globals);
+	    text = showdown.subParser('codeBlocks')(text, options, globals);
+	    text = showdown.subParser('tables')(text, options, globals);
+	
+	    // We already ran _HashHTMLBlocks() before, in Markdown(), but that
+	    // was to escape raw HTML in the original Markdown source. This time,
+	    // we're escaping the markup we've just created, so that we don't wrap
+	    // <p> tags around block-level tags.
+	    text = showdown.subParser('hashHTMLBlocks')(text, options, globals);
+	    text = showdown.subParser('paragraphs')(text, options, globals);
+	
+	    text = globals.converter._dispatch('blockGamut.after', text, options, globals);
+	
+	    return text;
+	  });
+	
+	  showdown.subParser('blockQuotes', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('blockQuotes.before', text, options, globals);
+	
+	    text = text.replace(/((^ {0,3}>[ \t]?.+\n(.+\n)*\n*)+)/gm, function (wholeMatch, m1) {
+	      var bq = m1;
+	
+	      // attacklab: hack around Konqueror 3.5.4 bug:
+	      // "----------bug".replace(/^-/g,"") == "bug"
+	      bq = bq.replace(/^[ \t]*>[ \t]?/gm, '~0'); // trim one level of quoting
+	
+	      // attacklab: clean up hack
+	      bq = bq.replace(/~0/g, '');
+	
+	      bq = bq.replace(/^[ \t]+$/gm, ''); // trim whitespace-only lines
+	      bq = showdown.subParser('githubCodeBlocks')(bq, options, globals);
+	      bq = showdown.subParser('blockGamut')(bq, options, globals); // recurse
+	
+	      bq = bq.replace(/(^|\n)/g, '$1  ');
+	      // These leading spaces screw with <pre> content, so we need to fix that:
+	      bq = bq.replace(/(\s*<pre>[^\r]+?<\/pre>)/gm, function (wholeMatch, m1) {
+	        var pre = m1;
+	        // attacklab: hack around Konqueror 3.5.4 bug:
+	        pre = pre.replace(/^  /mg, '~0');
+	        pre = pre.replace(/~0/g, '');
+	        return pre;
+	      });
+	
+	      return showdown.subParser('hashBlock')('<blockquote>\n' + bq + '\n</blockquote>', options, globals);
+	    });
+	
+	    text = globals.converter._dispatch('blockQuotes.after', text, options, globals);
+	    return text;
+	  });
+	
+	  /**
+	   * Process Markdown `<pre><code>` blocks.
+	   */
+	  showdown.subParser('codeBlocks', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('codeBlocks.before', text, options, globals);
+	
+	    // sentinel workarounds for lack of \A and \Z, safari\khtml bug
+	    text += '~0';
+	
+	    var pattern = /(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=~0))/g;
+	    text = text.replace(pattern, function (wholeMatch, m1, m2) {
+	      var codeblock = m1,
+	          nextChar = m2,
+	          end = '\n';
+	
+	      codeblock = showdown.subParser('outdent')(codeblock);
+	      codeblock = showdown.subParser('encodeCode')(codeblock);
+	      codeblock = showdown.subParser('detab')(codeblock);
+	      codeblock = codeblock.replace(/^\n+/g, ''); // trim leading newlines
+	      codeblock = codeblock.replace(/\n+$/g, ''); // trim trailing newlines
+	
+	      if (options.omitExtraWLInCodeBlocks) {
+	        end = '';
+	      }
+	
+	      codeblock = '<pre><code>' + codeblock + end + '</code></pre>';
+	
+	      return showdown.subParser('hashBlock')(codeblock, options, globals) + nextChar;
+	    });
+	
+	    // strip sentinel
+	    text = text.replace(/~0/, '');
+	
+	    text = globals.converter._dispatch('codeBlocks.after', text, options, globals);
+	    return text;
+	  });
+	
+	  /**
+	   *
+	   *   *  Backtick quotes are used for <code></code> spans.
+	   *
+	   *   *  You can use multiple backticks as the delimiters if you want to
+	   *     include literal backticks in the code span. So, this input:
+	   *
+	   *         Just type ``foo `bar` baz`` at the prompt.
+	   *
+	   *       Will translate to:
+	   *
+	   *         <p>Just type <code>foo `bar` baz</code> at the prompt.</p>
+	   *
+	   *    There's no arbitrary limit to the number of backticks you
+	   *    can use as delimters. If you need three consecutive backticks
+	   *    in your code, use four for delimiters, etc.
+	   *
+	   *  *  You can use spaces to get literal backticks at the edges:
+	   *
+	   *         ... type `` `bar` `` ...
+	   *
+	   *       Turns to:
+	   *
+	   *         ... type <code>`bar`</code> ...
+	   */
+	  showdown.subParser('codeSpans', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('codeSpans.before', text, options, globals);
+	
+	    /*
+	     text = text.replace(/
+	     (^|[^\\])					// Character before opening ` can't be a backslash
+	     (`+)						// $2 = Opening run of `
+	     (							// $3 = The code block
+	     [^\r]*?
+	     [^`]					// attacklab: work around lack of lookbehind
+	     )
+	     \2							// Matching closer
+	     (?!`)
+	     /gm, function(){...});
+	     */
+	
+	    if (typeof text === 'undefined') {
+	      text = '';
+	    }
+	    text = text.replace(/(^|[^\\])(`+)([^\r]*?[^`])\2(?!`)/gm, function (wholeMatch, m1, m2, m3) {
+	      var c = m3;
+	      c = c.replace(/^([ \t]*)/g, ''); // leading whitespace
+	      c = c.replace(/[ \t]*$/g, ''); // trailing whitespace
+	      c = showdown.subParser('encodeCode')(c);
+	      return m1 + '<code>' + c + '</code>';
+	    });
+	
+	    text = globals.converter._dispatch('codeSpans.after', text, options, globals);
+	    return text;
+	  });
+	
+	  /**
+	   * Convert all tabs to spaces
+	   */
+	  showdown.subParser('detab', function (text) {
+	    'use strict';
+	
+	    // expand first n-1 tabs
+	
+	    text = text.replace(/\t(?=\t)/g, '    '); // g_tab_width
+	
+	    // replace the nth with two sentinels
+	    text = text.replace(/\t/g, '~A~B');
+	
+	    // use the sentinel to anchor our regex so it doesn't explode
+	    text = text.replace(/~B(.+?)~A/g, function (wholeMatch, m1) {
+	      var leadingText = m1,
+	          numSpaces = 4 - leadingText.length % 4; // g_tab_width
+	
+	      // there *must* be a better way to do this:
+	      for (var i = 0; i < numSpaces; i++) {
+	        leadingText += ' ';
+	      }
+	
+	      return leadingText;
+	    });
+	
+	    // clean up sentinels
+	    text = text.replace(/~A/g, '    '); // g_tab_width
+	    text = text.replace(/~B/g, '');
+	
+	    return text;
+	  });
+	
+	  /**
+	   * Smart processing for ampersands and angle brackets that need to be encoded.
+	   */
+	  showdown.subParser('encodeAmpsAndAngles', function (text) {
+	    'use strict';
+	    // Ampersand-encoding based entirely on Nat Irons's Amputator MT plugin:
+	    // http://bumppo.net/projects/amputator/
+	
+	    text = text.replace(/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/g, '&amp;');
+	
+	    // Encode naked <'s
+	    text = text.replace(/<(?![a-z\/?\$!])/gi, '&lt;');
+	
+	    return text;
+	  });
+	
+	  /**
+	   * Returns the string, with after processing the following backslash escape sequences.
+	   *
+	   * attacklab: The polite way to do this is with the new escapeCharacters() function:
+	   *
+	   *    text = escapeCharacters(text,"\\",true);
+	   *    text = escapeCharacters(text,"`*_{}[]()>#+-.!",true);
+	   *
+	   * ...but we're sidestepping its use of the (slow) RegExp constructor
+	   * as an optimization for Firefox.  This function gets called a LOT.
+	   */
+	  showdown.subParser('encodeBackslashEscapes', function (text) {
+	    'use strict';
+	
+	    text = text.replace(/\\(\\)/g, showdown.helper.escapeCharactersCallback);
+	    text = text.replace(/\\([`*_{}\[\]()>#+-.!])/g, showdown.helper.escapeCharactersCallback);
+	    return text;
+	  });
+	
+	  /**
+	   * Encode/escape certain characters inside Markdown code runs.
+	   * The point is that in code, these characters are literals,
+	   * and lose their special Markdown meanings.
+	   */
+	  showdown.subParser('encodeCode', function (text) {
+	    'use strict';
+	
+	    // Encode all ampersands; HTML entities are not
+	    // entities within a Markdown code span.
+	
+	    text = text.replace(/&/g, '&amp;');
+	
+	    // Do the angle bracket song and dance:
+	    text = text.replace(/</g, '&lt;');
+	    text = text.replace(/>/g, '&gt;');
+	
+	    // Now, escape characters that are magic in Markdown:
+	    text = showdown.helper.escapeCharacters(text, '*_{}[]\\', false);
+	
+	    // jj the line above breaks this:
+	    //---
+	    //* Item
+	    //   1. Subitem
+	    //            special char: *
+	    // ---
+	
+	    return text;
+	  });
+	
+	  /**
+	   *  Input: an email address, e.g. "foo@example.com"
+	   *
+	   *  Output: the email address as a mailto link, with each character
+	   *    of the address encoded as either a decimal or hex entity, in
+	   *    the hopes of foiling most address harvesting spam bots. E.g.:
+	   *
+	   *    <a href="&#x6D;&#97;&#105;&#108;&#x74;&#111;:&#102;&#111;&#111;&#64;&#101;
+	   *       x&#x61;&#109;&#x70;&#108;&#x65;&#x2E;&#99;&#111;&#109;">&#102;&#111;&#111;
+	   *       &#64;&#101;x&#x61;&#109;&#x70;&#108;&#x65;&#x2E;&#99;&#111;&#109;</a>
+	   *
+	   *  Based on a filter by Matthew Wickline, posted to the BBEdit-Talk
+	   *  mailing list: <http://tinyurl.com/yu7ue>
+	   *
+	   */
+	  showdown.subParser('encodeEmailAddress', function (addr) {
+	    'use strict';
+	
+	    var encode = [function (ch) {
+	      return '&#' + ch.charCodeAt(0) + ';';
+	    }, function (ch) {
+	      return '&#x' + ch.charCodeAt(0).toString(16) + ';';
+	    }, function (ch) {
+	      return ch;
+	    }];
+	
+	    addr = 'mailto:' + addr;
+	
+	    addr = addr.replace(/./g, function (ch) {
+	      if (ch === '@') {
+	        // this *must* be encoded. I insist.
+	        ch = encode[Math.floor(Math.random() * 2)](ch);
+	      } else if (ch !== ':') {
+	        // leave ':' alone (to spot mailto: later)
+	        var r = Math.random();
+	        // roughly 10% raw, 45% hex, 45% dec
+	        ch = r > 0.9 ? encode[2](ch) : r > 0.45 ? encode[1](ch) : encode[0](ch);
+	      }
+	      return ch;
+	    });
+	
+	    addr = '<a href="' + addr + '">' + addr + '</a>';
+	    addr = addr.replace(/">.+:/g, '">'); // strip the mailto: from the visible part
+	
+	    return addr;
+	  });
+	
+	  /**
+	   * Within tags -- meaning between < and > -- encode [\ ` * _] so they
+	   * don't conflict with their use in Markdown for code, italics and strong.
+	   */
+	  showdown.subParser('escapeSpecialCharsWithinTagAttributes', function (text) {
+	    'use strict';
+	
+	    // Build a regex to find HTML tags and comments.  See Friedl's
+	    // "Mastering Regular Expressions", 2nd Ed., pp. 200-201.
+	
+	    var regex = /(<[a-z\/!$]("[^"]*"|'[^']*'|[^'">])*>|<!(--.*?--\s*)+>)/gi;
+	
+	    text = text.replace(regex, function (wholeMatch) {
+	      var tag = wholeMatch.replace(/(.)<\/?code>(?=.)/g, '$1`');
+	      tag = showdown.helper.escapeCharacters(tag, '\\`*_', false);
+	      return tag;
+	    });
+	
+	    return text;
+	  });
+	
+	  /**
+	   * Handle github codeblocks prior to running HashHTML so that
+	   * HTML contained within the codeblock gets escaped properly
+	   * Example:
+	   * ```ruby
+	   *     def hello_world(x)
+	   *       puts "Hello, #{x}"
+	   *     end
+	   * ```
+	   */
+	  showdown.subParser('githubCodeBlocks', function (text, options, globals) {
+	    'use strict';
+	
+	    // early exit if option is not enabled
+	
+	    if (!options.ghCodeBlocks) {
+	      return text;
+	    }
+	
+	    text = globals.converter._dispatch('githubCodeBlocks.before', text, options, globals);
+	
+	    text += '~0';
+	
+	    text = text.replace(/(?:^|\n)```(.*)\n([\s\S]*?)\n```/g, function (wholeMatch, language, codeblock) {
+	      var end = options.omitExtraWLInCodeBlocks ? '' : '\n';
+	
+	      // First parse the github code block
+	      codeblock = showdown.subParser('encodeCode')(codeblock);
+	      codeblock = showdown.subParser('detab')(codeblock);
+	      codeblock = codeblock.replace(/^\n+/g, ''); // trim leading newlines
+	      codeblock = codeblock.replace(/\n+$/g, ''); // trim trailing whitespace
+	
+	      codeblock = '<pre><code' + (language ? ' class="' + language + ' language-' + language + '"' : '') + '>' + codeblock + end + '</code></pre>';
+	
+	      codeblock = showdown.subParser('hashBlock')(codeblock, options, globals);
+	
+	      // Since GHCodeblocks can be false positives, we need to
+	      // store the primitive text and the parsed text in a global var,
+	      // and then return a token
+	      return '\n\n~G' + (globals.ghCodeBlocks.push({ text: wholeMatch, codeblock: codeblock }) - 1) + 'G\n\n';
+	    });
+	
+	    // attacklab: strip sentinel
+	    text = text.replace(/~0/, '');
+	
+	    return globals.converter._dispatch('githubCodeBlocks.after', text, options, globals);
+	  });
+	
+	  showdown.subParser('hashBlock', function (text, options, globals) {
+	    'use strict';
+	
+	    text = text.replace(/(^\n+|\n+$)/g, '');
+	    return '\n\n~K' + (globals.gHtmlBlocks.push(text) - 1) + 'K\n\n';
+	  });
+	
+	  showdown.subParser('hashElement', function (text, options, globals) {
+	    'use strict';
+	
+	    return function (wholeMatch, m1) {
+	      var blockText = m1;
+	
+	      // Undo double lines
+	      blockText = blockText.replace(/\n\n/g, '\n');
+	      blockText = blockText.replace(/^\n/, '');
+	
+	      // strip trailing blank lines
+	      blockText = blockText.replace(/\n+$/g, '');
+	
+	      // Replace the element text with a marker ("~KxK" where x is its key)
+	      blockText = '\n\n~K' + (globals.gHtmlBlocks.push(blockText) - 1) + 'K\n\n';
+	
+	      return blockText;
+	    };
+	  });
+	
+	  showdown.subParser('hashHTMLBlocks', function (text, options, globals) {
+	    'use strict';
+	
+	    var blockTags = ['pre', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'table', 'dl', 'ol', 'ul', 'script', 'noscript', 'form', 'fieldset', 'iframe', 'math', 'style', 'section', 'header', 'footer', 'nav', 'article', 'aside', 'address', 'audio', 'canvas', 'figure', 'hgroup', 'output', 'video', 'p'],
+	        repFunc = function repFunc(wholeMatch, match, left, right) {
+	      var txt = wholeMatch;
+	      // check if this html element is marked as markdown
+	      // if so, it's contents should be parsed as markdown
+	      if (left.search(/\bmarkdown\b/) !== -1) {
+	        txt = left + globals.converter.makeHtml(match) + right;
+	      }
+	      return '\n\n~K' + (globals.gHtmlBlocks.push(txt) - 1) + 'K\n\n';
+	    };
+	
+	    for (var i = 0; i < blockTags.length; ++i) {
+	      text = showdown.helper.replaceRecursiveRegExp(text, repFunc, '^ {0,3}<' + blockTags[i] + '\\b[^>]*>', '</' + blockTags[i] + '>', 'gim');
+	    }
+	
+	    // HR SPECIAL CASE
+	    text = text.replace(/(\n {0,3}(<(hr)\b([^<>])*?\/?>)[ \t]*(?=\n{2,}))/g, showdown.subParser('hashElement')(text, options, globals));
+	
+	    // Special case for standalone HTML comments
+	    text = showdown.helper.replaceRecursiveRegExp(text, function (txt) {
+	      return '\n\n~K' + (globals.gHtmlBlocks.push(txt) - 1) + 'K\n\n';
+	    }, '^ {0,3}<!--', '-->', 'gm');
+	
+	    // PHP and ASP-style processor instructions (<?...?> and <%...%>)
+	    text = text.replace(/(?:\n\n)( {0,3}(?:<([?%])[^\r]*?\2>)[ \t]*(?=\n{2,}))/g, showdown.subParser('hashElement')(text, options, globals));
+	
+	    return text;
+	  });
+	
+	  /**
+	   * Hash span elements that should not be parsed as markdown
+	   */
+	  showdown.subParser('hashHTMLSpans', function (text, config, globals) {
+	    'use strict';
+	
+	    var matches = showdown.helper.matchRecursiveRegExp(text, '<code\\b[^>]*>', '</code>', 'gi');
+	
+	    for (var i = 0; i < matches.length; ++i) {
+	      text = text.replace(matches[i][0], '~L' + (globals.gHtmlSpans.push(matches[i][0]) - 1) + 'L');
+	    }
+	    return text;
+	  });
+	
+	  /**
+	   * Unhash HTML spans
+	   */
+	  showdown.subParser('unhashHTMLSpans', function (text, config, globals) {
+	    'use strict';
+	
+	    for (var i = 0; i < globals.gHtmlSpans.length; ++i) {
+	      text = text.replace('~L' + i + 'L', globals.gHtmlSpans[i]);
+	    }
+	
+	    return text;
+	  });
+	
+	  /**
+	   * Hash span elements that should not be parsed as markdown
+	   */
+	  showdown.subParser('hashPreCodeTags', function (text, config, globals) {
+	    'use strict';
+	
+	    var repFunc = function repFunc(wholeMatch, match, left, right) {
+	      // encode html entities
+	      var codeblock = left + showdown.subParser('encodeCode')(match) + right;
+	      return '\n\n~G' + (globals.ghCodeBlocks.push({ text: wholeMatch, codeblock: codeblock }) - 1) + 'G\n\n';
+	    };
+	
+	    text = showdown.helper.replaceRecursiveRegExp(text, repFunc, '^ {0,3}<pre\\b[^>]*>\\s*<code\\b[^>]*>', '^ {0,3}</code>\\s*</pre>', 'gim');
+	    return text;
+	  });
+	
+	  showdown.subParser('headers', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('headers.before', text, options, globals);
+	
+	    var prefixHeader = options.prefixHeaderId,
+	        headerLevelStart = isNaN(parseInt(options.headerLevelStart)) ? 1 : parseInt(options.headerLevelStart),
+	
+	
+	    // Set text-style headers:
+	    //	Header 1
+	    //	========
+	    //
+	    //	Header 2
+	    //	--------
+	    //
+	    setextRegexH1 = options.smoothLivePreview ? /^(.+)[ \t]*\n={2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n=+[ \t]*\n+/gm,
+	        setextRegexH2 = options.smoothLivePreview ? /^(.+)[ \t]*\n-{2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n-+[ \t]*\n+/gm;
+	
+	    text = text.replace(setextRegexH1, function (wholeMatch, m1) {
+	
+	      var spanGamut = showdown.subParser('spanGamut')(m1, options, globals),
+	          hID = options.noHeaderId ? '' : ' id="' + headerId(m1) + '"',
+	          hLevel = headerLevelStart,
+	          hashBlock = '<h' + hLevel + hID + '>' + spanGamut + '</h' + hLevel + '>';
+	      return showdown.subParser('hashBlock')(hashBlock, options, globals);
+	    });
+	
+	    text = text.replace(setextRegexH2, function (matchFound, m1) {
+	      var spanGamut = showdown.subParser('spanGamut')(m1, options, globals),
+	          hID = options.noHeaderId ? '' : ' id="' + headerId(m1) + '"',
+	          hLevel = headerLevelStart + 1,
+	          hashBlock = '<h' + hLevel + hID + '>' + spanGamut + '</h' + hLevel + '>';
+	      return showdown.subParser('hashBlock')(hashBlock, options, globals);
+	    });
+	
+	    // atx-style headers:
+	    //  # Header 1
+	    //  ## Header 2
+	    //  ## Header 2 with closing hashes ##
+	    //  ...
+	    //  ###### Header 6
+	    //
+	    text = text.replace(/^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/gm, function (wholeMatch, m1, m2) {
+	      var span = showdown.subParser('spanGamut')(m2, options, globals),
+	          hID = options.noHeaderId ? '' : ' id="' + headerId(m2) + '"',
+	          hLevel = headerLevelStart - 1 + m1.length,
+	          header = '<h' + hLevel + hID + '>' + span + '</h' + hLevel + '>';
+	
+	      return showdown.subParser('hashBlock')(header, options, globals);
+	    });
+	
+	    function headerId(m) {
+	      var title,
+	          escapedId = m.replace(/[^\w]/g, '').toLowerCase();
+	
+	      if (globals.hashLinkCounts[escapedId]) {
+	        title = escapedId + '-' + globals.hashLinkCounts[escapedId]++;
+	      } else {
+	        title = escapedId;
+	        globals.hashLinkCounts[escapedId] = 1;
+	      }
+	
+	      // Prefix id to prevent causing inadvertent pre-existing style matches.
+	      if (prefixHeader === true) {
+	        prefixHeader = 'section';
+	      }
+	
+	      if (showdown.helper.isString(prefixHeader)) {
+	        return prefixHeader + title;
+	      }
+	      return title;
+	    }
+	
+	    text = globals.converter._dispatch('headers.after', text, options, globals);
+	    return text;
+	  });
+	
+	  /**
+	   * Turn Markdown image shortcuts into <img> tags.
+	   */
+	  showdown.subParser('images', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('images.before', text, options, globals);
+	
+	    var inlineRegExp = /!\[(.*?)]\s?\([ \t]*()<?(\S+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(['"])(.*?)\6[ \t]*)?\)/g,
+	        referenceRegExp = /!\[([^\]]*?)] ?(?:\n *)?\[(.*?)]()()()()()/g;
+	
+	    function writeImageTag(wholeMatch, altText, linkId, url, width, height, m5, title) {
+	
+	      var gUrls = globals.gUrls,
+	          gTitles = globals.gTitles,
+	          gDims = globals.gDimensions;
+	
+	      linkId = linkId.toLowerCase();
+	
+	      if (!title) {
+	        title = '';
+	      }
+	
+	      if (url === '' || url === null) {
+	        if (linkId === '' || linkId === null) {
+	          // lower-case and turn embedded newlines into spaces
+	          linkId = altText.toLowerCase().replace(/ ?\n/g, ' ');
+	        }
+	        url = '#' + linkId;
+	
+	        if (!showdown.helper.isUndefined(gUrls[linkId])) {
+	          url = gUrls[linkId];
+	          if (!showdown.helper.isUndefined(gTitles[linkId])) {
+	            title = gTitles[linkId];
+	          }
+	          if (!showdown.helper.isUndefined(gDims[linkId])) {
+	            width = gDims[linkId].width;
+	            height = gDims[linkId].height;
+	          }
+	        } else {
+	          return wholeMatch;
+	        }
+	      }
+	
+	      altText = altText.replace(/"/g, '&quot;');
+	      altText = showdown.helper.escapeCharacters(altText, '*_', false);
+	      url = showdown.helper.escapeCharacters(url, '*_', false);
+	      var result = '<img src="' + url + '" alt="' + altText + '"';
+	
+	      if (title) {
+	        title = title.replace(/"/g, '&quot;');
+	        title = showdown.helper.escapeCharacters(title, '*_', false);
+	        result += ' title="' + title + '"';
+	      }
+	
+	      if (width && height) {
+	        width = width === '*' ? 'auto' : width;
+	        height = height === '*' ? 'auto' : height;
+	
+	        result += ' width="' + width + '"';
+	        result += ' height="' + height + '"';
+	      }
+	
+	      result += ' />';
+	
+	      return result;
+	    }
+	
+	    // First, handle reference-style labeled images: ![alt text][id]
+	    text = text.replace(referenceRegExp, writeImageTag);
+	
+	    // Next, handle inline images:  ![alt text](url =<width>x<height> "optional title")
+	    text = text.replace(inlineRegExp, writeImageTag);
+	
+	    text = globals.converter._dispatch('images.after', text, options, globals);
+	    return text;
+	  });
+	
+	  showdown.subParser('italicsAndBold', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('italicsAndBold.before', text, options, globals);
+	
+	    if (options.literalMidWordUnderscores) {
+	      //underscores
+	      // Since we are consuming a \s character, we need to add it
+	      text = text.replace(/(^|\s|>|\b)__(?=\S)([\s\S]+?)__(?=\b|<|\s|$)/gm, '$1<strong>$2</strong>');
+	      text = text.replace(/(^|\s|>|\b)_(?=\S)([\s\S]+?)_(?=\b|<|\s|$)/gm, '$1<em>$2</em>');
+	      //asterisks
+	      text = text.replace(/(\*\*)(?=\S)([^\r]*?\S[*]*)\1/g, '<strong>$2</strong>');
+	      text = text.replace(/(\*)(?=\S)([^\r]*?\S)\1/g, '<em>$2</em>');
+	    } else {
+	      // <strong> must go first:
+	      text = text.replace(/(\*\*|__)(?=\S)([^\r]*?\S[*_]*)\1/g, '<strong>$2</strong>');
+	      text = text.replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g, '<em>$2</em>');
+	    }
+	
+	    text = globals.converter._dispatch('italicsAndBold.after', text, options, globals);
+	    return text;
+	  });
+	
+	  /**
+	   * Form HTML ordered (numbered) and unordered (bulleted) lists.
+	   */
+	  showdown.subParser('lists', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('lists.before', text, options, globals);
+	    /**
+	     * Process the contents of a single ordered or unordered list, splitting it
+	     * into individual list items.
+	     * @param {string} listStr
+	     * @param {boolean} trimTrailing
+	     * @returns {string}
+	     */
+	    function processListItems(listStr, trimTrailing) {
+	      // The $g_list_level global keeps track of when we're inside a list.
+	      // Each time we enter a list, we increment it; when we leave a list,
+	      // we decrement. If it's zero, we're not in a list anymore.
+	      //
+	      // We do this because when we're not inside a list, we want to treat
+	      // something like this:
+	      //
+	      //    I recommend upgrading to version
+	      //    8. Oops, now this line is treated
+	      //    as a sub-list.
+	      //
+	      // As a single paragraph, despite the fact that the second line starts
+	      // with a digit-period-space sequence.
+	      //
+	      // Whereas when we're inside a list (or sub-list), that line will be
+	      // treated as the start of a sub-list. What a kludge, huh? This is
+	      // an aspect of Markdown's syntax that's hard to parse perfectly
+	      // without resorting to mind-reading. Perhaps the solution is to
+	      // change the syntax rules such that sub-lists must start with a
+	      // starting cardinal number; e.g. "1." or "a.".
+	      globals.gListLevel++;
+	
+	      // trim trailing blank lines:
+	      listStr = listStr.replace(/\n{2,}$/, '\n');
+	
+	      // attacklab: add sentinel to emulate \z
+	      listStr += '~0';
+	
+	      var rgx = /(\n)?(^ {0,3})([*+-]|\d+[.])[ \t]+((\[(x|X| )?])?[ \t]*[^\r]+?(\n{1,2}))(?=\n*(~0| {0,3}([*+-]|\d+[.])[ \t]+))/gm,
+	          isParagraphed = /\n[ \t]*\n(?!~0)/.test(listStr);
+	
+	      // Since version 1.5, nesting sublists requires 4 spaces (or 1 tab) indentation,
+	      // which is a syntax breaking change
+	      // activating this option reverts to old behavior
+	      if (options.disableForced4SpacesIndentedSublists) {
+	        rgx = /(\n)?(^ {0,3})([*+-]|\d+[.])[ \t]+((\[(x|X| )?])?[ \t]*[^\r]+?(\n{1,2}))(?=\n*(~0|\2([*+-]|\d+[.])[ \t]+))/gm;
+	      }
+	
+	      listStr = listStr.replace(rgx, function (wholeMatch, m1, m2, m3, m4, taskbtn, checked) {
+	        checked = checked && checked.trim() !== '';
+	
+	        var item = showdown.subParser('outdent')(m4, options, globals),
+	            bulletStyle = '';
+	
+	        // Support for github tasklists
+	        if (taskbtn && options.tasklists) {
+	          bulletStyle = ' class="task-list-item" style="list-style-type: none;"';
+	          item = item.replace(/^[ \t]*\[(x|X| )?]/m, function () {
+	            var otp = '<input type="checkbox" disabled style="margin: 0px 0.35em 0.25em -1.6em; vertical-align: middle;"';
+	            if (checked) {
+	              otp += ' checked';
+	            }
+	            otp += '>';
+	            return otp;
+	          });
+	        }
+	
+	        // m1 - Leading line or
+	        // Has a double return (multi paragraph) or
+	        // Has sublist
+	        if (m1 || item.search(/\n{2,}/) > -1) {
+	          item = showdown.subParser('githubCodeBlocks')(item, options, globals);
+	          item = showdown.subParser('blockGamut')(item, options, globals);
+	        } else {
+	          // Recursion for sub-lists:
+	          item = showdown.subParser('lists')(item, options, globals);
+	          item = item.replace(/\n$/, ''); // chomp(item)
+	          if (isParagraphed) {
+	            item = showdown.subParser('paragraphs')(item, options, globals);
+	          } else {
+	            item = showdown.subParser('spanGamut')(item, options, globals);
+	          }
+	        }
+	        item = '<li' + bulletStyle + '>' + item + '</li>\n';
+	        return item;
+	      });
+	
+	      // attacklab: strip sentinel
+	      listStr = listStr.replace(/~0/g, '');
+	
+	      globals.gListLevel--;
+	
+	      if (trimTrailing) {
+	        listStr = listStr.replace(/\s+$/, '');
+	      }
+	
+	      return listStr;
+	    }
+	
+	    /**
+	     * Check and parse consecutive lists (better fix for issue #142)
+	     * @param {string} list
+	     * @param {string} listType
+	     * @param {boolean} trimTrailing
+	     * @returns {string}
+	     */
+	    function parseConsecutiveLists(list, listType, trimTrailing) {
+	      // check if we caught 2 or more consecutive lists by mistake
+	      // we use the counterRgx, meaning if listType is UL we look for OL and vice versa
+	      var olRgx = options.disableForced4SpacesIndentedSublists ? /^ ?\d+\.[ \t]/gm : /^ {0,3}\d+\.[ \t]/gm,
+	          ulRgx = options.disableForced4SpacesIndentedSublists ? /^ ?[*+-][ \t]/gm : /^ {0,3}[*+-][ \t]/gm,
+	          counterRxg = listType === 'ul' ? olRgx : ulRgx,
+	          result = '';
+	
+	      if (list.search(counterRxg) !== -1) {
+	        (function parseCL(txt) {
+	          var pos = txt.search(counterRxg);
+	          if (pos !== -1) {
+	            // slice
+	            result += '\n<' + listType + '>\n' + processListItems(txt.slice(0, pos), !!trimTrailing) + '</' + listType + '>\n';
+	
+	            // invert counterType and listType
+	            listType = listType === 'ul' ? 'ol' : 'ul';
+	            counterRxg = listType === 'ul' ? olRgx : ulRgx;
+	
+	            //recurse
+	            parseCL(txt.slice(pos));
+	          } else {
+	            result += '\n<' + listType + '>\n' + processListItems(txt, !!trimTrailing) + '</' + listType + '>\n';
+	          }
+	        })(list);
+	      } else {
+	        result = '\n<' + listType + '>\n' + processListItems(list, !!trimTrailing) + '</' + listType + '>\n';
+	      }
+	
+	      return result;
+	    }
+	
+	    // add sentinel to hack around khtml/safari bug:
+	    // http://bugs.webkit.org/show_bug.cgi?id=11231
+	    text += '~0';
+	
+	    if (globals.gListLevel) {
+	      text = text.replace(/^(( {0,3}([*+-]|\d+[.])[ \t]+)[^\r]+?(~0|\n{2,}(?=\S)(?![ \t]*(?:[*+-]|\d+[.])[ \t]+)))/gm, function (wholeMatch, list, m2) {
+	        var listType = m2.search(/[*+-]/g) > -1 ? 'ul' : 'ol';
+	        return parseConsecutiveLists(list, listType, true);
+	      });
+	    } else {
+	      text = text.replace(/(\n\n|^\n?)(( {0,3}([*+-]|\d+[.])[ \t]+)[^\r]+?(~0|\n{2,}(?=\S)(?![ \t]*(?:[*+-]|\d+[.])[ \t]+)))/gm, function (wholeMatch, m1, list, m3) {
+	        var listType = m3.search(/[*+-]/g) > -1 ? 'ul' : 'ol';
+	        return parseConsecutiveLists(list, listType, false);
+	      });
+	    }
+	
+	    // strip sentinel
+	    text = text.replace(/~0/, '');
+	
+	    text = globals.converter._dispatch('lists.after', text, options, globals);
+	    return text;
+	  });
+	
+	  /**
+	   * Remove one level of line-leading tabs or spaces
+	   */
+	  showdown.subParser('outdent', function (text) {
+	    'use strict';
+	
+	    // attacklab: hack around Konqueror 3.5.4 bug:
+	    // "----------bug".replace(/^-/g,"") == "bug"
+	
+	    text = text.replace(/^(\t|[ ]{1,4})/gm, '~0'); // attacklab: g_tab_width
+	
+	    // attacklab: clean up hack
+	    text = text.replace(/~0/g, '');
+	
+	    return text;
+	  });
+	
+	  /**
+	   *
+	   */
+	  showdown.subParser('paragraphs', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('paragraphs.before', text, options, globals);
+	    // Strip leading and trailing lines:
+	    text = text.replace(/^\n+/g, '');
+	    text = text.replace(/\n+$/g, '');
+	
+	    var grafs = text.split(/\n{2,}/g),
+	        grafsOut = [],
+	        end = grafs.length; // Wrap <p> tags
+	
+	    for (var i = 0; i < end; i++) {
+	      var str = grafs[i];
+	      // if this is an HTML marker, copy it
+	      if (str.search(/~(K|G)(\d+)\1/g) >= 0) {
+	        grafsOut.push(str);
+	      } else {
+	        str = showdown.subParser('spanGamut')(str, options, globals);
+	        str = str.replace(/^([ \t]*)/g, '<p>');
+	        str += '</p>';
+	        grafsOut.push(str);
+	      }
+	    }
+	
+	    /** Unhashify HTML blocks */
+	    end = grafsOut.length;
+	    for (i = 0; i < end; i++) {
+	      var blockText = '',
+	          grafsOutIt = grafsOut[i],
+	          codeFlag = false;
+	      // if this is a marker for an html block...
+	      while (grafsOutIt.search(/~(K|G)(\d+)\1/) >= 0) {
+	        var delim = RegExp.$1,
+	            num = RegExp.$2;
+	
+	        if (delim === 'K') {
+	          blockText = globals.gHtmlBlocks[num];
+	        } else {
+	          // we need to check if ghBlock is a false positive
+	          if (codeFlag) {
+	            // use encoded version of all text
+	            blockText = showdown.subParser('encodeCode')(globals.ghCodeBlocks[num].text);
+	          } else {
+	            blockText = globals.ghCodeBlocks[num].codeblock;
+	          }
+	        }
+	        blockText = blockText.replace(/\$/g, '$$$$'); // Escape any dollar signs
+	
+	        grafsOutIt = grafsOutIt.replace(/(\n\n)?~(K|G)\d+\2(\n\n)?/, blockText);
+	        // Check if grafsOutIt is a pre->code
+	        if (/^<pre\b[^>]*>\s*<code\b[^>]*>/.test(grafsOutIt)) {
+	          codeFlag = true;
+	        }
+	      }
+	      grafsOut[i] = grafsOutIt;
+	    }
+	    text = grafsOut.join('\n');
+	    // Strip leading and trailing lines:
+	    text = text.replace(/^\n+/g, '');
+	    text = text.replace(/\n+$/g, '');
+	    return globals.converter._dispatch('paragraphs.after', text, options, globals);
+	  });
+	
+	  /**
+	   * Run extension
+	   */
+	  showdown.subParser('runExtension', function (ext, text, options, globals) {
+	    'use strict';
+	
+	    if (ext.filter) {
+	      text = ext.filter(text, globals.converter, options);
+	    } else if (ext.regex) {
+	      // TODO remove this when old extension loading mechanism is deprecated
+	      var re = ext.regex;
+	      if (!re instanceof RegExp) {
+	        re = new RegExp(re, 'g');
+	      }
+	      text = text.replace(re, ext.replace);
+	    }
+	
+	    return text;
+	  });
+	
+	  /**
+	   * These are all the transformations that occur *within* block-level
+	   * tags like paragraphs, headers, and list items.
+	   */
+	  showdown.subParser('spanGamut', function (text, options, globals) {
+	    'use strict';
+	
+	    text = globals.converter._dispatch('spanGamut.before', text, options, globals);
+	    text = showdown.subParser('codeSpans')(text, options, globals);
+	    text = showdown.subParser('escapeSpecialCharsWithinTagAttributes')(text, options, globals);
+	    text = showdown.subParser('encodeBackslashEscapes')(text, options, globals);
+	
+	    // Process anchor and image tags. Images must come first,
+	    // because ![foo][f] looks like an anchor.
+	    text = showdown.subParser('images')(text, options, globals);
+	    text = showdown.subParser('anchors')(text, options, globals);
+	
+	    // Make links out of things like `<http://example.com/>`
+	    // Must come after _DoAnchors(), because you can use < and >
+	    // delimiters in inline links like [this](<url>).
+	    text = showdown.subParser('autoLinks')(text, options, globals);
+	    text = showdown.subParser('encodeAmpsAndAngles')(text, options, globals);
+	    text = showdown.subParser('italicsAndBold')(text, options, globals);
+	    text = showdown.subParser('strikethrough')(text, options, globals);
+	
+	    // Do hard breaks:
+	    text = text.replace(/  +\n/g, ' <br />\n');
+	
+	    text = globals.converter._dispatch('spanGamut.after', text, options, globals);
+	    return text;
+	  });
+	
+	  showdown.subParser('strikethrough', function (text, options, globals) {
+	    'use strict';
+	
+	    if (options.strikethrough) {
+	      text = globals.converter._dispatch('strikethrough.before', text, options, globals);
+	      text = text.replace(/(?:~T){2}([\s\S]+?)(?:~T){2}/g, '<del>$1</del>');
+	      text = globals.converter._dispatch('strikethrough.after', text, options, globals);
+	    }
+	
+	    return text;
+	  });
+	
+	  /**
+	   * Strip any lines consisting only of spaces and tabs.
+	   * This makes subsequent regexs easier to write, because we can
+	   * match consecutive blank lines with /\n+/ instead of something
+	   * contorted like /[ \t]*\n+/
+	   */
+	  showdown.subParser('stripBlankLines', function (text) {
+	    'use strict';
+	
+	    return text.replace(/^[ \t]+$/mg, '');
+	  });
+	
+	  /**
+	   * Strips link definitions from text, stores the URLs and titles in
+	   * hash references.
+	   * Link defs are in the form: ^[id]: url "optional title"
+	   */
+	  showdown.subParser('stripLinkDefinitions', function (text, options, globals) {
+	    'use strict';
+	
+	    var regex = /^ {0,3}\[(.+)]:[ \t]*\n?[ \t]*<?(\S+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*\n?[ \t]*(?:(\n*)["|'(](.+?)["|')][ \t]*)?(?:\n+|(?=~0))/gm;
+	
+	    // attacklab: sentinel workarounds for lack of \A and \Z, safari\khtml bug
+	    text += '~0';
+	
+	    text = text.replace(regex, function (wholeMatch, linkId, url, width, height, blankLines, title) {
+	      linkId = linkId.toLowerCase();
+	      globals.gUrls[linkId] = showdown.subParser('encodeAmpsAndAngles')(url); // Link IDs are case-insensitive
+	
+	      if (blankLines) {
+	        // Oops, found blank lines, so it's not a title.
+	        // Put back the parenthetical statement we stole.
+	        return blankLines + title;
+	      } else {
+	        if (title) {
+	          globals.gTitles[linkId] = title.replace(/"|'/g, '&quot;');
+	        }
+	        if (options.parseImgDimensions && width && height) {
+	          globals.gDimensions[linkId] = {
+	            width: width,
+	            height: height
+	          };
+	        }
+	      }
+	      // Completely remove the definition from the text
+	      return '';
+	    });
+	
+	    // attacklab: strip sentinel
+	    text = text.replace(/~0/, '');
+	
+	    return text;
+	  });
+	
+	  showdown.subParser('tables', function (text, options, globals) {
+	    'use strict';
+	
+	    if (!options.tables) {
+	      return text;
+	    }
+	
+	    var tableRgx = /^ {0,3}\|?.+\|.+\n[ \t]{0,3}\|?[ \t]*:?[ \t]*(?:-|=){2,}[ \t]*:?[ \t]*\|[ \t]*:?[ \t]*(?:-|=){2,}[\s\S]+?(?:\n\n|~0)/gm;
+	
+	    function parseStyles(sLine) {
+	      if (/^:[ \t]*--*$/.test(sLine)) {
+	        return ' style="text-align:left;"';
+	      } else if (/^--*[ \t]*:[ \t]*$/.test(sLine)) {
+	        return ' style="text-align:right;"';
+	      } else if (/^:[ \t]*--*[ \t]*:$/.test(sLine)) {
+	        return ' style="text-align:center;"';
+	      } else {
+	        return '';
+	      }
+	    }
+	
+	    function parseHeaders(header, style) {
+	      var id = '';
+	      header = header.trim();
+	      if (options.tableHeaderId) {
+	        id = ' id="' + header.replace(/ /g, '_').toLowerCase() + '"';
+	      }
+	      header = showdown.subParser('spanGamut')(header, options, globals);
+	
+	      return '<th' + id + style + '>' + header + '</th>\n';
+	    }
+	
+	    function parseCells(cell, style) {
+	      var subText = showdown.subParser('spanGamut')(cell, options, globals);
+	      return '<td' + style + '>' + subText + '</td>\n';
+	    }
+	
+	    function buildTable(headers, cells) {
+	      var tb = '<table>\n<thead>\n<tr>\n',
+	          tblLgn = headers.length;
+	
+	      for (var i = 0; i < tblLgn; ++i) {
+	        tb += headers[i];
+	      }
+	      tb += '</tr>\n</thead>\n<tbody>\n';
+	
+	      for (i = 0; i < cells.length; ++i) {
+	        tb += '<tr>\n';
+	        for (var ii = 0; ii < tblLgn; ++ii) {
+	          tb += cells[i][ii];
+	        }
+	        tb += '</tr>\n';
+	      }
+	      tb += '</tbody>\n</table>\n';
+	      return tb;
+	    }
+	
+	    text = globals.converter._dispatch('tables.before', text, options, globals);
+	
+	    text = text.replace(tableRgx, function (rawTable) {
+	
+	      var i,
+	          tableLines = rawTable.split('\n');
+	
+	      // strip wrong first and last column if wrapped tables are used
+	      for (i = 0; i < tableLines.length; ++i) {
+	        if (/^ {0,3}\|/.test(tableLines[i])) {
+	          tableLines[i] = tableLines[i].replace(/^ {0,3}\|/, '');
+	        }
+	        if (/\|[ \t]*$/.test(tableLines[i])) {
+	          tableLines[i] = tableLines[i].replace(/\|[ \t]*$/, '');
+	        }
+	      }
+	
+	      var rawHeaders = tableLines[0].split('|').map(function (s) {
+	        return s.trim();
+	      }),
+	          rawStyles = tableLines[1].split('|').map(function (s) {
+	        return s.trim();
+	      }),
+	          rawCells = [],
+	          headers = [],
+	          styles = [],
+	          cells = [];
+	
+	      tableLines.shift();
+	      tableLines.shift();
+	
+	      for (i = 0; i < tableLines.length; ++i) {
+	        if (tableLines[i].trim() === '') {
+	          continue;
+	        }
+	        rawCells.push(tableLines[i].split('|').map(function (s) {
+	          return s.trim();
+	        }));
+	      }
+	
+	      if (rawHeaders.length < rawStyles.length) {
+	        return rawTable;
+	      }
+	
+	      for (i = 0; i < rawStyles.length; ++i) {
+	        styles.push(parseStyles(rawStyles[i]));
+	      }
+	
+	      for (i = 0; i < rawHeaders.length; ++i) {
+	        if (showdown.helper.isUndefined(styles[i])) {
+	          styles[i] = '';
+	        }
+	        headers.push(parseHeaders(rawHeaders[i], styles[i]));
+	      }
+	
+	      for (i = 0; i < rawCells.length; ++i) {
+	        var row = [];
+	        for (var ii = 0; ii < headers.length; ++ii) {
+	          if (showdown.helper.isUndefined(rawCells[i][ii])) {}
+	          row.push(parseCells(rawCells[i][ii], styles[ii]));
+	        }
+	        cells.push(row);
+	      }
+	
+	      return buildTable(headers, cells);
+	    });
+	
+	    text = globals.converter._dispatch('tables.after', text, options, globals);
+	
+	    return text;
+	  });
+	
+	  /**
+	   * Swap back in all the special characters we've hidden.
+	   */
+	  showdown.subParser('unescapeSpecialChars', function (text) {
+	    'use strict';
+	
+	    text = text.replace(/~E(\d+)E/g, function (wholeMatch, m1) {
+	      var charCodeToReplace = parseInt(m1);
+	      return String.fromCharCode(charCodeToReplace);
+	    });
+	    return text;
+	  });
+	
+	  var root = this;
+	
+	  // CommonJS/nodeJS Loader
+	  if (typeof module !== 'undefined' && module.exports) {
+	    module.exports = showdown;
+	
+	    // AMD Loader
+	  } else if (true) {
+	    !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	      'use strict';
+	
+	      return showdown;
+	    }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	
+	    // Regular Browser loader
+	  } else {
+	    root.showdown = showdown;
+	  }
+	}).call(undefined);
+	
+	//# sourceMappingURL=showdown.js.map
 
 /***/ }
 /******/ ]);

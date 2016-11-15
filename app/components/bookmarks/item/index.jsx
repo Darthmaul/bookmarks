@@ -1,4 +1,5 @@
 import React from 'react';
+import showdown from 'showdown';
 
 import { Link } from 'react-router';
 import * as _ from '../../../lib/tools.js';
@@ -45,6 +46,16 @@ export default class BookmarkItemComponent extends React.Component {
 		});
 	}
 
+	renderText() {
+		const { bookmark } = this.props;
+		const converter = new showdown.Converter();
+		const html = converter.makeHtml(bookmark.text);
+
+		return (
+			<div className="bookmark-item__text" dangerouslySetInnerHTML={{__html: html }} />
+		);
+	}
+
 	renderTags() {
 		const { bookmark } = this.props;
 		const tags = bookmark.tags.map(tag => {
@@ -88,11 +99,7 @@ export default class BookmarkItemComponent extends React.Component {
 
 		if (bookmark.text && bookmark.text.length) {
 			if (shouldShowText) {
-				textHtml = (
-					<div className="bookmark-item__text">
-						{bookmark.text}
-					</div>
-				);
+				textHtml = this.renderText();
 			}
 
 			textToggle = (

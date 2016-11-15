@@ -40,16 +40,13 @@
 	}
 
 	.bookmark-item__tags {
-		padding: 2px 15px;
+		padding: 4px 15px;
 		-webkit-animation: fadeIn 200ms;
 		-o-animation: fadeIn 200ms;
 		animation: fadeIn 200ms;
 		border-top: 1px solid #ccc;
 		background: #FCFAF9;
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
-	}
-
-	.bookmark-item__tag {
 	}
 
 	.bookmark-item__options {
@@ -80,9 +77,19 @@
 
 	.bookmark-item__text {
 		border-top: 1px solid #ccc;
-		padding: 10px 20px;
+		padding: 15px 20px;
 		font-size: 80%;
 		color: #777;
+
+		p {
+			&:first-child {
+				margin-top: 0px;
+			}
+
+			&:last-child {
+				margin-bottom: 0px;
+			}
+		}
 	}
 
 	.bookmark-item__edit-options {

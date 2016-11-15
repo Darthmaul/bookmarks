@@ -9,7 +9,7 @@ export default class CreateComponent extends React.Component {
 	render() {
 		return (
 			<section className="create-choices box">
-				<header className="create-choices__header">
+				<header className="box__header">
 					<h3>what do you want to create?</h3>
 				</header>
 				<div className="create-choices__choice-wrap">

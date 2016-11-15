@@ -3,6 +3,10 @@
 	max-width: 500px;
 	margin: 0 auto;
 
+	.textarea {
+		resize: none;
+	}
+
 	.field--tags {
 		margin-bottom: 0px;
 	}

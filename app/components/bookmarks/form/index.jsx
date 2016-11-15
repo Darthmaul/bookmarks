@@ -82,16 +82,32 @@ export default class BookmarkFormComponent extends React.Component {
 	tagsFieldKeyDownHandler(event) {
 		if (event.keyCode == 13 || event.charCode == 13) {
 			event.preventDefault();
-			const tag = this.refs.tags.value;
+			const input = this.refs.tags;
+			const tag = input.value;
 			if (tag.trim()) {
 				const { tags } = this.state;
 				if (tags.indexOf(tag.trim()) == -1) {
 					tags.push(tag);
-					this.refs.tags.value = '';
+					input.value = '';
 					this.setState({ tags });
+					// setting input value to empty string doesn't show placeholder in webkit for some reason. bluring and focusing fixes it. 
+					input.blur();
+					input.focus();
 				}
 			}
 		}
+	}
+
+	setTextInputHeight() {
+		const { text } = this.refs;
+		if (text) {
+			text.style.height = 'auto';
+			text.style.height = text.scrollHeight + 'px';
+		}
+	}
+
+	textChangeHandler() {
+		this.setTextInputHeight();
 	}
 
 	render() {
@@ -104,9 +120,12 @@ export default class BookmarkFormComponent extends React.Component {
 				{this.renderError('title')}
 				<input ref="url" defaultValue={bookmark ? bookmark.url : ''} placeholder="url" type="text" className="field" autoCapitalize="none" />
 				{this.renderError('url')}
-				<textarea ref="text" defaultValue={bookmark ? bookmark.text : ''} placeholder="text" type="text" className="field" />
+				<textarea ref={ref => {
+					this.refs.text = ref;
+					this.setTextInputHeight();
+				}} onInput={this.textChangeHandler.bind(this)} defaultValue={bookmark ? bookmark.text : ''} placeholder="text" type="text" rows="1" className="field textarea" />
 				{this.renderError('text')}
-				<input onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} ref="tags" placeholder="tags (enter to add)" type="text" className="field field--tags" />
+				<input onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} ref="tags" placeholder="tags" type="text" className="field field--tags" />
 				{this.renderError('tags')}
 				{this.renderTags()}
 				<div className="controls">

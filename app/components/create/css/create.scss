@@ -3,17 +3,6 @@
 	margin: 0 auto;
 	position: relative;
 
-	&__header {
-		padding: 10px 20px;
-		color: #777;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
-		background: #FCFAF9;
-
-		h3 {
-			font-size: 1rem;
-		}
-	}
-
 	&__choice-wrap {
 		display: table;
 		min-width: 100%;
@@ -25,7 +14,6 @@
 		text-align: center;
 		height: 10rem;
 		text-decoration: none;
-		border-top: 1px solid #ddd;
 		width: 50%;
 			
 		i {
