@@ -51,6 +51,8 @@ export default class BookmarkItemComponent extends React.Component {
 		const converter = new showdown.Converter();
 		const html = converter.makeHtml(bookmark.text);
 
+		console.log(bookmark)
+
 		return (
 			<div className="bookmark-item__text" dangerouslySetInnerHTML={{__html: html }} />
 		);
@@ -85,7 +87,7 @@ export default class BookmarkItemComponent extends React.Component {
 
 		if (_.validateImageUrl(bookmark.url)) {
 			if (shouldShowImage) {
-				imgHtml = <div className="bookmark-item__image-wrap"><img className="bookmark-item__image" src={bookmark.url} /></div>;
+				imgHtml = <div className="bookmark-item__image-wrap"><a href={bookmark.url}><img className="bookmark-item__image" src={bookmark.url} /></a></div>;
 			}
 
 			imgToggle = (

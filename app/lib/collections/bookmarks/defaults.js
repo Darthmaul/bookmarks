@@ -1,9 +1,9 @@
 const defaultBookmarks = [
 	{ 
 		title: 'Some of my photography',
-		url: 'https://www.flickr.com/photos/fergusruston/',
+		url: 'https://c4.staticflickr.com/1/773/22353007131_8cf5803bc8_k.jpg',
 		domain: 'www.flickr.com',
-		text: 'Go see it on Flickr!',
+		text: '# Go see it on Flickr! \n\n These bookmarks support markdown!',
 		tags: ['default bookmark', 'photography'],
 		slug: 'some-of-my-photography',
 		date: new Date
