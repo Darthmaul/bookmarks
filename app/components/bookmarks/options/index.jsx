@@ -22,7 +22,7 @@ export default class OptionsComponent extends React.Component {
 	render() {
 		const { bookmark } = this.props;
 		return (
-			<div className="bookmark-options box margin-bottom-sm">
+			<div className="bookmark-options">
 				<a className="btn" href={bookmark.url}>visit</a>
 				<Link to={bookmark.getEditUrl()} className="btn">edit</Link>
 				<a className="btn" href="#" onClick={this.remove.bind(this)}>delete</a>

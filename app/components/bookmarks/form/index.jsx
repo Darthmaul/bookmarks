@@ -21,14 +21,6 @@ export default class BookmarkFormComponent extends React.Component {
 		}
 	}
 
-	renderError(field) {
-		const { errors } = this.state;
-		const error = errors[field];
-		if (error) {
-			return <span className="field-error">{error}</span>
-		}
-	}
-
 	submitHandler(event) {
 		event.preventDefault();
 		const { bookmark } = this.props;
@@ -110,27 +102,50 @@ export default class BookmarkFormComponent extends React.Component {
 		this.setTextInputHeight();
 	}
 
+	getFieldError(field) {
+		const { errors } = this.state;
+		const error = errors[field];
+		return error ? error : false;
+	}
+
+	renderFieldError(field) {
+		const error = this.getFieldError(field);
+		if (error) {
+			return <span className="field-error">{error}</span>
+		}
+	}
+
 	render() {
 		const { bookmark } = this.props;
 		
 		return (
-			<form onSubmit={this.submitHandler.bind(this)} className="bookmark-form box">
-				<h2 className="form-title">bookmark</h2>
-				<input ref="title" defaultValue={bookmark ? bookmark.title : ''} placeholder="title" type="text" className="field" />
-				{this.renderError('title')}
-				<input ref="url" defaultValue={bookmark ? bookmark.url : ''} placeholder="url" type="text" className="field" autoCapitalize="none" />
-				{this.renderError('url')}
-				<textarea ref={ref => {
-					this.refs.text = ref;
-					this.setTextInputHeight();
-				}} onInput={this.textChangeHandler.bind(this)} defaultValue={bookmark ? bookmark.text : ''} placeholder="text" type="text" rows="1" className="field textarea" />
-				{this.renderError('text')}
-				<input onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} ref="tags" placeholder="tags" type="text" className="field field--tags" />
-				{this.renderError('tags')}
-				{this.renderTags()}
-				<div className="controls">
-					<button type="submit" className="btn">{bookmark ? 'update' : 'create'}</button>
+			<form onSubmit={this.submitHandler.bind(this)} className="bookmark-form box-form box">
+				<div className="box-form__inner">
+					<header className="box-form__header">
+						<h2 className="form-title">bookmark</h2>
+					</header>
+					<div className="field-wrap">
+						<input ref="title" defaultValue={bookmark ? bookmark.title : ''} placeholder="title" type="text" className="field" />
+						{this.renderFieldError('title')}
+					</div>
+					<div className="field-wrap">
+						<input ref="url" defaultValue={bookmark ? bookmark.url : ''} placeholder="url" type="text" className="field" autoCapitalize="none" />
+						{this.renderFieldError('url')}
+					</div>
+					<div className="field-wrap">
+						<textarea ref={ref => {
+							this.refs.text = ref;
+							this.setTextInputHeight();
+						}} onInput={this.textChangeHandler.bind(this)} defaultValue={bookmark ? bookmark.text : ''} placeholder="text" type="text" rows="1" className="field textarea" />
+					</div>
+					<div className="field-wrap">
+						<input onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} ref="tags" placeholder="tags" type="text" className="field field--tags" />
+						{this.renderTags()}
+					</div>
 				</div>
+				<footer className="box-form__footer clearfix">
+					<button type="submit" className="btn pull-right">{bookmark ? 'update' : 'create'}</button>
+				</footer>
 			</form>
 		)
 	}

@@ -1,12 +1,14 @@
-div.bookmark-options {
+.bookmark-options {
 	font-size: 80%;
 	background: #FCFAF9;
+	border-top: 1px solid #ccc;
 
 	a {
-		line-height: 1.6rem;
+		line-height: 1.4rem;
 		display: inline-block;
 		text-decoration: none;
 		padding: 0 20px;
+		font-size: 80%;
 		border: 0px;
 		border-right: 1px solid #ccc;
 

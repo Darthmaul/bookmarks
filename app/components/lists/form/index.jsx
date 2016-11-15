@@ -42,24 +42,43 @@ export default class ListFormComponent extends React.Component {
 		}
 	}
 
-	renderError(field) {
+	getFieldError(field) {
 		const { errors } = this.state;
 		const error = errors[field];
+		return error ? error : false;
+	}
+
+	renderFieldError(field) {
+		const error = this.getFieldError(field);
 		if (error) {
 			return <span className="field-error">{error}</span>
+		}
+	}
+
+	renderError() {
+		const { errors } = this.state;
+		if (_.keys(errors.length)) {
+			const error = _.values(errors)[0];
+			return <span className="form-error">{error}</span>;
 		}
 	}
 
 	render() {
 		const { list } = this.props;
 		return (
-			<form onSubmit={this.submitHandler.bind(this)} className="list-form box">
-				<h3 className="form-title">list</h3>
-				<input ref="title" defaultValue={list ? list.title : ''} placeholder="title" type="text" className="field" />
-				{this.renderError('title')}
-				<div className="controls">
-					<button type="submit" className="btn">{list ? 'update' : 'create'}</button>
+			<form onSubmit={this.submitHandler.bind(this)} className="list-form box-form box">
+				<div className="box-form__inner">
+					<header className="box-form__header">
+						<h2 className="form-title">list</h2>
+					</header>
+					<div className="field-wrap">
+						<input ref="title" defaultValue={list ? list.title : ''} placeholder="title" type="text" className="field" />
+						{this.renderFieldError('title')}
+					</div>
 				</div>
+				<footer className="box-form__footer clearfix">
+					<button type="submit" className="btn pull-right">{list ? 'update' : 'create'}</button>
+				</footer>
 			</form>
 		);
 	}

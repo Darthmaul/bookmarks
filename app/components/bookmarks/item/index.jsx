@@ -4,6 +4,8 @@ import showdown from 'showdown';
 import { Link } from 'react-router';
 import * as _ from '../../../lib/tools.js';
 
+import BookmarkOptionsComponent from '../options/index.jsx';
+
 // import styles for this component
 require('!style!css!sass!./css/item.scss');
 
@@ -51,8 +53,6 @@ export default class BookmarkItemComponent extends React.Component {
 		const converter = new showdown.Converter();
 		const html = converter.makeHtml(bookmark.text);
 
-		console.log(bookmark)
-
 		return (
 			<div className="bookmark-item__text" dangerouslySetInnerHTML={{__html: html }} />
 		);
@@ -67,8 +67,8 @@ export default class BookmarkItemComponent extends React.Component {
 	}
 
 	render() {
-		let tagsHtml, tagsToggle, imgHtml, imgToggle, textHtml, textToggle, editOptions;
-		const { bookmark } = this.props;
+		let tagsHtml, tagsToggle, imgHtml, imgToggle, textHtml, textToggle, optionsHtml;
+		const { bookmark, shouldShowOptions } = this.props;
 		const { shouldShowTags, shouldShowImage, shouldShowText } = this.state;
 
 		if (bookmark.tags && bookmark.tags.length) {
@@ -113,20 +113,24 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
+		if (shouldShowOptions) {
+			optionsHtml = <BookmarkOptionsComponent bookmark={bookmark} />;
+		}
+
 		return (
 			<div className="bookmark-item box">
 				<header className="bookmark-item__header">
 					<Link className="bookmark-item__title" to={bookmark.getDetailUrl()}>{bookmark.title}</Link>
 				</header>
 				{imgHtml}
-				<div className="bookmark-item__options">
-					<ul className="bookmark-item__options-toggles">
+				<footer className="bookmark-item__footer">
+					<ul className="bookmark-item__footer-toggles">
 						{textToggle}
 						{imgToggle}
 						{tagsToggle}
 					</ul>
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
-				</div>
+				</footer>
 				{tagsHtml}
 				{textHtml}
 			</div>
