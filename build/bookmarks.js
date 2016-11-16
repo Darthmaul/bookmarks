@@ -44147,6 +44147,8 @@
 					descriptionHtml = this.renderDescription();
 				}
 	
+				var headerTitle = list.bookmarks.length == 1 ? '1 bookmark' : list.bookmarks.length + ' bookmarks';
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: 'list-item box' },
@@ -44156,8 +44158,7 @@
 						_react2.default.createElement(
 							'span',
 							{ className: 'list-item__bookmark-count' },
-							list.bookmarks.length,
-							' bookmarks'
+							headerTitle
 						)
 					),
 					_react2.default.createElement(

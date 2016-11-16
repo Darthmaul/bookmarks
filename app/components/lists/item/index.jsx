@@ -26,10 +26,12 @@ export default class ListItemComponent extends React.Component {
 			descriptionHtml = this.renderDescription();
 		}
 
+		const headerTitle = list.bookmarks.length == 1 ? '1 bookmark' : list.bookmarks.length + ' bookmarks';
+
 		return (
 			<div className="list-item box">
 				<div className="list-item__details">
-					<span className="list-item__bookmark-count">{list.bookmarks.length} bookmarks</span>
+					<span className="list-item__bookmark-count">{headerTitle}</span>
 				</div>
 				<header className="list-item__header"><Link className="list-item__title" to={list.getDetailUrl()}>{list.title}</Link></header>
 				{descriptionHtml}
