@@ -44074,8 +44074,8 @@
 					var listBookmarks = bookmarkModels.map(function (bookmark) {
 						return _react2.default.createElement(
 							'li',
-							{ className: 'margin-bottom' },
-							_react2.default.createElement(_index4.default, { key: bookmark.id, bookmark: bookmark })
+							{ key: bookmark.id, className: 'margin-bottom' },
+							_react2.default.createElement(_index4.default, { bookmark: bookmark })
 						);
 					});
 					bookmarkList = _react2.default.createElement(
