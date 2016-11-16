@@ -28161,7 +28161,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto;\n  padding-bottom: 20px; }\n\n.notouch .app {\n  padding-bottom: 40px; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
+	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto;\n  padding-bottom: 10px; }\n\n.notouch .app {\n  padding-bottom: 40px; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
 	
 	// exports
 
