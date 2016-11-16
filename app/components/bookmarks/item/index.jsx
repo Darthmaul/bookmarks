@@ -53,8 +53,6 @@ export default class BookmarkItemComponent extends React.Component {
 		const converter = new showdown.Converter();
 		const html = converter.makeHtml(bookmark.description);
 
-		console.log(bookmark.description)
-
 		return (
 			<div className="bookmark-item__description" dangerouslySetInnerHTML={{__html: html }} />
 		);
