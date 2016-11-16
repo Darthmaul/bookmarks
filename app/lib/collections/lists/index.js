@@ -7,12 +7,28 @@ import listValidator from './validators.js';
 
 export default class Lists extends LocalStorageCollection {
 
+	constructor() {
+		super();
+
+		this.setUpModelHooks();
+	}
+
 	get model() {
 		return ListModel;
 	}
 
 	get validator() {
 		return listValidator;
+	}
+
+	setUpModelHooks() {
+		this.preCreate(model => {
+			model.date = new Date;
+			
+			// set slug
+			model.slug = _.slugify(model.title);
+			return model;
+		});
 	}
 
 }

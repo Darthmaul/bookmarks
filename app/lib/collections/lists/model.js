@@ -10,11 +10,11 @@ export default class ListModel extends Model {
 	}
 
 	getDetailUrl() {
-		return "/bookmark/" + this.id + '/' + this.slug;
+		return "/list/" + this.id + '/' + this.slug;
 	}
 
 	getEditUrl() {
-		return "/bookmark/" + this.id + '/' + this.slug + "/edit";
+		return "/list/" + this.id + '/' + this.slug + "/edit";
 	}
 
 }

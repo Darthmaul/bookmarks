@@ -14,7 +14,7 @@ export default class BookmarkDetailComponent extends React.Component {
 		if (bookmark) {
 			return (
 				<div className="bookmark-detail">
-					<BookmarkItemComponent shouldShowOptions={true} shouldShowTags={true} shouldShowImage={true} shouldShowText={true} bookmark={bookmark} />
+					<BookmarkItemComponent shouldShowTags={true} shouldShowImage={true} shouldShowText={true} bookmark={bookmark} />
 				</div>
 			);
 		} else {

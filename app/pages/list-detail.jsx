@@ -1,5 +1,5 @@
 import React from 'react';
-import BookmarkDetailComponent from '../components/bookmarks/detail/index.jsx';
+import ListDetailComponent from '../components/lists/detail/index.jsx';
 import { NotFoundComponent } from '../components/errors.jsx';
 
 export default class ListDetailPage extends React.Component {
@@ -23,9 +23,9 @@ export default class ListDetailPage extends React.Component {
 	}
 
 	render() {
-		const { bookmark } = this.state;
-		if (bookmark) {
-			return <DetailComponent bookmark={bookmark} />
+		const { list } = this.state;
+		if (list) {
+			return <ListDetailComponent list={list} />
 		} else {
 			return <NotFoundComponent />
 		}
