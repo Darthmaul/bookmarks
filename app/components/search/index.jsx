@@ -7,7 +7,6 @@ require('!style!css!sass!./css/search.scss');
 export default class SearchComponent extends React.Component {
 
 	static contextTypes = {
-		bookmarks: React.PropTypes.object,
 		router: React.PropTypes.object
 	};
 
@@ -36,7 +35,6 @@ export default class SearchComponent extends React.Component {
 	}
 
 	componentWillReceiveProps(nextState, nextContext) {
-		const { bookmarks } = this.context;
 		const nextRouter = nextContext.router;
 		const nextQuery = nextRouter.location.query;
 		const nextTerm = nextQuery.search;
@@ -53,7 +51,7 @@ export default class SearchComponent extends React.Component {
 	}
 
 	search() {
-		const { router, bookmarks } = this.context;
+		const { router } = this.context;
 		const term = this.refs.search.value;
 		const location = { pathname: '/', query: {} };
 

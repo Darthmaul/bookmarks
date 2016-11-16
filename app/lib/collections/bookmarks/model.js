@@ -10,4 +10,8 @@ export default class BookmarkModel extends Model {
 		return "/bookmark/" + this.id + '/' + this.slug + "/edit";
 	}
 
+	getDate() {
+		return new Date(this.date);
+	}
+
 }

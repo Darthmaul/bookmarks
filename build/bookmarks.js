@@ -27803,8 +27803,6 @@
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextState, nextContext) {
-				var bookmarks = this.context.bookmarks;
-	
 				var nextRouter = nextContext.router;
 				var nextQuery = nextRouter.location.query;
 				var nextTerm = nextQuery.search;
@@ -27823,9 +27821,7 @@
 		}, {
 			key: 'search',
 			value: function search() {
-				var _context = this.context,
-				    router = _context.router,
-				    bookmarks = _context.bookmarks;
+				var router = this.context.router;
 	
 				var term = this.refs.search.value;
 				var location = { pathname: '/', query: {} };
@@ -27874,7 +27870,6 @@
 	}(_react2.default.Component);
 	
 	SearchComponent.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
 		router: _react2.default.PropTypes.object
 	};
 	exports.default = SearchComponent;
@@ -28414,6 +28409,10 @@
 	
 	var _index2 = _interopRequireDefault(_index);
 	
+	var _search = __webpack_require__(/*! ../lib/behaviour/search.js */ 320);
+	
+	var _search2 = _interopRequireDefault(_search);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28430,8 +28429,11 @@
 	
 			var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props, context));
 	
-			var bookmarks = _this.context.bookmarks;
+			var _this$context = _this.context,
+			    bookmarks = _this$context.bookmarks,
+			    lists = _this$context.lists;
 	
+			_this.search = new _search2.default({ bookmarks: bookmarks, lists: lists });
 	
 			_this.state = {
 				bookmarks: [],
@@ -28453,12 +28455,12 @@
 				var query = router.location.query;
 	
 				var term = query.search;
-				bookmarks.onSearch(this.addBookmarks);
+				this.search.onSearch(this.addBookmarks);
 				this.setState({
 					isMounted: true
 				}, function () {
 					if (term) {
-						_this2.search(term);
+						_this2.performSearch(term);
 					} else {
 						_this2.addModels(bookmarks.all());
 					}
@@ -28467,9 +28469,7 @@
 		}, {
 			key: 'componentWillUnmount',
 			value: function componentWillUnmount() {
-				var bookmarks = this.context.bookmarks;
-	
-				bookmarks.removeSearch(this.addBookmarks);
+				this.search.removeSearch(this.addBookmarks);
 				this.setState({
 					isMounted: false
 				});
@@ -28483,23 +28483,27 @@
 	
 				var term = query.search;
 				if (term) {
-					this.search(term);
+					this.performSearch(term);
 				} else {
 					this.addModels(bookmarks.all());
 				}
 			}
 		}, {
-			key: 'search',
-			value: function search(term) {
-				var bookmarks = this.context.bookmarks;
-	
-				bookmarks.search(term);
+			key: 'performSearch',
+			value: function performSearch(term) {
+				this.search.search(term);
 			}
 		}, {
 			key: 'addModels',
 			value: function addModels(models) {
 				// https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
 				if (this.state.isMounted) {
+					models = models.sort(function (a, b) {
+						return new Date(b.date) - new Date(a.date);
+					});
+					models.map(function (model) {
+						return console.log(model.date);
+					});
 					this.setState({
 						bookmarks: models
 					});
@@ -28519,6 +28523,7 @@
 	
 	HomePage.contextTypes = {
 		bookmarks: _react2.default.PropTypes.object,
+		lists: _react2.default.PropTypes.object,
 		router: _react2.default.PropTypes.object
 	};
 	exports.default = HomePage;
@@ -40841,7 +40846,6 @@
 	
 			var _this = _possibleConstructorReturn(this, (Bookmarks.__proto__ || Object.getPrototypeOf(Bookmarks)).call(this));
 	
-			_this.setUpSearchDispatcherEvents();
 			_this.setUpModelHooks();
 			return _this;
 		}
@@ -40850,21 +40854,6 @@
 			key: 'defaultModels',
 			value: function defaultModels() {
 				return _defaults2.default;
-			}
-		}, {
-			key: 'setUpSearchDispatcherEvents',
-			value: function setUpSearchDispatcherEvents() {
-				var _this2 = this;
-	
-				this.onSearch = function (callback) {
-					_this2.dispatcher.register('search', callback);
-				};
-				this.removeSearch = function (callback) {
-					_this2.dispatcher.remove('search', callback);
-				};
-				this.triggerSearch = function (results) {
-					_this2.dispatcher.broadcast('search', results);
-				};
 			}
 		}, {
 			key: 'setUpModelHooks',
@@ -40902,18 +40891,6 @@
 				return this.all().filter(function (bookmark) {
 					return bookmark.tags.indexOf(tag) >= 0;
 				});
-			}
-		}, {
-			key: 'search',
-			value: function search(query) {
-				var search = new _jsSearch2.default.Search('id');
-				search.addIndex('title');
-				search.addIndex('url');
-				search.addIndex('tags');
-	
-				search.addDocuments(this.all());
-				var results = search.search(query);
-				this.triggerSearch(results);
 			}
 		}, {
 			key: 'model',
@@ -41130,6 +41107,11 @@
 			key: 'getEditUrl',
 			value: function getEditUrl() {
 				return "/bookmark/" + this.id + '/' + this.slug + "/edit";
+			}
+		}, {
+			key: 'getDate',
+			value: function getDate() {
+				return new Date(this.date);
 			}
 		}]);
 	
@@ -44280,6 +44262,87 @@
 	
 	// exports
 
+
+/***/ },
+/* 320 */
+/*!*************************************!*\
+  !*** ./app/lib/behaviour/search.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _jsSearch = __webpack_require__(/*! js-search */ 263);
+	
+	var _jsSearch2 = _interopRequireDefault(_jsSearch);
+	
+	var _dispatcher = __webpack_require__(/*! ./dispatcher.js */ 266);
+	
+	var _dispatcher2 = _interopRequireDefault(_dispatcher);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var Search = function () {
+		function Search(_ref) {
+			var bookmarks = _ref.bookmarks,
+			    lists = _ref.lists;
+	
+			_classCallCheck(this, Search);
+	
+			this.bookmarks = bookmarks;
+			this.lists = lists;
+			this.dispatcher = new _dispatcher2.default();
+	
+			this.setUpSearchDispatcherEventHooks();
+		}
+	
+		_createClass(Search, [{
+			key: 'setUpSearchDispatcherEventHooks',
+			value: function setUpSearchDispatcherEventHooks() {
+				var _this = this;
+	
+				this.onSearch = function (callback) {
+					_this.dispatcher.register('search', callback);
+				};
+				this.removeSearch = function (callback) {
+					_this.dispatcher.remove('search', callback);
+				};
+				this.triggerSearch = function (results) {
+					_this.dispatcher.broadcast('search', results);
+				};
+			}
+		}, {
+			key: 'search',
+			value: function search(query) {
+				var search = new _jsSearch2.default.Search('id');
+				search.addIndex('title');
+				search.addIndex('url');
+				search.addIndex('tags');
+	
+				if (this.bookmarks) {
+					search.addDocuments(this.bookmarks.all());
+				}
+				if (this.lists) {
+					search.addDocuments(this.lists.all());
+				}
+	
+				var results = search.search(query);
+				this.triggerSearch(results);
+			}
+		}]);
+	
+		return Search;
+	}();
+	
+	exports.default = Search;
 
 /***/ }
 /******/ ]);

@@ -12,7 +12,6 @@ export default class Bookmarks extends LocalStorageCollection {
 	constructor() {
 		super();
 
-		this.setUpSearchDispatcherEvents();
 		this.setUpModelHooks();
 	}
 
@@ -26,18 +25,6 @@ export default class Bookmarks extends LocalStorageCollection {
 
 	defaultModels() {
 		return defaultBookmarks;
-	}
-
-	setUpSearchDispatcherEvents() {
-		this.onSearch = callback => {
-			this.dispatcher.register('search', callback);
-		};
-		this.removeSearch = callback => {
-			this.dispatcher.remove('search', callback);
-		};
-		this.triggerSearch = results => {
-			this.dispatcher.broadcast('search', results);
-		};
 	}
 
 	setUpModelHooks() {
@@ -67,17 +54,6 @@ export default class Bookmarks extends LocalStorageCollection {
 
 	findByTag(tag) {
 		return this.all().filter(bookmark => bookmark.tags.indexOf(tag) >= 0);
-	}
-
-	search(query) {
-		const search = new JsSearch.Search('id');
-		search.addIndex('title');
-		search.addIndex('url');
-		search.addIndex('tags');
-
-		search.addDocuments(this.all());
-		const results = search.search(query);
-		this.triggerSearch(results);
 	}
 	
 }
