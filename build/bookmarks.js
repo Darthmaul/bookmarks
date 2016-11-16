@@ -28432,7 +28432,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 10px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 10px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n  .context-menu p {\n    margin: 0; }\n  .context-menu__nav {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    list-style: none;\n    color: #777;\n    float: right; }\n    .context-menu__nav li:first-child a {\n      border-right: 0px; }\n    .context-menu__nav a {\n      font-size: 80%;\n      text-decoration: none;\n      line-height: 2.2rem;\n      padding: 0px 20px;\n      border-left: 1px solid #ccc;\n      border-right: 1px solid #ccc;\n      display: inline-block; }\n\n.notouch .context-menu__wrap {\n  bottom: 20px; }\n\n.notouch .context-menu__help {\n  padding: 0px 20px; }\n", ""]);
+	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 10px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 10px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n  .context-menu p {\n    margin: 0; }\n  .context-menu__nav {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    list-style: none;\n    color: #777;\n    float: right; }\n    .context-menu__nav li {\n      display: inline-block; }\n    .context-menu__nav a {\n      font-size: 80%;\n      text-decoration: none;\n      line-height: 2.2rem;\n      padding: 0px 20px;\n      border-left: 1px solid #ccc;\n      display: inline-block; }\n\n.notouch .context-menu__wrap {\n  bottom: 20px; }\n\n.notouch .context-menu__help {\n  padding: 0px 20px; }\n", ""]);
 	
 	// exports
 
@@ -40274,9 +40274,9 @@
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _detail = __webpack_require__(/*! ./contextmenus/detail.jsx */ 428);
+	var _bookmarkDetail = __webpack_require__(/*! ./contextmenus/bookmark-detail.jsx */ 454);
 	
-	var _detail2 = _interopRequireDefault(_detail);
+	var _bookmarkDetail2 = _interopRequireDefault(_bookmarkDetail);
 	
 	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 423);
 	
@@ -40312,7 +40312,7 @@
 				var bookmark = bookmarks.get(id);
 	
 				this.setState({ bookmark: bookmark });
-				setContextMenu(_react2.default.createElement(_detail2.default, { bookmark: bookmark }));
+				setContextMenu(_react2.default.createElement(_bookmarkDetail2.default, { bookmark: bookmark }));
 			}
 		}, {
 			key: 'componentWillUnmount',
@@ -40553,70 +40553,7 @@
 
 
 /***/ },
-/* 428 */
-/*!*******************************************!*\
-  !*** ./app/pages/contextmenus/detail.jsx ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 172);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var BookmarkDetailContextMenuComponent = function (_React$Component) {
-		_inherits(BookmarkDetailContextMenuComponent, _React$Component);
-	
-		function BookmarkDetailContextMenuComponent() {
-			_classCallCheck(this, BookmarkDetailContextMenuComponent);
-	
-			return _possibleConstructorReturn(this, (BookmarkDetailContextMenuComponent.__proto__ || Object.getPrototypeOf(BookmarkDetailContextMenuComponent)).apply(this, arguments));
-		}
-	
-		_createClass(BookmarkDetailContextMenuComponent, [{
-			key: 'render',
-			value: function render() {
-				var bookmark = this.props.bookmark;
-	
-				return _react2.default.createElement(
-					'ul',
-					{ className: 'context-menu__nav' },
-					_react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: bookmark.getEditUrl() },
-							'edit'
-						)
-					)
-				);
-			}
-		}]);
-	
-		return BookmarkDetailContextMenuComponent;
-	}(_react2.default.Component);
-	
-	exports.default = BookmarkDetailContextMenuComponent;
-
-/***/ },
+/* 428 */,
 /* 429 */
 /*!*************************************!*\
   !*** ./app/pages/bookmark-edit.jsx ***!
@@ -40718,6 +40655,10 @@
 	
 	var _index2 = _interopRequireDefault(_index);
 	
+	var _listDetail = __webpack_require__(/*! ./contextmenus/list-detail.jsx */ 455);
+	
+	var _listDetail2 = _interopRequireDefault(_listDetail);
+	
 	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 423);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -40745,12 +40686,21 @@
 			value: function componentDidMount() {
 				var _context = this.context,
 				    lists = _context.lists,
-				    router = _context.router;
+				    router = _context.router,
+				    setContextMenu = _context.setContextMenu;
 				var id = this.props.params.id;
 	
 				var list = lists.get(id);
 	
 				this.setState({ list: list });
+				setContextMenu(_react2.default.createElement(_listDetail2.default, { list: list }));
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				var setContextMenu = this.context.setContextMenu;
+	
+				setContextMenu(false);
 			}
 		}, {
 			key: 'render',
@@ -40770,7 +40720,8 @@
 	
 	ListDetailPage.contextTypes = {
 		lists: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
+		router: _react2.default.PropTypes.object,
+		setContextMenu: _react2.default.PropTypes.func
 	};
 	exports.default = ListDetailPage;
 
@@ -51799,6 +51750,184 @@
 	
 	// exports
 
+
+/***/ },
+/* 454 */
+/*!****************************************************!*\
+  !*** ./app/pages/contextmenus/bookmark-detail.jsx ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 172);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var BookmarkDetailContextMenuComponent = function (_React$Component) {
+		_inherits(BookmarkDetailContextMenuComponent, _React$Component);
+	
+		function BookmarkDetailContextMenuComponent() {
+			_classCallCheck(this, BookmarkDetailContextMenuComponent);
+	
+			return _possibleConstructorReturn(this, (BookmarkDetailContextMenuComponent.__proto__ || Object.getPrototypeOf(BookmarkDetailContextMenuComponent)).apply(this, arguments));
+		}
+	
+		_createClass(BookmarkDetailContextMenuComponent, [{
+			key: 'remove',
+			value: function remove(event) {
+				event.preventDefault();
+				var bookmark = this.props.bookmark;
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+	
+				bookmarks.remove(bookmark.id);
+				router.push('/');
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var bookmark = this.props.bookmark;
+	
+				return _react2.default.createElement(
+					'ul',
+					{ className: 'context-menu__nav' },
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: bookmark.getEditUrl() },
+							'edit'
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: '#', onClick: this.remove.bind(this) },
+							'remove'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return BookmarkDetailContextMenuComponent;
+	}(_react2.default.Component);
+	
+	BookmarkDetailContextMenuComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = BookmarkDetailContextMenuComponent;
+
+/***/ },
+/* 455 */
+/*!************************************************!*\
+  !*** ./app/pages/contextmenus/list-detail.jsx ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 172);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ListDetailContextMenuComponent = function (_React$Component) {
+		_inherits(ListDetailContextMenuComponent, _React$Component);
+	
+		function ListDetailContextMenuComponent() {
+			_classCallCheck(this, ListDetailContextMenuComponent);
+	
+			return _possibleConstructorReturn(this, (ListDetailContextMenuComponent.__proto__ || Object.getPrototypeOf(ListDetailContextMenuComponent)).apply(this, arguments));
+		}
+	
+		_createClass(ListDetailContextMenuComponent, [{
+			key: 'remove',
+			value: function remove(event) {
+				event.preventDefault();
+				var list = this.props.list;
+				var _context = this.context,
+				    lists = _context.lists,
+				    router = _context.router;
+	
+				lists.remove(list.id);
+				router.push('/');
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var list = this.props.list;
+	
+				return _react2.default.createElement(
+					'ul',
+					{ className: 'context-menu__nav' },
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: list.getEditUrl() },
+							'edit'
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: '#', onClick: this.remove.bind(this) },
+							'remove'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return ListDetailContextMenuComponent;
+	}(_react2.default.Component);
+	
+	ListDetailContextMenuComponent.contextTypes = {
+		lists: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = ListDetailContextMenuComponent;
 
 /***/ }
 /******/ ]);

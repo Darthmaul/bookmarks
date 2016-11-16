@@ -1,6 +1,6 @@
 import React from 'react';
 import BookmarkDetailComponent from '../components/bookmarks/detail/index.jsx';
-import BookmarkDetailContextMenuComponent from './contextmenus/detail.jsx';
+import BookmarkDetailContextMenuComponent from './contextmenus/bookmark-detail.jsx';
 import { NotFoundComponent } from '../components/errors.jsx';
 
 export default class BookmarkDetailPage extends React.Component {
