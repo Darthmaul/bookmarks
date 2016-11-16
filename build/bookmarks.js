@@ -32013,7 +32013,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".search-results-list {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\n", ""]);
+	exports.push([module.id, ".search-results-list {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  max-width: 660px;\n  margin: 0 auto; }\n", ""]);
 	
 	// exports
 
@@ -51089,7 +51089,7 @@
 		title: 'Some of my photography',
 		url: 'https://c4.staticflickr.com/1/773/22353007131_8cf5803bc8_k.jpg',
 		domain: 'www.flickr.com',
-		description: '# Go see it on Flickr! \n\n This is a bookmark description, and it supports markdown! \n\n See some of my other photography on [Flickr](http://www.flickr.com/photos/fergusruston)',
+		description: '## Go see it on Flickr! \n\n This is a bookmark description, and it supports markdown! \n\n See some of my other photography on [Flickr](http://www.flickr.com/photos/fergusruston)',
 		tags: ['default bookmark', 'photography'],
 		slug: 'some-of-my-photography',
 		date: new Date()
@@ -51281,7 +51281,7 @@
 	var defaultLists = [{
 		id: "15gqtphky",
 		bookmarks: ['waduj9le7', '7p9uamiy5', 'di8untgx8'],
-		description: "",
+		description: '## Descriptions can use markdown! \n\n This list contains all the default bookmarks.',
 		slug: "default-bookmarks-list",
 		title: "Default bookmarks list"
 	}];
