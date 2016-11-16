@@ -46,7 +46,7 @@
 		text-decoration: none;
 		position: absolute;
 		right: 10px;
-		top: 1px;
+		top: 0px;
 		text-decoration: none;
 		opacity: 0.5;
 
@@ -58,6 +58,7 @@
 
 .notouch .list-form__bookmark-item__remove {
 	display: none;
+	top: 1px;
 }
 
 input.list-form__bookmarks {
