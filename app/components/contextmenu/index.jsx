@@ -42,7 +42,7 @@ export default class ContextMenuComponent extends React.Component {
 						href="#" 
 						onClick={this.helpClickHandler.bind(this)} 
 						className={tooltipClass} 
-						title="The context menu shows contextual actions you can perform on the page you are viewing"
+						title="This menu shows contextual actions you can perform on the page you are viewing"
 					>what's this?</a>
 					<div className="context-menu__content">{menu ? menu : ''}</div>
 				</div>

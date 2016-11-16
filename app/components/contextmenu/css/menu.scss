@@ -30,6 +30,33 @@
 	p {
 		margin: 0;
 	}
+
+	&__nav {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		list-style: none;
+		color: #777;
+		float: right;
+
+		li {
+			&:first-child {
+				a {
+					border-right: 0px;
+				}
+			}
+		}
+
+		a {
+			font-size: 80%;
+			text-decoration: none;
+			line-height: 2.2rem;
+			padding: 0px 20px;
+			border-left: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			display: inline-block;
+		}
+	}
 }
 
 .notouch {
