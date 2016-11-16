@@ -25,16 +25,16 @@ export default class BookmarkFormComponent extends React.Component {
 		event.preventDefault();
 		const { bookmark } = this.props;
 		const { bookmarks, router } = this.context;
-		const { title, url, tags, text } = this.refs;
+		const { title, url, tags, description } = this.refs;
 		const titleValue = title.value.trim();
 		const urlValue = url.value.trim();
-		const textValue = text.value.trim();
+		const descriptionValue = description.value.trim();
 
 		const properties = {
 			title: titleValue,
 			url: urlValue,
 			tags: this.state.tags,
-			text: textValue
+			description: descriptionValue
 		};
 
 		const { errors, validated } = bookmarks.validate(properties);
@@ -80,26 +80,27 @@ export default class BookmarkFormComponent extends React.Component {
 				const { tags } = this.state;
 				if (tags.indexOf(tag.trim()) == -1) {
 					tags.push(tag);
-					input.value = '';
-					this.setState({ tags });
-					// setting input value to empty string doesn't show placeholder in webkit for some reason. bluring and focusing fixes it. 
-					input.blur();
-					input.focus();
+					this.setState({ tags }, () => {
+						// setting input value to empty string doesn't show placeholder in webkit for some reason. bluring and focusing fixes it. 
+						input.value = '';
+						input.blur();
+						input.focus();
+					});
 				}
 			}
 		}
 	}
 
-	setTextInputHeight() {
-		const { text } = this.refs;
-		if (text) {
-			text.style.height = 'auto';
-			text.style.height = text.scrollHeight + 'px';
+	setDescriptionInputHeight() {
+		const { description } = this.refs;
+		if (description) {
+			description.style.height = 'auto';
+			description.style.height = description.scrollHeight + 'px';
 		}
 	}
 
-	textChangeHandler() {
-		this.setTextInputHeight();
+	descriptionChangeHandler() {
+		this.setDescriptionInputHeight();
 	}
 
 	getFieldError(field) {
@@ -115,6 +116,40 @@ export default class BookmarkFormComponent extends React.Component {
 		}
 	}
 
+	validateField(field, value) {
+		const { bookmarks } = this.context;
+		return bookmarks.validateField(field, value);
+	}
+
+	titleKeyUpHandler(event) {
+		const errorState = this.getFieldError('title');
+		if (errorState) {
+			const { title } = this.refs;
+			const error = this.validateField('title', title.value.trim());
+			const { errors } = this.state;
+			errors.title = error;
+			this.setState({ errors });
+		}
+	}
+
+	urlKeyUpHandler(event) {
+		if (event.keyCode != 13) {
+			const errorState = this.getFieldError('url');
+			if (errorState) {
+				const { url } = this.refs;
+				const value = url.value.trim();
+				const { errors } = this.state;
+				if (value) {
+					const error = this.validateField('url', value);
+					errors.url = error;
+				} else {
+					delete errors['url'];
+				}
+				this.setState({ errors });
+			}
+		}
+	}
+
 	render() {
 		const { bookmark } = this.props;
 		
@@ -125,21 +160,50 @@ export default class BookmarkFormComponent extends React.Component {
 						<h2 className="form-title">bookmark</h2>
 					</header>
 					<div className="field-wrap">
-						<input ref="title" defaultValue={bookmark ? bookmark.title : ''} placeholder="title" type="text" className="field" />
+						<input 
+							ref="title"
+							defaultValue={bookmark ? bookmark.title : ''} 
+							placeholder="title" 
+							type="text" 
+							className="field" 
+							onKeyUp={this.titleKeyUpHandler.bind(this)}
+						/>
 						{this.renderFieldError('title')}
 					</div>
 					<div className="field-wrap">
-						<input ref="url" defaultValue={bookmark ? bookmark.url : ''} placeholder="url" type="text" className="field" autoCapitalize="none" />
+						<input 
+							ref="url"
+							defaultValue={bookmark ? bookmark.url : ''} 
+							placeholder="url" 
+							type="text" 
+							className="field" 
+							autoCapitalize="none" 
+							onKeyUp={this.urlKeyUpHandler.bind(this)}
+						/>
 						{this.renderFieldError('url')}
 					</div>
 					<div className="field-wrap">
-						<textarea ref={ref => {
-							this.refs.text = ref;
-							this.setTextInputHeight();
-						}} onInput={this.textChangeHandler.bind(this)} defaultValue={bookmark ? bookmark.text : ''} placeholder="text" type="text" rows="1" className="field textarea" />
+						<textarea 
+							ref={ref => {
+								this.refs.description = ref;
+								this.setDescriptionInputHeight();
+							}} 
+							onInput={this.descriptionChangeHandler.bind(this)} 
+							defaultValue={bookmark ? bookmark.description : ''} 
+							placeholder="description" 
+							type="text" 
+							rows="1" 
+							className="field textarea" 
+						/>
 					</div>
 					<div className="field-wrap">
-						<input onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} ref="tags" placeholder="tags" type="text" className="field field--tags" />
+						<input 
+							onKeyDown={this.tagsFieldKeyDownHandler.bind(this)} 
+							ref="tags" 
+							placeholder="tags" 
+							type="text" 
+							className="field field--tags" 
+						/>
 						{this.renderTags()}
 					</div>
 				</div>

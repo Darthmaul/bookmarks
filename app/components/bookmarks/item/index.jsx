@@ -18,12 +18,12 @@ export default class BookmarkItemComponent extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
-		const { shouldShowTags, shouldShowImage, shouldShowText } = props;
+		const { shouldShowTags, shouldShowImage, shouldShowDescription } = props;
 
 		this.state = {
 			shouldShowTags: shouldShowTags || false,
 			shouldShowImage: shouldShowImage || false,
-			shouldShowText: shouldShowText || false
+			shouldShowDescription: shouldShowDescription || false
 		};
 	}
 
@@ -41,20 +41,20 @@ export default class BookmarkItemComponent extends React.Component {
 		});
 	}
 
-	toggleText(event) {
+	toggleDescription(event) {
 		event.preventDefault();
 		this.setState({
-			shouldShowText: !this.state.shouldShowText
+			shouldShowDescription: !this.state.shouldShowDescription
 		});
 	}
 
-	renderText() {
+	renderDescription() {
 		const { bookmark } = this.props;
 		const converter = new showdown.Converter();
-		const html = converter.makeHtml(bookmark.text);
+		const html = converter.makeHtml(bookmark.description);
 
 		return (
-			<div className="bookmark-item__text" dangerouslySetInnerHTML={{__html: html }} />
+			<div className="bookmark-item__description" dangerouslySetInnerHTML={{__html: html }} />
 		);
 	}
 
@@ -67,9 +67,9 @@ export default class BookmarkItemComponent extends React.Component {
 	}
 
 	render() {
-		let tagsHtml, tagsToggle, imgHtml, imgToggle, textHtml, textToggle, optionsHtml;
+		let tagsHtml, tagsToggle, imgHtml, imgToggle, descriptionHtml, descriptionToggle, optionsHtml;
 		const { bookmark, shouldShowOptions } = this.props;
-		const { shouldShowTags, shouldShowImage, shouldShowText } = this.state;
+		const { shouldShowTags, shouldShowImage, shouldShowDescription } = this.state;
 
 		if (bookmark.tags && bookmark.tags.length) {
 			if (shouldShowTags) {
@@ -99,14 +99,14 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
-		if (bookmark.text && bookmark.text.length) {
-			if (shouldShowText) {
-				textHtml = this.renderText();
+		if (bookmark.description && bookmark.description.length) {
+			if (shouldShowDescription) {
+				descriptionHtml = this.renderDescription();
 			}
 
-			textToggle = (
+			descriptionToggle = (
 				<li>
-					<a href="#" onClick={this.toggleText.bind(this)}>
+					<a href="#" onClick={this.toggleDescription.bind(this)}>
 						<i className="ion-document-text" />
 					</a>
 				</li>
@@ -125,14 +125,14 @@ export default class BookmarkItemComponent extends React.Component {
 				{imgHtml}
 				<footer className="bookmark-item__footer">
 					<ul className="bookmark-item__footer-toggles">
-						{textToggle}
+						{descriptionToggle}
 						{imgToggle}
 						{tagsToggle}
 					</ul>
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
 				</footer>
 				{tagsHtml}
-				{textHtml}
+				{descriptionHtml}
 				{optionsHtml}
 			</div>
 		);

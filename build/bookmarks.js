@@ -39668,7 +39668,7 @@
 					return _react2.default.createElement(
 						'div',
 						{ className: 'bookmark-detail' },
-						_react2.default.createElement(_index2.default, { shouldShowTags: true, shouldShowImage: true, shouldShowText: true, bookmark: bookmark })
+						_react2.default.createElement(_index2.default, { shouldShowTags: true, shouldShowImage: true, shouldShowDescription: true, bookmark: bookmark })
 					);
 				} else {
 					return _react2.default.createElement(_errors.NotFoundComponent, null);
@@ -39737,13 +39737,13 @@
 	
 			var shouldShowTags = props.shouldShowTags,
 			    shouldShowImage = props.shouldShowImage,
-			    shouldShowText = props.shouldShowText;
+			    shouldShowDescription = props.shouldShowDescription;
 	
 	
 			_this.state = {
 				shouldShowTags: shouldShowTags || false,
 				shouldShowImage: shouldShowImage || false,
-				shouldShowText: shouldShowText || false
+				shouldShowDescription: shouldShowDescription || false
 			};
 			return _this;
 		}
@@ -39765,22 +39765,22 @@
 				});
 			}
 		}, {
-			key: 'toggleText',
-			value: function toggleText(event) {
+			key: 'toggleDescription',
+			value: function toggleDescription(event) {
 				event.preventDefault();
 				this.setState({
-					shouldShowText: !this.state.shouldShowText
+					shouldShowDescription: !this.state.shouldShowDescription
 				});
 			}
 		}, {
-			key: 'renderText',
-			value: function renderText() {
+			key: 'renderDescription',
+			value: function renderDescription() {
 				var bookmark = this.props.bookmark;
 	
 				var converter = new _showdown2.default.Converter();
-				var html = converter.makeHtml(bookmark.text);
+				var html = converter.makeHtml(bookmark.description);
 	
-				return _react2.default.createElement('div', { className: 'bookmark-item__text', dangerouslySetInnerHTML: { __html: html } });
+				return _react2.default.createElement('div', { className: 'bookmark-item__description', dangerouslySetInnerHTML: { __html: html } });
 			}
 		}, {
 			key: 'renderTags',
@@ -39807,8 +39807,8 @@
 				    tagsToggle = void 0,
 				    imgHtml = void 0,
 				    imgToggle = void 0,
-				    textHtml = void 0,
-				    textToggle = void 0,
+				    descriptionHtml = void 0,
+				    descriptionToggle = void 0,
 				    optionsHtml = void 0;
 				var _props = this.props,
 				    bookmark = _props.bookmark,
@@ -39816,7 +39816,7 @@
 				var _state = this.state,
 				    shouldShowTags = _state.shouldShowTags,
 				    shouldShowImage = _state.shouldShowImage,
-				    shouldShowText = _state.shouldShowText;
+				    shouldShowDescription = _state.shouldShowDescription;
 	
 	
 				if (bookmark.tags && bookmark.tags.length) {
@@ -39859,17 +39859,17 @@
 					);
 				}
 	
-				if (bookmark.text && bookmark.text.length) {
-					if (shouldShowText) {
-						textHtml = this.renderText();
+				if (bookmark.description && bookmark.description.length) {
+					if (shouldShowDescription) {
+						descriptionHtml = this.renderDescription();
 					}
 	
-					textToggle = _react2.default.createElement(
+					descriptionToggle = _react2.default.createElement(
 						'li',
 						null,
 						_react2.default.createElement(
 							'a',
-							{ href: '#', onClick: this.toggleText.bind(this) },
+							{ href: '#', onClick: this.toggleDescription.bind(this) },
 							_react2.default.createElement('i', { className: 'ion-document-text' })
 						)
 					);
@@ -39898,7 +39898,7 @@
 						_react2.default.createElement(
 							'ul',
 							{ className: 'bookmark-item__footer-toggles' },
-							textToggle,
+							descriptionToggle,
 							imgToggle,
 							tagsToggle
 						),
@@ -39909,7 +39909,7 @@
 						)
 					),
 					tagsHtml,
-					textHtml,
+					descriptionHtml,
 					optionsHtml
 				);
 			}
@@ -39965,7 +39965,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 4px 15px;\n  -webkit-animation: fadeIn 200ms;\n  -o-animation: fadeIn 200ms;\n  animation: fadeIn 200ms;\n  border-top: 1px solid #ccc;\n  background: #FCFAF9;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__footer {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__footer-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__footer-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__footer-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__text {\n  border-top: 1px solid #ccc;\n  padding: 15px 20px;\n  font-size: 80%;\n  color: #777; }\n  .bookmark-item .bookmark-item__text p:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__text p:last-child {\n    margin-bottom: 0px; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
+	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 4px 15px;\n  -webkit-animation: fadeIn 200ms;\n  -o-animation: fadeIn 200ms;\n  animation: fadeIn 200ms;\n  border-top: 1px solid #ccc;\n  background: #FCFAF9;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__footer {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__footer-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__footer-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__footer-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__description {\n  border-top: 1px solid #ccc;\n  padding: 15px 20px;\n  font-size: 80%;\n  color: #777; }\n  .bookmark-item .bookmark-item__description p:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__description p:last-child {\n    margin-bottom: 0px; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 
@@ -40217,17 +40217,17 @@
 				    title = _refs.title,
 				    url = _refs.url,
 				    tags = _refs.tags,
-				    text = _refs.text;
+				    description = _refs.description;
 	
 				var titleValue = title.value.trim();
 				var urlValue = url.value.trim();
-				var textValue = text.value.trim();
+				var descriptionValue = description.value.trim();
 	
 				var properties = {
 					title: titleValue,
 					url: urlValue,
 					tags: this.state.tags,
-					text: textValue
+					description: descriptionValue
 				};
 	
 				var _bookmarks$validate = bookmarks.validate(properties),
@@ -40280,38 +40280,43 @@
 		}, {
 			key: 'tagsFieldKeyDownHandler',
 			value: function tagsFieldKeyDownHandler(event) {
+				var _this3 = this;
+	
 				if (event.keyCode == 13 || event.charCode == 13) {
-					event.preventDefault();
-					var input = this.refs.tags;
-					var tag = input.value;
-					if (tag.trim()) {
-						var tags = this.state.tags;
+					(function () {
+						event.preventDefault();
+						var input = _this3.refs.tags;
+						var tag = input.value;
+						if (tag.trim()) {
+							var tags = _this3.state.tags;
 	
-						if (tags.indexOf(tag.trim()) == -1) {
-							tags.push(tag);
-							input.value = '';
-							this.setState({ tags: tags });
-							// setting input value to empty string doesn't show placeholder in webkit for some reason. bluring and focusing fixes it. 
-							input.blur();
-							input.focus();
+							if (tags.indexOf(tag.trim()) == -1) {
+								tags.push(tag);
+								_this3.setState({ tags: tags }, function () {
+									// setting input value to empty string doesn't show placeholder in webkit for some reason. bluring and focusing fixes it. 
+									input.value = '';
+									input.blur();
+									input.focus();
+								});
+							}
 						}
-					}
+					})();
 				}
 			}
 		}, {
-			key: 'setTextInputHeight',
-			value: function setTextInputHeight() {
-				var text = this.refs.text;
+			key: 'setDescriptionInputHeight',
+			value: function setDescriptionInputHeight() {
+				var description = this.refs.description;
 	
-				if (text) {
-					text.style.height = 'auto';
-					text.style.height = text.scrollHeight + 'px';
+				if (description) {
+					description.style.height = 'auto';
+					description.style.height = description.scrollHeight + 'px';
 				}
 			}
 		}, {
-			key: 'textChangeHandler',
-			value: function textChangeHandler() {
-				this.setTextInputHeight();
+			key: 'descriptionChangeHandler',
+			value: function descriptionChangeHandler() {
+				this.setDescriptionInputHeight();
 			}
 		}, {
 			key: 'getFieldError',
@@ -40334,9 +40339,51 @@
 				}
 			}
 		}, {
+			key: 'validateField',
+			value: function validateField(field, value) {
+				var bookmarks = this.context.bookmarks;
+	
+				return bookmarks.validateField(field, value);
+			}
+		}, {
+			key: 'titleKeyUpHandler',
+			value: function titleKeyUpHandler(event) {
+				var errorState = this.getFieldError('title');
+				if (errorState) {
+					var title = this.refs.title;
+	
+					var error = this.validateField('title', title.value.trim());
+					var errors = this.state.errors;
+	
+					errors.title = error;
+					this.setState({ errors: errors });
+				}
+			}
+		}, {
+			key: 'urlKeyUpHandler',
+			value: function urlKeyUpHandler(event) {
+				if (event.keyCode != 13) {
+					var errorState = this.getFieldError('url');
+					if (errorState) {
+						var url = this.refs.url;
+	
+						var value = url.value.trim();
+						var errors = this.state.errors;
+	
+						if (value) {
+							var error = this.validateField('url', value);
+							errors.url = error;
+						} else {
+							delete errors['url'];
+						}
+						this.setState({ errors: errors });
+					}
+				}
+			}
+		}, {
 			key: 'render',
 			value: function render() {
-				var _this3 = this;
+				var _this4 = this;
 	
 				var bookmark = this.props.bookmark;
 	
@@ -40359,27 +40406,56 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'field-wrap' },
-							_react2.default.createElement('input', { ref: 'title', defaultValue: bookmark ? bookmark.title : '', placeholder: 'title', type: 'text', className: 'field' }),
+							_react2.default.createElement('input', {
+								ref: 'title',
+								defaultValue: bookmark ? bookmark.title : '',
+								placeholder: 'title',
+								type: 'text',
+								className: 'field',
+								onKeyUp: this.titleKeyUpHandler.bind(this)
+							}),
 							this.renderFieldError('title')
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'field-wrap' },
-							_react2.default.createElement('input', { ref: 'url', defaultValue: bookmark ? bookmark.url : '', placeholder: 'url', type: 'text', className: 'field', autoCapitalize: 'none' }),
+							_react2.default.createElement('input', {
+								ref: 'url',
+								defaultValue: bookmark ? bookmark.url : '',
+								placeholder: 'url',
+								type: 'text',
+								className: 'field',
+								autoCapitalize: 'none',
+								onKeyUp: this.urlKeyUpHandler.bind(this)
+							}),
 							this.renderFieldError('url')
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'field-wrap' },
-							_react2.default.createElement('textarea', { ref: function ref(_ref) {
-									_this3.refs.text = _ref;
-									_this3.setTextInputHeight();
-								}, onInput: this.textChangeHandler.bind(this), defaultValue: bookmark ? bookmark.text : '', placeholder: 'text', type: 'text', rows: '1', className: 'field textarea' })
+							_react2.default.createElement('textarea', {
+								ref: function ref(_ref) {
+									_this4.refs.description = _ref;
+									_this4.setDescriptionInputHeight();
+								},
+								onInput: this.descriptionChangeHandler.bind(this),
+								defaultValue: bookmark ? bookmark.description : '',
+								placeholder: 'description',
+								type: 'text',
+								rows: '1',
+								className: 'field textarea'
+							})
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'field-wrap' },
-							_react2.default.createElement('input', { onKeyDown: this.tagsFieldKeyDownHandler.bind(this), ref: 'tags', placeholder: 'tags', type: 'text', className: 'field field--tags' }),
+							_react2.default.createElement('input', {
+								onKeyDown: this.tagsFieldKeyDownHandler.bind(this),
+								ref: 'tags',
+								placeholder: 'tags',
+								type: 'text',
+								className: 'field field--tags'
+							}),
 							this.renderTags()
 						)
 					),
@@ -40826,7 +40902,7 @@
 		title: 'Some of my photography',
 		url: 'https://c4.staticflickr.com/1/773/22353007131_8cf5803bc8_k.jpg',
 		domain: 'www.flickr.com',
-		text: '# Go see it on Flickr! \n\n By the way, these bookmarks support markdown!',
+		description: '# Go see it on Flickr! \n\n This is a bookmark description, and it supports markdown!',
 		tags: ['default bookmark', 'photography'],
 		slug: 'some-of-my-photography',
 		date: new Date()
