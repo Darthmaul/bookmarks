@@ -39780,8 +39780,6 @@
 				var converter = new _showdown2.default.Converter();
 				var html = converter.makeHtml(bookmark.description);
 	
-				console.log(bookmark.description);
-	
 				return _react2.default.createElement('div', { className: 'bookmark-item__description', dangerouslySetInnerHTML: { __html: html } });
 			}
 		}, {
