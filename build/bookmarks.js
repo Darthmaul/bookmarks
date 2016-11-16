@@ -28161,7 +28161,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
+	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto;\n  padding-bottom: 40px; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
 	
 	// exports
 
@@ -51358,7 +51358,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 20px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 10px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n  .context-menu p {\n    margin: 0; }\n  .context-menu__nav {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    list-style: none;\n    color: #777;\n    float: right; }\n    .context-menu__nav li:first-child a {\n      border-right: 0px; }\n    .context-menu__nav a {\n      font-size: 80%;\n      text-decoration: none;\n      line-height: 2.2rem;\n      padding: 0px 20px;\n      border-left: 1px solid #ccc;\n      border-right: 1px solid #ccc;\n      display: inline-block; }\n\n.notouch .context-menu__help {\n  padding: 0px 20px; }\n", ""]);
+	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 10px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 10px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n  .context-menu p {\n    margin: 0; }\n  .context-menu__nav {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    list-style: none;\n    color: #777;\n    float: right; }\n    .context-menu__nav li:first-child a {\n      border-right: 0px; }\n    .context-menu__nav a {\n      font-size: 80%;\n      text-decoration: none;\n      line-height: 2.2rem;\n      padding: 0px 20px;\n      border-left: 1px solid #ccc;\n      border-right: 1px solid #ccc;\n      display: inline-block; }\n\n.notouch .context-menu__wrap {\n  bottom: 20px; }\n\n.notouch .context-menu__help {\n  padding: 0px 20px; }\n", ""]);
 	
 	// exports
 

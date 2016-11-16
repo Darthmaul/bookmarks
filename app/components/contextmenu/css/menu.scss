@@ -2,7 +2,7 @@
 	position: fixed;
 	max-width: 1000px;
 	margin: 0 auto;
-	bottom: 20px;
+	bottom: 10px;
 	left: 0px;
 	right: 0px;
 }
@@ -60,6 +60,9 @@
 }
 
 .notouch {
+	.context-menu__wrap {
+		bottom: 20px;
+	}
 	.context-menu__help {
 		padding: 0px 20px;
 	}
