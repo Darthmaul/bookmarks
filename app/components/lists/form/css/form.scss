@@ -117,6 +117,7 @@ input.list-form__bookmarks {
 	position: absolute;
 	left: -1px;
 	right: -1px;
+	top: 52px; // i hate magic numbers too.
 	background: white;
 	border: 1px solid #ddd;
 	color: #777;
@@ -124,8 +125,8 @@ input.list-form__bookmarks {
 	overflow-x: hidden;
 
 	&__result {
-		padding: 5px 20px;
-		font-size: 70%;
+		padding: 8px 20px;
+		font-size: 80%;
 		border-bottom: 1px solid #ddd;
 
 		&:last-child {
