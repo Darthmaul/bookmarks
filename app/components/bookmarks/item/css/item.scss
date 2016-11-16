@@ -4,42 +4,42 @@
 		display: inline-block;
 	}
 
-	.bookmark-item__title {
+	&__title {
 		text-decoration: none;
 		text-shadow: 0 1px rgba(255, 255, 255, 0.25);
 		font-weight: bold;
 	}
 
-	.bookmark-item__header {
+	&__header {
 		padding: 10px 20px;
 		border-bottom: 1px solid #ccc;
 		position: relative;
 	}
 
-	.bookmark-item__link {
+	&__link {
 		font-size: 1.1rem;
 		margin-left: 10px;
 	}
 
-	.bookmark-item__domain {
+	&__domain {
 		text-decoration: none;
 	}
 
-	.bookmark-item__image-wrap {
+	&__image-wrap {
 		border-bottom: 1px solid #ccc;
 		position: relative;
 		padding: 10px 20px;
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
 	}
 
-	.bookmark-item__image {
+	&__image {
 		max-width: 100%;
 		max-height: 600px;
 		margin: 0 auto;
 		display: block;
 	}
 
-	.bookmark-item__tags {
+	&__tags {
 		padding: 4px 15px;
 		-webkit-animation: fadeIn 200ms;
 		-o-animation: fadeIn 200ms;
@@ -49,7 +49,7 @@
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
 	}
 
-	.bookmark-item__footer {
+	&__footer {
 		background: #f8f8f8;
 		padding: 5px 20px;
 		font-size: 75%;
@@ -59,7 +59,7 @@
 		text-shadow: 0 1px rgba(255, 255, 255, 0.25);
 	}
 
-	.bookmark-item__footer-toggles {
+	&__footer-toggles {
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
@@ -75,7 +75,7 @@
 		}
 	}
 
-	.bookmark-item__description {
+	&__description {
 		border-top: 1px solid #ccc;
 		padding: 15px 20px;
 		font-size: 80%;
@@ -92,7 +92,7 @@
 		}
 	}
 
-	.bookmark-item__edit-options {
+	&__edit-options {
 		border-top: 1px solid #ccc;
 	}
 }

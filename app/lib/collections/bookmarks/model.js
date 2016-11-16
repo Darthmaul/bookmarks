@@ -15,3 +15,7 @@ export default class BookmarkModel extends Model {
 	}
 
 }
+
+export function isBookmarkModel(model) {
+	return model instanceof BookmarkModel;
+}

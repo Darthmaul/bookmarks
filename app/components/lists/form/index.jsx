@@ -25,11 +25,13 @@ export default class ListFormComponent extends React.Component {
 		event.preventDefault();
 		const { list } = this.props;
 		const { lists, router } = this.context;
-		const { title } = this.refs;
+		const { title, description } = this.refs;
 		const titleValue = title.value.trim();
+		const descriptionValue = description.value.trim();
 
 		const properties = {
-			title: titleValue
+			title: titleValue,
+			description: descriptionValue
 		};
 
 		const { errors, validated } = lists.validate(properties);

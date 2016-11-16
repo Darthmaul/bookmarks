@@ -1,5 +1,5 @@
 import React from 'react';
-import BookmarkListComponent from '../components/bookmarks/list/index.jsx';
+import SearchResultsComponent from '../components/search/results/index.jsx';
 import Search from '../lib/behaviour/search.js';
 
 export default class HomePage extends React.Component {
@@ -16,7 +16,7 @@ export default class HomePage extends React.Component {
 		this.search = new Search({ bookmarks, lists });
 
 		this.state = {
-			bookmarks: [],
+			results: [],
 			isMounted: false,
 		};
 
@@ -34,7 +34,7 @@ export default class HomePage extends React.Component {
 			if (term) {
 				this.performSearch(term);
 			} else {
-				this.addModels(bookmarks.all());
+				this.addModels(this.search.all());
 			}
 		});
 	}
@@ -54,7 +54,7 @@ export default class HomePage extends React.Component {
 		if (term) {
 			this.performSearch(term);
 		} else {
-			this.addModels(bookmarks.all());
+			this.addModels(this.search.all());
 		}
 	}
 
@@ -66,16 +66,15 @@ export default class HomePage extends React.Component {
 		// https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
 		if (this.state.isMounted) {
 			models = models.sort((a, b) => new Date(b.date) - new Date(a.date));
-			models.map(model => console.log(model.date));
 			this.setState({
-				bookmarks: models
+				results: models
 			});
 		}
 	}
 
 	render() {
-		const { bookmarks } = this.state;
-		return <BookmarkListComponent bookmarks={bookmarks} />
+		const { results } = this.state;
+		return <SearchResultsComponent results={results} />
 	}
 
 }

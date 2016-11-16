@@ -10,11 +10,10 @@ export default class ListDetailComponent extends React.Component {
 
 	render() {
 		const { list } = this.props;
-
 		if (list) {
 			return (
 				<div className="list-detail">
-					<ListItemComponent shouldShowOptions={true} shouldShowTags={true} shouldShowImage={true} shouldShowText={true} list={list} />
+					<ListItemComponent list={list} shouldShowDescription={true} />
 				</div>
 			);
 		} else {

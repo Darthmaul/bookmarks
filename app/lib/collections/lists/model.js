@@ -18,3 +18,7 @@ export default class ListModel extends Model {
 	}
 
 }
+
+export function isListModel(model) {
+	return model instanceof ListModel;
+}

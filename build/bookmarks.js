@@ -27665,7 +27665,7 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 172);
 	
-	var _index = __webpack_require__(/*! ../search/index.jsx */ 231);
+	var _index = __webpack_require__(/*! ../search/form/index.jsx */ 321);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -27732,195 +27732,9 @@
 	exports.default = HeaderComponent;
 
 /***/ },
-/* 231 */
-/*!*****************************************!*\
-  !*** ./app/components/search/index.jsx ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 228);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/search.scss */ 232);
-	
-	var SearchComponent = function (_React$Component) {
-		_inherits(SearchComponent, _React$Component);
-	
-		function SearchComponent(props, context) {
-			_classCallCheck(this, SearchComponent);
-	
-			var _this = _possibleConstructorReturn(this, (SearchComponent.__proto__ || Object.getPrototypeOf(SearchComponent)).call(this, props, context));
-	
-			var router = _this.context.router;
-			var query = router.location.query;
-			var search = query.search;
-	
-	
-			_this.state = {
-				queryLength: search ? search.length : 0
-			};
-			return _this;
-		}
-	
-		_createClass(SearchComponent, [{
-			key: 'onSubmit',
-			value: function onSubmit(event) {
-				event.preventDefault();
-				this.search();
-			}
-		}, {
-			key: 'onKeyUp',
-			value: function onKeyUp(event) {
-				this.search();
-				this.setState({
-					queryLength: event.target.value.length
-				});
-			}
-		}, {
-			key: 'componentWillReceiveProps',
-			value: function componentWillReceiveProps(nextState, nextContext) {
-				var nextRouter = nextContext.router;
-				var nextQuery = nextRouter.location.query;
-				var nextTerm = nextQuery.search;
-				var value = this.refs.search.value;
-	
-				if (nextTerm != value && value != undefined && nextTerm != undefined) {
-					this.refs.search.value = ' ';
-					this.refs.search.value = nextTerm;
-				}
-	
-				if (nextTerm == undefined) {
-					this.refs.search.value = '';
-					this.setState({ queryLength: 0 });
-				}
-			}
-		}, {
-			key: 'search',
-			value: function search() {
-				var router = this.context.router;
-	
-				var term = this.refs.search.value;
-				var location = { pathname: '/', query: {} };
-	
-				if (term) {
-					location.query.search = term;
-				}
-	
-				router.push(location);
-			}
-		}, {
-			key: 'clearInputClickHandler',
-			value: function clearInputClickHandler(event) {
-				event.preventDefault();
-				this.refs.search.value = '';
-				this.setState({ queryLength: 0 });
-				this.search();
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var clearBtnHtml = void 0;
-				var router = this.context.router;
-	
-				var location = router.location.query;
-				var search = location.search;
-				var queryLength = this.state.queryLength;
-	
-	
-				if (queryLength > 0) clearBtnHtml = _react2.default.createElement(
-					'a',
-					{ href: '#', onClick: this.clearInputClickHandler.bind(this), className: 'search__clear' },
-					'\xD7'
-				);
-	
-				return _react2.default.createElement(
-					'form',
-					{ onSubmit: this.onSubmit.bind(this), className: 'search-form' },
-					_react2.default.createElement('input', { onKeyUp: this.onKeyUp.bind(this), placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: search }),
-					clearBtnHtml
-				);
-			}
-		}]);
-	
-		return SearchComponent;
-	}(_react2.default.Component);
-	
-	SearchComponent.contextTypes = {
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = SearchComponent;
-
-/***/ },
-/* 232 */
-/*!***********************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/search/css/search.scss ***!
-  \***********************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./search.scss */ 233);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./search.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./search.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 233 */
-/*!******************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/search/css/search.scss ***!
-  \******************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".search-form {\n  margin: 0;\n  font-size: 80%;\n  position: relative; }\n  .search-form .field {\n    height: 2.4rem;\n    border: 0px;\n    border-left: 1px solid #ccc;\n    padding: 0 25px 0 10px;\n    margin: 0px;\n    max-width: 130px;\n    border-radius: 0px;\n    display: inline-block; }\n    .search-form .field:focus {\n      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n    @media screen and (min-width: 376px) {\n      .search-form .field {\n        max-width: 160px; } }\n  .search-form .search__clear {\n    display: inline-block;\n    font-size: 1.2rem;\n    text-decoration: none;\n    line-height: 2.4rem;\n    position: absolute;\n    right: 10px;\n    opacity: 0.5; }\n    .search-form .search__clear:hover {\n      opacity: 0.8; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
+/* 231 */,
+/* 232 */,
+/* 233 */,
 /* 234 */
 /*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
@@ -28405,7 +28219,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _index = __webpack_require__(/*! ../components/bookmarks/list/index.jsx */ 310);
+	var _index = __webpack_require__(/*! ../components/search/results/index.jsx */ 324);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -28436,7 +28250,7 @@
 			_this.search = new _search2.default({ bookmarks: bookmarks, lists: lists });
 	
 			_this.state = {
-				bookmarks: [],
+				results: [],
 				isMounted: false
 			};
 	
@@ -28462,7 +28276,7 @@
 					if (term) {
 						_this2.performSearch(term);
 					} else {
-						_this2.addModels(bookmarks.all());
+						_this2.addModels(_this2.search.all());
 					}
 				});
 			}
@@ -28485,7 +28299,7 @@
 				if (term) {
 					this.performSearch(term);
 				} else {
-					this.addModels(bookmarks.all());
+					this.addModels(this.search.all());
 				}
 			}
 		}, {
@@ -28501,20 +28315,17 @@
 					models = models.sort(function (a, b) {
 						return new Date(b.date) - new Date(a.date);
 					});
-					models.map(function (model) {
-						return console.log(model.date);
-					});
 					this.setState({
-						bookmarks: models
+						results: models
 					});
 				}
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var bookmarks = this.state.bookmarks;
+				var results = this.state.results;
 	
-				return _react2.default.createElement(_index2.default, { bookmarks: bookmarks });
+				return _react2.default.createElement(_index2.default, { results: results });
 			}
 		}]);
 	
@@ -39970,7 +39781,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 4px 15px;\n  -webkit-animation: fadeIn 200ms;\n  -o-animation: fadeIn 200ms;\n  animation: fadeIn 200ms;\n  border-top: 1px solid #ccc;\n  background: #FCFAF9;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__footer {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__footer-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__footer-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__footer-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__description {\n  border-top: 1px solid #ccc;\n  padding: 15px 20px;\n  font-size: 80%;\n  color: #777; }\n  .bookmark-item .bookmark-item__description p:first-child {\n    margin-top: 0px; }\n  .bookmark-item .bookmark-item__description p:last-child {\n    margin-bottom: 0px; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
+	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item__tags {\n  padding: 4px 15px;\n  -webkit-animation: fadeIn 200ms;\n  -o-animation: fadeIn 200ms;\n  animation: fadeIn 200ms;\n  border-top: 1px solid #ccc;\n  background: #FCFAF9;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item__footer {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item__footer-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item__footer-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item__footer-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item__description {\n  border-top: 1px solid #ccc;\n  padding: 15px 20px;\n  font-size: 80%;\n  color: #777; }\n  .bookmark-item__description p:first-child {\n    margin-top: 0px; }\n  .bookmark-item__description p:last-child {\n    margin-bottom: 0px; }\n\n.bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 
@@ -40594,12 +40405,16 @@
 				var _context = this.context,
 				    lists = _context.lists,
 				    router = _context.router;
-				var title = this.refs.title;
+				var _refs = this.refs,
+				    title = _refs.title,
+				    description = _refs.description;
 	
 				var titleValue = title.value.trim();
+				var descriptionValue = description.value.trim();
 	
 				var properties = {
-					title: titleValue
+					title: titleValue,
+					description: descriptionValue
 				};
 	
 				var _lists$validate = lists.validate(properties),
@@ -41042,6 +40857,9 @@
 	
 					// set slug
 					model.slug = _.slugify(model.title);
+	
+					if (!model.bookmarks) model.bookmarks = [];
+					if (!model.description) model.description = '';
 					return model;
 				});
 			}
@@ -41076,6 +40894,8 @@
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	exports.isBookmarkModel = isBookmarkModel;
 	
 	var _model = __webpack_require__(/*! ../base/model.js */ 267);
 	
@@ -41119,6 +40939,9 @@
 	}(_model2.default);
 	
 	exports.default = BookmarkModel;
+	function isBookmarkModel(model) {
+		return model instanceof BookmarkModel;
+	}
 
 /***/ },
 /* 303 */
@@ -41134,6 +40957,8 @@
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	exports.isListModel = isListModel;
 	
 	var _model = __webpack_require__(/*! ../base/model.js */ 267);
 	
@@ -41180,6 +41005,9 @@
 	}(_model2.default);
 	
 	exports.default = ListModel;
+	function isListModel(model) {
+		return model instanceof ListModel;
+	}
 
 /***/ },
 /* 304 */
@@ -43845,128 +43673,9 @@
 	exports.default = BookmarkDetailPage;
 
 /***/ },
-/* 310 */
-/*!*************************************************!*\
-  !*** ./app/components/bookmarks/list/index.jsx ***!
-  \*************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _index = __webpack_require__(/*! ../item/index.jsx */ 283);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/list.scss */ 311);
-	
-	var BookmarkListComponent = function (_React$Component) {
-		_inherits(BookmarkListComponent, _React$Component);
-	
-		function BookmarkListComponent() {
-			_classCallCheck(this, BookmarkListComponent);
-	
-			return _possibleConstructorReturn(this, (BookmarkListComponent.__proto__ || Object.getPrototypeOf(BookmarkListComponent)).apply(this, arguments));
-		}
-	
-		_createClass(BookmarkListComponent, [{
-			key: 'render',
-			value: function render() {
-				var bookmarks = this.props.bookmarks;
-	
-	
-				if (bookmarks.length) {
-					return _react2.default.createElement(
-						'ul',
-						{ className: 'bookmark-list' },
-						bookmarks.map(function (bookmark) {
-							return _react2.default.createElement(
-								'li',
-								{ key: bookmark.id, className: 'margin-bottom' },
-								_react2.default.createElement(_index2.default, { bookmark: bookmark })
-							);
-						})
-					);
-				} else {
-					return _react2.default.createElement(
-						'div',
-						{ className: 'not-found box padding padding-vertical-sm muted' },
-						'No bookmarks!'
-					);
-				}
-			}
-		}]);
-	
-		return BookmarkListComponent;
-	}(_react2.default.Component);
-	
-	exports.default = BookmarkListComponent;
-
-/***/ },
-/* 311 */
-/*!*****************************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/bookmarks/list/css/list.scss ***!
-  \*****************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./list.scss */ 312);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./list.scss", function() {
-				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./list.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 312 */
-/*!************************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/bookmarks/list/css/list.scss ***!
-  \************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".bookmark-list {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
+/* 310 */,
+/* 311 */,
+/* 312 */,
 /* 313 */
 /*!***********************************!*\
   !*** ./app/pages/list-detail.jsx ***!
@@ -44095,12 +43804,11 @@
 			value: function render() {
 				var list = this.props.list;
 	
-	
 				if (list) {
 					return _react2.default.createElement(
 						'div',
 						{ className: 'list-detail' },
-						_react2.default.createElement(_index2.default, { shouldShowOptions: true, shouldShowTags: true, shouldShowImage: true, shouldShowText: true, list: list })
+						_react2.default.createElement(_index2.default, { list: list, shouldShowDescription: true })
 					);
 				} else {
 					return _react2.default.createElement(_errors.NotFoundComponent, null);
@@ -44132,6 +43840,12 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _showdown = __webpack_require__(/*! showdown */ 305);
+	
+	var _showdown2 = _interopRequireDefault(_showdown);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 172);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44153,15 +43867,51 @@
 		}
 	
 		_createClass(ListItemComponent, [{
-			key: 'render',
-			value: function render() {
+			key: 'renderDescription',
+			value: function renderDescription() {
 				var list = this.props.list;
 	
+				var converter = new _showdown2.default.Converter();
+				var html = converter.makeHtml(list.description);
+	
+				return _react2.default.createElement('div', { className: 'list-item__description', dangerouslySetInnerHTML: { __html: html } });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var descriptionHtml = void 0;
+				var _props = this.props,
+				    list = _props.list,
+				    shouldShowDescription = _props.shouldShowDescription;
+	
+	
+				if (shouldShowDescription) {
+					descriptionHtml = this.renderDescription();
+				}
 	
 				return _react2.default.createElement(
 					'div',
-					{ className: 'box' },
-					list.title
+					{ className: 'list-item box' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'list-item__details' },
+						_react2.default.createElement(
+							'span',
+							{ className: 'list-item__bookmark-count' },
+							list.bookmarks.length,
+							' bookmarks'
+						)
+					),
+					_react2.default.createElement(
+						'header',
+						{ className: 'list-item__header' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ className: 'list-item__title', to: list.getDetailUrl() },
+							list.title
+						)
+					),
+					descriptionHtml
 				);
 			}
 		}]);
@@ -44212,7 +43962,7 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".list-item__header {\n  padding: 10px 20px; }\n\n.list-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.list-item__details {\n  font-size: 70%;\n  border-bottom: 1px solid #ccc;\n  padding: 5px 20px;\n  background: #f8f8f8;\n  color: #777; }\n\n.list-item__description {\n  border-top: 1px solid #ccc;\n  padding: 15px 20px;\n  font-size: 80%;\n  color: #777; }\n  .list-item__description p:first-child {\n    margin-top: 0px; }\n  .list-item__description p:last-child {\n    margin-bottom: 0px; }\n", ""]);
 	
 	// exports
 
@@ -44320,6 +44070,20 @@
 				};
 			}
 		}, {
+			key: 'all',
+			value: function all() {
+				var array = new Array();
+				if (this.bookmarks) {
+					array = array.concat(this.bookmarks.all());
+				}
+	
+				if (this.lists) {
+					array = array.concat(this.lists.all());
+				}
+	
+				return array;
+			}
+		}, {
 			key: 'search',
 			value: function search(query) {
 				var search = new _jsSearch2.default.Search('id');
@@ -44343,6 +44107,334 @@
 	}();
 	
 	exports.default = Search;
+
+/***/ },
+/* 321 */
+/*!**********************************************!*\
+  !*** ./app/components/search/form/index.jsx ***!
+  \**********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tools = __webpack_require__(/*! ../../../lib/tools.js */ 228);
+	
+	var _ = _interopRequireWildcard(_tools);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/form.scss */ 322);
+	
+	var SearchFormComponent = function (_React$Component) {
+		_inherits(SearchFormComponent, _React$Component);
+	
+		function SearchFormComponent(props, context) {
+			_classCallCheck(this, SearchFormComponent);
+	
+			var _this = _possibleConstructorReturn(this, (SearchFormComponent.__proto__ || Object.getPrototypeOf(SearchFormComponent)).call(this, props, context));
+	
+			var router = _this.context.router;
+			var query = router.location.query;
+			var search = query.search;
+	
+	
+			_this.state = {
+				queryLength: search ? search.length : 0
+			};
+			return _this;
+		}
+	
+		_createClass(SearchFormComponent, [{
+			key: 'onSubmit',
+			value: function onSubmit(event) {
+				event.preventDefault();
+				this.search();
+			}
+		}, {
+			key: 'onKeyUp',
+			value: function onKeyUp(event) {
+				this.search();
+				this.setState({
+					queryLength: event.target.value.length
+				});
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextState, nextContext) {
+				var nextRouter = nextContext.router;
+				var nextQuery = nextRouter.location.query;
+				var nextTerm = nextQuery.search;
+				var value = this.refs.search.value;
+	
+				if (nextTerm != value && value != undefined && nextTerm != undefined) {
+					this.refs.search.value = ' ';
+					this.refs.search.value = nextTerm;
+					this.setState({ queryLength: nextTerm.length });
+				}
+	
+				if (nextTerm == undefined) {
+					this.refs.search.value = '';
+					this.setState({ queryLength: 0 });
+				}
+			}
+		}, {
+			key: 'search',
+			value: function search() {
+				var router = this.context.router;
+	
+				var term = this.refs.search.value;
+				var location = { pathname: '/', query: {} };
+	
+				if (term) {
+					location.query.search = term;
+				}
+	
+				router.push(location);
+			}
+		}, {
+			key: 'clearInputClickHandler',
+			value: function clearInputClickHandler(event) {
+				event.preventDefault();
+				this.refs.search.value = '';
+				this.setState({ queryLength: 0 });
+				this.search();
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var clearBtnHtml = void 0;
+				var router = this.context.router;
+	
+				var location = router.location.query;
+				var search = location.search;
+				var queryLength = this.state.queryLength;
+	
+	
+				if (queryLength > 0) clearBtnHtml = _react2.default.createElement(
+					'a',
+					{ href: '#', onClick: this.clearInputClickHandler.bind(this), className: 'search__clear' },
+					'\xD7'
+				);
+	
+				return _react2.default.createElement(
+					'form',
+					{ onSubmit: this.onSubmit.bind(this), className: 'search-form' },
+					_react2.default.createElement('input', { onKeyUp: this.onKeyUp.bind(this), placeholder: 'search', ref: 'search', type: 'text', className: 'field', defaultValue: search }),
+					clearBtnHtml
+				);
+			}
+		}]);
+	
+		return SearchFormComponent;
+	}(_react2.default.Component);
+	
+	SearchFormComponent.contextTypes = {
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = SearchFormComponent;
+
+/***/ },
+/* 322 */
+/*!**************************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/search/form/css/form.scss ***!
+  \**************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./form.scss */ 323);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./form.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./form.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 323 */
+/*!*********************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/search/form/css/form.scss ***!
+  \*********************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".search-form {\n  margin: 0;\n  font-size: 80%;\n  position: relative; }\n  .search-form .field {\n    height: 2.4rem;\n    border: 0px;\n    border-left: 1px solid #ccc;\n    padding: 0 25px 0 10px;\n    margin: 0px;\n    max-width: 130px;\n    border-radius: 0px;\n    display: inline-block; }\n    .search-form .field:focus {\n      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n    @media screen and (min-width: 376px) {\n      .search-form .field {\n        max-width: 160px; } }\n  .search-form .search__clear {\n    display: inline-block;\n    font-size: 1.2rem;\n    text-decoration: none;\n    line-height: 2.4rem;\n    position: absolute;\n    right: 10px;\n    opacity: 0.5; }\n    .search-form .search__clear:hover {\n      opacity: 0.8; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 324 */
+/*!*************************************************!*\
+  !*** ./app/components/search/results/index.jsx ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../../bookmarks/item/index.jsx */ 283);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _index3 = __webpack_require__(/*! ../../lists/item/index.jsx */ 315);
+	
+	var _index4 = _interopRequireDefault(_index3);
+	
+	var _model = __webpack_require__(/*! ../../../lib/collections/bookmarks/model.js */ 302);
+	
+	var _model2 = __webpack_require__(/*! ../../../lib/collections/lists/model.js */ 303);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/list.scss */ 325);
+	
+	var SearchResultsComponent = function (_React$Component) {
+		_inherits(SearchResultsComponent, _React$Component);
+	
+		function SearchResultsComponent() {
+			_classCallCheck(this, SearchResultsComponent);
+	
+			return _possibleConstructorReturn(this, (SearchResultsComponent.__proto__ || Object.getPrototypeOf(SearchResultsComponent)).apply(this, arguments));
+		}
+	
+		_createClass(SearchResultsComponent, [{
+			key: 'render',
+			value: function render() {
+				var results = this.props.results;
+	
+	
+				if (results.length) {
+					return _react2.default.createElement(
+						'ul',
+						{ className: 'search-results-list' },
+						results.map(function (result) {
+							if ((0, _model.isBookmarkModel)(result)) {
+								return _react2.default.createElement(
+									'li',
+									{ key: result.id, className: 'margin-bottom' },
+									_react2.default.createElement(_index2.default, { bookmark: result })
+								);
+							} else if ((0, _model2.isListModel)(result)) {
+								return _react2.default.createElement(
+									'li',
+									{ key: result.id, className: 'margin-bottom' },
+									_react2.default.createElement(_index4.default, { list: result })
+								);
+							}
+						})
+					);
+				} else {
+					return _react2.default.createElement(
+						'div',
+						{ className: 'not-found box padding padding-vertical-sm muted' },
+						'No bookmarks!'
+					);
+				}
+			}
+		}]);
+	
+		return SearchResultsComponent;
+	}(_react2.default.Component);
+	
+	exports.default = SearchResultsComponent;
+
+/***/ },
+/* 325 */
+/*!*****************************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/search/results/css/list.scss ***!
+  \*****************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./list.scss */ 326);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./list.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./list.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 326 */
+/*!************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/search/results/css/list.scss ***!
+  \************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".search-results-list {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\n", ""]);
+	
+	// exports
+
 
 /***/ }
 /******/ ]);

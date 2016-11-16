@@ -27,6 +27,9 @@ export default class Lists extends LocalStorageCollection {
 			
 			// set slug
 			model.slug = _.slugify(model.title);
+
+			if (!model.bookmarks) model.bookmarks = [];
+			if (!model.description) model.description = '';
 			return model;
 		});
 	}

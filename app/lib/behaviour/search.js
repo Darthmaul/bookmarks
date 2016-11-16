@@ -23,6 +23,19 @@ export default class Search {
 		};
 	}
 
+	all() {
+		let array = new Array;
+		if (this.bookmarks) {
+			array = array.concat(this.bookmarks.all());
+		}
+
+		if (this.lists) {
+			array = array.concat(this.lists.all());
+		}
+
+		return array;
+	}
+
 	search(query) {
 		const search = new JsSearch.Search('id');
 		search.addIndex('title');

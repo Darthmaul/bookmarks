@@ -1,10 +1,10 @@
 import React from 'react';
-import * as _ from '../../lib/tools.js';
+import * as _ from '../../../lib/tools.js';
 
 // import styles for this component
-require('!style!css!sass!./css/search.scss');
+require('!style!css!sass!./css/form.scss');
 
-export default class SearchComponent extends React.Component {
+export default class SearchFormComponent extends React.Component {
 
 	static contextTypes = {
 		router: React.PropTypes.object
@@ -42,6 +42,7 @@ export default class SearchComponent extends React.Component {
 		if (nextTerm != value && value != undefined && nextTerm != undefined) {
 			this.refs.search.value = ' ';
 			this.refs.search.value = nextTerm;
+			this.setState({ queryLength: nextTerm.length });
 		}
 
 		if (nextTerm == undefined) {
