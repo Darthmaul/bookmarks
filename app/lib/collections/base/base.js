@@ -136,7 +136,7 @@ export default class Collection {
 
 	create(attrs) {
 		let model = this.make(attrs);
-		model.id = _.generateID();
+		if (!model.id) model.id = _.generateID();
 		model = this.callHooks(model);
 		this.models[model.id] = model;
 		this.triggerCreate(model);
@@ -146,7 +146,7 @@ export default class Collection {
 	createMany(models) {
 		const created = models.map((attrs) => {
 			let model = this.make(attrs);
-			model.id = _.generateID();
+			if (!model.id) model.id = _.generateID();
 			model = this.callHooks(model);
 			this.models[model.id] = model;
 			return model;

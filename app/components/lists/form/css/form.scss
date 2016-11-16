@@ -2,6 +2,10 @@
 	max-width: 500px;
 	margin: 0 auto;
 
+	.textarea {
+		resize: none;
+	}
+
 	.field-wrap {
 		&:last-child {
 			margin-bottom: 10px;

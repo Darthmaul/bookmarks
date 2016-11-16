@@ -29644,7 +29644,7 @@
 			key: 'create',
 			value: function create(attrs) {
 				var model = this.make(attrs);
-				model.id = _.generateID();
+				if (!model.id) model.id = _.generateID();
 				model = this.callHooks(model);
 				this.models[model.id] = model;
 				this.triggerCreate(model);
@@ -29657,7 +29657,7 @@
 	
 				var created = models.map(function (attrs) {
 					var model = _this3.make(attrs);
-					model.id = _.generateID();
+					if (!model.id) model.id = _.generateID();
 					model = _this3.callHooks(model);
 					_this3.models[model.id] = model;
 					return model;
@@ -39780,6 +39780,8 @@
 				var converter = new _showdown2.default.Converter();
 				var html = converter.makeHtml(bookmark.description);
 	
+				console.log(bookmark.description);
+	
 				return _react2.default.createElement('div', { className: 'bookmark-item__description', dangerouslySetInnerHTML: { __html: html } });
 			}
 		}, {
@@ -40362,7 +40364,7 @@
 		}, {
 			key: 'urlKeyUpHandler',
 			value: function urlKeyUpHandler(event) {
-				if (event.keyCode != 13) {
+				if (event.keyCode != 9 && event.charCode != 9 && event.keyCode != 13 && event.charCode != 13) {
 					var errorState = this.getFieldError('url');
 					if (errorState) {
 						var url = this.refs.url;
@@ -40629,22 +40631,46 @@
 				}
 			}
 		}, {
-			key: 'renderError',
-			value: function renderError() {
-				var errors = this.state.errors;
+			key: 'validateField',
+			value: function validateField(field, value) {
+				var lists = this.context.lists;
 	
-				if (_.keys(errors.length)) {
-					var error = _.values(errors)[0];
-					return _react2.default.createElement(
-						'span',
-						{ className: 'form-error' },
-						error
-					);
+				return lists.validateField(field, value);
+			}
+		}, {
+			key: 'titleKeyUpHandler',
+			value: function titleKeyUpHandler(event) {
+				var errorState = this.getFieldError('title');
+				if (errorState) {
+					var title = this.refs.title;
+	
+					var error = this.validateField('title', title.value.trim());
+					var errors = this.state.errors;
+	
+					errors.title = error;
+					this.setState({ errors: errors });
 				}
+			}
+		}, {
+			key: 'setDescriptionInputHeight',
+			value: function setDescriptionInputHeight() {
+				var description = this.refs.description;
+	
+				if (description) {
+					description.style.height = 'auto';
+					description.style.height = description.scrollHeight + 'px';
+				}
+			}
+		}, {
+			key: 'descriptionChangeHandler',
+			value: function descriptionChangeHandler() {
+				this.setDescriptionInputHeight();
 			}
 		}, {
 			key: 'render',
 			value: function render() {
+				var _this2 = this;
+	
 				var list = this.props.list;
 	
 				return _react2.default.createElement(
@@ -40665,8 +40691,31 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'field-wrap' },
-							_react2.default.createElement('input', { ref: 'title', defaultValue: list ? list.title : '', placeholder: 'title', type: 'text', className: 'field' }),
+							_react2.default.createElement('input', {
+								ref: 'title',
+								defaultValue: list ? list.title : '',
+								placeholder: 'title',
+								type: 'text',
+								className: 'field',
+								onKeyUp: this.titleKeyUpHandler.bind(this)
+							}),
 							this.renderFieldError('title')
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'field-wrap' },
+							_react2.default.createElement('textarea', {
+								ref: function ref(_ref) {
+									_this2.refs.description = _ref;
+									_this2.setDescriptionInputHeight();
+								},
+								onInput: this.descriptionChangeHandler.bind(this),
+								defaultValue: list ? list.description : '',
+								placeholder: 'description',
+								type: 'text',
+								rows: '1',
+								className: 'field textarea'
+							})
 						)
 					),
 					_react2.default.createElement(
@@ -40732,7 +40781,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".list-form {\n  max-width: 500px;\n  margin: 0 auto; }\n  .list-form .field-wrap:last-child {\n    margin-bottom: 10px; }\n", ""]);
+	exports.push([module.id, ".list-form {\n  max-width: 500px;\n  margin: 0 auto; }\n  .list-form .textarea {\n    resize: none; }\n  .list-form .field-wrap:last-child {\n    margin-bottom: 10px; }\n", ""]);
 	
 	// exports
 

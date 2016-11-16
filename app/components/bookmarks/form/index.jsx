@@ -133,7 +133,7 @@ export default class BookmarkFormComponent extends React.Component {
 	}
 
 	urlKeyUpHandler(event) {
-		if (event.keyCode != 13) {
+		if (event.keyCode != 9 && event.charCode != 9 && event.keyCode != 13 && event.charCode != 13) {
 			const errorState = this.getFieldError('url');
 			if (errorState) {
 				const { url } = this.refs;

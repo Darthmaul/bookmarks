@@ -3,7 +3,7 @@ const defaultBookmarks = [
 		title: 'Some of my photography',
 		url: 'https://c4.staticflickr.com/1/773/22353007131_8cf5803bc8_k.jpg',
 		domain: 'www.flickr.com',
-		description: '# Go see it on Flickr! \n\n This is a bookmark description, and it supports markdown!',
+		description: '# Go see it on Flickr! \n\n This is a bookmark description, and it supports markdown! \n\n See some of my other photography on [Flickr](http://www.flickr.com/photos/fergusruston)',
 		tags: ['default bookmark', 'photography'],
 		slug: 'some-of-my-photography',
 		date: new Date
