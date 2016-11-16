@@ -15,41 +15,57 @@
 	&__bookmarks-list {
 		padding: 0;
 		margin: 0;
-		list-style: none;
-		list-style-type: none;
-		font-size: 80%;
 		border-top: 1px solid #ddd;
-		color: #777;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
 	}
 
 	&__bookmarks-header {
-		padding: 6px 20px;
+		padding: 3px 20px;
 		border-bottom: 1px solid #ddd;
 		background: #f8f8f8;
-		font-size: 80%;
+		font-size: 70%;
 		color: #777;
 	}
 
-	&__bookmark-item {
-		width: 100%;
-		position: relative;
-		padding: 5px 30px 5px 20px;
-		border-bottom: 1px solid #ddd;
+}
 
-		&:last-child {
-			border-bottom: 0px;
+.list-form__bookmark-item {
+	width: 100%;
+	position: relative;
+	padding: 5px 30px 5px 20px;
+	border-bottom: 1px solid #ddd;
+	font-size: 80%;
+	color: #777;
+	list-style: none;
+	list-style-type: none;
+
+	&:last-child {
+		border-bottom: 0px;
+	}
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.02);
+
+		.list-form__bookmark-item__remove {
+			display: block;
 		}
 
-		&:hover {
-			background: rgba(0, 0, 0, 0.02);
-
-			.list-form__bookmark-item__remove {
-				display: block;
-			}
+		.list-form__bookmark-item__drag-handle {
+			display: block;
 		}
 	}
 
-	&__bookmark-item__remove {
+	&__drag-handle {
+		position: absolute;
+		left: 8px;
+		top: 4px;
+		cursor: move; /* fallback if grab cursor is unsupported */
+	    cursor: grab;
+	    cursor: -moz-grab;
+	    cursor: -webkit-grab;
+	}
+
+	&__remove {
 		font-size: 1.2rem;
 		text-decoration: none;
 		position: absolute;
@@ -62,6 +78,10 @@
 			opacity: 0.8;
 		}
 	}
+}
+
+.notouch .list-form__bookmark-item__drag-handle {
+	display: none;
 }
 
 .notouch .list-form__bookmark-item__remove {

@@ -13,9 +13,10 @@
 	&__details {
 		font-size: 70%;
 		border-bottom: 1px solid #ccc;
-		padding: 5px 20px;
+		padding: 3px 20px;
 		background: #f8f8f8;
 		color: #777;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
 	}
 
 	&__description {

@@ -1,9 +1,34 @@
 import React from 'react';
+import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc';
+
 import * as _ from '../../../lib/tools.js';
 import Search from '../../../lib/behaviour/search.js';
 
 // import styles for this component
 require('!style!css!sass!./css/form.scss');
+
+const DragHandle = SortableHandle(() => <span className="list-form__bookmark-item__drag-handle">::</span>);
+
+const SortableItem = SortableElement(({ bookmark, removeBookmark }) => (
+	<li className="list-form__bookmark-item">
+		<DragHandle />
+		{bookmark.title}
+		<a onClick={removeBookmark} href="#" className="list-form__bookmark-item__remove">&times;</a>
+	</li>
+));
+
+const SortableList = SortableContainer(({ items, removeBookmark }) => (
+	<ul className="list-form__bookmarks-list">
+		<header className="list-form__bookmarks-header">
+			<h3>bookmarks</h3>
+		</header>
+		{items.map((bookmark, index) => {
+			return (
+				<SortableItem key={bookmark.id} index={index} bookmark={bookmark} removeBookmark={(event) => removeBookmark(bookmark, event)} />
+			);
+		})}
+	</ul>
+));
 
 export default class ListFormComponent extends React.Component {
 
@@ -12,6 +37,21 @@ export default class ListFormComponent extends React.Component {
 		lists: React.PropTypes.object,
 		router: React.PropTypes.object
 	};
+
+	renderBookmarks() {
+		const { bookmarks } = this.state;
+		const collection = this.context.bookmarks;
+		const models = collection.get(bookmarks);
+		if (models.length) {
+			return <SortableList useDragHandle={true} items={models} onSortEnd={this.onSortEnd.bind(this)} removeBookmark={this.removeBookmark.bind(this)} />
+		}
+	}
+
+	onSortEnd({ oldIndex, newIndex }) {
+		this.setState({
+			bookmarks: arrayMove(this.state.bookmarks, oldIndex, newIndex)
+		});
+	}
 
 	constructor(props, context) {
 		super(props, context);
@@ -152,29 +192,6 @@ export default class ListFormComponent extends React.Component {
 				input.focus();
 				this.closeAutocomplete();
 			});
-		}
-	}
-
-	renderBookmarks() {
-		const { bookmarks } = this.state;
-		const collection = this.context.bookmarks;
-		const models = collection.get(bookmarks);
-		if (models.length) {
-			return (
-				<ul className="list-form__bookmarks-list">
-					<header className="list-form__bookmarks-header">
-						<h3>bookmarks</h3>
-					</header>
-					{models.map((bookmark, index) => {
-						return (
-							<li key={index} className="list-form__bookmark-item">
-								{bookmark.title}
-								<a onClick={this.removeBookmark.bind(this, bookmark)} href="#" className="list-form__bookmark-item__remove">&times;</a>
-							</li>
-						);
-					})}
-				</ul>
-			);
 		}
 	}
 

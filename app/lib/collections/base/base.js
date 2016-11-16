@@ -47,8 +47,8 @@ export default class Collection {
 			return attrs ? this.make(attrs) : false;
 		}
 		if (_.isArray(id)) {
-			const ids = id, models = this.all();
-			return models.filter(attrs => ids.indexOf(attrs.id) >= 0).map(attrs => this.make(attrs));
+			const ids = id;
+			return ids.map(id => this.models[id]);
 		}
 		return false;
 	}
