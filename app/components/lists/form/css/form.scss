@@ -57,8 +57,12 @@
 
 	&__drag-handle {
 		position: absolute;
-		left: 8px;
-		top: 4px;
+		left: 0px;
+		padding-left: 8px;
+		top: 0px;
+		padding-top: 4px;
+		bottom: 0px;
+		font-weight: bold;
 		cursor: move; /* fallback if grab cursor is unsupported */
 	    cursor: grab;
 	    cursor: -moz-grab;
