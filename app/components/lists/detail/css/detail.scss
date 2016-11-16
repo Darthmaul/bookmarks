@@ -1,6 +1,10 @@
 .list-detail__bookmarks {
-	margin: 20px;
+	margin: 20px 0px;
 	padding: 0;
 	list-style: none;
 	list-style-type: none;
+}
+
+.notouch .list-detail__bookmarks {
+	margin: 20px;
 }

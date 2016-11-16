@@ -44318,7 +44318,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".list-detail__bookmarks {\n  margin: 20px;\n  padding: 0;\n  list-style: none;\n  list-style-type: none; }\n", ""]);
+	exports.push([module.id, ".list-detail__bookmarks {\n  margin: 20px;\n  padding: 0;\n  list-style: none;\n  list-style-type: none; }\n\n.notouch .list-detail__bookmarks {\n  margin: 20px; }\n", ""]);
 	
 	// exports
 
