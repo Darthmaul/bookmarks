@@ -44037,6 +44037,10 @@
 	
 	var _index2 = _interopRequireDefault(_index);
 	
+	var _index3 = __webpack_require__(/*! ../../bookmarks/item/index.jsx */ 283);
+	
+	var _index4 = _interopRequireDefault(_index3);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44060,13 +44064,33 @@
 		_createClass(ListDetailComponent, [{
 			key: 'render',
 			value: function render() {
+				var bookmarkList = void 0;
 				var list = this.props.list;
+				var bookmarks = this.context.bookmarks;
+	
+	
+				if (list.bookmarks.length) {
+					var bookmarkModels = bookmarks.get(list.bookmarks);
+					var listBookmarks = bookmarkModels.map(function (bookmark) {
+						return _react2.default.createElement(
+							'li',
+							{ className: 'margin-bottom' },
+							_react2.default.createElement(_index4.default, { key: bookmark.id, bookmark: bookmark })
+						);
+					});
+					bookmarkList = _react2.default.createElement(
+						'ul',
+						{ className: 'list-detail__bookmarks' },
+						listBookmarks
+					);
+				}
 	
 				if (list) {
 					return _react2.default.createElement(
 						'div',
 						{ className: 'list-detail' },
-						_react2.default.createElement(_index2.default, { list: list, shouldShowDescription: true })
+						_react2.default.createElement(_index2.default, { list: list, shouldShowDescription: true }),
+						bookmarkList
 					);
 				} else {
 					return _react2.default.createElement(_errors.NotFoundComponent, null);
@@ -44077,6 +44101,9 @@
 		return ListDetailComponent;
 	}(_react2.default.Component);
 	
+	ListDetailComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object
+	};
 	exports.default = ListDetailComponent;
 
 /***/ },
@@ -44267,7 +44294,7 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".list-detail__bookmarks {\n  margin: 20px;\n  padding: 0;\n  list-style: none;\n  list-style-type: none; }\n", ""]);
 	
 	// exports
 
