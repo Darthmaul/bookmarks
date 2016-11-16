@@ -10,8 +10,8 @@ import HomePage from './pages/home.jsx';
 import CreatePage from './pages/create.jsx';
 import CreateBookmarkPage from './pages/create-bookmark.jsx';
 import CreateListPage from './pages/create-list.jsx';
-import EditPage from './pages/edit.jsx';
-import DetailPage from './pages/detail.jsx';
+import BookmarkDetailPage from './pages/bookmark-detail.jsx';
+import BookmarkEditPage from './pages/bookmark-edit.jsx';
 
 const routes = (bookmarks, lists) => (
 	<ContextComponent bookmarks={bookmarks} lists={lists}>
@@ -21,8 +21,8 @@ const routes = (bookmarks, lists) => (
 				<Route path="/create" component={CreatePage} />
 				<Route path="/create-bookmark" component={CreateBookmarkPage} />
 				<Route path="/create-list" component={CreateListPage} />
-				<Route path="/bookmark/:id/:slug" component={DetailPage} />
-				<Route path="/bookmark/:id/:slug/edit" component={EditPage} />
+				<Route path="/bookmark/:id/:slug" component={BookmarkDetailPage} />
+				<Route path="/bookmark/:id/:slug/edit" component={BookmarkEditPage} />
 			</Route>
 		</Router>
 	</ContextComponent>

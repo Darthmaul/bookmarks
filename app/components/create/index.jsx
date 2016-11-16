@@ -13,7 +13,7 @@ export default class CreateComponent extends React.Component {
 					<h3>what do you want to create?</h3>
 				</header>
 				<div className="create-choices__choice-wrap">
-					<Link to="/create-bookmark" className="create-choice create-choice--bookmark"><i className="ion-link" /><br/>bookmark</Link>
+					<Link to="/create-bookmark" className="create-choice create-choice--bookmark"><i className="ion-bookmark" /><br/>bookmark</Link>
 					<Link to="/create-list" className="create-choice create-choice--list"><i className="ion-ios-list" /><br/>list</Link>
 				</div>
 			</section>

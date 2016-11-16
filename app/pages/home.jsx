@@ -1,5 +1,5 @@
 import React from 'react';
-import ListComponent from '../components/list/index.jsx';
+import BookmarkListComponent from '../components/bookmarks/list/index.jsx';
 
 export default class HomePage extends React.Component {
 
@@ -72,7 +72,7 @@ export default class HomePage extends React.Component {
 
 	render() {
 		const { bookmarks } = this.state;
-		return <ListComponent bookmarks={bookmarks} />
+		return <BookmarkListComponent bookmarks={bookmarks} />
 	}
 
 }

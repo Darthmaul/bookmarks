@@ -27341,13 +27341,13 @@
 	
 	var _createList2 = _interopRequireDefault(_createList);
 	
-	var _edit = __webpack_require__(/*! ./pages/edit.jsx */ 252);
+	var _bookmarkDetail = __webpack_require__(/*! ./pages/bookmark-detail.jsx */ 309);
 	
-	var _edit2 = _interopRequireDefault(_edit);
+	var _bookmarkDetail2 = _interopRequireDefault(_bookmarkDetail);
 	
-	var _detail = __webpack_require__(/*! ./pages/detail.jsx */ 254);
+	var _bookmarkEdit = __webpack_require__(/*! ./pages/bookmark-edit.jsx */ 308);
 	
-	var _detail2 = _interopRequireDefault(_detail);
+	var _bookmarkEdit2 = _interopRequireDefault(_bookmarkEdit);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -27367,8 +27367,8 @@
 					_react2.default.createElement(_reactRouter.Route, { path: '/create', component: _create2.default }),
 					_react2.default.createElement(_reactRouter.Route, { path: '/create-bookmark', component: _createBookmark2.default }),
 					_react2.default.createElement(_reactRouter.Route, { path: '/create-list', component: _createList2.default }),
-					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug', component: _detail2.default }),
-					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug/edit', component: _edit2.default })
+					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug', component: _bookmarkDetail2.default }),
+					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug/edit', component: _bookmarkEdit2.default })
 				)
 			)
 		);
@@ -28405,7 +28405,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _index = __webpack_require__(/*! ../components/list/index.jsx */ 242);
+	var _index = __webpack_require__(/*! ../components/bookmarks/list/index.jsx */ 310);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -28519,392 +28519,12 @@
 	exports.default = HomePage;
 
 /***/ },
-/* 242 */
-/*!***************************************!*\
-  !*** ./app/components/list/index.jsx ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _index = __webpack_require__(/*! ../item/index.jsx */ 243);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/list.scss */ 246);
-	
-	var ListComponent = function (_React$Component) {
-		_inherits(ListComponent, _React$Component);
-	
-		function ListComponent() {
-			_classCallCheck(this, ListComponent);
-	
-			return _possibleConstructorReturn(this, (ListComponent.__proto__ || Object.getPrototypeOf(ListComponent)).apply(this, arguments));
-		}
-	
-		_createClass(ListComponent, [{
-			key: 'render',
-			value: function render() {
-				var bookmarks = this.props.bookmarks;
-	
-	
-				if (bookmarks.length) {
-					return _react2.default.createElement(
-						'ul',
-						{ className: 'bookmark-list' },
-						bookmarks.map(function (bookmark) {
-							return _react2.default.createElement(
-								'li',
-								{ key: bookmark.id, className: 'margin-bottom' },
-								_react2.default.createElement(_index2.default, { bookmark: bookmark })
-							);
-						})
-					);
-				} else {
-					return _react2.default.createElement(
-						'div',
-						{ className: 'not-found box padding padding-vertical-sm muted' },
-						'No bookmarks!'
-					);
-				}
-			}
-		}]);
-	
-		return ListComponent;
-	}(_react2.default.Component);
-	
-	exports.default = ListComponent;
-
-/***/ },
-/* 243 */
-/*!***************************************!*\
-  !*** ./app/components/item/index.jsx ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 172);
-	
-	var _tools = __webpack_require__(/*! ../../lib/tools.js */ 228);
-	
-	var _ = _interopRequireWildcard(_tools);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// import styles for this component
-	__webpack_require__(/*! style!css!sass!./css/item.scss */ 244);
-	
-	var BookmarkItemComponent = function (_React$Component) {
-		_inherits(BookmarkItemComponent, _React$Component);
-	
-		function BookmarkItemComponent(props, context) {
-			_classCallCheck(this, BookmarkItemComponent);
-	
-			var _this = _possibleConstructorReturn(this, (BookmarkItemComponent.__proto__ || Object.getPrototypeOf(BookmarkItemComponent)).call(this, props, context));
-	
-			var shouldShowTags = props.shouldShowTags,
-			    shouldShowImage = props.shouldShowImage,
-			    shouldShowText = props.shouldShowText;
-	
-	
-			_this.state = {
-				shouldShowTags: shouldShowTags || false,
-				shouldShowImage: shouldShowImage || false,
-				shouldShowText: shouldShowText || false
-			};
-			return _this;
-		}
-	
-		_createClass(BookmarkItemComponent, [{
-			key: 'toggleTags',
-			value: function toggleTags(event) {
-				event.preventDefault();
-				this.setState({
-					shouldShowTags: !this.state.shouldShowTags
-				});
-			}
-		}, {
-			key: 'toggleImage',
-			value: function toggleImage(event) {
-				event.preventDefault();
-				this.setState({
-					shouldShowImage: !this.state.shouldShowImage
-				});
-			}
-		}, {
-			key: 'toggleText',
-			value: function toggleText(event) {
-				event.preventDefault();
-				this.setState({
-					shouldShowText: !this.state.shouldShowText
-				});
-			}
-		}, {
-			key: 'renderTags',
-			value: function renderTags() {
-				var bookmark = this.props.bookmark;
-	
-				var tags = bookmark.tags.map(function (tag) {
-					return _react2.default.createElement(
-						_reactRouter.Link,
-						{ to: { pathName: '/', query: { search: tag } }, key: tag, className: 'bookmark-item__tag tag' },
-						tag
-					);
-				});
-				return _react2.default.createElement(
-					'div',
-					{ className: 'bookmark-item__tags' },
-					tags
-				);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var tagsHtml = void 0,
-				    tagsToggle = void 0,
-				    imgHtml = void 0,
-				    imgToggle = void 0,
-				    textHtml = void 0,
-				    textToggle = void 0,
-				    editOptions = void 0;
-				var bookmark = this.props.bookmark;
-				var _state = this.state,
-				    shouldShowTags = _state.shouldShowTags,
-				    shouldShowImage = _state.shouldShowImage,
-				    shouldShowText = _state.shouldShowText;
-	
-	
-				if (bookmark.tags && bookmark.tags.length) {
-					if (shouldShowTags) {
-						tagsHtml = this.renderTags();
-					}
-	
-					tagsToggle = _react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement(
-							'a',
-							{ href: '#', onClick: this.toggleTags.bind(this) },
-							_react2.default.createElement('i', { className: 'ion-ios-pricetags' })
-						)
-					);
-				}
-	
-				if (_.validateImageUrl(bookmark.url)) {
-					if (shouldShowImage) {
-						imgHtml = _react2.default.createElement(
-							'div',
-							{ className: 'bookmark-item__image-wrap' },
-							_react2.default.createElement('img', { className: 'bookmark-item__image', src: bookmark.url })
-						);
-					}
-	
-					imgToggle = _react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement(
-							'a',
-							{ href: '#', onClick: this.toggleImage.bind(this) },
-							_react2.default.createElement('i', { className: 'ion-image' })
-						)
-					);
-				}
-	
-				if (bookmark.text && bookmark.text.length) {
-					if (shouldShowText) {
-						textHtml = _react2.default.createElement(
-							'div',
-							{ className: 'bookmark-item__text' },
-							bookmark.text
-						);
-					}
-	
-					textToggle = _react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement(
-							'a',
-							{ href: '#', onClick: this.toggleText.bind(this) },
-							_react2.default.createElement('i', { className: 'ion-document-text' })
-						)
-					);
-				}
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'bookmark-item box' },
-					_react2.default.createElement(
-						'header',
-						{ className: 'bookmark-item__header' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ className: 'bookmark-item__title', to: bookmark.getDetailUrl() },
-							bookmark.title
-						)
-					),
-					imgHtml,
-					_react2.default.createElement(
-						'div',
-						{ className: 'bookmark-item__options' },
-						_react2.default.createElement(
-							'ul',
-							{ className: 'bookmark-item__options-toggles' },
-							textToggle,
-							imgToggle,
-							tagsToggle
-						),
-						_react2.default.createElement(
-							'a',
-							{ className: 'bookmark-item__domain', href: bookmark.url },
-							bookmark.domain
-						)
-					),
-					tagsHtml,
-					textHtml
-				);
-			}
-		}]);
-	
-		return BookmarkItemComponent;
-	}(_react2.default.Component);
-	
-	BookmarkItemComponent.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = BookmarkItemComponent;
-
-/***/ },
-/* 244 */
-/*!*******************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/item/css/item.scss ***!
-  \*******************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./item.scss */ 245);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./item.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./item.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 245 */
-/*!**************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/item/css/item.scss ***!
-  \**************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".bookmark-item:hover .boomark-item__tag-toggle {\n  display: inline-block; }\n\n.bookmark-item .bookmark-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.bookmark-item .bookmark-item__header {\n  padding: 10px 20px;\n  border-bottom: 1px solid #ccc;\n  position: relative; }\n\n.bookmark-item .bookmark-item__link {\n  font-size: 1.1rem;\n  margin-left: 10px; }\n\n.bookmark-item .bookmark-item__domain {\n  text-decoration: none; }\n\n.bookmark-item .bookmark-item__image-wrap {\n  border-bottom: 1px solid #ccc;\n  position: relative;\n  padding: 10px 20px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__image {\n  max-width: 100%;\n  max-height: 600px;\n  margin: 0 auto;\n  display: block; }\n\n.bookmark-item .bookmark-item__tags {\n  padding: 2px 15px;\n  -webkit-animation: fadeIn 200ms;\n  -o-animation: fadeIn 200ms;\n  animation: fadeIn 200ms;\n  border-top: 1px solid #ccc;\n  background: #FCFAF9;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.bookmark-item .bookmark-item__options {\n  background: #f8f8f8;\n  padding: 5px 20px;\n  font-size: 75%;\n  line-height: 1.2rem;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n\n.bookmark-item .bookmark-item__options-toggles {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  float: right; }\n  .bookmark-item .bookmark-item__options-toggles li {\n    display: inline-block;\n    margin-left: 20px; }\n    .bookmark-item .bookmark-item__options-toggles li i {\n      font-size: 1.1rem; }\n\n.bookmark-item .bookmark-item__text {\n  border-top: 1px solid #ccc;\n  padding: 10px 20px;\n  font-size: 80%;\n  color: #777; }\n\n.bookmark-item .bookmark-item__edit-options {\n  border-top: 1px solid #ccc; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 246 */
-/*!*******************************************************************************************!*\
-  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/list/css/list.scss ***!
-  \*******************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/sass-loader!./list.scss */ 247);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 235)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./list.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./list.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 247 */
-/*!**************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./app/components/list/css/list.scss ***!
-  \**************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 234)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".bookmark-list {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\n\n.not-found {\n  padding: 10px 20px; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
 /* 248 */
 /*!******************************!*\
   !*** ./app/pages/create.jsx ***!
@@ -28937,85 +28557,7 @@
 /* 249 */,
 /* 250 */,
 /* 251 */,
-/* 252 */
-/*!****************************!*\
-  !*** ./app/pages/edit.jsx ***!
-  \****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _index = __webpack_require__(/*! ../components/bookmarks/form/index.jsx */ 291);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var EditPage = function (_React$Component) {
-		_inherits(EditPage, _React$Component);
-	
-		function EditPage(props, context) {
-			_classCallCheck(this, EditPage);
-	
-			var _this = _possibleConstructorReturn(this, (EditPage.__proto__ || Object.getPrototypeOf(EditPage)).call(this, props, context));
-	
-			_this.state = { bookmark: false };
-			return _this;
-		}
-	
-		_createClass(EditPage, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-				var id = this.props.params.id;
-	
-				var bookmark = bookmarks.get(id);
-	
-				this.setState({ bookmark: bookmark });
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var bookmark = this.state.bookmark;
-	
-				if (bookmark) {
-					return _react2.default.createElement(_index2.default, { bookmark: bookmark });
-				} else {
-					return _react2.default.createElement(_errors.NotFoundComponent, null);
-				}
-			}
-		}]);
-	
-		return EditPage;
-	}(_react2.default.Component);
-	
-	EditPage.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = EditPage;
-
-/***/ },
+/* 252 */,
 /* 253 */
 /*!***********************************!*\
   !*** ./app/components/errors.jsx ***!
@@ -29064,85 +28606,7 @@
 	};
 
 /***/ },
-/* 254 */
-/*!******************************!*\
-  !*** ./app/pages/detail.jsx ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _index = __webpack_require__(/*! ../components/bookmarks/detail/index.jsx */ 282);
-	
-	var _index2 = _interopRequireDefault(_index);
-	
-	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var DetailPage = function (_React$Component) {
-		_inherits(DetailPage, _React$Component);
-	
-		function DetailPage(props, context) {
-			_classCallCheck(this, DetailPage);
-	
-			var _this = _possibleConstructorReturn(this, (DetailPage.__proto__ || Object.getPrototypeOf(DetailPage)).call(this, props, context));
-	
-			_this.state = { bookmark: false };
-			return _this;
-		}
-	
-		_createClass(DetailPage, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-				var id = this.props.params.id;
-	
-				var bookmark = bookmarks.get(id);
-	
-				this.setState({ bookmark: bookmark });
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var bookmark = this.state.bookmark;
-	
-				if (bookmark) {
-					return _react2.default.createElement(_index2.default, { bookmark: bookmark });
-				} else {
-					return _react2.default.createElement(_errors.NotFoundComponent, null);
-				}
-			}
-		}]);
-	
-		return DetailPage;
-	}(_react2.default.Component);
-	
-	DetailPage.contextTypes = {
-		bookmarks: _react2.default.PropTypes.object,
-		router: _react2.default.PropTypes.object
-	};
-	exports.default = DetailPage;
-
-/***/ },
+/* 254 */,
 /* 255 */,
 /* 256 */,
 /* 257 */,
@@ -40019,7 +39483,7 @@
 						_react2.default.createElement(
 							_reactRouter.Link,
 							{ to: '/create-bookmark', className: 'create-choice create-choice--bookmark' },
-							_react2.default.createElement('i', { className: 'ion-link' }),
+							_react2.default.createElement('i', { className: 'ion-bookmark' }),
 							_react2.default.createElement('br', null),
 							'bookmark'
 						),
@@ -40180,16 +39644,16 @@
 	// import styles for this component
 	__webpack_require__(/*! style!css!sass!./css/detail.scss */ 289);
 	
-	var DetailComponent = function (_React$Component) {
-		_inherits(DetailComponent, _React$Component);
+	var BookmarkDetailComponent = function (_React$Component) {
+		_inherits(BookmarkDetailComponent, _React$Component);
 	
-		function DetailComponent() {
-			_classCallCheck(this, DetailComponent);
+		function BookmarkDetailComponent() {
+			_classCallCheck(this, BookmarkDetailComponent);
 	
-			return _possibleConstructorReturn(this, (DetailComponent.__proto__ || Object.getPrototypeOf(DetailComponent)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (BookmarkDetailComponent.__proto__ || Object.getPrototypeOf(BookmarkDetailComponent)).apply(this, arguments));
 		}
 	
-		_createClass(DetailComponent, [{
+		_createClass(BookmarkDetailComponent, [{
 			key: 'render',
 			value: function render() {
 				var bookmark = this.props.bookmark;
@@ -40207,10 +39671,10 @@
 			}
 		}]);
 	
-		return DetailComponent;
+		return BookmarkDetailComponent;
 	}(_react2.default.Component);
 	
-	exports.default = DetailComponent;
+	exports.default = BookmarkDetailComponent;
 
 /***/ },
 /* 283 */
@@ -44094,6 +43558,286 @@
 	
 	// module
 	exports.push([module.id, ".error {\n  max-width: 500px;\n  margin: 0 auto; }\n  .error p {\n    margin: 0;\n    color: #777;\n    font-size: 80%; }\n  .error h3 {\n    color: #777; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 308 */
+/*!*************************************!*\
+  !*** ./app/pages/bookmark-edit.jsx ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../components/bookmarks/form/index.jsx */ 291);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var BookmarkEditPage = function (_React$Component) {
+		_inherits(BookmarkEditPage, _React$Component);
+	
+		function BookmarkEditPage(props, context) {
+			_classCallCheck(this, BookmarkEditPage);
+	
+			var _this = _possibleConstructorReturn(this, (BookmarkEditPage.__proto__ || Object.getPrototypeOf(BookmarkEditPage)).call(this, props, context));
+	
+			_this.state = { bookmark: false };
+			return _this;
+		}
+	
+		_createClass(BookmarkEditPage, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+				var id = this.props.params.id;
+	
+				var bookmark = bookmarks.get(id);
+	
+				this.setState({ bookmark: bookmark });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var bookmark = this.state.bookmark;
+	
+				if (bookmark) {
+					return _react2.default.createElement(_index2.default, { bookmark: bookmark });
+				} else {
+					return _react2.default.createElement(_errors.NotFoundComponent, null);
+				}
+			}
+		}]);
+	
+		return BookmarkEditPage;
+	}(_react2.default.Component);
+	
+	BookmarkEditPage.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = BookmarkEditPage;
+
+/***/ },
+/* 309 */
+/*!***************************************!*\
+  !*** ./app/pages/bookmark-detail.jsx ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../components/bookmarks/detail/index.jsx */ 282);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var BookmarkDetailPage = function (_React$Component) {
+		_inherits(BookmarkDetailPage, _React$Component);
+	
+		function BookmarkDetailPage(props, context) {
+			_classCallCheck(this, BookmarkDetailPage);
+	
+			var _this = _possibleConstructorReturn(this, (BookmarkDetailPage.__proto__ || Object.getPrototypeOf(BookmarkDetailPage)).call(this, props, context));
+	
+			_this.state = { bookmark: false };
+			return _this;
+		}
+	
+		_createClass(BookmarkDetailPage, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _context = this.context,
+				    bookmarks = _context.bookmarks,
+				    router = _context.router;
+				var id = this.props.params.id;
+	
+				var bookmark = bookmarks.get(id);
+	
+				this.setState({ bookmark: bookmark });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var bookmark = this.state.bookmark;
+	
+				if (bookmark) {
+					return _react2.default.createElement(_index2.default, { bookmark: bookmark });
+				} else {
+					return _react2.default.createElement(_errors.NotFoundComponent, null);
+				}
+			}
+		}]);
+	
+		return BookmarkDetailPage;
+	}(_react2.default.Component);
+	
+	BookmarkDetailPage.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = BookmarkDetailPage;
+
+/***/ },
+/* 310 */
+/*!*************************************************!*\
+  !*** ./app/components/bookmarks/list/index.jsx ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../item/index.jsx */ 283);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// import styles for this component
+	__webpack_require__(/*! style!css!sass!./css/list.scss */ 311);
+	
+	var BookmarkListComponent = function (_React$Component) {
+		_inherits(BookmarkListComponent, _React$Component);
+	
+		function BookmarkListComponent() {
+			_classCallCheck(this, BookmarkListComponent);
+	
+			return _possibleConstructorReturn(this, (BookmarkListComponent.__proto__ || Object.getPrototypeOf(BookmarkListComponent)).apply(this, arguments));
+		}
+	
+		_createClass(BookmarkListComponent, [{
+			key: 'render',
+			value: function render() {
+				var bookmarks = this.props.bookmarks;
+	
+	
+				if (bookmarks.length) {
+					return _react2.default.createElement(
+						'ul',
+						{ className: 'bookmark-list' },
+						bookmarks.map(function (bookmark) {
+							return _react2.default.createElement(
+								'li',
+								{ key: bookmark.id, className: 'margin-bottom' },
+								_react2.default.createElement(_index2.default, { bookmark: bookmark })
+							);
+						})
+					);
+				} else {
+					return _react2.default.createElement(
+						'div',
+						{ className: 'not-found box padding padding-vertical-sm muted' },
+						'No bookmarks!'
+					);
+				}
+			}
+		}]);
+	
+		return BookmarkListComponent;
+	}(_react2.default.Component);
+	
+	exports.default = BookmarkListComponent;
+
+/***/ },
+/* 311 */
+/*!*****************************************************************************************************!*\
+  !*** ./~/style-loader!./~/css-loader!./~/sass-loader!./app/components/bookmarks/list/css/list.scss ***!
+  \*****************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./list.scss */ 312);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 235)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./list.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./list.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 312 */
+/*!************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./app/components/bookmarks/list/css/list.scss ***!
+  \************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 234)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".bookmark-list {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\n", ""]);
 	
 	// exports
 

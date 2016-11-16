@@ -5,7 +5,7 @@ import BookmarkItemComponent from '../item/index.jsx';
 // import styles for this component
 require('!style!css!sass!./css/list.scss');
 
-export default class ListComponent extends React.Component {
+export default class BookmarkListComponent extends React.Component {
 
 	render() {
 		const { bookmarks } = this.props;

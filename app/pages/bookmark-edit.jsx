@@ -1,8 +1,8 @@
 import React from 'react';
-import DetailComponent from '../components/bookmarks/detail/index.jsx';
+import BookmarkFormComponent from '../components/bookmarks/form/index.jsx';
 import { NotFoundComponent } from '../components/errors.jsx';
 
-export default class DetailPage extends React.Component {
+export default class BookmarkEditPage extends React.Component {
 
 	static contextTypes = {
 		bookmarks: React.PropTypes.object,
@@ -25,7 +25,7 @@ export default class DetailPage extends React.Component {
 	render() {
 		const { bookmark } = this.state;
 		if (bookmark) {
-			return <DetailComponent bookmark={bookmark} />
+			return <BookmarkFormComponent bookmark={bookmark} />
 		} else {
 			return <NotFoundComponent />
 		}

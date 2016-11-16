@@ -6,7 +6,7 @@ import BookmarkItemComponent from '../item/index.jsx';
 // import styles for this component
 require('!style!css!sass!./css/detail.scss');
 
-export default class DetailComponent extends React.Component {
+export default class BookmarkDetailComponent extends React.Component {
 
 	render() {
 		const { bookmark } = this.props;
