@@ -3,18 +3,15 @@
     position: relative;
 }
 
-.tooltip.tooltip--active:after {
+.tooltip--active:after {
     background: #333;
-    background: rgba(0,0,0,.8);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
-    bottom: 2.6rem;
     color: #fff;
     content: attr(title);
-    left: 0%;
     padding: 6px 15px;
     position: absolute;
-    z-index: 98;
+    z-index: 99;
     line-height: 1rem;
-    width: 220px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 }

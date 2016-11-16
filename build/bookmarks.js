@@ -28432,7 +28432,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 10px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 10px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n  .context-menu p {\n    margin: 0; }\n  .context-menu__nav {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    list-style: none;\n    color: #777;\n    float: right; }\n    .context-menu__nav li {\n      display: inline-block; }\n    .context-menu__nav a {\n      font-size: 80%;\n      text-decoration: none;\n      line-height: 2.2rem;\n      padding: 0px 20px;\n      border-left: 1px solid #ccc;\n      display: inline-block; }\n\n.notouch .context-menu__wrap {\n  bottom: 20px; }\n\n.notouch .context-menu__help {\n  padding: 0px 20px; }\n", ""]);
+	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 10px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 10px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n    .context-menu__help:after {\n      bottom: 2.6rem;\n      left: 0%;\n      width: 220px; }\n  .context-menu p {\n    margin: 0; }\n  .context-menu__nav {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    list-style: none;\n    color: #777;\n    float: right; }\n    .context-menu__nav li {\n      display: inline-block; }\n    .context-menu__nav a {\n      font-size: 80%;\n      text-decoration: none;\n      line-height: 2.2rem;\n      padding: 0px 20px;\n      border-left: 1px solid #ccc;\n      display: inline-block; }\n\n.notouch .context-menu__wrap {\n  bottom: 20px; }\n\n.notouch .context-menu__help {\n  padding: 0px 20px; }\n", ""]);
 	
 	// exports
 
@@ -51746,7 +51746,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".tooltip {\n  display: inline;\n  position: relative; }\n\n.tooltip.tooltip--active:after {\n  background: #333;\n  background: rgba(0, 0, 0, 0.8);\n  border-radius: 5px;\n  bottom: 2.6rem;\n  color: #fff;\n  content: attr(title);\n  left: 0%;\n  padding: 6px 15px;\n  position: absolute;\n  z-index: 98;\n  line-height: 1rem;\n  width: 220px;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n", ""]);
+	exports.push([module.id, ".tooltip {\n  display: inline;\n  position: relative; }\n\n.tooltip--active:after {\n  background: #333;\n  background: rgba(0, 0, 0, 0.8);\n  border-radius: 5px;\n  color: #fff;\n  content: attr(title);\n  padding: 6px 15px;\n  position: absolute;\n  z-index: 99;\n  line-height: 1rem;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n", ""]);
 	
 	// exports
 
