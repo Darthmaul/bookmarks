@@ -1,0 +1,29 @@
+.context-menu {
+	position: fixed;
+	max-width: 1000px;
+	margin: 0 auto;
+	bottom: 20px;
+	left: 0px;
+	right: 0px;
+	color: #777;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+
+	&__content {
+		flex: 1;
+	}
+
+	&__help {
+		line-height: 2.2rem;
+		padding: 0px 20px;
+		margin-right: 20px;
+		border-right: 1px solid #ccc;
+		text-decoration: none;
+		font-size: 80%;
+	}
+
+	p {
+		margin: 0;
+	}
+}

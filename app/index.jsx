@@ -22,4 +22,9 @@ function init() {
 	render(routes(bookmarks, lists), document.getElementById('app'));
 }
 
-init();
+try {
+	init();
+} catch (e) {
+	localStorage.clear();
+	init();
+}
