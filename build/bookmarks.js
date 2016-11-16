@@ -40366,6 +40366,10 @@
 	
 	var _ = _interopRequireWildcard(_tools);
 	
+	var _search = __webpack_require__(/*! ../../../lib/behaviour/search.js */ 320);
+	
+	var _search2 = _interopRequireDefault(_search);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -40382,22 +40386,209 @@
 	var ListFormComponent = function (_React$Component) {
 		_inherits(ListFormComponent, _React$Component);
 	
-		function ListFormComponent(props) {
+		function ListFormComponent(props, context) {
 			_classCallCheck(this, ListFormComponent);
 	
-			var _this = _possibleConstructorReturn(this, (ListFormComponent.__proto__ || Object.getPrototypeOf(ListFormComponent)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (ListFormComponent.__proto__ || Object.getPrototypeOf(ListFormComponent)).call(this, props, context));
 	
 			var list = _this.props.list;
+			var bookmarks = _this.context.bookmarks;
 	
+			_this.search = new _search2.default({ bookmarks: bookmarks });
 	
 			_this.state = {
 				errors: false,
-				tags: list ? list.tags : []
+				tags: list ? list.tags : [],
+				bookmarks: list ? list.bookmarks : [],
+				autocompleteBookmarks: [],
+				autocompleteQueryLength: 0,
+				shouldShowAutoComplete: false,
+				isMounted: false
 			};
+	
+			_this.addAutocompleteBookmarks = _this.addAutocompleteModels.bind(_this);
 			return _this;
 		}
 	
 		_createClass(ListFormComponent, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this.search.onSearch(this.addAutocompleteBookmarks);
+				this.setState({
+					isMounted: true
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				this.search.removeSearch(this.addAutocompleteBookmarks);
+				this.setState({
+					isMounted: false
+				});
+			}
+		}, {
+			key: 'addAutocompleteModels',
+			value: function addAutocompleteModels(models) {
+				var existingBookmarks = this.state.bookmarks;
+				// https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
+				if (this.state.isMounted) {
+					models = models.sort(function (a, b) {
+						return new Date(b.date) - new Date(a.date);
+					});
+					models = models.map(function (model) {
+						return model.id;
+					});
+					models = models.filter(function (item) {
+						return existingBookmarks.indexOf(item) == -1;
+					});
+					this.setState({
+						autocompleteBookmarks: models
+					});
+				}
+			}
+		}, {
+			key: 'renderAutoComplete',
+			value: function renderAutoComplete() {
+				var _this2 = this;
+	
+				var bookmarks = this.context.bookmarks;
+				var _state = this.state,
+				    shouldShowAutoComplete = _state.shouldShowAutoComplete,
+				    autocompleteBookmarks = _state.autocompleteBookmarks;
+	
+				if (shouldShowAutoComplete && autocompleteBookmarks.length) {
+					var results = bookmarks.get(autocompleteBookmarks);
+					return _react2.default.createElement(
+						'div',
+						{ className: 'autocomplete' },
+						results.map(function (bookmark) {
+							return _react2.default.createElement(
+								'div',
+								{ onClick: _this2.addBookmark.bind(_this2, bookmark), key: bookmark.id, className: 'autocomplete__result' },
+								bookmark.title
+							);
+						})
+					);
+				}
+			}
+		}, {
+			key: 'bookmarksFieldKeyDownHandler',
+			value: function bookmarksFieldKeyDownHandler(event) {
+				var input = this.refs.bookmarks;
+				var bookmark = input.value;
+				if (event.keyCode == 13 || event.charCode == 13) {
+					event.preventDefault();
+					/*
+	    if (bookmark.trim()) {
+	    	const { bookmarks } = this.state;
+	    	if (bookmarks.indexOf(bookmark.trim()) == -1) {
+	    		bookmarks.push(bookmark);
+	    		this.setState({ bookmarks }, () => {
+	    			// setting input value to empty string doesn't show placeholder in webkit for some reason. bluring and focusing fixes it. 
+	    			input.value = '';
+	    			input.blur();
+	    			input.focus();
+	    		});
+	    	}
+	    }
+	    */
+				} else {
+					if (bookmark.length) {
+						this.setState({
+							autocompleteQueryLength: bookmark.length,
+							shouldShowAutoComplete: true
+						});
+						this.performSearch(bookmark);
+					}
+				}
+			}
+		}, {
+			key: 'bookmarksFieldKeyUphandler',
+			value: function bookmarksFieldKeyUphandler(event) {
+				var input = this.refs.bookmarks;
+				var value = input.value;
+	
+				if (!value.trim().length) {
+					this.closeAutocomplete();
+					input.focus();
+				} else {
+					this.setState({
+						autocompleteQueryLength: value.trim().length
+					});
+				}
+			}
+		}, {
+			key: 'performSearch',
+			value: function performSearch(bookmark) {
+				this.search.search(bookmark);
+			}
+		}, {
+			key: 'removeBookmark',
+			value: function removeBookmark(_ref, event) {
+				var id = _ref.id;
+	
+				event.preventDefault();
+				event.stopPropagation();
+				var bookmarks = this.state.bookmarks;
+	
+				var index = bookmarks.indexOf(id);
+				if (index >= 0) {
+					bookmarks.splice(index, 1);
+				}
+				this.setState({ bookmarks: bookmarks });
+			}
+		}, {
+			key: 'addBookmark',
+			value: function addBookmark(_ref2, event) {
+				var _this3 = this;
+	
+				var id = _ref2.id;
+				var bookmarks = this.state.bookmarks;
+	
+				var input = this.refs.bookmarks;
+				var index = bookmarks.indexOf(id);
+				if (index == -1) {
+					bookmarks.push(id);
+					this.setState({
+						bookmarks: bookmarks
+					}, function () {
+						// setting input value to empty string doesn't show placeholder in webkit for some reason. bluring and focusing fixes it. 
+						input.value = '';
+						input.blur();
+						input.focus();
+						_this3.closeAutocomplete();
+					});
+				}
+			}
+		}, {
+			key: 'renderBookmarks',
+			value: function renderBookmarks() {
+				var _this4 = this;
+	
+				var bookmarks = this.state.bookmarks;
+	
+				var collection = this.context.bookmarks;
+				var models = collection.get(bookmarks);
+				if (models.length) {
+					return _react2.default.createElement(
+						'ul',
+						{ className: 'list-form__bookmarks-list' },
+						models.map(function (bookmark, index) {
+							return _react2.default.createElement(
+								'li',
+								{ key: index, className: 'list-form__bookmark-item' },
+								bookmark.title,
+								_react2.default.createElement(
+									'a',
+									{ onClick: _this4.removeBookmark.bind(_this4, bookmark), href: '#', className: 'list-form__bookmark-item__remove' },
+									'\xD7'
+								)
+							);
+						})
+					);
+				}
+			}
+		}, {
 			key: 'submitHandler',
 			value: function submitHandler(event) {
 				event.preventDefault();
@@ -40414,7 +40605,8 @@
 	
 				var properties = {
 					title: titleValue,
-					description: descriptionValue
+					description: descriptionValue,
+					bookmarks: this.state.bookmarks
 				};
 	
 				var _lists$validate = lists.validate(properties),
@@ -40485,12 +40677,40 @@
 				this.setDescriptionInputHeight();
 			}
 		}, {
+			key: 'closeAutocomplete',
+			value: function closeAutocomplete() {
+				var bookmarks = this.refs.bookmarks;
+	
+				this.refs.bookmarks.value = '';
+				this.setState({
+					autocompleteQueryLength: 0,
+					shouldShowAutoComplete: false,
+					autocompleteBookmarks: []
+				});
+				bookmarks.focus();
+				bookmarks.blur();
+			}
+		}, {
+			key: 'clearInputClickHandler',
+			value: function clearInputClickHandler(event) {
+				event.preventDefault();
+				this.closeAutocomplete();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
-				var _this2 = this;
+				var _this5 = this;
 	
+				var clearBtnHtml = void 0;
 				var list = this.props.list;
+				var autocompleteQueryLength = this.state.autocompleteQueryLength;
 	
+	
+				if (autocompleteQueryLength > 0) clearBtnHtml = _react2.default.createElement(
+					'a',
+					{ href: '#', onClick: this.clearInputClickHandler.bind(this), className: 'autocomplete__clear' },
+					'\xD7'
+				);
 				return _react2.default.createElement(
 					'form',
 					{ onSubmit: this.submitHandler.bind(this), className: 'list-form box-form box' },
@@ -40523,9 +40743,9 @@
 							'div',
 							{ className: 'field-wrap' },
 							_react2.default.createElement('textarea', {
-								ref: function ref(_ref) {
-									_this2.refs.description = _ref;
-									_this2.setDescriptionInputHeight();
+								ref: function ref(_ref3) {
+									_this5.refs.description = _ref3;
+									_this5.setDescriptionInputHeight();
 								},
 								onInput: this.descriptionChangeHandler.bind(this),
 								defaultValue: list ? list.description : '',
@@ -40534,8 +40754,23 @@
 								rows: '1',
 								className: 'field textarea'
 							})
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'field-wrap' },
+							_react2.default.createElement('input', {
+								ref: 'bookmarks',
+								placeholder: 'bookmarks',
+								type: 'text',
+								className: 'field list-form__bookmarks',
+								onKeyDown: this.bookmarksFieldKeyDownHandler.bind(this),
+								onKeyUp: this.bookmarksFieldKeyUphandler.bind(this)
+							}),
+							clearBtnHtml,
+							this.renderAutoComplete()
 						)
 					),
+					this.renderBookmarks(),
 					_react2.default.createElement(
 						'footer',
 						{ className: 'box-form__footer clearfix' },
@@ -40553,6 +40788,7 @@
 	}(_react2.default.Component);
 	
 	ListFormComponent.contextTypes = {
+		bookmarks: _react2.default.PropTypes.object,
 		lists: _react2.default.PropTypes.object,
 		router: _react2.default.PropTypes.object
 	};
@@ -40599,7 +40835,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".list-form {\n  max-width: 500px;\n  margin: 0 auto; }\n  .list-form .textarea {\n    resize: none; }\n  .list-form .field-wrap:last-child {\n    margin-bottom: 10px; }\n", ""]);
+	exports.push([module.id, ".list-form {\n  max-width: 500px;\n  margin: 0 auto; }\n  .list-form .textarea {\n    resize: none; }\n  .list-form .field-wrap:last-child {\n    margin-bottom: 10px; }\n  .list-form__bookmarks-list {\n    padding: 0;\n    margin: 0;\n    list-style: none;\n    list-style-type: none;\n    font-size: 80%;\n    border-top: 1px solid #ddd;\n    color: #777; }\n  .list-form__bookmark-item {\n    width: 100%;\n    position: relative;\n    padding: 5px 30px 5px 20px;\n    border-bottom: 1px solid #ddd; }\n    .list-form__bookmark-item:last-child {\n      border-bottom: 0px; }\n    .list-form__bookmark-item:hover {\n      background: rgba(0, 0, 0, 0.02); }\n      .list-form__bookmark-item:hover .list-form__bookmark-item__remove {\n        display: block; }\n  .list-form__bookmark-item__remove {\n    font-size: 1.2rem;\n    text-decoration: none;\n    position: absolute;\n    right: 10px;\n    top: 1px;\n    text-decoration: none;\n    display: none;\n    opacity: 0.5; }\n    .list-form__bookmark-item__remove:hover {\n      opacity: 0.8; }\n\ninput.list-form__bookmarks {\n  position: relative;\n  padding-right: 10px; }\n\n.autocomplete__clear {\n  display: inline-block;\n  font-size: 1.2rem;\n  text-decoration: none;\n  line-height: 2.4rem;\n  position: absolute;\n  right: 10px;\n  top: 8px;\n  opacity: 0.5; }\n  .autocomplete__clear:hover {\n    opacity: 0.8; }\n\n.autocomplete {\n  position: absolute;\n  left: -1px;\n  right: -1px;\n  background: white;\n  border: 1px solid #ddd;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  z-index: 1; }\n  .autocomplete__result {\n    padding: 5px 20px;\n    font-size: 70%;\n    border-bottom: 1px solid #ddd; }\n    .autocomplete__result:last-child {\n      border-bottom: 0px; }\n    .autocomplete__result:hover {\n      background: rgba(0, 0, 0, 0.02);\n      cursor: pointer; }\n", ""]);
 	
 	// exports
 

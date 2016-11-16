@@ -11,4 +11,94 @@
 			margin-bottom: 10px;
 		}
 	}
+
+	&__bookmarks-list {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		list-style-type: none;
+		font-size: 80%;
+		border-top: 1px solid #ddd;
+		color: #777;
+	}
+
+	&__bookmark-item {
+		width: 100%;
+		position: relative;
+		padding: 5px 30px 5px 20px;
+		border-bottom: 1px solid #ddd;
+
+		&:last-child {
+			border-bottom: 0px;
+		}
+
+		&:hover {
+			background: rgba(0, 0, 0, 0.02);
+
+			.list-form__bookmark-item__remove {
+				display: block;
+			}
+		}
+	}
+
+	&__bookmark-item__remove {
+		font-size: 1.2rem;
+		text-decoration: none;
+		position: absolute;
+		right: 10px;
+		top: 1px;
+		text-decoration: none;
+		display: none;
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+input.list-form__bookmarks {
+	position: relative;
+	padding-right: 10px;
+}
+
+.autocomplete__clear {
+	display: inline-block;
+	font-size: 1.2rem;
+	text-decoration: none;
+	line-height: 2.4rem;
+	position: absolute;
+	right: 10px;
+	top: 8px;
+	opacity: 0.5;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.autocomplete {
+	position: absolute;
+	left: -1px;
+	right: -1px;
+	background: white;
+	border: 1px solid #ddd;
+	color: #777;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
+	z-index: 1;
+
+	&__result {
+		padding: 5px 20px;
+		font-size: 70%;
+		border-bottom: 1px solid #ddd;
+
+		&:last-child {
+			border-bottom: 0px;
+		}
+
+		&:hover {
+			background: rgba(0, 0, 0, 0.02);
+			cursor: pointer;
+		}
+	}
 }
