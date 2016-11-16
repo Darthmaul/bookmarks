@@ -51285,21 +51285,25 @@
 	
 				return _react2.default.createElement(
 					'div',
-					{ className: 'context-menu box' },
-					_react2.default.createElement(
-						'a',
-						{
-							href: '#',
-							onClick: this.helpClickHandler.bind(this),
-							className: tooltipClass,
-							title: 'The context menu shows contextual actions you can perform on the page you are viewing'
-						},
-						'what\'s this?'
-					),
+					{ className: 'context-menu__wrap' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'context-menu__content' },
-						menu ? menu : ''
+						{ className: 'context-menu box' },
+						_react2.default.createElement(
+							'a',
+							{
+								href: '#',
+								onClick: this.helpClickHandler.bind(this),
+								className: tooltipClass,
+								title: 'The context menu shows contextual actions you can perform on the page you are viewing'
+							},
+							'what\'s this?'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'context-menu__content' },
+							menu ? menu : ''
+						)
 					)
 				);
 			}
@@ -51354,7 +51358,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".context-menu {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 20px;\n  left: 0px;\n  right: 0px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 20px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n  .context-menu p {\n    margin: 0; }\n", ""]);
+	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 20px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 20px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n  .context-menu p {\n    margin: 0; }\n", ""]);
 	
 	// exports
 

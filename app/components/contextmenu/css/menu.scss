@@ -1,10 +1,14 @@
-.context-menu {
+.context-menu__wrap {
 	position: fixed;
 	max-width: 1000px;
 	margin: 0 auto;
 	bottom: 20px;
 	left: 0px;
 	right: 0px;
+}
+
+.context-menu {
+	margin: 0 10px;
 	color: #777;
 	display: -webkit-flex;
 	display: -ms-flexbox;
