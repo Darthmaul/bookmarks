@@ -41361,13 +41361,12 @@
 				if (_.isString(id)) {
 					var attrs = this.models[id];
 					return attrs ? this.make(attrs) : false;
-				}
-				if (_.isArray(id)) {
+				} else if (_.isArray(id)) {
 					var _ret = function () {
 						var ids = id;
 						var results = [];
 						ids.forEach(function (id) {
-							var model = _this2.models[id];
+							var model = _this2.get(id);
 							if (model) results.push(model);
 						});
 						return {

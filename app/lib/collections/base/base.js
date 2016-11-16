@@ -45,12 +45,11 @@ export default class Collection {
 		if (_.isString(id)) {
 			const attrs = this.models[id];
 			return attrs ? this.make(attrs) : false;
-		}
-		if (_.isArray(id)) {
+		} else if (_.isArray(id)) {
 			const ids = id;
 			const results = [];
 			ids.forEach(id => {
-				const model = this.models[id]
+				const model = this.get(id);
 				if (model) results.push(model);
 			});
 			return results;
