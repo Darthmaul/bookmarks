@@ -19,6 +19,11 @@
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;
 	}
 
+	&__icon {
+		margin-right: 5px;
+		color: #777;
+	}
+
 	&__description {
 		border-top: 1px solid #ccc;
 		padding: 15px 20px;

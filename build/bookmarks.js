@@ -44209,6 +44209,7 @@
 						_react2.default.createElement(
 							'span',
 							{ className: 'list-item__bookmark-count' },
+							'list - ',
 							headerTitle
 						)
 					),
@@ -44272,7 +44273,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".list-item__header {\n  padding: 10px 20px; }\n\n.list-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.list-item__details {\n  font-size: 70%;\n  border-bottom: 1px solid #ccc;\n  padding: 3px 20px;\n  background: #f8f8f8;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.list-item__description {\n  border-top: 1px solid #ccc;\n  padding: 15px 20px;\n  font-size: 80%;\n  color: #777; }\n  .list-item__description p:first-child {\n    margin-top: 0px; }\n  .list-item__description p:last-child {\n    margin-bottom: 0px; }\n", ""]);
+	exports.push([module.id, ".list-item__header {\n  padding: 10px 20px; }\n\n.list-item__title {\n  text-decoration: none;\n  text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n  font-weight: bold; }\n\n.list-item__details {\n  font-size: 70%;\n  border-bottom: 1px solid #ccc;\n  padding: 3px 20px;\n  background: #f8f8f8;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n\n.list-item__icon {\n  margin-right: 5px;\n  color: #777; }\n\n.list-item__description {\n  border-top: 1px solid #ccc;\n  padding: 15px 20px;\n  font-size: 80%;\n  color: #777; }\n  .list-item__description p:first-child {\n    margin-top: 0px; }\n  .list-item__description p:last-child {\n    margin-bottom: 0px; }\n", ""]);
 	
 	// exports
 
