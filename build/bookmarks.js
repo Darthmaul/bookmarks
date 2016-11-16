@@ -41282,6 +41282,8 @@
 		value: true
 	});
 	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _tools = __webpack_require__(/*! ../../tools.js */ 228);
@@ -41361,10 +41363,19 @@
 					return attrs ? this.make(attrs) : false;
 				}
 				if (_.isArray(id)) {
-					var ids = id;
-					return ids.map(function (id) {
-						return _this2.models[id];
-					});
+					var _ret = function () {
+						var ids = id;
+						var results = [];
+						ids.forEach(function (id) {
+							var model = _this2.models[id];
+							if (model) results.push(model);
+						});
+						return {
+							v: results
+						};
+					}();
+	
+					if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
 				}
 				return false;
 			}
@@ -51089,7 +51100,7 @@
 		title: 'Some of my photography',
 		url: 'https://c4.staticflickr.com/1/773/22353007131_8cf5803bc8_k.jpg',
 		domain: 'www.flickr.com',
-		description: '## Go see it on Flickr! \n\n This is a bookmark description, and it supports markdown! \n\n See some of my other photography on [Flickr](http://www.flickr.com/photos/fergusruston)',
+		description: "This is a default bookmark. This one is a bookmark to an image. You can view the link directly by clicking the domain name below the image. \n\n You are reading the bookmark description, *and it supports markdown!* \n\n If you haven't already, try creating a new bookmark by clicking the plus symbol at the top right of the page.",
 		tags: ['default bookmark', 'photography'],
 		slug: 'some-of-my-photography',
 		date: new Date()
@@ -51281,7 +51292,7 @@
 	var defaultLists = [{
 		id: "15gqtphky",
 		bookmarks: ['waduj9le7', '7p9uamiy5', 'di8untgx8'],
-		description: '## Descriptions can use markdown! \n\n This list contains all the default bookmarks.',
+		description: 'This is a list. It contains all the default bookmarks. \n\n You are reading the list description. \n\n *Descriptions can use Markdown.* Take a look at this [link to see Markdown syntax](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).',
 		slug: "default-bookmarks-list",
 		title: "Default bookmarks list"
 	}];

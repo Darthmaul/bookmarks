@@ -48,7 +48,12 @@ export default class Collection {
 		}
 		if (_.isArray(id)) {
 			const ids = id;
-			return ids.map(id => this.models[id]);
+			const results = [];
+			ids.forEach(id => {
+				const model = this.models[id]
+				if (model) results.push(model);
+			});
+			return results;
 		}
 		return false;
 	}
