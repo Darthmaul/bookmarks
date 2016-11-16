@@ -57,6 +57,10 @@
 	}
 }
 
+.notouch .list-form__bookmark-item__remove {
+	display: block;
+}
+
 input.list-form__bookmarks {
 	position: relative;
 	padding-right: 10px;
