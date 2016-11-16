@@ -13,6 +13,7 @@ import CreateListPage from './pages/create-list.jsx';
 import BookmarkDetailPage from './pages/bookmark-detail.jsx';
 import BookmarkEditPage from './pages/bookmark-edit.jsx';
 import ListDetailPage from './pages/list-detail.jsx';
+import ListEditPage from './pages/list-edit.jsx';
 
 const routes = (bookmarks, lists) => (
 	<ContextComponent bookmarks={bookmarks} lists={lists}>
@@ -28,6 +29,7 @@ const routes = (bookmarks, lists) => (
 				<Route path="/bookmark/:id/:slug/edit" component={BookmarkEditPage} />
 				
 				<Route path="/list/:id/:slug" component={ListDetailPage} />
+				<Route path="/list/:id/:slug/edit" component={ListEditPage} />
 			</Route>
 		</Router>
 	</ContextComponent>

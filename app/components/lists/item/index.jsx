@@ -22,7 +22,7 @@ export default class ListItemComponent extends React.Component {
 		let descriptionHtml;
 		const { list, shouldShowDescription } = this.props;
 
-		if (shouldShowDescription) {
+		if (shouldShowDescription && list.description.length) {
 			descriptionHtml = this.renderDescription();
 		}
 

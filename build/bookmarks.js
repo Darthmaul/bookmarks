@@ -27360,6 +27360,10 @@
 	
 	var _listDetail2 = _interopRequireDefault(_listDetail);
 	
+	var _listEdit = __webpack_require__(/*! ./pages/list-edit.jsx */ 328);
+	
+	var _listEdit2 = _interopRequireDefault(_listEdit);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27380,7 +27384,8 @@
 					_react2.default.createElement(_reactRouter.Route, { path: '/create-list', component: _createList2.default }),
 					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug', component: _bookmarkDetail2.default }),
 					_react2.default.createElement(_reactRouter.Route, { path: '/bookmark/:id/:slug/edit', component: _bookmarkEdit2.default }),
-					_react2.default.createElement(_reactRouter.Route, { path: '/list/:id/:slug', component: _listDetail2.default })
+					_react2.default.createElement(_reactRouter.Route, { path: '/list/:id/:slug', component: _listDetail2.default }),
+					_react2.default.createElement(_reactRouter.Route, { path: '/list/:id/:slug/edit', component: _listEdit2.default })
 				)
 			)
 		);
@@ -28141,7 +28146,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto;\n  overflow: hidden; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
+	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
 	
 	// exports
 
@@ -40580,6 +40585,15 @@
 					return _react2.default.createElement(
 						'ul',
 						{ className: 'list-form__bookmarks-list' },
+						_react2.default.createElement(
+							'header',
+							{ className: 'list-form__bookmarks-header' },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'bookmarks'
+							)
+						),
 						models.map(function (bookmark, index) {
 							return _react2.default.createElement(
 								'li',
@@ -40842,7 +40856,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".list-form {\n  max-width: 500px;\n  margin: 0 auto; }\n  .list-form .textarea {\n    resize: none; }\n  .list-form .field-wrap:last-child {\n    margin-bottom: 10px; }\n  .list-form__bookmarks-list {\n    padding: 0;\n    margin: 0;\n    list-style: none;\n    list-style-type: none;\n    font-size: 80%;\n    border-top: 1px solid #ddd;\n    color: #777; }\n  .list-form__bookmark-item {\n    width: 100%;\n    position: relative;\n    padding: 5px 30px 5px 20px;\n    border-bottom: 1px solid #ddd; }\n    .list-form__bookmark-item:last-child {\n      border-bottom: 0px; }\n    .list-form__bookmark-item:hover {\n      background: rgba(0, 0, 0, 0.02); }\n      .list-form__bookmark-item:hover .list-form__bookmark-item__remove {\n        display: block; }\n  .list-form__bookmark-item__remove {\n    font-size: 1.2rem;\n    text-decoration: none;\n    position: absolute;\n    right: 10px;\n    top: 0px;\n    text-decoration: none;\n    opacity: 0.5; }\n    .list-form__bookmark-item__remove:hover {\n      opacity: 0.8; }\n\n.notouch .list-form__bookmark-item__remove {\n  display: none;\n  top: 1px; }\n\ninput.list-form__bookmarks {\n  position: relative;\n  padding-right: 10px; }\n\n.autocomplete__clear {\n  display: inline-block;\n  font-size: 1.2rem;\n  text-decoration: none;\n  line-height: 2.4rem;\n  position: absolute;\n  right: 10px;\n  top: 8px;\n  opacity: 0.5; }\n  .autocomplete__clear:hover {\n    opacity: 0.8; }\n\n.autocomplete {\n  position: absolute;\n  left: -1px;\n  right: -1px;\n  background: white;\n  border: 1px solid #ddd;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  z-index: 1; }\n  .autocomplete__result {\n    padding: 5px 20px;\n    font-size: 70%;\n    border-bottom: 1px solid #ddd; }\n    .autocomplete__result:last-child {\n      border-bottom: 0px; }\n    .autocomplete__result:hover {\n      background: rgba(0, 0, 0, 0.02);\n      cursor: pointer; }\n", ""]);
+	exports.push([module.id, ".list-form {\n  max-width: 500px;\n  margin: 0 auto; }\n  .list-form .textarea {\n    resize: none; }\n  .list-form .field-wrap:last-child {\n    margin-bottom: 10px; }\n  .list-form__bookmarks-list {\n    padding: 0;\n    margin: 0;\n    list-style: none;\n    list-style-type: none;\n    font-size: 80%;\n    border-top: 1px solid #ddd;\n    color: #777; }\n  .list-form__bookmarks-header {\n    padding: 6px 20px;\n    border-bottom: 1px solid #ddd;\n    background: #f8f8f8;\n    font-size: 80%;\n    color: #777; }\n  .list-form__bookmark-item {\n    width: 100%;\n    position: relative;\n    padding: 5px 30px 5px 20px;\n    border-bottom: 1px solid #ddd; }\n    .list-form__bookmark-item:last-child {\n      border-bottom: 0px; }\n    .list-form__bookmark-item:hover {\n      background: rgba(0, 0, 0, 0.02); }\n      .list-form__bookmark-item:hover .list-form__bookmark-item__remove {\n        display: block; }\n  .list-form__bookmark-item__remove {\n    font-size: 1.2rem;\n    text-decoration: none;\n    position: absolute;\n    right: 10px;\n    top: 0px;\n    text-decoration: none;\n    opacity: 0.5; }\n    .list-form__bookmark-item__remove:hover {\n      opacity: 0.8; }\n\n.notouch .list-form__bookmark-item__remove {\n  display: none;\n  top: 1px; }\n\ninput.list-form__bookmarks {\n  position: relative;\n  padding-right: 10px; }\n\n.autocomplete__clear {\n  display: inline-block;\n  font-size: 1.2rem;\n  text-decoration: none;\n  line-height: 2.4rem;\n  position: absolute;\n  right: 10px;\n  top: 8px;\n  opacity: 0.5; }\n  .autocomplete__clear:hover {\n    opacity: 0.8; }\n\n.autocomplete {\n  position: absolute;\n  left: -1px;\n  right: -1px;\n  background: white;\n  border: 1px solid #ddd;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  z-index: 1; }\n  .autocomplete__result {\n    padding: 5px 20px;\n    font-size: 70%;\n    border-bottom: 1px solid #ddd; }\n    .autocomplete__result:last-child {\n      border-bottom: 0px; }\n    .autocomplete__result:hover {\n      background: rgba(0, 0, 0, 0.02);\n      cursor: pointer; }\n", ""]);
 	
 	// exports
 
@@ -44128,7 +44142,7 @@
 				    shouldShowDescription = _props.shouldShowDescription;
 	
 	
-				if (shouldShowDescription) {
+				if (shouldShowDescription && list.description.length) {
 					descriptionHtml = this.renderDescription();
 				}
 	
@@ -44697,6 +44711,85 @@
 			document.body.className.length ? document.body.className += ' notouch' : document.body.className = 'notouch';
 		}
 	}
+
+/***/ },
+/* 328 */
+/*!*********************************!*\
+  !*** ./app/pages/list-edit.jsx ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(/*! ../components/lists/form/index.jsx */ 294);
+	
+	var _index2 = _interopRequireDefault(_index);
+	
+	var _errors = __webpack_require__(/*! ../components/errors.jsx */ 253);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ListEditPage = function (_React$Component) {
+		_inherits(ListEditPage, _React$Component);
+	
+		function ListEditPage(props, context) {
+			_classCallCheck(this, ListEditPage);
+	
+			var _this = _possibleConstructorReturn(this, (ListEditPage.__proto__ || Object.getPrototypeOf(ListEditPage)).call(this, props, context));
+	
+			_this.state = { list: false };
+			return _this;
+		}
+	
+		_createClass(ListEditPage, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _context = this.context,
+				    lists = _context.lists,
+				    router = _context.router;
+				var id = this.props.params.id;
+	
+				var list = lists.get(id);
+	
+				this.setState({ list: list });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var list = this.state.list;
+	
+				if (list) {
+					return _react2.default.createElement(_index2.default, { list: list });
+				} else {
+					return _react2.default.createElement(_errors.NotFoundComponent, null);
+				}
+			}
+		}]);
+	
+		return ListEditPage;
+	}(_react2.default.Component);
+	
+	ListEditPage.contextTypes = {
+		lists: _react2.default.PropTypes.object,
+		router: _react2.default.PropTypes.object
+	};
+	exports.default = ListEditPage;
 
 /***/ }
 /******/ ]);

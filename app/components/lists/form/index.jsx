@@ -162,6 +162,9 @@ export default class ListFormComponent extends React.Component {
 		if (models.length) {
 			return (
 				<ul className="list-form__bookmarks-list">
+					<header className="list-form__bookmarks-header">
+						<h3>bookmarks</h3>
+					</header>
 					{models.map((bookmark, index) => {
 						return (
 							<li key={index} className="list-form__bookmark-item">
