@@ -27412,6 +27412,7 @@
 	exports.isFunction = isFunction;
 	exports.hasOwnProperty = hasOwnProperty;
 	exports.keys = keys;
+	exports.values = values;
 	exports.generateID = generateID;
 	exports.validateUrl = validateUrl;
 	exports.validateImageUrl = validateImageUrl;
@@ -27448,13 +27449,13 @@
 	}
 	
 	function keys(obj) {
-		var objKeys = [];
-		for (var property in obj) {
-			if (hasOwnProperty(obj, property)) {
-				objKeys.push(property);
-			}
-		}
-		return objKeys;
+		return Object.keys(obj);
+	}
+	
+	function values(obj) {
+		return _.keys(obj).map(function (key) {
+			return obj[key];
+		});
 	}
 	
 	function generateID() {
@@ -40856,7 +40857,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".list-form {\n  max-width: 500px;\n  margin: 0 auto; }\n  .list-form .textarea {\n    resize: none; }\n  .list-form .field-wrap:last-child {\n    margin-bottom: 10px; }\n  .list-form__bookmarks-list {\n    padding: 0;\n    margin: 0;\n    list-style: none;\n    list-style-type: none;\n    font-size: 80%;\n    border-top: 1px solid #ddd;\n    color: #777; }\n  .list-form__bookmarks-header {\n    padding: 6px 20px;\n    border-bottom: 1px solid #ddd;\n    background: #f8f8f8;\n    font-size: 80%;\n    color: #777; }\n  .list-form__bookmark-item {\n    width: 100%;\n    position: relative;\n    padding: 5px 30px 5px 20px;\n    border-bottom: 1px solid #ddd; }\n    .list-form__bookmark-item:last-child {\n      border-bottom: 0px; }\n    .list-form__bookmark-item:hover {\n      background: rgba(0, 0, 0, 0.02); }\n      .list-form__bookmark-item:hover .list-form__bookmark-item__remove {\n        display: block; }\n  .list-form__bookmark-item__remove {\n    font-size: 1.2rem;\n    text-decoration: none;\n    position: absolute;\n    right: 10px;\n    top: 0px;\n    text-decoration: none;\n    opacity: 0.5; }\n    .list-form__bookmark-item__remove:hover {\n      opacity: 0.8; }\n\n.notouch .list-form__bookmark-item__remove {\n  display: none;\n  top: 1px; }\n\ninput.list-form__bookmarks {\n  position: relative;\n  padding-right: 10px; }\n\n.autocomplete__clear {\n  display: inline-block;\n  font-size: 1.2rem;\n  text-decoration: none;\n  line-height: 2.4rem;\n  position: absolute;\n  right: 10px;\n  top: 8px;\n  opacity: 0.5; }\n  .autocomplete__clear:hover {\n    opacity: 0.8; }\n\n.autocomplete {\n  position: absolute;\n  left: -1px;\n  right: -1px;\n  background: white;\n  border: 1px solid #ddd;\n  color: #777;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);\n  z-index: 1; }\n  .autocomplete__result {\n    padding: 5px 20px;\n    font-size: 70%;\n    border-bottom: 1px solid #ddd; }\n    .autocomplete__result:last-child {\n      border-bottom: 0px; }\n    .autocomplete__result:hover {\n      background: rgba(0, 0, 0, 0.02);\n      cursor: pointer; }\n", ""]);
+	exports.push([module.id, ".list-form {\n  max-width: 500px;\n  margin: 0 auto; }\n  .list-form .textarea {\n    resize: none; }\n  .list-form .field-wrap:last-child {\n    margin-bottom: 10px; }\n  .list-form__bookmarks-list {\n    padding: 0;\n    margin: 0;\n    list-style: none;\n    list-style-type: none;\n    font-size: 80%;\n    border-top: 1px solid #ddd;\n    color: #777; }\n  .list-form__bookmarks-header {\n    padding: 6px 20px;\n    border-bottom: 1px solid #ddd;\n    background: #f8f8f8;\n    font-size: 80%;\n    color: #777; }\n  .list-form__bookmark-item {\n    width: 100%;\n    position: relative;\n    padding: 5px 30px 5px 20px;\n    border-bottom: 1px solid #ddd; }\n    .list-form__bookmark-item:last-child {\n      border-bottom: 0px; }\n    .list-form__bookmark-item:hover {\n      background: rgba(0, 0, 0, 0.02); }\n      .list-form__bookmark-item:hover .list-form__bookmark-item__remove {\n        display: block; }\n  .list-form__bookmark-item__remove {\n    font-size: 1.2rem;\n    text-decoration: none;\n    position: absolute;\n    right: 10px;\n    top: 0px;\n    text-decoration: none;\n    opacity: 0.5; }\n    .list-form__bookmark-item__remove:hover {\n      opacity: 0.8; }\n\n.notouch .list-form__bookmark-item__remove {\n  display: none;\n  top: 1px; }\n\ninput.list-form__bookmarks {\n  position: relative;\n  padding-right: 10px; }\n\n.autocomplete__clear {\n  display: inline-block;\n  font-size: 1.2rem;\n  text-decoration: none;\n  line-height: 2.4rem;\n  position: absolute;\n  right: 10px;\n  top: 8px;\n  opacity: 0.5; }\n  .autocomplete__clear:hover {\n    opacity: 0.8; }\n\n.autocomplete {\n  position: absolute;\n  left: -1px;\n  right: -1px;\n  background: white;\n  border: 1px solid #ddd;\n  color: #777;\n  z-index: 1;\n  overflow-x: hidden; }\n  .autocomplete__result {\n    padding: 5px 20px;\n    font-size: 70%;\n    border-bottom: 1px solid #ddd; }\n    .autocomplete__result:last-child {\n      border-bottom: 0px; }\n    .autocomplete__result:hover {\n      background: rgba(0, 0, 0, 0.02);\n      cursor: pointer; }\n", ""]);
 	
 	// exports
 

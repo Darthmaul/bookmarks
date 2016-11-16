@@ -23,13 +23,11 @@ export function hasOwnProperty(obj, property) {
 }
 
 export function keys(obj) {
-	const objKeys = [];
-	for (var property in obj) {
-		if (hasOwnProperty(obj, property)) {
-			objKeys.push(property);
-		}
-	}
-	return objKeys;
+	return Object.keys(obj);
+}
+
+export function values(obj) {
+	return _.keys(obj).map(key => obj[key]);
 }
 
 export function generateID() {
