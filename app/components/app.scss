@@ -3,7 +3,13 @@
 .app {
 	max-width: 1000px;
 	margin: 0 auto;
-	padding-bottom: 40px;
+	padding-bottom: 20px;
+}
+
+.notouch {
+	.app {
+		padding-bottom: 40px;
+	}
 }
 
 .content {
