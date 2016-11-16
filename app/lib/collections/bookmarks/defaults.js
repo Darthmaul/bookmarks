@@ -1,5 +1,6 @@
 const defaultBookmarks = [
-	{ 
+	{
+		id: 'waduj9le7',
 		title: 'Some of my photography',
 		url: 'https://c4.staticflickr.com/1/773/22353007131_8cf5803bc8_k.jpg',
 		domain: 'www.flickr.com',
@@ -9,6 +10,7 @@ const defaultBookmarks = [
 		date: new Date
 	},
 	{
+		id: '7p9uamiy5',
 		title: 'Github profile',
 		url: 'http://github.com/ergusto', 
 		domain: 'www.github.com',
@@ -18,6 +20,7 @@ const defaultBookmarks = [
 		date: new Date
 	},
 	{
+		id: 'di8untgx8',
 		title: 'Twitter profile',
 		url: 'http://twitter.com/ergusto', 
 		domain: 'www.twitter.com',

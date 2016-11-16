@@ -4,6 +4,7 @@ import * as _ from '../../tools.js';
 
 import ListModel from './model.js';
 import listValidator from './validators.js';
+import defaultLists from './defaults.js';
 
 export default class Lists extends LocalStorageCollection {
 
@@ -19,6 +20,10 @@ export default class Lists extends LocalStorageCollection {
 
 	get validator() {
 		return listValidator;
+	}
+
+	defaultModels() {
+		return defaultLists;
 	}
 
 	setUpModelHooks() {
