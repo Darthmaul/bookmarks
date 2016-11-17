@@ -1,4 +1,6 @@
 .bookmark-item {
+	max-width: 660px;
+	margin: 0 auto;
 
 	&:hover .boomark-item__tag-toggle {
 		display: inline-block;
