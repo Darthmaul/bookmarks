@@ -7,10 +7,23 @@ export const NotFoundComponent = () => {
 	return (
 		<div className="error box">
 			<header className="box__header">
-				<h3>not found!</h3>
+				<h4>not found!</h4>
 			</header>
-			<div className="padding padding-vertical-sm">
+			<div className="padding">
 				<p>looks like we can't find that resource</p>
+			</div>
+		</div>
+	);
+};
+
+export const NoResultsComponent = () => {
+	return (
+		<div className="error box">
+			<header className="box__header">
+				<h4>no results!</h4>
+			</header>
+			<div className="padding">
+				<p>try ammending your search query</p>
 			</div>
 		</div>
 	);

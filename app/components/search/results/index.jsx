@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { NoResultsComponent } from '../../errors.jsx';
 import BookmarkItemComponent from '../../bookmarks/item/index.jsx';
 import ListItemComponent from '../../lists/item/index.jsx';
 import { isBookmarkModel } from '../../../lib/collections/bookmarks/model.js';
@@ -26,7 +27,7 @@ export default class SearchResultsComponent extends React.Component {
 				</ul>
 			);
 		} else {
-			return <div className="not-found box padding padding-vertical-sm muted">No bookmarks!</div>;
+			return <NoResultsComponent />
 		}
 	}
 

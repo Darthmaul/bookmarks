@@ -28722,6 +28722,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _errors = __webpack_require__(/*! ../../errors.jsx */ 423);
+	
 	var _index = __webpack_require__(/*! ../../bookmarks/item/index.jsx */ 246);
 	
 	var _index2 = _interopRequireDefault(_index);
@@ -28781,11 +28783,7 @@
 						})
 					);
 				} else {
-					return _react2.default.createElement(
-						'div',
-						{ className: 'not-found box padding padding-vertical-sm muted' },
-						'No bookmarks!'
-					);
+					return _react2.default.createElement(_errors.NoResultsComponent, null);
 				}
 			}
 		}]);
@@ -40424,7 +40422,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.NotFoundComponent = undefined;
+	exports.NoResultsComponent = exports.NotFoundComponent = undefined;
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
@@ -40443,18 +40441,43 @@
 				'header',
 				{ className: 'box__header' },
 				_react2.default.createElement(
-					'h3',
+					'h4',
 					null,
 					'not found!'
 				)
 			),
 			_react2.default.createElement(
 				'div',
-				{ className: 'padding padding-vertical-sm' },
+				{ className: 'padding' },
 				_react2.default.createElement(
 					'p',
 					null,
 					'looks like we can\'t find that resource'
+				)
+			)
+		);
+	};
+	
+	var NoResultsComponent = exports.NoResultsComponent = function NoResultsComponent() {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'error box' },
+			_react2.default.createElement(
+				'header',
+				{ className: 'box__header' },
+				_react2.default.createElement(
+					'h4',
+					null,
+					'no results!'
+				)
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'padding' },
+				_react2.default.createElement(
+					'p',
+					null,
+					'try ammending your search query'
 				)
 			)
 		);
