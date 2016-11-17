@@ -41175,7 +41175,7 @@
 	
 				if (this.hasLocallyStoredModels) {
 					var storeList = this.getListFromLocalStorage();
-					this.addMany(storeList);
+					this.add(storeList);
 				} else {
 					this.addDefaults();
 				}
@@ -41223,7 +41223,7 @@
 			value: function addDefaults() {
 				if (this.defaultModels) {
 					var defaults = this.defaultModels();
-					this.createMany(defaults);
+					this.create(defaults);
 				}
 			}
 		}, {
@@ -41479,6 +41479,11 @@
 		}, {
 			key: 'create',
 			value: function create(attrs) {
+				return _.isArray(attrs) ? this.createMany(attrs) : this.createOne(attrs);
+			}
+		}, {
+			key: 'createOne',
+			value: function createOne(attrs) {
 				var model = this.make(attrs);
 				if (!model.id) model.id = _.generateID();
 				model = this.callHooks(model);
@@ -41503,7 +41508,12 @@
 			}
 		}, {
 			key: 'add',
-			value: function add(model) {
+			value: function add(attrs) {
+				return _.isArray(attrs) ? this.addMany(attrs) : this.addOne(attrs);
+			}
+		}, {
+			key: 'addOne',
+			value: function addOne(model) {
 				model = this.make(model);
 				this.models[model.id] = model;
 				this.triggerAdd(model);

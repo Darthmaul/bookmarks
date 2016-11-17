@@ -139,6 +139,10 @@ export default class Collection {
 	// change models
 
 	create(attrs) {
+		return _.isArray(attrs) ? this.createMany(attrs) : this.createOne(attrs);
+	}
+
+	createOne(attrs) {
 		let model = this.make(attrs);
 		if (!model.id) model.id = _.generateID();
 		model = this.callHooks(model);
@@ -159,7 +163,11 @@ export default class Collection {
 		return created;
 	}
 
-	add(model) {
+	add(attrs) {
+		return _.isArray(attrs) ? this.addMany(attrs) : this.addOne(attrs);
+	}
+
+	addOne(model) {
 		model = this.make(model);
 		this.models[model.id] = model;
 		this.triggerAdd(model);

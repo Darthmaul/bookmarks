@@ -24,7 +24,7 @@ export default class LocalStorageCollection extends Collection {
 
 		if (this.hasLocallyStoredModels) {
 			const storeList = this.getListFromLocalStorage();
-			this.addMany(storeList);
+			this.add(storeList);
 		} else {
 			this.addDefaults();
 		}
@@ -70,7 +70,7 @@ export default class LocalStorageCollection extends Collection {
 	addDefaults() {
 		if (this.defaultModels) {
 			const defaults = this.defaultModels();
-			this.createMany(defaults);
+			this.create(defaults);
 		}
 	}
 
