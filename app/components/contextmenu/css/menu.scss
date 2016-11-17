@@ -53,7 +53,7 @@
 			font-size: 80%;
 			text-decoration: none;
 			line-height: 2.2rem;
-			padding: 0px 20px;
+			padding: 0px 10px;
 			border-left: 1px solid #ccc;
 			display: inline-block;
 		}
@@ -64,7 +64,9 @@
 	.context-menu__wrap {
 		bottom: 20px;
 	}
-	.context-menu__help {
-		padding: 0px 20px;
+	.context-menu {
+		a {
+			padding: 0px 20px;
+		}
 	}
 }
