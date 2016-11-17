@@ -19,9 +19,9 @@ export default class SearchResultsComponent extends React.Component {
 				<ul className="search-results-list">
 					{results.map(result => {
 						if (isBookmarkModel(result)) {
-							return <li key={result.id} className="margin-bottom"><BookmarkItemComponent bookmark={result} /></li>
+							return <li key={result.id} className="search-result"><BookmarkItemComponent bookmark={result} /></li>
 						} else if (isListModel(result)) {
-							return <li key={result.id} className="margin-bottom"><ListItemComponent list={result} /></li>
+							return <li key={result.id} className="search-result"><ListItemComponent list={result} /></li>
 						}
 					})}
 				</ul>

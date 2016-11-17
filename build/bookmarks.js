@@ -28374,6 +28374,11 @@
 							'what\'s this?'
 						),
 						_react2.default.createElement(
+							_index2.default,
+							{ title: 'I built this site for fun. It\'s just somewhere for me to try things out and to try build something interesting. It uses Local Storage to keep track of your changes between visits.' },
+							'about'
+						),
+						_react2.default.createElement(
 							'div',
 							{ className: 'context-menu__content' },
 							menu ? menu : ''
@@ -28432,7 +28437,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 10px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 10px;\n    margin-right: 20px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n    .context-menu__help:after {\n      bottom: 2.6rem;\n      left: 0%;\n      width: 220px; }\n  .context-menu p {\n    margin: 0; }\n  .context-menu__nav {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    list-style: none;\n    color: #777;\n    float: right; }\n    .context-menu__nav li {\n      display: inline-block; }\n    .context-menu__nav a {\n      font-size: 80%;\n      text-decoration: none;\n      line-height: 2.2rem;\n      padding: 0px 10px;\n      border-left: 1px solid #ccc;\n      display: inline-block; }\n\n.notouch .context-menu__wrap {\n  bottom: 20px; }\n\n.notouch .context-menu a {\n  padding: 0px 20px; }\n", ""]);
+	exports.push([module.id, ".context-menu__wrap {\n  position: fixed;\n  max-width: 1000px;\n  margin: 0 auto;\n  bottom: 10px;\n  left: 0px;\n  right: 0px; }\n\n.context-menu {\n  margin: 0 10px;\n  color: #777;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .context-menu__content {\n    flex: 1; }\n  .context-menu__help {\n    line-height: 2.2rem;\n    padding: 0px 10px;\n    border-right: 1px solid #ccc;\n    text-decoration: none;\n    font-size: 80%; }\n    .context-menu__help:after {\n      bottom: 2.6rem;\n      left: 0%;\n      width: 220px; }\n  .context-menu p {\n    margin: 0; }\n  .context-menu__nav {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    list-style: none;\n    color: #777;\n    float: right; }\n    .context-menu__nav li {\n      display: inline-block; }\n    .context-menu__nav a {\n      font-size: 80%;\n      text-decoration: none;\n      line-height: 2.2rem;\n      padding: 0px 10px;\n      border-left: 1px solid #ccc;\n      display: inline-block; }\n\n.notouch .context-menu__wrap {\n  bottom: 20px; }\n\n.notouch .context-menu a {\n  padding: 0px 20px; }\n", ""]);
 	
 	// exports
 
@@ -28770,13 +28775,13 @@
 							if ((0, _model.isBookmarkModel)(result)) {
 								return _react2.default.createElement(
 									'li',
-									{ key: result.id, className: 'margin-bottom' },
+									{ key: result.id, className: 'search-result' },
 									_react2.default.createElement(_index2.default, { bookmark: result })
 								);
 							} else if ((0, _model2.isListModel)(result)) {
 								return _react2.default.createElement(
 									'li',
-									{ key: result.id, className: 'margin-bottom' },
+									{ key: result.id, className: 'search-result' },
 									_react2.default.createElement(_index4.default, { list: result })
 								);
 							}
@@ -32011,7 +32016,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".search-results-list {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\n", ""]);
+	exports.push([module.id, ".search-results-list {\n  margin: 0;\n  padding: 0;\n  list-style: none; }\n\n.search-result {\n  margin-bottom: 20px; }\n  .search-result:last-child {\n    margin-bottom: 0px; }\n", ""]);
 	
 	// exports
 
