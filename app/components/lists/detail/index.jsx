@@ -20,7 +20,7 @@ export default class ListDetailComponent extends React.Component {
 
 		if (list.bookmarks.length) {
 			const bookmarkModels = bookmarks.get(list.bookmarks);
-			const listBookmarks = bookmarkModels.map(bookmark => <li key={bookmark.id} className="margin-bottom"><BookmarkItemComponent bookmark={bookmark} /></li>);
+			const listBookmarks = bookmarkModels.map(bookmark => <li key={bookmark.id} className="list-detail__item"><BookmarkItemComponent bookmark={bookmark} /></li>);
 			bookmarkList = <ul className="list-detail__bookmarks">{listBookmarks}</ul>;
 		}
 

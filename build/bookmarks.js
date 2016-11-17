@@ -28632,12 +28632,9 @@
 			value: function componentDidMount() {
 				var _this2 = this;
 	
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-				var query = router.location.query;
+				var bookmarks = this.context.bookmarks;
 	
-				var term = query.search;
+				var term = this.getTerm();
 				this.search.onSearch(this.addBookmarks);
 				this.setState({
 					isMounted: true
@@ -28660,16 +28657,22 @@
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextState, nextContext) {
-				var bookmarks = this.context.bookmarks;
-				var router = nextContext.router;
-				var query = router.location.query;
-	
-				var term = query.search;
+				var term = this.getTerm(nextContext);;
 				if (term) {
 					this.performSearch(term);
 				} else {
 					this.addModels(this.search.all());
 				}
+			}
+		}, {
+			key: 'getTerm',
+			value: function getTerm(context) {
+				context = context || this.context;
+				var _context = context,
+				    router = _context.router;
+				var search = router.location.query.search;
+	
+				return search;
 			}
 		}, {
 			key: 'performSearch',
@@ -28694,7 +28697,12 @@
 			value: function render() {
 				var results = this.state.results;
 	
-				return _react2.default.createElement(_index2.default, { results: results });
+				var term = this.getTerm();
+				if (results) {
+					return _react2.default.createElement(_index2.default, { results: results });
+				} else {
+					if (term) {} else {}
+				}
 			}
 		}]);
 	
@@ -31649,7 +31657,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item {\n  max-width: 660px;\n  margin: 0 auto; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    font-weight: bold; }\n  .bookmark-item__header {\n    padding: 10px 20px;\n    border-bottom: 1px solid #ccc;\n    position: relative; }\n  .bookmark-item__link {\n    font-size: 1.1rem;\n    margin-left: 10px; }\n  .bookmark-item__domain {\n    text-decoration: none; }\n  .bookmark-item__image-wrap {\n    border-bottom: 1px solid #ccc;\n    position: relative;\n    padding: 10px 20px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__image {\n    max-width: 100%;\n    max-height: 600px;\n    margin: 0 auto;\n    display: block; }\n  .bookmark-item__tags {\n    padding: 4px 15px;\n    -webkit-animation: fadeIn 200ms;\n    -o-animation: fadeIn 200ms;\n    animation: fadeIn 200ms;\n    border-top: 1px solid #ccc;\n    background: #FCFAF9;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__footer {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item__footer-toggles {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    float: right; }\n    .bookmark-item__footer-toggles li {\n      display: inline-block;\n      margin-left: 20px; }\n      .bookmark-item__footer-toggles li i {\n        font-size: 1.1rem; }\n  .bookmark-item__description {\n    border-top: 1px solid #ccc;\n    padding: 15px 20px;\n    font-size: 80%;\n    color: #777; }\n    .bookmark-item__description p:first-child {\n      margin-top: 0px; }\n    .bookmark-item__description p:last-child {\n      margin-bottom: 0px; }\n  .bookmark-item__edit-options {\n    border-top: 1px solid #ccc; }\n", ""]);
+	exports.push([module.id, ".bookmark-item {\n  max-width: 660px;\n  margin: 0 auto; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    font-weight: bold; }\n  .bookmark-item__header {\n    padding: 10px 20px;\n    border-bottom: 1px solid #ccc;\n    position: relative; }\n  .bookmark-item__link {\n    font-size: 1.1rem;\n    margin-left: 10px; }\n  .bookmark-item__domain {\n    text-decoration: none; }\n  .bookmark-item__image-wrap {\n    border-bottom: 1px solid #ccc;\n    position: relative;\n    padding: 10px 20px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__image {\n    max-width: 100%;\n    max-height: 600px;\n    margin: 0 auto;\n    display: block; }\n  .bookmark-item__tags {\n    padding: 4px 15px;\n    -webkit-animation: fadeIn 200ms;\n    -o-animation: fadeIn 200ms;\n    animation: fadeIn 200ms;\n    border-top: 1px solid #ccc;\n    background: #FCFAF9;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__footer {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item__footer-toggles {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    float: right; }\n    .bookmark-item__footer-toggles li {\n      display: inline-block;\n      margin-left: 20px; }\n      .bookmark-item__footer-toggles li i {\n        font-size: 1rem; }\n  .bookmark-item__description {\n    border-top: 1px solid #ccc;\n    padding: 15px 20px;\n    font-size: 80%;\n    color: #777; }\n    .bookmark-item__description p:first-child {\n      margin-top: 0px; }\n    .bookmark-item__description p:last-child {\n      margin-bottom: 0px; }\n  .bookmark-item__edit-options {\n    border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 
@@ -40815,7 +40823,7 @@
 					var listBookmarks = bookmarkModels.map(function (bookmark) {
 						return _react2.default.createElement(
 							'li',
-							{ key: bookmark.id, className: 'margin-bottom' },
+							{ key: bookmark.id, className: 'list-detail__item' },
 							_react2.default.createElement(_index4.default, { bookmark: bookmark })
 						);
 					});
@@ -40888,7 +40896,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".list-detail__bookmarks {\n  margin: 20px 0px;\n  padding: 0;\n  list-style: none;\n  list-style-type: none; }\n\n.notouch .list-detail__bookmarks {\n  margin: 20px; }\n", ""]);
+	exports.push([module.id, ".list-detail__bookmarks {\n  margin: 20px 0px;\n  padding: 0;\n  list-style: none;\n  list-style-type: none; }\n\n.list-detail__item {\n  margin-bottom: 20px; }\n  .list-detail__item:last-child {\n    margin-bottom: 0px; }\n\n.notouch .list-detail__bookmarks {\n  margin: 20px; }\n", ""]);
 	
 	// exports
 
@@ -51794,7 +51802,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".tooltip {\n  display: inline;\n  position: relative; }\n\n.tooltip--active:after {\n  background: #333;\n  background: rgba(0, 0, 0, 0.8);\n  border-radius: 5px;\n  color: #fff;\n  content: attr(title);\n  padding: 6px 15px;\n  position: absolute;\n  z-index: 99;\n  line-height: 1rem;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n", ""]);
+	exports.push([module.id, ".tooltip {\n  display: inline;\n  position: relative; }\n\n.tooltip--active:after {\n  background: #333;\n  background: rgba(0, 0, 0, 0.8);\n  border-radius: 5px;\n  color: #fff;\n  content: attr(title);\n  padding: 7px 15px;\n  position: absolute;\n  z-index: 99;\n  line-height: 1rem;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075); }\n", ""]);
 	
 	// exports
 
