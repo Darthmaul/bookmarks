@@ -125,9 +125,9 @@ export default class BookmarkItemComponent extends React.Component {
 				{imgHtml}
 				<footer className="bookmark-item__footer">
 					<ul className="bookmark-item__footer-toggles">
-						{descriptionToggle}
 						{imgToggle}
 						{tagsToggle}
+						{descriptionToggle}
 					</ul>
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
 				</footer>

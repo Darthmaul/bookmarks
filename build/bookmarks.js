@@ -29012,9 +29012,9 @@
 						_react2.default.createElement(
 							'ul',
 							{ className: 'bookmark-item__footer-toggles' },
-							descriptionToggle,
 							imgToggle,
-							tagsToggle
+							tagsToggle,
+							descriptionToggle
 						),
 						_react2.default.createElement(
 							'a',
