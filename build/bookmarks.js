@@ -40896,7 +40896,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".list-detail__bookmarks {\n  margin: 20px 0px;\n  padding: 0;\n  list-style: none;\n  list-style-type: none; }\n\n.list-detail__item {\n  margin-bottom: 20px; }\n  .list-detail__item:last-child {\n    margin-bottom: 0px; }\n\n.notouch .list-detail__bookmarks {\n  margin: 20px; }\n", ""]);
+	exports.push([module.id, ".list-detail__bookmarks {\n  margin: 20px 0px 0px;\n  padding: 0;\n  list-style: none;\n  list-style-type: none; }\n\n.list-detail__item {\n  margin-bottom: 20px; }\n  .list-detail__item:last-child {\n    margin-bottom: 0px; }\n\n.notouch .list-detail__bookmarks {\n  margin: 20px 0px 0px; }\n", ""]);
 	
 	// exports
 
