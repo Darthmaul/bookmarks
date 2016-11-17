@@ -19,6 +19,11 @@ a:hover {
 }
 
 hr {
-	color: #777;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
+	color: #ddd;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #ddd;
+    margin: 1em 0;
+    padding: 0;
 }
