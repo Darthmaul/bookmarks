@@ -1,6 +1,6 @@
 import React from 'react';
 import showdown from 'showdown';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import classnames from 'classnames';
 
 import { Link } from 'react-router';
 import * as _ from '../../../lib/tools.js';
@@ -123,17 +123,19 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
-		return (
-            <ul className="bookmark-item__view-options">
-		        {imgToggle}
-                {tagsToggle}
-                {descriptionToggle}
-            </ul>
-        );
+		return [
+            imgToggle,
+            tagsToggle,
+            descriptionToggle
+         ];
+    }
+
+    shouldShowToggles() {
+        return this.hasTags() || this.isImageUrl() || this.hasDescription();
     }
 
 	render() {
-		let tagsHtml, imgHtml, descriptionHtml, optionsHtml, optionsToggle;
+		let tagsHtml, imgHtml, descriptionHtml, optionsToggle, toggles;
 		const { bookmark } = this.props;
 		const { shouldShowTags, shouldShowImage, shouldShowDescription, shouldShowOptions } = this.state;
 
@@ -149,7 +151,7 @@ export default class BookmarkItemComponent extends React.Component {
 			descriptionHtml = this.renderDescription();
 		}
 		
-		if (this.hasTags() || this.isImageUrl() || this.hasDescription()) {
+		if (this.shouldShowToggles()) {
             let optionsToggleClass = "bookmark-item__options-toggle ion-android-more-horizontal";
             if (shouldShowOptions) {
                 optionsToggleClass += ' bookmark-item__options-toggle--open';
@@ -161,10 +163,17 @@ export default class BookmarkItemComponent extends React.Component {
 					</a>
 				</li>
 			);
-		}
 
-		if (shouldShowOptions) {
-			optionsHtml = this.renderOptions();
+            toggles = (
+				<ul className="bookmark-item__toggles">
+					{optionsToggle}
+                    <li>
+                        <ul className={classnames({ 'bookmark-item__view-options': true, 'bookmark-item__view-options--open': shouldShowOptions })}>
+    					    {this.renderOptions()}
+                        </ul>
+                    </li>
+				</ul>
+            );
 		}
 
 		return (
@@ -174,12 +183,7 @@ export default class BookmarkItemComponent extends React.Component {
 				</header>
 				{imgHtml}
 				<footer className="bookmark-item__footer">
-					<ul className="bookmark-item__toggles">
-						{optionsToggle}
-                        <ReactCSSTransitionGroup component="li" transitionName="item-options-transition" transitionAppear={true} transitionLeave={true} transitionEnterTimeout={600} transitionLeaveTimeout={600} transitionAppearTimeout={600}>
-    						{optionsHtml}
-                        </ReactCSSTransitionGroup>
-					</ul>
+                    {toggles}
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
 				</footer>
 				{tagsHtml}
