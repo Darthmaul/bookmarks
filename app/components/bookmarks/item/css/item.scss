@@ -84,11 +84,23 @@
 				display: inline-block;
 
 				&.bookmark-item__options-toggle {
-					transform: rotate(90deg);
-					-webkit-transform: rotate(90deg);
-					-moz-transform: rotate(90deg);
-					-o-transform: rotate(90deg);
-					-ms-transform: rotate(90deg);
+                    -moz-transition: all .2s ease;
+                    /* WebKit */
+                    -webkit-transition: all .2s ease;
+                    /* Opera */
+                    -o-transition: all .2s ease;
+                    /* Standard */
+                    transition: all .1s ease;
+
+                    &.bookmark-item__options-toggle--open {
+                        -moz-transform: rotate(90deg);
+                        /* WebKit */
+                        -webkit-transform: rotate(90deg); 
+                        /* Opera */
+                        -o-transform: rotate(90deg);
+                        /* Standard */
+                        transform: rotate(90deg); 
+                    }
 				}
 			}
 		}

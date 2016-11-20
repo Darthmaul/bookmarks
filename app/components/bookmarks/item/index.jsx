@@ -148,10 +148,14 @@ export default class BookmarkItemComponent extends React.Component {
 		}
 		
 		if (this.hasTags() || this.isImageUrl() || this.hasDescription()) {
+            let optionsToggleClass = "bookmark-item__options-toggle ion-android-more-horizontal";
+            if (shouldShowOptions) {
+                optionsToggleClass += ' bookmark-item__options-toggle--open';
+            }
 			optionsToggle = (
 				<li>
 					<a href="#" onClick={this.toggleOptions.bind(this)}>
-						<i className="bookmark-item__options-toggle ion-android-more-horizontal" />
+						<i className={optionsToggleClass} />
 					</a>
 				</li>
 			);
