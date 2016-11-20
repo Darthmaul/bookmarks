@@ -68,12 +68,12 @@
 		float: right;
 
 		.bookmark-item__view-options {
-		    opacity: 0;
-		    transition: opacity .6s ease;
+			opacity: 0;
+			transition: opacity .6s ease;
 
-		    &.bookmark-item__view-options--open {
-			opacity: 1;
-		    }
+			&.bookmark-item__view-options--open {
+				opacity: 1;
+			}
 		}
 
 		li {
