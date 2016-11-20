@@ -4,8 +4,6 @@ import showdown from 'showdown';
 import { Link } from 'react-router';
 import * as _ from '../../../lib/tools.js';
 
-import BookmarkOptionsComponent from '../options/index.jsx';
-
 // import styles for this component
 require('!style!css!sass!./css/item.scss');
 
@@ -18,14 +16,22 @@ export default class BookmarkItemComponent extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
-		const { shouldShowTags, shouldShowImage, shouldShowDescription } = props;
+		const { shouldShowTags, shouldShowOptions, shouldShowImage, shouldShowDescription } = props;
 
 		this.state = {
 			shouldShowTags: shouldShowTags || false,
+            shouldShowOptions: shouldShowOptions || false,
 			shouldShowImage: shouldShowImage || false,
 			shouldShowDescription: shouldShowDescription || false
 		};
 	}
+
+    toggleOptions(event) {
+    	event.preventDefault();
+		this.setState({
+			shouldShowOptions: !this.state.shouldShowOptions
+		});
+    }
 
 	toggleTags(event) {
 		event.preventDefault();
@@ -66,16 +72,12 @@ export default class BookmarkItemComponent extends React.Component {
 		return <div className="bookmark-item__tags">{tags}</div>;
 	}
 
-	render() {
-		let tagsHtml, tagsToggle, imgHtml, imgToggle, descriptionHtml, descriptionToggle, optionsHtml;
-		const { bookmark, shouldShowOptions } = this.props;
+    renderOptions() {
+    	const { bookmark } = this.props;
+    	let tagsToggle, imgToggle, descriptionToggle;
 		const { shouldShowTags, shouldShowImage, shouldShowDescription } = this.state;
 
 		if (bookmark.tags && bookmark.tags.length) {
-			if (shouldShowTags) {
-				tagsHtml = this.renderTags();
-			}
-
 			tagsToggle = (
 				<li>
 					<a href="#" onClick={this.toggleTags.bind(this)}>
@@ -86,10 +88,6 @@ export default class BookmarkItemComponent extends React.Component {
 		}
 
 		if (_.validateImageUrl(bookmark.url)) {
-			if (shouldShowImage) {
-				imgHtml = <div className="bookmark-item__image-wrap"><a href={bookmark.url}><img className="bookmark-item__image" src={bookmark.url} /></a></div>;
-			}
-
 			imgToggle = (
 				<li>
 					<a href="#" onClick={this.toggleImage.bind(this)}>
@@ -100,10 +98,6 @@ export default class BookmarkItemComponent extends React.Component {
 		}
 
 		if (bookmark.description && bookmark.description.length) {
-			if (shouldShowDescription) {
-				descriptionHtml = this.renderDescription();
-			}
-
 			descriptionToggle = (
 				<li>
 					<a href="#" onClick={this.toggleDescription.bind(this)}>
@@ -113,8 +107,37 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
+		return (
+			<div className="bookmark-item__options clearfix">
+					<ul className="bookmark-item__toggles">
+						{imgToggle}
+						{tagsToggle}
+						{descriptionToggle}
+					</ul>
+			</div>
+		);
+
+    }
+
+	render() {
+		let tagsHtml, imgHtml, descriptionHtml, optionsHtml;
+		const { bookmark } = this.props;
+		const { shouldShowTags, shouldShowImage, shouldShowDescription, shouldShowOptions } = this.state;
+
+		if (shouldShowTags) {
+			tagsHtml = this.renderTags();
+		}
+
+		if (shouldShowImage) {
+			imgHtml = <div className="bookmark-item__image-wrap"><a href={bookmark.url}><img className="bookmark-item__image" src={bookmark.url} /></a></div>;
+		}
+
+		if (shouldShowDescription) {
+			descriptionHtml = this.renderDescription();
+		}
+
 		if (shouldShowOptions) {
-			optionsHtml = <BookmarkOptionsComponent bookmark={bookmark} />;
+			optionsHtml = this.renderOptions();
 		}
 
 		return (
@@ -124,16 +147,18 @@ export default class BookmarkItemComponent extends React.Component {
 				</header>
 				{imgHtml}
 				<footer className="bookmark-item__footer">
-					<ul className="bookmark-item__footer-toggles">
-						{imgToggle}
-						{tagsToggle}
-						{descriptionToggle}
+					<ul className="bookmark-item__toggles">
+						<li>
+							<a className="bookmark-item__options-toggle" href="#" onClick={this.toggleOptions.bind(this)}>
+								<i className="ion-android-more-horizontal" />
+							</a>
+						</li>
 					</ul>
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
 				</footer>
+				{optionsHtml}
 				{tagsHtml}
 				{descriptionHtml}
-				{optionsHtml}
 			</div>
 		);
 	}

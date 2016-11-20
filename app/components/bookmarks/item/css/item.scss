@@ -41,6 +41,12 @@
 		display: block;
 	}
 
+	&__options {
+		padding: 4px 15px;
+		border-top: 1px solid #ccc;
+		background: #FCFAF9;
+	}
+
 	&__tags {
 		padding: 4px 15px;
 		-webkit-animation: fadeIn 200ms;
@@ -61,7 +67,7 @@
 		text-shadow: 0 1px rgba(255, 255, 255, 0.25);
 	}
 
-	&__footer-toggles {
+	&__toggles {
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
@@ -73,6 +79,13 @@
 
 			i {
 				font-size: 1rem;
+				display: inline-block;
+			}
+		}
+
+		.bookmark-item__options-toggle {
+			i {
+				margin-top: 2px;
 			}
 		}
 	}
