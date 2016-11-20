@@ -29505,7 +29505,7 @@
 				if (this.hasTags()) {
 					tagsToggle = _react2.default.createElement(
 						'li',
-						null,
+						{ key: Math.random() },
 						_react2.default.createElement(
 							'a',
 							{ href: '#', onClick: this.toggleTags.bind(this) },
@@ -29517,7 +29517,7 @@
 				if (this.isImageUrl()) {
 					imgToggle = _react2.default.createElement(
 						'li',
-						null,
+						{ key: Math.random() },
 						_react2.default.createElement(
 							'a',
 							{ href: '#', onClick: this.toggleImage.bind(this) },
@@ -29529,7 +29529,7 @@
 				if (this.hasDescription()) {
 					descriptionToggle = _react2.default.createElement(
 						'li',
-						null,
+						{ key: Math.random() },
 						_react2.default.createElement(
 							'a',
 							{ href: '#', onClick: this.toggleDescription.bind(this) },
@@ -29538,17 +29538,7 @@
 					);
 				}
 	
-				return _react2.default.createElement(
-					'div',
-					{ className: 'bookmark-item__options clearfix' },
-					_react2.default.createElement(
-						'ul',
-						{ className: 'bookmark-item__toggles' },
-						imgToggle,
-						tagsToggle,
-						descriptionToggle
-					)
-				);
+				return [imgToggle, tagsToggle, descriptionToggle];
 			}
 		}, {
 			key: 'render',
@@ -29613,10 +29603,11 @@
 								null,
 								_react2.default.createElement(
 									'a',
-									{ className: 'bookmark-item__options-toggle', href: '#', onClick: this.toggleOptions.bind(this) },
+									{ href: '#', onClick: this.toggleOptions.bind(this) },
 									_react2.default.createElement('i', { className: 'ion-android-more-horizontal' })
 								)
-							)
+							),
+							optionsHtml
 						),
 						_react2.default.createElement(
 							'a',
@@ -29624,7 +29615,6 @@
 							bookmark.domain
 						)
 					),
-					optionsHtml,
 					tagsHtml,
 					descriptionHtml
 				);
@@ -32116,7 +32106,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item {\n  max-width: 660px;\n  margin: 0 auto; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    font-weight: bold; }\n  .bookmark-item__header {\n    padding: 10px 20px;\n    border-bottom: 1px solid #ccc;\n    position: relative; }\n  .bookmark-item__link {\n    font-size: 1.1rem;\n    margin-left: 10px; }\n  .bookmark-item__domain {\n    text-decoration: none; }\n  .bookmark-item__image-wrap {\n    border-bottom: 1px solid #ccc;\n    position: relative;\n    padding: 10px 20px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__image {\n    max-width: 100%;\n    max-height: 600px;\n    margin: 0 auto;\n    display: block; }\n  .bookmark-item__options {\n    padding: 4px 15px;\n    border-top: 1px solid #ccc;\n    background: #FCFAF9; }\n  .bookmark-item__tags {\n    padding: 4px 15px;\n    -webkit-animation: fadeIn 200ms;\n    -o-animation: fadeIn 200ms;\n    animation: fadeIn 200ms;\n    border-top: 1px solid #ccc;\n    background: #FCFAF9;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__footer {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item__toggles {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    float: right; }\n    .bookmark-item__toggles li {\n      display: inline-block;\n      margin-left: 20px; }\n      .bookmark-item__toggles li i {\n        font-size: 1rem;\n        display: inline-block; }\n    .bookmark-item__toggles .bookmark-item__options-toggle i {\n      margin-top: 2px; }\n  .bookmark-item__description {\n    border-top: 1px solid #ccc;\n    padding: 15px 20px;\n    font-size: 80%;\n    color: #777; }\n    .bookmark-item__description p:first-child {\n      margin-top: 0px; }\n    .bookmark-item__description p:last-child {\n      margin-bottom: 0px; }\n  .bookmark-item__edit-options {\n    border-top: 1px solid #ccc; }\n", ""]);
+	exports.push([module.id, ".bookmark-item {\n  max-width: 660px;\n  margin: 0 auto; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    font-weight: bold; }\n  .bookmark-item__header {\n    padding: 10px 20px;\n    border-bottom: 1px solid #ccc;\n    position: relative; }\n  .bookmark-item__link {\n    font-size: 1.1rem;\n    margin-left: 10px; }\n  .bookmark-item__domain {\n    text-decoration: none; }\n  .bookmark-item__image-wrap {\n    border-bottom: 1px solid #ccc;\n    position: relative;\n    padding: 10px 20px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__image {\n    max-width: 100%;\n    max-height: 600px;\n    margin: 0 auto;\n    display: block; }\n  .bookmark-item__options {\n    padding: 4px 15px;\n    border-top: 1px solid #ccc;\n    background: #FCFAF9; }\n  .bookmark-item__tags {\n    padding: 4px 15px;\n    -webkit-animation: fadeIn 200ms;\n    -o-animation: fadeIn 200ms;\n    animation: fadeIn 200ms;\n    border-top: 1px solid #ccc;\n    background: #FCFAF9;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__footer {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item__toggles {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    float: right; }\n    .bookmark-item__toggles li {\n      display: inline-block;\n      margin-left: 20px;\n      float: right; }\n      .bookmark-item__toggles li i {\n        margin-top: 2px;\n        font-size: 1rem;\n        display: inline-block; }\n  .bookmark-item__description {\n    border-top: 1px solid #ccc;\n    padding: 15px 20px;\n    font-size: 80%;\n    color: #777; }\n    .bookmark-item__description p:first-child {\n      margin-top: 0px; }\n    .bookmark-item__description p:last-child {\n      margin-bottom: 0px; }\n  .bookmark-item__edit-options {\n    border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 

@@ -94,7 +94,7 @@ export default class BookmarkItemComponent extends React.Component {
 
 		if (this.hasTags()) {
 			tagsToggle = (
-				<li>
+				<li key={Math.random()}>
 					<a href="#" onClick={this.toggleTags.bind(this)}>
 						<i className="ion-ios-pricetags" />
 					</a>
@@ -104,7 +104,7 @@ export default class BookmarkItemComponent extends React.Component {
 
 		if (this.isImageUrl()) {
 			imgToggle = (
-				<li>
+				<li key={Math.random()}>
 					<a href="#" onClick={this.toggleImage.bind(this)}>
 						<i className="ion-image" />
 					</a>
@@ -114,7 +114,7 @@ export default class BookmarkItemComponent extends React.Component {
 
 		if (this.hasDescription()) {
 			descriptionToggle = (
-				<li>
+				<li key={Math.random()}>
 					<a href="#" onClick={this.toggleDescription.bind(this)}>
 						<i className="ion-document-text" />
 					</a>
@@ -122,15 +122,11 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
-		return (
-			<div className="bookmark-item__options clearfix">
-					<ul className="bookmark-item__toggles">
-						{imgToggle}
-						{tagsToggle}
-						{descriptionToggle}
-					</ul>
-			</div>
-		);
+		return [
+			imgToggle,
+			tagsToggle,
+			descriptionToggle
+		];
 
     }
 
@@ -165,14 +161,14 @@ export default class BookmarkItemComponent extends React.Component {
 				<footer className="bookmark-item__footer">
 					<ul className="bookmark-item__toggles">
 						<li>
-							<a className="bookmark-item__options-toggle" href="#" onClick={this.toggleOptions.bind(this)}>
+							<a href="#" onClick={this.toggleOptions.bind(this)}>
 								<i className="ion-android-more-horizontal" />
 							</a>
 						</li>
+						{optionsHtml}
 					</ul>
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
 				</footer>
-				{optionsHtml}
 				{tagsHtml}
 				{descriptionHtml}
 			</div>
