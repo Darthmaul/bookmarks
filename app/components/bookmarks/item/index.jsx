@@ -123,12 +123,13 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
-		return [
-			imgToggle,
-			tagsToggle,
-			descriptionToggle
-		];
-
+		return (
+            <ul className="bookmark-item__view-options">
+		        {imgToggle}
+                {tagsToggle}
+                {descriptionToggle}
+            </ul>
+        );
     }
 
 	render() {
@@ -175,7 +176,7 @@ export default class BookmarkItemComponent extends React.Component {
 				<footer className="bookmark-item__footer">
 					<ul className="bookmark-item__toggles">
 						{optionsToggle}
-                        <ReactCSSTransitionGroup transitionName="item-options-transition" transitionLeave={true} transitionEnterTimeout={10} transitionLeaveTimeout={1000}>
+                        <ReactCSSTransitionGroup component="li" transitionName="item-options-transition" transitionAppear={true} transitionLeave={true} transitionEnterTimeout={600} transitionLeaveTimeout={600} transitionAppearTimeout={600}>
     						{optionsHtml}
                         </ReactCSSTransitionGroup>
 					</ul>
