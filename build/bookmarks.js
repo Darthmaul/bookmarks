@@ -29632,9 +29632,11 @@
 	
 				if (this.shouldShowToggles()) {
 					var optionsToggleClass = "bookmark-item__options-toggle ion-android-more-horizontal";
+	
 					if (shouldShowOptions) {
 						optionsToggleClass += ' bookmark-item__options-toggle--open';
 					}
+	
 					optionsToggle = _react2.default.createElement(
 						'li',
 						null,
