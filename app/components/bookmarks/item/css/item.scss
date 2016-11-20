@@ -82,6 +82,14 @@
 				margin-top: 2px;
 				font-size: 1rem;
 				display: inline-block;
+
+				&.bookmark-item__options-toggle {
+					transform: rotate(90deg);
+					-webkit-transform: rotate(90deg);
+					-moz-transform: rotate(90deg);
+					-o-transform: rotate(90deg);
+					-ms-transform: rotate(90deg);
+				}
 			}
 		}
 	}

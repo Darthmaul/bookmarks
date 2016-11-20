@@ -131,11 +131,11 @@ export default class BookmarkItemComponent extends React.Component {
     }
 
 	render() {
-		let tagsHtml, imgHtml, descriptionHtml, optionsHtml;
+		let tagsHtml, imgHtml, descriptionHtml, optionsHtml, optionsToggle;
 		const { bookmark } = this.props;
 		const { shouldShowTags, shouldShowImage, shouldShowDescription, shouldShowOptions } = this.state;
 
-		if (shouldShowTags) {
+		if (shouldShowTags && this.hasTags()) {
 			tagsHtml = this.renderTags();
 		}
 
@@ -143,12 +143,21 @@ export default class BookmarkItemComponent extends React.Component {
 			imgHtml = <div className="bookmark-item__image-wrap"><a href={bookmark.url}><img className="bookmark-item__image" src={bookmark.url} /></a></div>;
 		}
 
-		if (shouldShowDescription) {
+		if (shouldShowDescription && this.hasDescription()) {
 			descriptionHtml = this.renderDescription();
+		}
+		
+		if (this.hasTags() || this.isImageUrl() || this.hasDescription()) {
+			optionsToggle = (
+				<li>
+					<a href="#" onClick={this.toggleOptions.bind(this)}>
+						<i className="bookmark-item__options-toggle ion-android-more-horizontal" />
+					</a>
+				</li>
+			);
 		}
 
 		if (shouldShowOptions) {
-			if (this.hasTags() || this.isImageUrl() || this.hasDescription())
 			optionsHtml = this.renderOptions();
 		}
 
@@ -160,11 +169,7 @@ export default class BookmarkItemComponent extends React.Component {
 				{imgHtml}
 				<footer className="bookmark-item__footer">
 					<ul className="bookmark-item__toggles">
-						<li>
-							<a href="#" onClick={this.toggleOptions.bind(this)}>
-								<i className="ion-android-more-horizontal" />
-							</a>
-						</li>
+						{optionsToggle}
 						{optionsHtml}
 					</ul>
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
