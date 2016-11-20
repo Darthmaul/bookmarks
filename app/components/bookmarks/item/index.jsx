@@ -26,6 +26,21 @@ export default class BookmarkItemComponent extends React.Component {
 		};
 	}
 
+    hasTags() {
+    	const { bookmark } = this.props;
+    	return bookmark.tags && bookmark.tags.length;
+    }
+
+    isImageUrl() {
+    	const { bookmark } = this.props;
+    	return bookmark.url && _.validateImageUrl(bookmark.url);
+    }
+
+    hasDescription() {
+    	const { bookmark } = this.props;
+    	return bookmark.description && bookmark.description.length;
+    }
+
     toggleOptions(event) {
     	event.preventDefault();
 		this.setState({
@@ -77,7 +92,7 @@ export default class BookmarkItemComponent extends React.Component {
     	let tagsToggle, imgToggle, descriptionToggle;
 		const { shouldShowTags, shouldShowImage, shouldShowDescription } = this.state;
 
-		if (bookmark.tags && bookmark.tags.length) {
+		if (this.hasTags()) {
 			tagsToggle = (
 				<li>
 					<a href="#" onClick={this.toggleTags.bind(this)}>
@@ -87,7 +102,7 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
-		if (_.validateImageUrl(bookmark.url)) {
+		if (this.isImageUrl()) {
 			imgToggle = (
 				<li>
 					<a href="#" onClick={this.toggleImage.bind(this)}>
@@ -97,7 +112,7 @@ export default class BookmarkItemComponent extends React.Component {
 			);
 		}
 
-		if (bookmark.description && bookmark.description.length) {
+		if (this.hasDescription()) {
 			descriptionToggle = (
 				<li>
 					<a href="#" onClick={this.toggleDescription.bind(this)}>
@@ -128,7 +143,7 @@ export default class BookmarkItemComponent extends React.Component {
 			tagsHtml = this.renderTags();
 		}
 
-		if (shouldShowImage) {
+		if (shouldShowImage && this.isImageUrl()) {
 			imgHtml = <div className="bookmark-item__image-wrap"><a href={bookmark.url}><img className="bookmark-item__image" src={bookmark.url} /></a></div>;
 		}
 
@@ -137,6 +152,7 @@ export default class BookmarkItemComponent extends React.Component {
 		}
 
 		if (shouldShowOptions) {
+			if (this.hasTags() || this.isImageUrl() || this.hasDescription())
 			optionsHtml = this.renderOptions();
 		}
 

@@ -29408,6 +29408,27 @@
 		}
 	
 		_createClass(BookmarkItemComponent, [{
+			key: 'hasTags',
+			value: function hasTags() {
+				var bookmark = this.props.bookmark;
+	
+				return bookmark.tags && bookmark.tags.length;
+			}
+		}, {
+			key: 'isImageUrl',
+			value: function isImageUrl() {
+				var bookmark = this.props.bookmark;
+	
+				return bookmark.url && _.validateImageUrl(bookmark.url);
+			}
+		}, {
+			key: 'hasDescription',
+			value: function hasDescription() {
+				var bookmark = this.props.bookmark;
+	
+				return bookmark.description && bookmark.description.length;
+			}
+		}, {
 			key: 'toggleOptions',
 			value: function toggleOptions(event) {
 				event.preventDefault();
@@ -29481,7 +29502,7 @@
 				    shouldShowDescription = _state.shouldShowDescription;
 	
 	
-				if (bookmark.tags && bookmark.tags.length) {
+				if (this.hasTags()) {
 					tagsToggle = _react2.default.createElement(
 						'li',
 						null,
@@ -29493,7 +29514,7 @@
 					);
 				}
 	
-				if (_.validateImageUrl(bookmark.url)) {
+				if (this.isImageUrl()) {
 					imgToggle = _react2.default.createElement(
 						'li',
 						null,
@@ -29505,7 +29526,7 @@
 					);
 				}
 	
-				if (bookmark.description && bookmark.description.length) {
+				if (this.hasDescription()) {
 					descriptionToggle = _react2.default.createElement(
 						'li',
 						null,
@@ -29548,7 +29569,7 @@
 					tagsHtml = this.renderTags();
 				}
 	
-				if (shouldShowImage) {
+				if (shouldShowImage && this.isImageUrl()) {
 					imgHtml = _react2.default.createElement(
 						'div',
 						{ className: 'bookmark-item__image-wrap' },
@@ -29565,7 +29586,7 @@
 				}
 	
 				if (shouldShowOptions) {
-					optionsHtml = this.renderOptions();
+					if (this.hasTags() || this.isImageUrl() || this.hasDescription()) optionsHtml = this.renderOptions();
 				}
 	
 				return _react2.default.createElement(
