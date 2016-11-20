@@ -78,6 +78,27 @@
 			margin-left: 20px;
 			float: right;
 
+            -moz-transition: opacity .8s ease;
+            -webkit-transition: opacity .8s ease;
+            -o-transition: opacity .8s ease;
+            transition: opacity .8s ease;    
+
+            &.item-options-transition-enter {
+                opacity: 0.01;
+            }
+
+            &.item-options-transition-enter-active {
+                opacity: 1;
+            }
+
+            &.item-options-transition-leave {
+                opacity: 1;
+            }
+
+            &.item-options-transition-leave-active {
+                opacity: 0.01;
+            }
+
 			i {
 				margin-top: 2px;
 				font-size: 1rem;
@@ -90,7 +111,7 @@
                     /* Opera */
                     -o-transition: all .2s ease;
                     /* Standard */
-                    transition: all .1s ease;
+                    transition: all .2s ease;
 
                     &.bookmark-item__options-toggle--open {
                         -moz-transform: rotate(90deg);

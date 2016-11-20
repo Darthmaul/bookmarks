@@ -1,5 +1,6 @@
 import React from 'react';
 import showdown from 'showdown';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { Link } from 'react-router';
 import * as _ from '../../../lib/tools.js';
@@ -174,7 +175,9 @@ export default class BookmarkItemComponent extends React.Component {
 				<footer className="bookmark-item__footer">
 					<ul className="bookmark-item__toggles">
 						{optionsToggle}
-						{optionsHtml}
+                        <ReactCSSTransitionGroup transitionName="item-options-transition" transitionLeave={true} transitionEnterTimeout={10} transitionLeaveTimeout={1000}>
+    						{optionsHtml}
+                        </ReactCSSTransitionGroup>
 					</ul>
 					<a className="bookmark-item__domain" href={bookmark.url}>{bookmark.domain}</a>
 				</footer>
