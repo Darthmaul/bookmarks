@@ -96,7 +96,7 @@ export default class BookmarkFormComponent extends React.Component {
 		const { description } = this.refs;
 		if (description) {
 			description.style.height = 'auto';
-			description.style.height = (description.scrollHeight + 20) + 'px';
+			description.style.height = description.scrollHeight + 'px';
 		}
 	}
 
@@ -194,6 +194,7 @@ export default class BookmarkFormComponent extends React.Component {
 							placeholder="description" 
 							type="text" 
 							className="field textarea" 
+							rows="1"
 						/>
 					</div>
 					<div className="field-wrap">

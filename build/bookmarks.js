@@ -33753,7 +33753,7 @@
 	
 				if (description) {
 					description.style.height = 'auto';
-					description.style.height = description.scrollHeight + 20 + 'px';
+					description.style.height = description.scrollHeight + 'px';
 				}
 			}
 		}, {
@@ -33885,7 +33885,8 @@
 								defaultValue: bookmark ? bookmark.description : '',
 								placeholder: 'description',
 								type: 'text',
-								className: 'field textarea'
+								className: 'field textarea',
+								rows: '1'
 							})
 						),
 						_react2.default.createElement(
