@@ -61,17 +61,6 @@
 		text-shadow: 0 1px rgba(255, 255, 255, 0.25);
 	}
 
-	&__view-options {
-		display: none;
-		opacity: 0;
-		transition: all .6s ease;
-
-		&--open {
-			display: block;
-			opacity: 1;
-		}
-	}
-
 	&__toggles {
 		list-style-type: none;
 		padding: 0;
@@ -83,31 +72,18 @@
 			margin-left: 20px;
 			float: right;
 
+			a {
+				opacity: 0.6;
+
+				&:hover {
+					opacity: 1;
+				}
+			}
+
 			i {
 				margin-top: 2px;
 				font-size: 1rem;
 				display: inline-block;
-
-				&.bookmark-item__options-toggle {
-					-moz-transition: all .2s ease;
-					/* WebKit */
-					-webkit-transition: all .2s ease;
-					/* Opera */
-					-o-transition: all .2s ease;
-					/* Standard */
-					transition: all .2s ease;
-
-					&.bookmark-item__options-toggle--open {
-						color: black;
-						-moz-transform: rotate(90deg);
-						/* WebKit */
-						-webkit-transform: rotate(90deg); 
-						/* Opera */
-						-o-transform: rotate(90deg);
-						/* Standard */
-						transform: rotate(90deg); 
-					}
-				}
 			}
 		}
 	}

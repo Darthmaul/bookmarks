@@ -29637,29 +29637,10 @@
 						optionsToggleClass += ' bookmark-item__options-toggle--open';
 					}
 	
-					optionsToggle = _react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement(
-							'a',
-							{ href: '#', onClick: this.toggleOptions.bind(this) },
-							_react2.default.createElement('i', { className: optionsToggleClass })
-						)
-					);
-	
 					toggles = _react2.default.createElement(
 						'ul',
 						{ className: 'bookmark-item__toggles' },
-						optionsToggle,
-						_react2.default.createElement(
-							'li',
-							null,
-							_react2.default.createElement(
-								'ul',
-								{ className: (0, _classnames2.default)({ 'bookmark-item__view-options': true, 'bookmark-item__view-options--open': shouldShowOptions }) },
-								this.renderOptions()
-							)
-						)
+						this.renderOptions()
 					);
 				}
 	
@@ -32245,7 +32226,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bookmark-item {\n  max-width: 660px;\n  margin: 0 auto; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    font-weight: bold; }\n  .bookmark-item__header {\n    padding: 10px 20px;\n    border-bottom: 1px solid #ccc;\n    position: relative; }\n  .bookmark-item__link {\n    font-size: 1.1rem;\n    margin-left: 10px; }\n  .bookmark-item__domain {\n    text-decoration: none; }\n  .bookmark-item__image-wrap {\n    border-bottom: 1px solid #ccc;\n    position: relative;\n    padding: 10px 20px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__image {\n    max-width: 100%;\n    max-height: 600px;\n    margin: 0 auto;\n    display: block; }\n  .bookmark-item__tags {\n    padding: 2px 15px;\n    -webkit-animation: fadeIn 200ms;\n    -o-animation: fadeIn 200ms;\n    animation: fadeIn 200ms;\n    border-top: 1px solid #ccc;\n    background: #FCFAF9;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__footer {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item__view-options {\n    display: none;\n    opacity: 0;\n    transition: all .6s ease; }\n    .bookmark-item__view-options--open {\n      display: block;\n      opacity: 1; }\n  .bookmark-item__toggles {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    float: right; }\n    .bookmark-item__toggles li {\n      display: inline-block;\n      margin-left: 20px;\n      float: right; }\n      .bookmark-item__toggles li i {\n        margin-top: 2px;\n        font-size: 1rem;\n        display: inline-block; }\n        .bookmark-item__toggles li i.bookmark-item__options-toggle {\n          -moz-transition: all .2s ease;\n          /* WebKit */\n          -webkit-transition: all .2s ease;\n          /* Opera */\n          -o-transition: all .2s ease;\n          /* Standard */\n          transition: all .2s ease; }\n          .bookmark-item__toggles li i.bookmark-item__options-toggle.bookmark-item__options-toggle--open {\n            color: black;\n            -moz-transform: rotate(90deg);\n            /* WebKit */\n            -webkit-transform: rotate(90deg);\n            /* Opera */\n            -o-transform: rotate(90deg);\n            /* Standard */\n            transform: rotate(90deg); }\n  .bookmark-item__description {\n    border-top: 1px solid #ccc;\n    padding: 15px 20px;\n    font-size: 80%;\n    color: #777; }\n    .bookmark-item__description p:first-child {\n      margin-top: 0px; }\n    .bookmark-item__description p:last-child {\n      margin-bottom: 0px; }\n  .bookmark-item__edit-options {\n    border-top: 1px solid #ccc; }\n", ""]);
+	exports.push([module.id, ".bookmark-item {\n  max-width: 660px;\n  margin: 0 auto; }\n  .bookmark-item:hover .boomark-item__tag-toggle {\n    display: inline-block; }\n  .bookmark-item__title {\n    text-decoration: none;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25);\n    font-weight: bold; }\n  .bookmark-item__header {\n    padding: 10px 20px;\n    border-bottom: 1px solid #ccc;\n    position: relative; }\n  .bookmark-item__link {\n    font-size: 1.1rem;\n    margin-left: 10px; }\n  .bookmark-item__domain {\n    text-decoration: none; }\n  .bookmark-item__image-wrap {\n    border-bottom: 1px solid #ccc;\n    position: relative;\n    padding: 10px 20px;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__image {\n    max-width: 100%;\n    max-height: 600px;\n    margin: 0 auto;\n    display: block; }\n  .bookmark-item__tags {\n    padding: 2px 15px;\n    -webkit-animation: fadeIn 200ms;\n    -o-animation: fadeIn 200ms;\n    animation: fadeIn 200ms;\n    border-top: 1px solid #ccc;\n    background: #FCFAF9;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset; }\n  .bookmark-item__footer {\n    background: #f8f8f8;\n    padding: 5px 20px;\n    font-size: 75%;\n    line-height: 1.2rem;\n    color: #777;\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075) inset;\n    text-shadow: 0 1px rgba(255, 255, 255, 0.25); }\n  .bookmark-item__toggles {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    float: right; }\n    .bookmark-item__toggles li {\n      display: inline-block;\n      margin-left: 20px;\n      float: right; }\n      .bookmark-item__toggles li a {\n        opacity: 0.6; }\n        .bookmark-item__toggles li a:hover {\n          opacity: 1; }\n      .bookmark-item__toggles li i {\n        margin-top: 2px;\n        font-size: 1rem;\n        display: inline-block; }\n  .bookmark-item__description {\n    border-top: 1px solid #ccc;\n    padding: 15px 20px;\n    font-size: 80%;\n    color: #777; }\n    .bookmark-item__description p:first-child {\n      margin-top: 0px; }\n    .bookmark-item__description p:last-child {\n      margin-bottom: 0px; }\n  .bookmark-item__edit-options {\n    border-top: 1px solid #ccc; }\n", ""]);
 	
 	// exports
 
@@ -51780,7 +51761,7 @@
 		title: 'Some of my photography',
 		url: 'https://c4.staticflickr.com/1/773/22353007131_8cf5803bc8_k.jpg',
 		domain: 'www.flickr.com',
-		description: "This is a default bookmark. In this case it's a bookmark to an image. You can view the link directly by clicking the domain name below the image. \n\n Below the domain is a list of tags associated with this bookmark. \n\n To the right of the domain is a toggle that allows you to view options to change how the bookmark is displayed. \n\n You are currently reading the bookmark description, *and it supports markdown!* \n\n If you haven't already, try creating a new bookmark by clicking the plus symbol at the top right of the page. \n\n --- \n\n *See some of my other photography on [Flickr](http://flickr.com/photos/fergusruston).*",
+		description: "This is a default bookmark. In this case it's a bookmark to an image. You can view the link directly by clicking the domain name below the image. \n\n Below the domain is a list of tags associated with this bookmark. \n\n To the right of the domain are toggles that allow you to change how the bookmark is displayed. These toggles also let you know the kinds of content the bookmark contains. \n\n You are currently reading the bookmark description, *and it supports markdown!* \n\n If you haven't already, try creating a new bookmark by clicking the plus symbol at the top right of the page. \n\n --- \n\n *See some of my other photography on [Flickr](http://flickr.com/photos/fergusruston).*",
 		tags: ['default bookmark', 'photography'],
 		slug: 'some-of-my-photography',
 		date: new Date()

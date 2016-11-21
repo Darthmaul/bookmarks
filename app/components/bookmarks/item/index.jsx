@@ -158,22 +158,9 @@ export default class BookmarkItemComponent extends React.Component {
 				optionsToggleClass += ' bookmark-item__options-toggle--open';
 			}
 
-			optionsToggle = (
-				<li>
-					<a href="#" onClick={this.toggleOptions.bind(this)}>
-						<i className={optionsToggleClass} />
-					</a>
-				</li>
-			);
-
             		toggles = (
 				<ul className="bookmark-item__toggles">
-					{optionsToggle}
-					<li>
-                        			<ul className={classnames({ 'bookmark-item__view-options': true, 'bookmark-item__view-options--open': shouldShowOptions })}>
-    					    		{this.renderOptions()}
-                        			</ul>
-                    			</li>
+    					{this.renderOptions()}
 				</ul>
             		);
 		}
