@@ -31,7 +31,7 @@ export default class ListItemComponent extends React.Component {
 		return (
 			<div className="list-item box">
 				<div className="list-item__details">
-					<span className="list-item__bookmark-count">list - {headerTitle}</span>
+					<span className="list-item__bookmark-count">{headerTitle}</span>
 				</div>
 				<header className="list-item__header"><Link className="list-item__title" to={list.getDetailUrl()}>{list.title}</Link></header>
 				{descriptionHtml}

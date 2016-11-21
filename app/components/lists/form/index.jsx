@@ -7,7 +7,7 @@ import Search from '../../../lib/behaviour/search.js';
 // import styles for this component
 require('!style!css!sass!./css/form.scss');
 
-const DragHandle = SortableHandle(() => <span className="list-form__bookmark-item__drag-handle">::</span>);
+const DragHandle = SortableHandle(() => <span className="list-form__bookmark-item__drag-handle"><i className="ion-navicon" /></span>);
 
 const SortableItem = SortableElement(({ bookmark, removeBookmark }) => (
 	<li className="list-form__bookmark-item">
