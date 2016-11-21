@@ -12,8 +12,8 @@ export default class AppComponent extends React.Component {
 		const { children } = this.props;
 		return (
 			<div>
+				<HeaderComponent />
 				<div className="app">
-					<HeaderComponent />
 					<div className="content">
 						{children}
 					</div>

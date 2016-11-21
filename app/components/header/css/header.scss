@@ -2,9 +2,14 @@
 
 .site-header {
 	border-bottom: 1px solid #ccc;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 	text-shadow: 1px 1px 0px #fefefe;
 	overflow: hidden;
+	position: fixed;
+	max-width: 1000px;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	z-index: 1;
 
 	.site-title {
 		font-size: 1.2rem;

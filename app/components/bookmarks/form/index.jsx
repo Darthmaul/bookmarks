@@ -86,6 +86,7 @@ export default class BookmarkFormComponent extends React.Component {
 						input.blur();
 						input.focus();
 					});
+					
 				}
 			}
 		}
@@ -95,7 +96,7 @@ export default class BookmarkFormComponent extends React.Component {
 		const { description } = this.refs;
 		if (description) {
 			description.style.height = 'auto';
-			description.style.height = description.scrollHeight + 'px';
+			description.style.height = (description.scrollHeight + 20) + 'px';
 		}
 	}
 
@@ -192,7 +193,6 @@ export default class BookmarkFormComponent extends React.Component {
 							defaultValue={bookmark ? bookmark.description : ''} 
 							placeholder="description" 
 							type="text" 
-							rows="1" 
 							className="field textarea" 
 						/>
 					</div>

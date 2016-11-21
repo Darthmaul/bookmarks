@@ -42,7 +42,7 @@
 	}
 
 	&__tags {
-		padding: 4px 15px;
+		padding: 2px 15px;
 		-webkit-animation: fadeIn 200ms;
 		-o-animation: fadeIn 200ms;
 		animation: fadeIn 200ms;
@@ -61,20 +61,22 @@
 		text-shadow: 0 1px rgba(255, 255, 255, 0.25);
 	}
 
+	&__view-options {
+		display: none;
+		opacity: 0;
+		transition: all .6s ease;
+
+		&--open {
+			display: block;
+			opacity: 1;
+		}
+	}
+
 	&__toggles {
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
 		float: right;
-
-		.bookmark-item__view-options {
-			opacity: 0;
-			transition: opacity .6s ease;
-
-			&.bookmark-item__view-options--open {
-				opacity: 1;
-			}
-		}
 
 		li {
 			display: inline-block;

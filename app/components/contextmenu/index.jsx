@@ -26,8 +26,8 @@ export default class ContextMenuComponent extends React.Component {
 		return (
 			<div className="context-menu__wrap">
 				<div className="context-menu box">
-					<Tooltip title="This menu shows contextual actions you can perform on the page you are viewing">what's this?</Tooltip>
 					<Tooltip title="I built this site for fun. It's just somewhere for me to try things out and to try build something interesting. It uses Local Storage to keep track of your changes between visits.">about</Tooltip>
+					<Tooltip title="This menu shows contextual actions you can perform on the page you are viewing">what's this?</Tooltip>
 					<div className="context-menu__content">{menu ? menu : ''}</div>
 				</div>
 			</div>
