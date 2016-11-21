@@ -99,7 +99,7 @@
 
 .notouch .list-form__bookmark-item__remove {
 	display: none;
-	top: 1px;
+	top: 3px;
 }
 
 input.list-form__bookmarks {
@@ -114,7 +114,7 @@ input.list-form__bookmarks {
 	line-height: 2.4rem;
 	position: absolute;
 	right: 10px;
-	top: 8px;
+	top: 14px;
 	opacity: 0.5;
 
 	&:hover {
@@ -126,7 +126,7 @@ input.list-form__bookmarks {
 	position: absolute;
 	left: -1px;
 	right: -1px;
-	top: 52px; // i hate magic numbers too.
+	top: 60px; // i hate magic numbers too.
 	background: white;
 	border: 1px solid #ddd;
 	color: #777;
