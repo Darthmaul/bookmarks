@@ -28945,7 +28945,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto;\n  padding-bottom: 10px; }\n\n.notouch .app {\n  padding: 40px 0; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
+	exports.push([module.id, ".app {\n  max-width: 1000px;\n  margin: 0 auto;\n  padding-bottom: 10px;\n  padding: 40px 0; }\n\n.content {\n  padding: 20px 0px; }\n  @media screen and (min-width: 760px) {\n    .content {\n      padding: 20px; } }\n", ""]);
 	
 	// exports
 
