@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack -d --watch",
     "minify": "./node_modules/.bin/minify --output build/deskbookerstest.min.js build/deskbookerstest.js",
-    "start": "python -m SimpleHTTPServer",
+    "start": "./node_modules/.bin/http-server -p 8000",
     "open": "open http://localhost:8000"
   },
   "author": "",
@@ -19,6 +19,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
+    "http-server": "^0.9.0",
     "imports-loader": "^0.6.5",
     "minifier": "^0.8.0",
     "node-sass": "^3.11.2",
