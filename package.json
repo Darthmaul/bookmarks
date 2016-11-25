@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack -d --watch",
     "minify": "./node_modules/.bin/minify --output build/deskbookerstest.min.js build/deskbookerstest.js",
-    "start": "./node_modules/.bin/http-server -p 8000",
+    "start": "./node_modules/.bin/http-server ./example -p 8000",
     "open": "open http://localhost:8000"
   },
   "author": "",

@@ -140,12 +140,8 @@ export default class BookmarkFormComponent extends React.Component {
 				const { url } = this.refs;
 				const value = url.value.trim();
 				const { errors } = this.state;
-				if (value) {
-					const error = this.validateField('url', value);
-					errors.url = error;
-				} else {
-					delete errors['url'];
-				}
+				const error = this.validateField('url', value);
+				errors.url = error;
 				this.setState({ errors });
 			}
 		}
