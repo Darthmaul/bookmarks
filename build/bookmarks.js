@@ -33789,16 +33789,10 @@
 					var errorState = this.getFieldError('url');
 					if (errorState) {
 						var url = this.refs.url;
-	
-						var value = url.value.trim();
 						var errors = this.state.errors;
 	
-						if (value) {
-							var error = this.validateField('url', value);
-							errors.url = error;
-						} else {
-							delete errors['url'];
-						}
+						var error = this.validateField('url', url.value.trim());
+						errors.url = error;
 						this.setState({ errors: errors });
 					}
 				}
