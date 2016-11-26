@@ -21,7 +21,7 @@ export default class BookmarkFormComponent extends React.Component {
 		}
 	}
 
-	submitHandler(event) {
+	submitHandler = event => {
 		event.preventDefault();
 		const { bookmark } = this.props;
 		const { bookmarks, router } = this.context;
@@ -47,7 +47,7 @@ export default class BookmarkFormComponent extends React.Component {
 		}
 	}
 
-	removeTag(tag, event) {
+	removeTag = (tag, event) => {
 		event.preventDefault();
 		const { tags } = this.state;
 		const index = tags.indexOf(tag.trim());
@@ -150,7 +150,7 @@ export default class BookmarkFormComponent extends React.Component {
 		const { bookmark } = this.props;
 		
 		return (
-			<form onSubmit={this.submitHandler.bind(this)} className="bookmark-form box-form box">
+			<form onSubmit={this.submitHandler} className="bookmark-form box-form box">
 				<div className="box-form__inner">
 					<header className="box-form__header">
 						<h2 className="form-title">bookmark</h2>

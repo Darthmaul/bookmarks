@@ -33618,6 +33618,8 @@
 	
 			var _this = _possibleConstructorReturn(this, (BookmarkFormComponent.__proto__ || Object.getPrototypeOf(BookmarkFormComponent)).call(this, props, context));
 	
+			_initialiseProps.call(_this);
+	
 			var bookmark = _this.props.bookmark;
 	
 	
@@ -33629,54 +33631,6 @@
 		}
 	
 		_createClass(BookmarkFormComponent, [{
-			key: 'submitHandler',
-			value: function submitHandler(event) {
-				event.preventDefault();
-				var bookmark = this.props.bookmark;
-				var _context = this.context,
-				    bookmarks = _context.bookmarks,
-				    router = _context.router;
-				var _refs = this.refs,
-				    title = _refs.title,
-				    url = _refs.url,
-				    tags = _refs.tags,
-				    description = _refs.description;
-	
-				var titleValue = title.value.trim();
-				var urlValue = url.value.trim();
-				var descriptionValue = description.value.trim();
-	
-				var properties = {
-					title: titleValue,
-					url: urlValue,
-					tags: this.state.tags,
-					description: descriptionValue
-				};
-	
-				var _bookmarks$validate = bookmarks.validate(properties),
-				    errors = _bookmarks$validate.errors,
-				    validated = _bookmarks$validate.validated;
-	
-				if (validated) {
-					var saved = bookmark ? bookmark.update(properties) : bookmarks.create(properties);
-					router.push(saved.getDetailUrl());
-				} else {
-					this.setState({ errors: errors });
-				}
-			}
-		}, {
-			key: 'removeTag',
-			value: function removeTag(tag, event) {
-				event.preventDefault();
-				var tags = this.state.tags;
-	
-				var index = tags.indexOf(tag.trim());
-				if (index >= 0) {
-					tags.splice(index, 1);
-				}
-				this.setState({ tags: tags });
-			}
-		}, {
 			key: 'renderTags',
 			value: function renderTags() {
 				var _this2 = this;
@@ -33807,7 +33761,7 @@
 	
 				return _react2.default.createElement(
 					'form',
-					{ onSubmit: this.submitHandler.bind(this), className: 'bookmark-form box-form box' },
+					{ onSubmit: this.submitHandler, className: 'bookmark-form box-form box' },
 					_react2.default.createElement(
 						'div',
 						{ className: 'box-form__inner' },
@@ -33896,6 +33850,57 @@
 		bookmarks: _react2.default.PropTypes.object,
 		router: _react2.default.PropTypes.object
 	};
+	
+	var _initialiseProps = function _initialiseProps() {
+		var _this5 = this;
+	
+		this.submitHandler = function (event) {
+			event.preventDefault();
+			var bookmark = _this5.props.bookmark;
+			var _context = _this5.context,
+			    bookmarks = _context.bookmarks,
+			    router = _context.router;
+			var _refs = _this5.refs,
+			    title = _refs.title,
+			    url = _refs.url,
+			    tags = _refs.tags,
+			    description = _refs.description;
+	
+			var titleValue = title.value.trim();
+			var urlValue = url.value.trim();
+			var descriptionValue = description.value.trim();
+	
+			var properties = {
+				title: titleValue,
+				url: urlValue,
+				tags: _this5.state.tags,
+				description: descriptionValue
+			};
+	
+			var _bookmarks$validate = bookmarks.validate(properties),
+			    errors = _bookmarks$validate.errors,
+			    validated = _bookmarks$validate.validated;
+	
+			if (validated) {
+				var saved = bookmark ? bookmark.update(properties) : bookmarks.create(properties);
+				router.push(saved.getDetailUrl());
+			} else {
+				_this5.setState({ errors: errors });
+			}
+		};
+	
+		this.removeTag = function (tag, event) {
+			event.preventDefault();
+			var tags = _this5.state.tags;
+	
+			var index = tags.indexOf(tag.trim());
+			if (index >= 0) {
+				tags.splice(index, 1);
+			}
+			_this5.setState({ tags: tags });
+		};
+	};
+	
 	exports.default = BookmarkFormComponent;
 
 /***/ },
